@@ -48,7 +48,9 @@ class UserAdminCreationForm(forms.ModelForm):
 
 
 class UserDetailChangeForm(forms.ModelForm):
-    full_name = forms.CharField(label=gettext_lazy('Name'), required=False, widget=forms.TextInput(attrs={"class": 'form-control'}))
+    full_name = forms.CharField(
+        label=gettext_lazy('Name'), required=False, widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
 
     class Meta:
         model = User
