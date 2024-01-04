@@ -10,10 +10,11 @@ from django.urls import reverse
 from django.db.models import Q
 from django.utils.translation import gettext
 
-from eCommerce_Django.utils import random_string_generator, unique_key_generator
+from eCommerce_Django.utils import unique_key_generator
 
 
 DEFAULT_ACTIVATION_DAYS = getattr(settings, 'DEFAULT_ACTIVATION_DAYS', 7)
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, full_name=None, password=None, is_active=True, is_staff=False, is_admin=False):
