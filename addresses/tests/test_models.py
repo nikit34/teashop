@@ -2,7 +2,6 @@ from django.test import TestCase
 
 from addresses.models import Address
 from billing.models import BillingProfile
-from accounts.models import User
 
 
 class AddressModelTest(TestCase):

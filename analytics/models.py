@@ -1,14 +1,13 @@
-from django.db import models
-from django.db.models.signals import pre_save, post_save
+from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from django.conf import settings
 from django.contrib.sessions.models import Session
+from django.db import models
+from django.db.models.signals import post_save
 
 from accounts.signals import user_logged_in
-
-from .utils import get_client_ip
 from .signals import object_viewed_signal
+from .utils import get_client_ip
 
 User = settings.AUTH_USER_MODEL
 

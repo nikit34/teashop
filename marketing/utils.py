@@ -1,10 +1,10 @@
-from django.conf import settings
-from django.utils.translation import gettext
-import requests
-import re
 import hashlib
 import json
+import re
 
+import requests
+from django.conf import settings
+from django.utils.translation import gettext
 
 MAILCHIMP_API_KEY = getattr(settings, 'MAILCHIMP_API_KEY', None)
 MAILCHIMP_DATA_CENTER = getattr(settings, 'MAILCHIMP_DATA_CENTER', None)

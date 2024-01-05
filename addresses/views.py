@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
-from django.utils.http import is_safe_url
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from django.utils.http import is_safe_url
 from django.views.generic import ListView, UpdateView, CreateView
 
 from billing.models import BillingProfile

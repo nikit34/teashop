@@ -1,11 +1,10 @@
-import random
 import datetime
+
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Count, Sum, Avg
-from django.http import HttpResponse, JsonResponse
-from django.views.generic import TemplateView, View
+from django.http import JsonResponse
 from django.shortcuts import render
-from django.utils import  timezone
+from django.utils import timezone
+from django.views.generic import TemplateView, View
 
 from orders.models import Order
 

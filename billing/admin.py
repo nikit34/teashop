@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import BillingProfile, Card, Charge, PaypalCharge
 
+from .models import BillingProfile, Card, Charge, PaypalCharge
 
 admin.site.register(BillingProfile)
 

@@ -4,7 +4,6 @@ from django.urls import reverse
 from accounts.models import User
 from addresses.models import Address
 from billing.models import BillingProfile
-from addresses.views import AddressListView
 
 
 class AddressListViewTest(TestCase):

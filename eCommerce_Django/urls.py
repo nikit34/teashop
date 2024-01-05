@@ -1,29 +1,27 @@
 from django.conf import settings
-from django.conf.urls.static import static
 from django.conf.urls import url, include
+from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView
-from django.views.generic import TemplateView, RedirectView
-from django.conf.urls.i18n import i18n_patterns
 from django.contrib.sitemaps.views import sitemap
+from django.views.generic import RedirectView
 
+from accounts.views import LoginView, RegisterView
 from addresses.views import (
     AddressCreateView,
     AddressListView,
     AddressUpdateView,
     checkout_address_create_view,
     checkout_address_reuse_view
-  )
+)
 from analytics.views import SalesView, SalesAjaxView
-from accounts.views import LoginView, RegisterView
 from billing.views import payment_method_view, payment_method_createview
 from carts.views import cart_detail_api_view, paypal_checkout_home
 from marketing.views import MarketingPreferenceUpdateView, MailchimpWebhookView
 from orders.views import CollectionView
-from .views import ProductListView, about_page, contact_page, update
-
 from .sitemaps import global_maps, RobotsTxtView
-
+from .views import ProductListView, about_page, contact_page, update
 
 urlpatterns = [
     url(r'^update_server/$', update, name='update'),

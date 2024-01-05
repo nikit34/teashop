@@ -1,5 +1,4 @@
 from .signals import object_viewed_signal
-from django.core.exceptions import ObjectDoesNotExist
 
 
 class ObjectViewedMixin(object):

@@ -1,19 +1,17 @@
-import math
 import datetime
+import math
+
 from django.db import models
+from django.db.models import Count, Sum, Avg
 from django.db.models.signals import pre_save, post_save
 from django.urls import reverse
-from django.db.models import Count, Sum, Avg
-from django.conf import settings
 from django.utils import timezone
-from django.utils.translation import gettext_lazy
 
 from addresses.models import Address
 from billing.models import BillingProfile
 from carts.models import Cart
 from eCommerce_Django.utils import unique_order_id_generator
 from products.models import Product
-
 
 ORDER_STATUS_CHOICES = (
     ('created', 'Created'),

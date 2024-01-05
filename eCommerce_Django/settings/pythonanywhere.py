@@ -1,6 +1,6 @@
 import os
-from eCommerce_Django.utils import get_secret_key
 
+from eCommerce_Django.utils import get_secret_key
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

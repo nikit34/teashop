@@ -1,19 +1,18 @@
-import json
+from django.conf import settings
+import stripe
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from accounts.forms import LoginForm, GuestForm
-from accounts.models import GuestEmail
-from addresses.models import Address
 from addresses.forms import AddressCheckoutForm
+from addresses.models import Address
 from billing.models import BillingProfile
 from orders.models import Order
 from products.models import Product
 from .models import Cart
 
-import stripe
 STRIPE_SECRET_KEY = getattr(settings, 'STRIPE_SECRET_KEY', None)
 STRIPE_PUB_KEY = getattr(settings, 'STRIPE_PUB_KEY', None)
 stripe.api_key = STRIPE_SECRET_KEY

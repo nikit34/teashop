@@ -7,7 +7,6 @@ from django.utils.translation import gettext, gettext_lazy
 
 from .models import EmailActivation, GuestEmail
 
-
 User = get_user_model()
 
 

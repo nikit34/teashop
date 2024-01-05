@@ -1,19 +1,17 @@
 import os
-import json
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView, View
-from django.http import Http404, HttpResponse, JsonResponse
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib import messages
-from wsgiref.util import FileWrapper
 from mimetypes import guess_type
+from wsgiref.util import FileWrapper
+
 from django.conf import settings
-from django.core import serializers
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404, HttpResponse, JsonResponse
+from django.shortcuts import redirect
+from django.views.generic import ListView, DetailView, View
 
 from analytics.mixins import ObjectViewedMixin
 from carts.models import Cart
-from chats.models import Comment
 from chats.forms import CommentForm
+from chats.models import Comment
 from .models import Product, ProductFile
 
 

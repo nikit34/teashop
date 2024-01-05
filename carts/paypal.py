@@ -1,9 +1,8 @@
-import sys
 import json
-from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment, LiveEnvironment
-from paypalcheckoutsdk.orders import OrdersCreateRequest
 
 from django.conf import settings
+from paypalcheckoutsdk.core import PayPalHttpClient, LiveEnvironment
+from paypalcheckoutsdk.orders import OrdersCreateRequest
 
 
 class PayPalClient:

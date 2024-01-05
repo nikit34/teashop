@@ -1,16 +1,13 @@
 from django.conf import settings
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponse
-from django.views.generic import UpdateView, View
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.utils.translation import gettext
+from django.views.generic import UpdateView, View
 
 from .forms import MarketingPreferenceForm
 from .mixins import CsrfExemptMixin
 from .models import MarketingPreference
 from .utils import Mailchimp
-from accounts.models import User
-
 
 MAILCHIMP_API_KEY = getattr(settings, "MAILCHIMP_API_KEY", None)
 MAILCHIMP_DATA_CENTER = getattr(settings, "MAILCHIMP_DATA_CENTER", None)

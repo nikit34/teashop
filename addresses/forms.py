@@ -1,8 +1,8 @@
 from django import forms
 from django.utils.translation import gettext
 
-from .models import Address
 from .countries import countries_dict
+from .models import Address
 
 
 class AddressForm(forms.ModelForm):
