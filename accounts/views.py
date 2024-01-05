@@ -1,15 +1,15 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from django.views.generic import CreateView, FormView, DetailView, View, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-from django.views.generic.edit import FormMixin
 from django.utils.translation import gettext
+from django.views.generic import CreateView, FormView, DetailView, View, UpdateView
+from django.views.generic.edit import FormMixin
 
+from eCommerce_Django.mixins import NextUrlMixin, RequestFormAttachMixin
 from .forms import LoginForm, RegisterForm, GuestForm, ReactivateEmailForm, UserDetailChangeForm
 from .models import EmailActivation
-from eCommerce_Django.mixins import NextUrlMixin, RequestFormAttachMixin
 
 
 class AccountHomeView(LoginRequiredMixin, DetailView):

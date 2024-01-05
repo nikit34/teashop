@@ -1,17 +1,17 @@
 from datetime import timedelta
+
 from django.conf import settings
-from django.db import models
-from django.db.models.signals import pre_save, post_save
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager)
 from django.core.mail import send_mail
-from django.template.loader import get_template
-from django.utils import timezone
-from django.urls import reverse
+from django.db import models
 from django.db.models import Q
+from django.db.models.signals import pre_save, post_save
+from django.template.loader import get_template
+from django.urls import reverse
+from django.utils import timezone
 from django.utils.translation import gettext
 
 from eCommerce_Django.utils import unique_key_generator
-
 
 DEFAULT_ACTIVATION_DAYS = getattr(settings, 'DEFAULT_ACTIVATION_DAYS', 7)
 

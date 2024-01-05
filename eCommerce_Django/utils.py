@@ -1,8 +1,8 @@
+import datetime
+import os
 import random
 import string
-import os
-import datetime
-from django.utils import timezone
+
 from django.utils.text import slugify
 
 
