@@ -88,14 +88,12 @@ def unique_slug_generator(instance, new_slug=None):
 
 
 def get_secret_key(root_path, name):
+    key = None
     with open(root_path + "/secret", "r") as f:
         for line in f.readlines():
             if name in line:
-                if '\n' in line:
-                    key = line.replace(name + '="', '').replace('"\n', '')
-                else:
-                    key = line.replace(name + '="', '')[:-1]
-                f.close()
-                return key
-        f.close()
+                key = line.replace(name + '=', '').replace('\n', '')
+                break
+    if not key:
         raise KeyError("ERROR: key not found")
+    return key
