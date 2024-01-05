@@ -78,8 +78,9 @@ class BillingProfile(models.Model):
 
 def billing_profile_created_receiver(sender, instance, *args, **kwargs):
     if not instance.customer_id and instance.email:
-        customer = stripe.Customer.create(email = instance.email)
+        customer = stripe.Customer.create(email=instance.email)
         instance.customer_id = customer.id
+
 
 pre_save.connect(billing_profile_created_receiver, sender=BillingProfile)
 
@@ -87,6 +88,7 @@ pre_save.connect(billing_profile_created_receiver, sender=BillingProfile)
 def user_created_receiver(sender, instance, created, *args, **kwargs):
     if created and instance.email:
         BillingProfile.objects.get_or_create(user=instance, email=instance.email)
+
 
 post_save.connect(user_created_receiver, sender=User)
 
@@ -137,6 +139,7 @@ def new_card_post_save_receiver(sender, instance, created, *args, **kwargs):
         qs = Card.objects.filter(billing_profile=billing_profile).exclude(pk=instance.pk)
         qs.update(default=False)
 
+
 post_save.connect(new_card_post_save_receiver, sender=Card)
 
 
@@ -151,21 +154,21 @@ class ChargeManager(models.Manager):
             return False, gettext('No cards available')
         try:
             c = stripe.Charge.create(
-                amount = int(order_obj.total * 100),
-                currency = 'usd',
-                customer = billing_profile.customer_id,
-                source = card_obj.stripe_id,
-                metadata = {'order_id': order_obj.order_id}
+                amount=int(order_obj.total * 100),
+                currency='usd',
+                customer=billing_profile.customer_id,
+                source=card_obj.stripe_id,
+                metadata={'order_id': order_obj.order_id}
             )
             new_charge_obj = self.model(
-                billing_profile = billing_profile,
-                stripe_id = c.id,
-                paid = c.paid,
-                refunded = c.refunded,
-                outcome = c.outcome,
-                outcome_type = c.outcome['type'],
-                seller_message = c.outcome.get('seller_message'),
-                risk_level = c.outcome.get('risk_level')
+                billing_profile=billing_profile,
+                stripe_id=c.id,
+                paid=c.paid,
+                refunded=c.refunded,
+                outcome=c.outcome,
+                outcome_type=c.outcome['type'],
+                seller_message=c.outcome.get('seller_message'),
+                risk_level=c.outcome.get('risk_level')
             )
             new_charge_obj.save()
             return new_charge_obj.paid, new_charge_obj.stripe_id
@@ -191,6 +194,7 @@ class ChargeManager(models.Manager):
                 self.request, "A serious error occured we were notified")
             return redirect('cart:home')
 
+
 class Charge(models.Model):
     billing_profile = models.ForeignKey(BillingProfile, on_delete=models.DO_NOTHING)
     stripe_id = models.CharField(max_length=120)
@@ -208,12 +212,12 @@ class PaypalChargeManager(models.Manager):
     def do(self, billing_profile, order_obj, paypal_response):
         try:
             new_charge_obj = self.model(
-                billing_profile = billing_profile,
-                paypal_id = paypal_response.result.id,
-                paid = True,
-                intent = paypal_response.result.intent,
-                status = paypal_response.result.status,
-                create_time = paypal_response.result.create_time
+                billing_profile=billing_profile,
+                paypal_id=paypal_response.result.id,
+                paid=True,
+                intent=paypal_response.result.intent,
+                status=paypal_response.result.status,
+                create_time=paypal_response.result.create_time
             )
             new_charge_obj.save()
             return new_charge_obj.paid, new_charge_obj.paypal_id
@@ -221,6 +225,7 @@ class PaypalChargeManager(models.Manager):
             messages.success(
                 self.request, "A serious error occured we were notified")
             return redirect('cart:home')
+
 
 class PaypalCharge(models.Model):
     billing_profile = models.ForeignKey(BillingProfile, on_delete=models.DO_NOTHING)
