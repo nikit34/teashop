@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.5s;
 }
 .search-form button:hover {
-    color:red;
+    color: red;
     background: rgba(255, 255, 255, 0);
 }
 
@@ -199,74 +199,74 @@ div.right-field span {
 
 /* btn hover */
 .btn-danger:hover {
-    border-color:#ff000050;
-    color:black;
-    background-color:#ff000050;
+    border-color: #ff000050;
+    color: black;
+    background-color: #ff000050;
 }
 .btn-warning:hover {
-    border-color:#ffff0080;
-    color:black;
-    background-color:#ffff0080;
+    border-color: #ffff0080;
+    color: black;
+    background-color: #ffff0080;
 }
 .btn-success:hover {
-    border-color:#00ff0080;
-    color:black;
-    background-color:#00ff0080;
+    border-color: #00ff0080;
+    color: black;
+    background-color: #00ff0080;
 }
 .btn-info:hover {
-    border-color:#0000ff80;
-    color:black;
-    background-color:#0000ff80;
+    border-color: #0000ff80;
+    color: black;
+    background-color: #0000ff80;
 }
 
 /* btn outline */
 .btn-outline-danger {
-    border-color:#ff000030;
-    color:black;
+    border-color: #ff000030;
+    color: black;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-outline-warning {
-    border-color:#ffff0050;
-    color:black;
+    border-color: #ffff0050;
+    color: black;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-outline-success {
-    border-color:#00ff0050;
-    color:black;
+    border-color: #00ff0050;
+    color: black;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-outline-info {
-    border-color:#0000ff50;
-    color:black;
+    border-color: #0000ff50;
+    color: black;
     transition: border-color 1.5s, background-color 0.5s;
 }
 
 /* btn outline hover */
 .btn-outline-danger:hover {
-    border-color:#ff0000;
-    color:black;
-    background-color:#ff000050;
+    border-color: #ff0000;
+    color: black;
+    background-color: #ff000050;
 }
 .btn-outline-warning:hover {
-    border-color:#ffff00;
-    color:black;
-    background-color:#ffff0080;
+    border-color: #ffff00;
+    color: black;
+    background-color: #ffff0080;
 }
 .btn-outline-success:hover {
-    border-color:#00ff00;
-    color:black;
-    background-color:#00ff0080;
+    border-color: #00ff00;
+    color: black;
+    background-color: #00ff0080;
 }
 .btn-outline-info:hover {
-    border-color:#0000ff;
-    color:black;
-    background-color:#0000ff80;
+    border-color: #0000ff;
+    color: black;
+    background-color: #0000ff80;
 }
 
 
 
 .form-errors {
-    color:#ff0000;
+    color: #ff0000;
 }
 
 
