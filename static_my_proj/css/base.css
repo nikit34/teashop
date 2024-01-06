@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Times New Roman';
     font-style: italic;
     font-size: smaller;
-    background-image: linear-gradient(0deg, #ff000050 0%, whitesmoke 80%, #ffffff00 100%);
+    background-image: linear-gradient(0deg, lightgreen 0%, whitesmoke 80%, #ffffff00 100%);
     background-repeat: no-repeat;
     background-size: 100% 0.2em;
     background-position: 0 80%;
@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .search-form .form-control {
     border: none;
-    border-bottom: 2px solid rgba(255, 0, 0, 0.5);
+    border-bottom: 2px solid green;
     max-width: 20vw;
     background: rgba(255, 255, 255, 0);
 }
@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.5s;
 }
 .search-form button:hover {
-    color: red;
+    color: green;
     background: rgba(255, 255, 255, 0);
 }
 
@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .list-group-item:hover {
     text-decoration: none;
-    background-color: rgb(255, 200,200);
+    background-color: lightgreen;
 }
 
 
@@ -144,94 +144,94 @@ div.left-field:hover {
 
 /* btn */
 .btn-danger {
-    border-color: rgb(0, 0, 0);
+    border-color: green;
     color: black;
-    background-color: #ff000010;
+    background-color: green;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-warning {
-    border-color: rgb(0, 0, 0);
+    border-color: yellow;
     color: black;
-    background-color: #ffff0010;
+    background-color: yellowgreen;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-success {
-    border-color: rgb(0, 0, 0);
+    border-color: lightgreen;
     color: black;
-    background-color: #00ff0010;
+    background-color: lightgreen;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-info {
-    border-color: rgb(0, 0, 0);
+    border-color: green;
     color: black;
-    background-color: #0000ff10;
+    background-color: lightgreen;
     transition: border-color 1.5s, background-color 0.5s;
 }
 
 /* btn hover */
 .btn-danger:hover {
-    border-color: #ff000050;
+    border-color: green;
     color: black;
-    background-color: #ff000050;
+    background-color: green;
 }
 .btn-warning:hover {
-    border-color: #ffff0080;
+    border-color: yellow;
     color: black;
-    background-color: #ffff0080;
+    background-color: yellowgreen;
 }
 .btn-success:hover {
-    border-color: #00ff0080;
+    border-color: lightgreen;
     color: black;
-    background-color: #00ff0080;
+    background-color: lightgreen;
 }
 .btn-info:hover {
-    border-color: #0000ff80;
+    border-color: green;
     color: black;
-    background-color: #0000ff80;
+    background-color: lightgreen;
 }
 
 /* btn outline */
 .btn-outline-danger {
-    border-color: #ff000030;
+    border-color: green;
     color: black;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-outline-warning {
-    border-color: #ffff0050;
+    border-color: yellow;
     color: black;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-outline-success {
-    border-color: #00ff0050;
+    border-color: lightgreen;
     color: black;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-outline-info {
-    border-color: #0000ff50;
+    border-color: green;
     color: black;
     transition: border-color 1.5s, background-color 0.5s;
 }
 
 /* btn outline hover */
 .btn-outline-danger:hover {
-    border-color: #ff0000;
+    border-color: green;
     color: black;
-    background-color: #ff000050;
+    background-color: green;
 }
 .btn-outline-warning:hover {
-    border-color: #ffff00;
+    border-color: yellow;
     color: black;
-    background-color: #ffff0080;
+    background-color: yellowgreen;
 }
 .btn-outline-success:hover {
-    border-color: #00ff00;
+    border-color: lightgreen;
     color: black;
-    background-color: #00ff0080;
+    background-color: lightgreen;
 }
 .btn-outline-info:hover {
-    border-color: #0000ff;
+    border-color: green;
     color: black;
-    background-color: #0000ff80;
+    background-color: lightgreen;
 }
 
 
@@ -246,7 +246,7 @@ div.left-field:hover {
 .base-canvas-cell {
     background-color: white;
     padding: 1.5em;
-    border: 2px solid #0000ff80;
+    border: 2px solid green;
     border-radius: 15px;
     font-size: x-large;
     min-width: 20em;
