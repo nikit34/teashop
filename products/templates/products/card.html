@@ -19,11 +19,11 @@
         </div>
         {% if complet == "1" %}
             <div class="col-5 card-button">
-                <div class="row">
-                    <div class="col-4 px-4 py-2">
+                <div class="row justify-content-end">
+                    <div class="col-lg-5">
                         <a href="{{ instance.get_absolute_url }}" class="btn btn-danger">{% trans "View" %}</a>
                     </div>
-                    <div class="col-8 px-4 py-2">
+                    <div class="col-lg-6">
                         {% include 'products/update-cart.html' with product=instance cart=cart %}
                     </div>
                 </div>
