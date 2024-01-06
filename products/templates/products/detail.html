@@ -19,10 +19,12 @@
             <div class="row detail-price-update">
                 <div class="v-line">
                 </div>
-                <h2 class="text-center">
+                <h2 class="col text-left align-middle">
                   {{ object.price }} &#36;
                 </h2>
-                {% include 'products/update-cart.html' with product=object cart=cart %}
+                <div class="col align-middle">
+                  {% include 'products/update-cart.html' with product=object cart=cart %}
+                </div>
             </div>
         </div>
     </div>
