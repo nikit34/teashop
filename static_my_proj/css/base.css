@@ -66,11 +66,11 @@ h1, h2, h3, h4, h5, h6 {
     background-size: 100% 80%;
 }
 .navbar .nav-item .dropdown-item.active {
-    color: #ff000050;
+    color: green;
     background-color: #0000001f;
 }
 .navbar .nav-item .dropdown-item:hover{
-    background-color: #ff000050;
+    background-color: lightgreen;
 }
 .navbar-toggler {
     background-color: gray;
@@ -121,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
 div.left-field {
     background: linear-gradient(270deg, #ffffff00 50%, whitesmoke 100%);
     top:0.5vh;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     min-height: 90vh;
     max-width: 8em;
     transition: background-color 1s;

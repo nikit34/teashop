@@ -17,7 +17,7 @@
 <nav class="row navbar navbar-expand-lg px-4">
     <div class="container">
         <a class="navbar-brand" href="{{ home_url }}">
-          {% if brand_name %} {{ brand_name }} {% else %} {% trans "Sewing Shop" %} {% endif %}
+          {% if brand_name %} {{ brand_name }} {% else %} {% trans "TeaShop" %} {% endif %}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
                   {% else %}
 
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      {% if user.staff %}
+                    {% if user.staff %}
                       <i class="fa fa-star mr-4 ml-2 my-0" style="color:rgba(255, 0, 0, 0.75); margin-top:12px; margin-left:50px;"></i>
                     {% endif %}
                   {% endif %}
