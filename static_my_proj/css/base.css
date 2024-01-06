@@ -234,6 +234,11 @@ div.left-field:hover {
     background-color: lightgreen;
 }
 
+.btn-outline-danger:not(:disabled):not(.disabled):active {
+    background-color: green;
+    border-color: green;
+}
+
 
 
 .form-errors {
