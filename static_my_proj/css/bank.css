@@ -1,6 +1,6 @@
 .canvas-cart-table {
     margin-top: 5%;
-    border: 1px solid #ff000050;
+    border: 1px solid green;
     background-color: white;
     border-radius: 15px;
     padding: 5px 25px 5px 25px;
@@ -59,30 +59,30 @@ table.cart-table a {
 .bank-canvas-cell {
     background-color: white;
     padding: 1.5em;
-    border: 2px solid #ff000050;
+    border: 2px solid green;
     border-radius: 15px;
     font-size: x-large;
 }
 
 .bank-canvas-cell-2 {
-    background-color: #ff000010;
+    background-color: lightgreen;
     padding: 1em 2em 1em 2em;
-    border: 1px solid #ff000050;
+    border: 1px solid green;
     border-radius: 15px;
     font-size: large;
 }
 .bank-canvas-cell-small {
     background-color: white;
     padding: 1em;
-    border: 1px solid #ff000050;
+    border: 1px solid green;
     border-radius: 15px;
     text-align: center;
 }
 .bank-canvas-cell-small-2 {
-    background-color: #ff000030;
+    background-color: lightgreen;
     padding: 1em;
-    border-left: 1px solid #ff000050;
-    border-right: 1px solid #ff000050;
+    border-left: 1px solid green;
+    border-right: 1px solid green;
     border-radius: 15px;
     text-align: center;
 }
@@ -94,8 +94,8 @@ table.cart-table a {
 
 
 .payments-form-api {
-    background-color: #ffffff;
-    border: 2px solid #ff000050;
+    background-color: whitesmoke;
+    border: 2px solid green;
     border-radius: 15px;
     padding: 20px 25px 5px 25px;
     width: 100%;
