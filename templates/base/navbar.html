@@ -58,9 +58,11 @@
             {% endif %}
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% if user.admin %}
-              <a class="dropdown-item " href="{{ admin }}">{% trans "Admin" %}</a>
+                <a class="dropdown-item " href="{{ admin }}">{% trans "Admin" %}</a>
               {% endif %}
-              <a class="dropdown-item {% if request.path == analyze %}active{% endif %}" href="{{ analyze }}">{% trans "Statistics" %}</a>
+              {% if user.is_staff %}
+                <a class="dropdown-item {% if request.path == analyze %}active{% endif %}" href="{{ analyze }}">{% trans "Statistics" %}</a>
+              {% endif %}
               <a class="dropdown-item {% if request.path == contact_url %}active{% endif %}" href="{{ contact_url }}">{% trans "Contact" %}</a>
               <a class="dropdown-item {% if request.path ==  collection %}active{% endif %}" href="{{ collection }}">{% trans "Collection" %}</a>
               <a class="dropdown-item {% if request.path ==  billing_payment %}active{% endif %}" href="{{ billing_payment }}">{% trans "Payment" %}</a>
