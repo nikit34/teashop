@@ -173,27 +173,27 @@ div.right-field span {
 
 /* btn */
 .btn-danger {
-    border-color:rgb(0, 0, 0);
-    color:black;
-    background-color:#ff000010;
+    border-color: rgb(0, 0, 0);
+    color: black;
+    background-color: #ff000010;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-warning {
-    border-color:rgb(0, 0, 0);
-    color:black;
-    background-color:#ffff0010;
+    border-color: rgb(0, 0, 0);
+    color: black;
+    background-color: #ffff0010;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-success {
-    border-color:rgb(0, 0, 0);
-    color:black;
-    background-color:#00ff0010;
+    border-color: rgb(0, 0, 0);
+    color: black;
+    background-color: #00ff0010;
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-info {
-    border-color:rgb(0, 0, 0);
-    color:black;
-    background-color:#0000ff10;
+    border-color: rgb(0, 0, 0);
+    color: black;
+    background-color: #0000ff10;
     transition: border-color 1.5s, background-color 0.5s;
 }
 
