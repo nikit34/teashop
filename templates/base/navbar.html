@@ -38,7 +38,7 @@
               <li class="nav-item {% if request.path == account_url %}active{% endif %}">
                 <a class="nav-link" href="{{ account_url }}">{% trans "Account" %} <i class="fa fa-id-card" aria-hidden="true"></i></a>
               </li>
-              <li class="nav-item right-group dropdown offset-md-2">
+              <li class="nav-item right-group dropdown">
                 {% if user %}
                   {% if user.admin %}
                     <a class="nav-link dropdown-toggle" href="#" style="color:red;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
