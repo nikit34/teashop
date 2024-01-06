@@ -80,6 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .search-form .form-control {
     border: none;
+    border-radius: 0;
     border-bottom: 2px solid green;
     max-width: 20vw;
     background: rgba(255, 255, 255, 0);
