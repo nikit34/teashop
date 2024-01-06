@@ -118,7 +118,7 @@ def build_request_body(prepared_data_order):
     response_structure = {
         "intent": "CAPTURE",
         "application_context": {
-            "brand_name": "OlyalyaStudio",
+            "brand_name": "TeaShop",
             "landing_page": "NO_PREFERENCE",
             "shipping_preference": "GET_FROM_FILE",
             "user_action": "PAY_NOW"

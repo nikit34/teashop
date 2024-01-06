@@ -78,6 +78,6 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-admin.site.site_header = 'Olyalya Studio'
-admin.site.index_title = 'Olyalya Studio'
-admin.site.site_title = 'Olyalya Studio'
+admin.site.site_header = 'TeaShop'
+admin.site.index_title = 'TeaShop'
+admin.site.site_title = 'TeaShop'

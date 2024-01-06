@@ -10,7 +10,7 @@ DEBUG = False
 
 DJANGO_TEST_PROCESSES = 8
 
-ALLOWED_HOSTS = ['olyastudio.pythonanywhere.com']
+ALLOWED_HOSTS = ['teashop.pythonanywhere.com']
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
@@ -62,7 +62,7 @@ MANAGERS = (
 ADMINS = MANAGERS
 
 
-BASE_URL = 'olyastudio.pythonanywhere.com'
+BASE_URL = 'teashop.pythonanywhere.com'
 
 
 MAILCHIMP_API_KEY = get_secret_key(BASE_DIR, 'MAILCHIMP_API_KEY')
