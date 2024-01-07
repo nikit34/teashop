@@ -56,8 +56,8 @@ msgid ""
 "Go to <a href=\"%(resend_link)s\">resend\n"
 " confirmation email</a>."
 msgstr ""
-"Перейдите <a href=\"%(resend_link)s\">для повторной отправки подтверждения "
-"email</a>."
+"Перейдите <a href=\"%(resend_link)s\">для повторной отправки\n"
+" подтверждения email</a>."
 
 #: accounts/forms.py:109
 msgid ""
