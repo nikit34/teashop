@@ -1,0 +1,873 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-07 14:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/forms.py:21
+#, python-format
+msgid ""
+"This email does not exists, would you like to <a href=\"%(link)s\">register</"
+"a>?"
+msgstr "Este e-mail não existe, gostaria de <a href=\"%(link)s\">register</"
+"a>?"
+
+#: accounts/forms.py:27 accounts/forms.py:90 accounts/forms.py:127
+#: accounts/templates/accounts/form.html:22
+#: accounts/templates/accounts/login.html:22
+#: accounts/templates/accounts/register.html:33
+msgid "Password"
+msgstr "Senha"
+
+#: accounts/forms.py:28 accounts/forms.py:128
+#: accounts/templates/accounts/register.html:44
+msgid "Password confirmation"
+msgstr "ConfirmaÇão Da Senha"
+
+#: accounts/forms.py:38 accounts/forms.py:138
+msgid "Passwords don't match"
+msgstr "As senhas não coincidem"
+
+#: accounts/forms.py:51 addresses/templates/addresses/form.html:23
+#: addresses/templates/addresses/update.html:24
+msgid "Name"
+msgstr "Nome"
+
+#: accounts/forms.py:106
+#, python-format
+msgid ""
+"Go to <a href=\"%(resend_link)s\">resend\n"
+" confirmation email</a>."
+msgstr "Vá para <a href=\"%(resend_link)s\">reenviar\n"
+"e-mail de confirmação</a>."
+
+#: accounts/forms.py:110
+msgid ""
+"Please check your email to confirm\n"
+" your account or "
+msgstr ""
+"Por favor, verifique seu e-mail para confirmar\n"
+" sua conta ou "
+
+#: accounts/forms.py:114
+msgid "Email not confirmed."
+msgstr "E-mail não confirmado."
+
+#: accounts/forms.py:117
+msgid "This user is inactive."
+msgstr "Este usuário está inativo."
+
+#: accounts/forms.py:120
+msgid "Invalid credentials"
+msgstr "Credenciais inválidas"
+
+#: accounts/models.py:22
+msgid "Users must have an email address"
+msgstr "Os usuários devem ter um endereço de e-mail"
+
+#: accounts/models.py:24
+msgid "Users must have a password"
+msgstr "Os usuários devem ter uma senha"
+
+#: accounts/models.py:160
+msgid "1-Click Email Verification"
+msgstr "Verificação de e-mail com 1 clique"
+
+#: accounts/templates/accounts/detail-update-view.html:14
+msgid "Cannot change email"
+msgstr "Não é possível alterar o e-mail"
+
+#: accounts/templates/accounts/detail-update-view.html:17
+#: marketing/templates/subscribe_form.html:26
+#: templates/registration/password_change_form.html:65
+msgid "Save"
+msgstr "Salvar"
+
+#: accounts/templates/accounts/detail-update-view.html:18
+#: accounts/templates/accounts/home.html:59
+msgid "Change Password"
+msgstr "Alterar a senha"
+
+#: accounts/templates/accounts/form.html:37
+#: addresses/templates/addresses/form.html:106
+#: products/templates/products/detail.html:114 templates/contact/view.html:21
+msgid "Submit"
+msgstr "Enviar"
+
+#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:41
+msgid "Account"
+msgstr "Conta"
+
+#: accounts/templates/accounts/home.html:15
+msgid "Billing"
+msgstr "Cobrança"
+
+#: accounts/templates/accounts/home.html:17
+#: orders/templates/orders/order_list.html:7
+msgid "Orders"
+msgstr "Pedidos"
+
+#: accounts/templates/accounts/home.html:18
+msgid "Payment Methods"
+msgstr "Métodos de Pagamento"
+
+#: accounts/templates/accounts/home.html:19
+#: addresses/templates/addresses/list.html:7
+msgid "Saved addresses"
+msgstr "Endereços salvos"
+
+#: accounts/templates/accounts/home.html:28
+msgid "History"
+msgstr "História"
+
+#: accounts/templates/accounts/home.html:30 templates/base/navbar.html:33
+msgid "Products"
+msgstr "Produtos"
+
+#: accounts/templates/accounts/home.html:31
+#: orders/templates/orders/collection.html:8 templates/base/navbar.html:67
+msgid "Collection"
+msgstr "Coleção"
+
+#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:64
+msgid "Statistics"
+msgstr "Estatisticas"
+
+#: accounts/templates/accounts/home.html:43
+msgid "Support"
+msgstr "Apoiar"
+
+#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:40
+#: templates/contact/about.html:5
+msgid "About"
+msgstr "Sobre"
+
+#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:50
+#: templates/base/navbar.html:66
+msgid "Contact"
+msgstr "Contato"
+
+#: accounts/templates/accounts/home.html:55
+msgid "Account Details"
+msgstr "Detalhes da conta"
+
+#: accounts/templates/accounts/home.html:57
+msgid "Email Marketing"
+msgstr "Marketing de email"
+
+#: accounts/templates/accounts/home.html:58
+msgid "Update Details"
+msgstr "Detalhes da atualização"
+
+#: accounts/templates/accounts/login.html:8
+#: carts/templates/carts/checkout/has_nothing.html:11
+#: templates/base/navbar.html:79
+#: templates/registration/password_reset_complete.html:7
+msgid "Login"
+msgstr "Conecte-se"
+
+#: accounts/templates/accounts/login.html:37
+msgid "Sign in"
+msgstr "Entrar"
+
+#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:76
+msgid "Register"
+msgstr "Registro"
+
+#: accounts/templates/accounts/register.html:11
+msgid "Full name"
+msgstr "Nome completo"
+
+#: accounts/templates/accounts/register.html:59
+msgid "Sign up"
+msgstr "Inscrever-se"
+
+#: accounts/views.py:35
+msgid "Your email has been confirmed. Please login."
+msgstr "Seu email foi confirmado. Por favor entre."
+
+#: accounts/views.py:42
+#, python-brace-format
+msgid ""
+"Your email has already been confirmed. Do you need to <a href='%{link}"
+"s'>reset you password</a>?"
+msgstr ""
+"Seu e-mail já foi confirmado. Você precisa <a href='%{link}"
+"s'>redefinir sua senha</a>?"
+
+#: accounts/views.py:58
+msgid "Activation link sent, please, check your email."
+msgstr "Link de ativação enviado, por favor verifique seu email."
+
+#: accounts/views.py:110
+msgid "Change Your Account Details"
+msgstr "Altere os detalhes da sua conta"
+
+#: addresses/forms.py:16
+msgid "Country code is not valid"
+msgstr "O código do país não é válido"
+
+#: addresses/models.py:9 addresses/templates/addresses/update.html:46
+msgid "Billing address"
+msgstr "Endereço de Cobrança"
+
+#: addresses/models.py:10 addresses/templates/addresses/update.html:47
+msgid "Shipping address"
+msgstr "Endereço para envio"
+
+#: addresses/models.py:16
+msgid "Shipping to? Who is it for?"
+msgstr "Enviando para? para quem é isso?"
+
+#: addresses/models.py:17
+msgid "Internal Reference Nickname"
+msgstr "Apelido de referência interna"
+
+#: addresses/models.py:21
+msgid "Only uppercase letters and length has be 2"
+msgstr "Apenas letras maiúsculas e o comprimento devem ser 2"
+
+#: addresses/templates/addresses/form.html:16
+#: addresses/templates/addresses/update.html:17
+msgid "Nickname"
+msgstr "Apelido"
+
+#: addresses/templates/addresses/form.html:20
+#: addresses/templates/addresses/update.html:21
+msgid "Internal Reference"
+msgstr "Referência interna"
+
+#: addresses/templates/addresses/form.html:27
+#: addresses/templates/addresses/update.html:28
+msgid "Shipping to? Who is it for"
+msgstr "Enviando para? Para quem é isso"
+
+#: addresses/templates/addresses/form.html:40
+msgid "Street"
+msgstr "Rua"
+
+#: addresses/templates/addresses/form.html:46
+msgid "Apartment"
+msgstr "Apartamento"
+
+#: addresses/templates/addresses/form.html:58
+#: addresses/templates/addresses/update.html:75
+msgid "City"
+msgstr "Cidade"
+
+#: addresses/templates/addresses/form.html:64
+#: addresses/templates/addresses/update.html:81
+msgid "Country code"
+msgstr "Código do país"
+
+#: addresses/templates/addresses/form.html:80
+#: addresses/templates/addresses/update.html:97
+msgid "State"
+msgstr "Estado"
+
+#: addresses/templates/addresses/form.html:86
+#: addresses/templates/addresses/update.html:103
+msgid "Postal code"
+msgstr "Código postal"
+
+#: addresses/templates/addresses/list.html:7
+msgid "es"
+msgstr "é"
+
+#: addresses/templates/addresses/list.html:7
+msgid "Create New"
+msgstr "Crie um novo"
+
+#: addresses/templates/addresses/list.html:21
+#: addresses/templates/addresses/update.html:53
+#: addresses/templates/addresses/update.html:59
+msgid "Address"
+msgstr "Endereço"
+
+#: addresses/templates/addresses/list.html:23
+msgid "Edit"
+msgstr "Editar"
+
+#: addresses/templates/addresses/list.html:32
+msgid "No saved addresses"
+msgstr "Nenhum endereço salvo"
+
+#: addresses/templates/addresses/prev_addresses.html:24
+msgid "Use Address"
+msgstr "Usar endereço"
+
+#: addresses/templates/addresses/update.html:9
+msgid "Update Address"
+msgstr "Atualizar endereço"
+
+#: addresses/templates/addresses/update.html:11
+msgid "Create Address"
+msgstr "Criar endereço"
+
+#: addresses/templates/addresses/update.html:41
+msgid "Type"
+msgstr "Tipo"
+
+#: addresses/templates/addresses/update.html:123
+msgid "Save Address"
+msgstr "Salvar endereço"
+
+#: analytics/templates/analytics/sales.html:7
+msgid "Sales Data"
+msgstr "Dados de vendas"
+
+#: analytics/templates/analytics/sales.html:15
+msgid "Today's sales"
+msgstr "Vendas de hoje"
+
+#: analytics/templates/analytics/sales.html:17
+#: analytics/templates/analytics/sales.html:28
+msgid "Recent Total"
+msgstr "Total recente"
+
+#: analytics/templates/analytics/sales.html:20
+#: analytics/templates/analytics/sales.html:31
+#: orders/templates/orders/order_detail.html:7
+msgid "Order"
+msgstr "Ordem"
+
+#: analytics/templates/analytics/sales.html:22
+#: analytics/templates/analytics/sales.html:33
+#: products/templates/products/detail.html:15
+msgid "ago"
+msgstr "atrás"
+
+#: analytics/templates/analytics/sales.html:26
+msgid "This week's sales"
+msgstr "Vendas desta semana"
+
+#: analytics/templates/analytics/sales.html:49
+msgid "Previous 4 weeks"
+msgstr "4 semanas anteriores"
+
+#: analytics/templates/analytics/sales.html:51
+msgid "Orders Total"
+msgstr "Total de pedidos"
+
+#: analytics/templates/analytics/sales.html:52
+msgid "Shipped Total"
+msgstr "Total enviado"
+
+#: analytics/templates/analytics/sales.html:53
+msgid "Paid Totals"
+msgstr "Totais pagos"
+
+#: billing/models.py:154
+msgid "No cards available"
+msgstr "Nenhum cartão disponível"
+
+#: billing/templates/billing/payment-method.html:7
+msgid "Add Payment Method"
+msgstr "Adicionar forma de pagamento"
+
+#: billing/templates/billing/payment-method.html:8
+msgid "Add New Card"
+msgstr "Adicionar novo cartão"
+
+#: billing/views.py:30
+msgid "Cannot find this user"
+msgstr "Não foi possível encontrar este usuário"
+
+#: billing/views.py:34
+msgid "Success! Your card was added."
+msgstr "Sucesso! Seu cartão foi adicionado."
+
+#: carts/templates/carts/checkout-done.html:8
+msgid ""
+"<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
+"div><div id=\"green\">n</div><div id=\"red\">k</div>, <div id=\"blue\">you "
+"for your order</div>"
+msgstr ""
+"<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
+"div><div id=\"green\">n</div><div id=\"red\">k</div>, <div id=\"blue\">você "
+"para seu pedido</div>"
+
+#: carts/templates/carts/checkout-done.html:13
+msgid "Your"
+msgstr "Seu"
+
+#: carts/templates/carts/checkout-done.html:13
+msgid "order ID"
+msgstr "ID do pedido"
+
+#: carts/templates/carts/checkout/has_billingprofile.html:5
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:40
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:41
+#: orders/templates/orders/order_detail.html:34
+msgid "Billing Address"
+msgstr "Endereço de Cobrança"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:5
+msgid "CHECK and CHOOSE"
+msgstr "VERIFIQUE e ESCOLHA"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:5
+msgid "method of payment for order"
+msgstr "forma de pagamento do pedido"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:11
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:12
+msgid "Cart Items"
+msgstr "Itens do carrinho"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:19
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:20
+msgid "Order number: "
+msgstr "Número do pedido: "
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:31
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:32
+#: carts/templates/carts/checkout/has_billingprofile_shiprequired.html:5
+#: orders/templates/orders/order_detail.html:25
+msgid "Shipping Address"
+msgstr "Endereço para envio"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:55
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:57
+msgid "Cart Total"
+msgstr "Total do carrinho"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:60
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:62
+#: orders/templates/orders/order_detail.html:52
+msgid "Shipping Total"
+msgstr "Total de envio"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:65
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:67
+#: orders/templates/orders/order_detail.html:61
+msgid "Order Total"
+msgstr "Total de pedidos"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:76
+msgid "Choose method of payment"
+msgstr "Escolha a forma de pagamento"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:81
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:93
+msgid "PayPal"
+msgstr "PayPal"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:85
+msgid "Bank card binding"
+msgstr "Vinculação de cartão bancário"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:5
+msgid "Finalize Checkout"
+msgstr "Finalizar compra"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:73
+msgid "Default Payment"
+msgstr "Pagamento padrão"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:77
+msgid "Payment Method"
+msgstr "Forma de pagamento"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:78
+msgid "Change"
+msgstr "Mudar"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:87
+msgid "Pay"
+msgstr "Pagar"
+
+#: carts/templates/carts/checkout/has_nothing.html:5
+msgid "Choose"
+msgstr "Escolher"
+
+#: carts/templates/carts/checkout/has_nothing.html:17
+msgid "Continue as Guest"
+msgstr "Continuar como convidado"
+
+#: carts/templates/carts/home.html:7 templates/base/navbar.html:37
+msgid "Cart"
+msgstr "Carrinho"
+
+#: carts/templates/carts/home.html:17
+msgid "Product Name"
+msgstr "Nome do Produto"
+
+#: carts/templates/carts/home.html:18 templates/select_sort.html:12
+msgid "Price"
+msgstr "Preço"
+
+#: carts/templates/carts/home.html:35
+#: orders/templates/orders/order_detail.html:43
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#: carts/templates/carts/home.html:48
+#: orders/templates/orders/order_list.html:13
+msgid "Total"
+msgstr "Total"
+
+#: carts/templates/carts/home.html:58
+msgid "Checkout"
+msgstr "Confira"
+
+#: carts/templates/carts/home.html:69
+msgid "Is empty"
+msgstr "Está vazia"
+
+#: carts/templates/carts/remove-product.html:5
+#: products/templates/products/update-cart.html:12
+msgid "Remove"
+msgstr "Remover"
+
+#: eCommerce_Django/forms.py:6
+msgid "Your full name"
+msgstr "Seu nome completo"
+
+#: eCommerce_Django/forms.py:7
+msgid "Your contact email"
+msgstr "Seu e-mail de contato"
+
+#: eCommerce_Django/forms.py:8
+msgid "Your message"
+msgstr "Sua mensagem"
+
+#: eCommerce_Django/views.py:41
+msgid "Welcome to about page!"
+msgstr "Bem-vindo à página sobre!"
+
+#: eCommerce_Django/views.py:51
+msgid "Here you can leave your feedback."
+msgstr "Aqui você pode deixar seu feedback."
+
+#: eCommerce_Django/views.py:58
+msgid "Send with contact email: "
+msgstr "Enviar com e-mail de contato: "
+
+#: eCommerce_Django/views.py:62
+msgid "Invalid header found."
+msgstr "Cabeçalho inválido encontrado."
+
+#: eCommerce_Django/views.py:64
+msgid "Thank you for your submission"
+msgstr "Obrigado pela sua submissão"
+
+#: eCommerce_Django/views.py:79
+msgid "Update code on server"
+msgstr "Atualizar código no servidor"
+
+#: eCommerce_Django/views.py:81
+msgid "ERROR: Could`t update the code on server"
+msgstr "ERRO: Não foi possível atualizar o código no servidor"
+
+#: marketing/forms.py:8
+msgid "Receive Marketing Email?"
+msgstr "Receber e-mail de marketing?"
+
+#: marketing/templates/subscribe_form.html:14
+msgid "Receive Marketing Email"
+msgstr "Receber e-mail de marketing"
+
+#: marketing/utils.py:16
+msgid "String passed is not a valid email address"
+msgstr "A string passada não é um endereço de e-mail válido"
+
+#: marketing/utils.py:53
+msgid "Not a valid choice for email status"
+msgstr "Não é uma escolha válida para o status do e-mail"
+
+#: marketing/views.py:22
+msgid "Your email preferences have been updated. Thank you."
+msgstr "Suas preferências de e-mail foram atualizadas. Obrigado."
+
+#: marketing/views.py:32
+msgid "Update Email Preferences"
+msgstr "Atualizar preferências de e-mail"
+
+#: orders/templates/orders/collection.html:14
+msgid "Product"
+msgstr "Produtos"
+
+#: orders/templates/orders/collection.html:14
+msgid "Download"
+msgstr "Download"
+
+#: orders/templates/orders/collection.html:28
+#: orders/templates/orders/order_list.html:23
+msgid "No orders yet"
+msgstr "Ainda não há pedidos"
+
+#: orders/templates/orders/order_detail.html:16
+msgid "Items"
+msgstr "Unid"
+
+#: orders/templates/orders/order_detail.html:70
+msgid "Order Status"
+msgstr "Status do pedido"
+
+#: orders/templates/orders/order_list.html:13
+msgid "Order Id"
+msgstr "ID do pedido"
+
+#: orders/templates/orders/order_list.html:13
+msgid "Status"
+msgstr "Status"
+
+#: products/templates/products/card.html:9
+#: products/templates/products/detail.html:54
+#: products/templates/products/detail.html:66
+msgid "Image not found :("
+msgstr "Imagem não encontrada :("
+
+#: products/templates/products/card.html:24
+#: products/templates/products/card.html:35
+msgid "View"
+msgstr "Visualizar"
+
+#: products/templates/products/detail.html:73
+msgid "Previous"
+msgstr "Anterior"
+
+#: products/templates/products/detail.html:77
+msgid "Next"
+msgstr "Próximo"
+
+#: products/templates/products/detail.html:85
+msgid "comments"
+msgstr "comentários"
+
+#: products/templates/products/detail.html:93
+msgid "says"
+msgstr "diz"
+
+#: products/templates/products/detail.html:106
+msgid "Your comment is awaiting moderation"
+msgstr "Seu comentário está aguardando moderação"
+
+#: products/templates/products/detail.html:112
+msgid "Leave a comment"
+msgstr "Deixe um comentário"
+
+#: products/templates/products/update-cart.html:11
+msgid "In cart"
+msgstr "No carrinho"
+
+#: products/templates/products/update-cart.html:15
+msgid "Add to cart"
+msgstr "Adicionar ao carrinho"
+
+#: products/templates/products/user-history.html:7
+msgid "Product View History"
+msgstr "Histórico de visualização do produto"
+
+#: products/templates/products/user-history.html:16
+msgid "Viewed"
+msgstr "Visto"
+
+#: products/templates/products/user-history.html:24
+msgid "History missing"
+msgstr "História faltando"
+
+#: search/templates/search/search-form.html:6
+msgid "Search"
+msgstr "Procurar"
+
+#: search/templates/search/view.html:7
+msgid "Results for"
+msgstr "Resultados para"
+
+#: templates/base.html:42
+msgid "Important"
+msgstr "Importante"
+
+#: templates/base/footer.html:6
+msgid "Developed"
+msgstr "Desenvolvido"
+
+#: templates/base/navbar.html:20
+msgid "TeaShop"
+msgstr "TeaShop"
+
+#: templates/base/navbar.html:30
+msgid "Home"
+msgstr "Lar"
+
+#: templates/base/navbar.html:30
+msgid "current"
+msgstr "atual"
+
+#: templates/base/navbar.html:61
+msgid "Admin"
+msgstr "Administrador"
+
+#: templates/base/navbar.html:68
+msgid "Payment"
+msgstr "Pagamento"
+
+#: templates/base/navbar.html:70
+msgid "Logout"
+msgstr "Sair"
+
+#: templates/contact/about.html:18 templates/home_page.html:30
+msgid "Premium Content"
+msgstr "Conteúdo premium"
+
+#: templates/error/400.html:8
+msgid "Something went wrong"
+msgstr "Algo deu errado"
+
+#: templates/error/400.html:10 templates/error/403.html:10
+#: templates/error/404.html:10
+msgid "Error"
+msgstr "Erro"
+
+#: templates/error/403.html:8
+msgid "Permission Denied"
+msgstr "Permissão negada"
+
+#: templates/error/404.html:8
+msgid "Page not field"
+msgstr "Página, não campo"
+
+#: templates/error/500.html:8
+msgid "Ooops, sorry. A server error occured"
+msgstr "Ops, desculpe. Ocorreu um erro no servidor"
+
+#: templates/error/500.html:10
+msgid "Error | We have been notified and are working on a fix"
+msgstr "Erro | Fomos notificados e estamos trabalhando em uma correção"
+
+#: templates/home_page.html:5
+msgid "Home page"
+msgstr "Pagina inicial"
+
+#: templates/home_page.html:14
+msgid "Best offers"
+msgstr "Melhores ofertas"
+
+#: templates/home_page.html:34
+msgid "Have any requests or questions?"
+msgstr "Tem alguma solicitação ou dúvida?"
+
+#: templates/home_page.html:37
+msgid "Write me, please"
+msgstr "Escreva-me por favor"
+
+#: templates/registration/activation-error.html:7
+msgid "Activation Error. Please try again"
+msgstr "Erro de ativação. Por favor, tente novamente"
+
+#: templates/registration/activation-error.html:9
+msgid "Re-activate your Email"
+msgstr "Reative seu e-mail"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password successfully changed"
+msgstr "Senha mudada com sucesso"
+
+#: templates/registration/password_change_form.html:6
+msgid "Change your Password"
+msgstr "Mude sua senha"
+
+#: templates/registration/password_change_form.html:12
+msgid "Old password"
+msgstr "Senha Antiga"
+
+#: templates/registration/password_change_form.html:25
+msgid "New password"
+msgstr "Nova Senha"
+
+#: templates/registration/password_change_form.html:38
+msgid "Your password can't be too similar to your other personal information"
+msgstr "Sua senha não pode ser muito semelhante às suas outras informações pessoais"
+
+#: templates/registration/password_change_form.html:39
+msgid "Your password must contain at least 8 characters"
+msgstr "Sua senha deve conter pelo menos 8 caracteres"
+
+#: templates/registration/password_change_form.html:40
+msgid "Your password can't be a commonly used password"
+msgstr "Sua senha não pode ser uma senha comumente usada"
+
+#: templates/registration/password_change_form.html:41
+msgid "Your password can't be entirely numeric"
+msgstr "Sua senha não pode ser totalmente numérica"
+
+#: templates/registration/password_change_form.html:50
+msgid "New password confirmation"
+msgstr "Nova confirmação de senha"
+
+#: templates/registration/password_reset_complete.html:6
+msgid "Password reset complete"
+msgstr "Redefinição de senha concluída"
+
+#: templates/registration/password_reset_confirm.html:6
+msgid "Set your Password"
+msgstr "Coloque sua senha"
+
+#: templates/registration/password_reset_confirm.html:10
+msgid "Set new password"
+msgstr "Definir nova senha"
+
+#: templates/registration/password_reset_done.html:6
+msgid "Rest Instructions Sent"
+msgstr "Instruções de descanso enviadas"
+
+#: templates/registration/password_reset_done.html:7
+msgid "Please check your email"
+msgstr "Por favor verifique seu email"
+
+#: templates/registration/password_reset_email.html:2
+#, python-format
+msgid ""
+"\n"
+"Hello,\n"
+"\n"
+"Reset your password on %(domain)s for %(user)s:\n"
+msgstr ""
+"\n"
+"Olá,\n"
+"\n"
+"Redefina sua senha em %(domain)s para %(user)s:\n"
+
+#: templates/registration/password_reset_form.html:6
+msgid "Reset your Password"
+msgstr "Redefinir sua senha"
+
+#: templates/registration/password_reset_form.html:10
+msgid "Reset Password"
+msgstr "Redefinir senha"
+
+#: templates/select_sort.html:16
+msgid "descending"
+msgstr "descendente"
+
+#: templates/select_sort.html:17
+msgid "ascending"
+msgstr "ascendente"
+
+#: templates/select_sort.html:23
+msgid "Time"
+msgstr "Tempo"
+
+#: templates/select_sort.html:27
+msgid "update early"
+msgstr "atualizar cedo"
+
+#: templates/select_sort.html:28
+msgid "update last"
+msgstr "atualizar por último"
