@@ -10,18 +10,12 @@
     {% endif %}
     </div>
     <div class="row justify-content-center">
-    {% for obj in object_list %}
-    <div class="col-11 col-sm-8 col-lg-10 col-xl-8">
-        {{ forloop.counter }}
-        {% include 'products/card.html' with instance=obj complet="1" %}
-        {% if forloop.counter|divisibleby:2 %}
-            </div></div><div class="row"><div class="col-12"><hr/></div>
-        {% elif forloop.counter|divisibleby:2 %}
-            </div></div><div class="row"><div class="col-12"><hr/></div>
-        {% else %}
-            </div>
-        {% endif %}
-    {% endfor %}
+        {% for obj in object_list %}
+        <div class="col-11 col-sm-8 col-lg-10 col-xl-8">
+            {% include 'products/card.html' with instance=obj complet="1" %}
+            <br>
+        </div>
+        {% endfor %}
     </div>
 
 {% endblock %}
