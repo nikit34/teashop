@@ -71,15 +71,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar .nav-item .dropdown-item {
     margin-bottom: 0.2em;
+    border-radius: 10px;
+    transition: background-color 0.25s ease-out;
 }
 .navbar .nav-item .dropdown-item.active {
     color: green;
     background-color: #0000001f;
-    border-radius: 10px;
 }
 .navbar .nav-item .dropdown-item:hover{
     background-color: lightgreen;
-    border-radius: 10px;
 }
 .navbar .nav-item {
     margin-right: 0.2em;
