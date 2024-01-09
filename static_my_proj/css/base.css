@@ -59,18 +59,30 @@ h1, h2, h3, h4, h5, h6 {
     background-repeat: no-repeat;
     background-size: 100% 0.2em;
     background-position: 0 80%;
+    border-radius: 10px;
     transition: background-size 0.25s ease-out;
     max-width: 15em;
 }
 .navbar .nav-item .nav-link:hover{
     background-size: 100% 80%;
 }
+.navbar .nav-item.active .nav-link{
+    background-size: 100% 80%;
+}
+.navbar .nav-item .dropdown-item {
+    margin-bottom: 0.2em;
+}
 .navbar .nav-item .dropdown-item.active {
     color: green;
     background-color: #0000001f;
+    border-radius: 10px;
 }
 .navbar .nav-item .dropdown-item:hover{
     background-color: lightgreen;
+    border-radius: 10px;
+}
+.navbar .nav-item {
+    margin-right: 0.2em;
 }
 .navbar-toggler {
     background-color: gray;
