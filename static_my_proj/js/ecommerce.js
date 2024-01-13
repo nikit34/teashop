@@ -7,10 +7,12 @@ $(document).ready(function () {
   function displaySubmitting(submitBtn, defaultText, doSubmit) {
     if (doSubmit) {
       submitBtn.addClass("disabled");
-      if(lang == "en"){
+      if (lang == "en") {
         submitBtn.html('<i class="fa fa-spin fa-spinner"></i>Sending...');
-      } else if(lang == "ru"){
+      } else if (lang == "ru") {
         submitBtn.html('<i class="fa fa-spin fa-spinner"></i>Отправление...');
+      } else if (lang == "pt") {
+        submitBtn.html('<i class="fa fa-spin fa-spinner"></i>Enviando...');
       } else {
         submitBtn.html('<i class="fa fa-spin fa-spinner"></i>Undefined langueges in js');
       }
@@ -87,6 +89,8 @@ $(document).ready(function () {
       searchBtn.html('<i class="fa fa-spin fa-spinner"></i>Searching...');
     } else if (lang == "ru") {
       searchBtn.html('<i class="fa fa-spin fa-spinner"></i>Поиск...');
+    } else if (lang == "pt") {
+      searchBtn.html('<i class="fa fa-spin fa-spinner"></i>Procurando...');
     } else {
       searchBtn.html('<i class="fa fa-spin fa-spinner"></i>Undefined langueges in js');
     }
@@ -121,6 +125,10 @@ $(document).ready(function () {
           } else if (lang == "ru") {
             submitSpan.html(
               "<a class='btn btn-warning' href='/collection/'>Приобретено</a>"
+            );
+          } else if (lang == "pt") {
+            submitSpan.html(
+              "<a class='btn btn-warning' href='/collection/'>Na coleção</a>"
             );
           } else {
             submitSpan.html(
@@ -171,6 +179,10 @@ $(document).ready(function () {
             submitSpan.html(
               "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>Корзина</a> <button type='submit' class='btn btn-outline-danger'>Удалить?</button></div>"
             );
+          } else if (lang == "pt") {
+            submitSpan.html(
+              "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>No carrinho</a> <button type='submit' class='btn btn-outline-danger'>Remover?</button></div>"
+            );
           } else {
             submitSpan.html(
               "<div class='btn-group'>Undefined langueges in js</div>"
@@ -184,6 +196,10 @@ $(document).ready(function () {
           } else if (lang == "ru") {
             submitSpan.html(
               '<button type="submit" class="btn btn-success">Добавить в корзину</button>'
+            );
+          } else if (lang == "pt") {
+            submitSpan.html(
+              '<button type="submit" class="btn btn-success">Adicionar ao carrinho</button>'
             );
           } else {
             submitSpan.html(
