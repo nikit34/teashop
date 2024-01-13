@@ -756,8 +756,8 @@ msgid "Home page"
 msgstr "Pagina inicial"
 
 #: templates/home_page.html:14
-msgid "Best offers"
-msgstr "Melhores ofertas"
+msgid "Free delivery throughout Porto and Vila Nova de Gaia"
+msgstr "Entrega gratuita em todo o Porto e Vila Nova de Gaia"
 
 #: templates/home_page.html:34
 msgid "Have any requests or questions?"

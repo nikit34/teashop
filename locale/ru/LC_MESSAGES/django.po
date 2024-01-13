@@ -760,8 +760,8 @@ msgid "Home page"
 msgstr "Главная страница"
 
 #: templates/home_page.html:10
-msgid "Best offers"
-msgstr "Лучшие предложения"
+msgid "Free delivery throughout Porto and Vila Nova de Gaia"
+msgstr "Бесплатная доставка по Porto и Vila Nova de Gaia"
 
 #: templates/home_page.html:34
 msgid "Have any requests or questions?"
