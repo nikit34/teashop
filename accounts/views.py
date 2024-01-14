@@ -111,4 +111,4 @@ class UserDetailUpdateView(LoginRequiredMixin, UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse('accounts:account-home')
+        return reverse('accounts:user-update')

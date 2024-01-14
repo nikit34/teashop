@@ -8,7 +8,7 @@
                 {{ title }}
             </h1>
         {% endif %}
-        <form method='POST' action='{% if action_url %}{{ action_url }}{% else %}{% url "login" %}{% endif %}'>
+        <form method='POST' action='{% if action_url %}{{ action_url }}{% endif %}'>
             {% csrf_token %}
             {% if next_url %}
                 <input type='hidden' name='next' value='{{ next_url }}' />
