@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-15 09:05+0000\n"
+"POT-Creation-Date: 2024-01-18 12:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: accounts/forms.py:22
+#: accounts/forms.py:21
 #, python-format
 msgid ""
 "This email does not exists, would you like to <a href=\"%(link)s\">register</"
@@ -29,19 +29,19 @@ msgstr ""
 "Этот email не использован, зарегестрируетесь <a href=\"%(link)s\">register</"
 "a>?"
 
-#: accounts/forms.py:28 accounts/forms.py:89 accounts/forms.py:126
+#: accounts/forms.py:27 accounts/forms.py:90 accounts/forms.py:127
 #: accounts/templates/accounts/form.html:22
-#: accounts/templates/accounts/login.html:24
-#: accounts/templates/accounts/register.html:35
+#: accounts/templates/accounts/login.html:22
+#: accounts/templates/accounts/register.html:33
 msgid "Password"
 msgstr "Пароль"
 
-#: accounts/forms.py:29 accounts/forms.py:127
-#: accounts/templates/accounts/register.html:46
+#: accounts/forms.py:28 accounts/forms.py:128
+#: accounts/templates/accounts/register.html:44
 msgid "Password confirmation"
 msgstr "Подтверждение пароля"
 
-#: accounts/forms.py:39 accounts/forms.py:137
+#: accounts/forms.py:38 accounts/forms.py:138
 msgid "Passwords don't match"
 msgstr "Пароли не совпадают"
 
@@ -50,7 +50,7 @@ msgstr "Пароли не совпадают"
 msgid "Name"
 msgstr "Имя"
 
-#: accounts/forms.py:105
+#: accounts/forms.py:106
 #, python-format
 msgid ""
 "Go to <a href=\"%(resend_link)s\">resend\n"
@@ -59,7 +59,7 @@ msgstr ""
 "Перейдите <a href=\"%(resend_link)s\">для повторной отправки\n"
 " подтверждения email</a>."
 
-#: accounts/forms.py:109
+#: accounts/forms.py:110
 msgid ""
 "Please check your email to confirm\n"
 " your account or "
@@ -67,52 +67,52 @@ msgstr ""
 "Пожалуйста, проверьте Ваш Email чтобы подтвердить свою учетную\n"
 " запись или "
 
-#: accounts/forms.py:113
+#: accounts/forms.py:114
 msgid "Email not confirmed."
 msgstr "Email не подтвержден."
 
-#: accounts/forms.py:116
+#: accounts/forms.py:117
 msgid "This user is inactive."
 msgstr "Пользователь не активирован."
 
-#: accounts/forms.py:119
+#: accounts/forms.py:120
 msgid "Invalid credentials"
 msgstr "Неверный формат"
 
-#: accounts/models.py:21
+#: accounts/models.py:22
 msgid "Users must have an email address"
 msgstr "Пользователи должны иметь email"
 
-#: accounts/models.py:23
+#: accounts/models.py:24
 msgid "Users must have a password"
 msgstr "Установить новый пароль"
 
-#: accounts/models.py:159
+#: accounts/models.py:160
 msgid "1-Click Email Verification"
 msgstr "1-Клик Email Проверка"
 
-#: accounts/templates/accounts/detail-update-view.html:14
+#: accounts/templates/accounts/detail-update-view.html:20
 msgid "Cannot change email"
 msgstr "Нельзя сменить email"
 
-#: accounts/templates/accounts/detail-update-view.html:17
+#: accounts/templates/accounts/detail-update-view.html:24
 #: marketing/templates/subscribe_form.html:26
 #: templates/registration/password_change_form.html:65
 msgid "Save"
 msgstr "Сохранить"
 
-#: accounts/templates/accounts/detail-update-view.html:18
+#: accounts/templates/accounts/detail-update-view.html:27
 #: accounts/templates/accounts/home.html:59
 msgid "Change Password"
 msgstr "Сменить пароль"
 
 #: accounts/templates/accounts/form.html:37
 #: addresses/templates/addresses/form.html:106
-#: products/templates/products/detail.html:104 templates/contact/view.html:21
+#: products/templates/products/detail.html:114 templates/contact/view.html:19
 msgid "Submit"
 msgstr "Отправить"
 
-#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:39
+#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:41
 msgid "Account"
 msgstr "Личный кабинет"
 
@@ -138,16 +138,16 @@ msgstr "Сохраненные адреса"
 msgid "History"
 msgstr "История"
 
-#: accounts/templates/accounts/home.html:30 templates/base/navbar.html:32
+#: accounts/templates/accounts/home.html:30
 msgid "Products"
 msgstr "Товары"
 
 #: accounts/templates/accounts/home.html:31
-#: orders/templates/orders/collection.html:8 templates/base/navbar.html:60
+#: orders/templates/orders/collection.html:8 templates/base/navbar.html:66
 msgid "Collection"
 msgstr "Коллекция"
 
-#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:58
+#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:63
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -155,13 +155,13 @@ msgstr "Статистика"
 msgid "Support"
 msgstr "Поддержка"
 
-#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:42
+#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:40
 #: templates/contact/about.html:5
 msgid "About"
 msgstr "О себе"
 
-#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:52
-#: templates/base/navbar.html:59
+#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:50
+#: templates/base/navbar.html:65
 msgid "Contact"
 msgstr "Контакты"
 
@@ -177,34 +177,34 @@ msgstr "Рекламная рассылка"
 msgid "Update Details"
 msgstr "Обновить настройки"
 
-#: accounts/templates/accounts/login.html:10
+#: accounts/templates/accounts/login.html:8
 #: carts/templates/carts/checkout/has_nothing.html:11
-#: templates/base/navbar.html:75
+#: templates/base/navbar.html:78
 #: templates/registration/password_reset_complete.html:7
 msgid "Login"
 msgstr "Авторизация"
 
-#: accounts/templates/accounts/login.html:39
+#: accounts/templates/accounts/login.html:37
 msgid "Sign in"
 msgstr "Войти"
 
-#: accounts/templates/accounts/register.html:10 templates/base/navbar.html:72
+#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:75
 msgid "Register"
 msgstr "Регистрация"
 
-#: accounts/templates/accounts/register.html:13
+#: accounts/templates/accounts/register.html:11
 msgid "Full name"
 msgstr "Ваше полное имя"
 
-#: accounts/templates/accounts/register.html:61
+#: accounts/templates/accounts/register.html:59
 msgid "Sign up"
 msgstr "Зарегестрироваться"
 
-#: accounts/views.py:40
+#: accounts/views.py:35
 msgid "Your email has been confirmed. Please login."
 msgstr "Ваш email был успешно подтвержден. Пожалуйста, войдите."
 
-#: accounts/views.py:46
+#: accounts/views.py:42
 #, python-brace-format
 msgid ""
 "Your email has already been confirmed. Do you need to <a href='%{link}"
@@ -213,11 +213,11 @@ msgstr ""
 "Ваш email уже был подтвержден ранее. Вам нужно <a href='%{link}s'>сбросить "
 "пароль</a>?"
 
-#: accounts/views.py:60
+#: accounts/views.py:58
 msgid "Activation link sent, please, check your email."
 msgstr "Ссылка для активации отправлена. Пожалуйста, проверьте Ваш email"
 
-#: accounts/views.py:112
+#: accounts/views.py:110
 msgid "Change Your Account Details"
 msgstr "Изменить данные учетной записи"
 
@@ -225,23 +225,23 @@ msgstr "Изменить данные учетной записи"
 msgid "Country code is not valid"
 msgstr "Код страны недействителен"
 
-#: addresses/models.py:10 addresses/templates/addresses/update.html:46
+#: addresses/models.py:9 addresses/templates/addresses/update.html:46
 msgid "Billing address"
 msgstr "Адрес выставления счета"
 
-#: addresses/models.py:11 addresses/templates/addresses/update.html:47
+#: addresses/models.py:10 addresses/templates/addresses/update.html:47
 msgid "Shipping address"
 msgstr "Адрес доставки"
 
-#: addresses/models.py:17
+#: addresses/models.py:16
 msgid "Shipping to? Who is it for?"
 msgstr "С доставкой? Для кого?"
 
-#: addresses/models.py:18
+#: addresses/models.py:17
 msgid "Internal Reference Nickname"
 msgstr "Внутренний Логин"
 
-#: addresses/models.py:22
+#: addresses/models.py:21
 msgid "Only uppercase letters and length has be 2"
 msgstr "Только заглавные буквы и длина должна быть 2"
 
@@ -351,7 +351,7 @@ msgstr "Заказ"
 
 #: analytics/templates/analytics/sales.html:22
 #: analytics/templates/analytics/sales.html:33
-#: products/templates/products/detail.html:8
+#: products/templates/products/detail.html:15
 msgid "ago"
 msgstr "назад"
 
@@ -375,7 +375,7 @@ msgstr "Всего отправлено"
 msgid "Paid Totals"
 msgstr "Сумма оплат"
 
-#: billing/models.py:151
+#: billing/models.py:154
 msgid "No cards available"
 msgstr "Нет доступных карт"
 
@@ -503,7 +503,7 @@ msgstr "Выберите"
 msgid "Continue as Guest"
 msgstr "Продолжить как гость"
 
-#: carts/templates/carts/home.html:7 templates/base/navbar.html:36
+#: carts/templates/carts/home.html:7 templates/base/navbar.html:37
 msgid "Cart"
 msgstr "Корзина"
 
@@ -511,7 +511,8 @@ msgstr "Корзина"
 msgid "Product Name"
 msgstr "Наименование товара"
 
-#: carts/templates/carts/home.html:18 templates/select_sort.html:12
+#: carts/templates/carts/home.html:18
+#: orders/templates/orders/collection.html:14 templates/select_sort.html:12
 msgid "Price"
 msgstr "Цена"
 
@@ -550,35 +551,35 @@ msgstr "Отправить с контактным email"
 msgid "Your message"
 msgstr "Ваше сообщение"
 
-#: eCommerce_Django/views.py:43
+#: eCommerce_Django/views.py:41
 msgid "Welcome to about page!"
 msgstr "Добро пожаловать на описание!"
 
-#: eCommerce_Django/views.py:53
+#: eCommerce_Django/views.py:51
 msgid "Here you can leave your feedback."
 msgstr "Здесь Вы можете отправить отзыв или предложение"
 
-#: eCommerce_Django/views.py:60
+#: eCommerce_Django/views.py:58
 msgid "Send with contact email: "
 msgstr "Отправить с контактным email: "
 
-#: eCommerce_Django/views.py:64
+#: eCommerce_Django/views.py:62
 msgid "Invalid header found."
 msgstr "Неверный формат."
 
-#: eCommerce_Django/views.py:66
+#: eCommerce_Django/views.py:64
 msgid "Thank you for your submission"
 msgstr "Спасибо за Ваш заказ"
 
-#: eCommerce_Django/views.py:81
+#: eCommerce_Django/views.py:79
 msgid "Update code on server"
 msgstr "Обновить данные на сервере"
 
-#: eCommerce_Django/views.py:83
+#: eCommerce_Django/views.py:81
 msgid "ERROR: Could`t update the code on server"
 msgstr "ОШИБКА: не удалось обновить код на сервере"
 
-#: marketing/forms.py:7
+#: marketing/forms.py:8
 msgid "Receive Marketing Email?"
 msgstr "Повторно активируйте свой Email?"
 
@@ -594,11 +595,11 @@ msgstr "Строка не является действительным адре
 msgid "Not a valid choice for email status"
 msgstr "Недопустимый выбор для статуса email"
 
-#: marketing/views.py:25
+#: marketing/views.py:22
 msgid "Your email preferences have been updated. Thank you."
 msgstr "Ваши настройки email были обновлены. Спасибо."
 
-#: marketing/views.py:35
+#: marketing/views.py:32
 msgid "Update Email Preferences"
 msgstr "Обновить Email"
 
@@ -607,10 +608,10 @@ msgid "Product"
 msgstr "Товар"
 
 #: orders/templates/orders/collection.html:14
-msgid "Download"
-msgstr "Скачать"
+msgid "Data/Time"
+msgstr "Дата/Время"
 
-#: orders/templates/orders/collection.html:28
+#: orders/templates/orders/collection.html:24
 #: orders/templates/orders/order_list.html:23
 msgid "No orders yet"
 msgstr "Пока нет заказов"
@@ -632,8 +633,8 @@ msgid "Status"
 msgstr "Статус"
 
 #: products/templates/products/card.html:9
-#: products/templates/products/detail.html:44
-#: products/templates/products/detail.html:56
+#: products/templates/products/detail.html:54
+#: products/templates/products/detail.html:66
 msgid "Image not found :("
 msgstr "Изображения нет :("
 
@@ -642,27 +643,27 @@ msgstr "Изображения нет :("
 msgid "View"
 msgstr "Посмотреть"
 
-#: products/templates/products/detail.html:63
+#: products/templates/products/detail.html:73
 msgid "Previous"
 msgstr "Предыдущий"
 
-#: products/templates/products/detail.html:67
+#: products/templates/products/detail.html:77
 msgid "Next"
 msgstr "Следующий"
 
-#: products/templates/products/detail.html:75
+#: products/templates/products/detail.html:85
 msgid "comments"
 msgstr "комментариев"
 
-#: products/templates/products/detail.html:83
+#: products/templates/products/detail.html:93
 msgid "says"
 msgstr "написано"
 
-#: products/templates/products/detail.html:96
+#: products/templates/products/detail.html:106
 msgid "Your comment is awaiting moderation"
 msgstr "Ваш комментарий ждет публикации"
 
-#: products/templates/products/detail.html:102
+#: products/templates/products/detail.html:112
 msgid "Leave a comment"
 msgstr "Оставьте комментарий"
 
@@ -702,27 +703,27 @@ msgstr "Важно"
 msgid "Developed"
 msgstr "Разработано"
 
-#: templates/base/navbar.html:20
-msgid "Sewing Shop"
-msgstr "Швейный магазин"
+#: templates/base/navbar.html:22
+msgid "TeaShop"
+msgstr ""
 
-#: templates/base/navbar.html:29
+#: templates/base/navbar.html:33
 msgid "Home"
 msgstr "Главная"
 
-#: templates/base/navbar.html:29
+#: templates/base/navbar.html:33
 msgid "current"
 msgstr "текущий"
 
-#: templates/base/navbar.html:56
+#: templates/base/navbar.html:60
 msgid "Admin"
 msgstr "Администраторская"
 
-#: templates/base/navbar.html:61
+#: templates/base/navbar.html:67
 msgid "Payment"
 msgstr "Способ оплаты"
 
-#: templates/base/navbar.html:63
+#: templates/base/navbar.html:69
 msgid "Logout"
 msgstr "Выйти"
 
@@ -759,7 +760,7 @@ msgstr "Ошибка | Мы были уведомлены и работаем н
 msgid "Home page"
 msgstr "Главная страница"
 
-#: templates/home_page.html:10
+#: templates/home_page.html:14
 msgid "Free delivery throughout Porto and Vila Nova de Gaia"
 msgstr "Бесплатная доставка по Porto и Vila Nova de Gaia"
 
@@ -875,3 +876,6 @@ msgstr "ранее"
 #: templates/select_sort.html:28
 msgid "update last"
 msgstr "позже"
+
+#~ msgid "Sewing Shop"
+#~ msgstr "Швейный магазин"

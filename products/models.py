@@ -83,10 +83,6 @@ class Product(models.Model):
     def name(self):
         return self.title
 
-    def get_downloads(self):
-        qs = self.productfile_set.all()
-        return qs
-
 
 def product_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
