@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-18 12:32+0000\n"
+"POT-Creation-Date: 2024-02-10 12:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,7 @@ msgstr "ConfirmaÇão Da Senha"
 msgid "Passwords don't match"
 msgstr "As senhas não coincidem"
 
-#: accounts/forms.py:51 addresses/templates/addresses/form.html:23
+#: accounts/forms.py:51 addresses/templates/addresses/form.html:19
 #: addresses/templates/addresses/update.html:24
 msgid "Name"
 msgstr "Nome"
@@ -103,7 +103,7 @@ msgid "Change Password"
 msgstr "Alterar a senha"
 
 #: accounts/templates/accounts/form.html:37
-#: addresses/templates/addresses/form.html:106
+#: addresses/templates/addresses/form.html:102
 #: products/templates/products/detail.html:114 templates/contact/view.html:19
 msgid "Submit"
 msgstr "Enviar"
@@ -221,66 +221,58 @@ msgstr "Altere os detalhes da sua conta"
 msgid "Country code is not valid"
 msgstr "O código do país não é válido"
 
-#: addresses/models.py:9 addresses/templates/addresses/update.html:46
-msgid "Billing address"
-msgstr "Endereço de Cobrança"
-
-#: addresses/models.py:10 addresses/templates/addresses/update.html:47
-msgid "Shipping address"
-msgstr "Endereço para envio"
-
-#: addresses/models.py:16
+#: addresses/models.py:11
 msgid "Shipping to? Who is it for?"
 msgstr "Enviando para? para quem é isso?"
 
-#: addresses/models.py:17
+#: addresses/models.py:12
 msgid "Internal Reference Nickname"
 msgstr "Apelido de referência interna"
 
-#: addresses/models.py:21
+#: addresses/models.py:15
 msgid "Only uppercase letters and length has be 2"
 msgstr "Apenas letras maiúsculas e o comprimento devem ser 2"
 
-#: addresses/templates/addresses/form.html:16
+#: addresses/templates/addresses/form.html:12
 #: addresses/templates/addresses/update.html:17
 msgid "Nickname"
 msgstr "Apelido"
 
-#: addresses/templates/addresses/form.html:20
+#: addresses/templates/addresses/form.html:16
 #: addresses/templates/addresses/update.html:21
 msgid "Internal Reference"
 msgstr "Referência interna"
 
-#: addresses/templates/addresses/form.html:27
+#: addresses/templates/addresses/form.html:23
 #: addresses/templates/addresses/update.html:28
 msgid "Shipping to? Who is it for"
 msgstr "Enviando para? Para quem é isso"
 
-#: addresses/templates/addresses/form.html:40
+#: addresses/templates/addresses/form.html:36
 msgid "Street"
 msgstr "Rua"
 
-#: addresses/templates/addresses/form.html:46
+#: addresses/templates/addresses/form.html:42
 msgid "Apartment"
 msgstr "Apartamento"
 
-#: addresses/templates/addresses/form.html:58
-#: addresses/templates/addresses/update.html:75
+#: addresses/templates/addresses/form.html:54
+#: addresses/templates/addresses/update.html:63
 msgid "City"
 msgstr "Cidade"
 
-#: addresses/templates/addresses/form.html:64
-#: addresses/templates/addresses/update.html:81
+#: addresses/templates/addresses/form.html:60
+#: addresses/templates/addresses/update.html:69
 msgid "Country code"
 msgstr "Código do país"
 
-#: addresses/templates/addresses/form.html:80
-#: addresses/templates/addresses/update.html:97
+#: addresses/templates/addresses/form.html:76
+#: addresses/templates/addresses/update.html:85
 msgid "State"
 msgstr "Estado"
 
-#: addresses/templates/addresses/form.html:86
-#: addresses/templates/addresses/update.html:103
+#: addresses/templates/addresses/form.html:82
+#: addresses/templates/addresses/update.html:91
 msgid "Postal code"
 msgstr "Código postal"
 
@@ -293,8 +285,13 @@ msgid "Create New"
 msgstr "Crie um novo"
 
 #: addresses/templates/addresses/list.html:21
-#: addresses/templates/addresses/update.html:53
-#: addresses/templates/addresses/update.html:59
+#: addresses/templates/addresses/update.html:41
+#: addresses/templates/addresses/update.html:47
+#: carts/templates/carts/checkout/has_billingprofile.html:5
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:31
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:32
+#: carts/templates/carts/checkout/has_billingprofile_shiprequired.html:5
+#: orders/templates/orders/order_detail.html:25
 msgid "Address"
 msgstr "Endereço"
 
@@ -306,7 +303,7 @@ msgstr "Editar"
 msgid "No saved addresses"
 msgstr "Nenhum endereço salvo"
 
-#: addresses/templates/addresses/prev_addresses.html:24
+#: addresses/templates/addresses/prev_addresses.html:20
 msgid "Use Address"
 msgstr "Usar endereço"
 
@@ -318,11 +315,7 @@ msgstr "Atualizar endereço"
 msgid "Create Address"
 msgstr "Criar endereço"
 
-#: addresses/templates/addresses/update.html:41
-msgid "Type"
-msgstr "Tipo"
-
-#: addresses/templates/addresses/update.html:123
+#: addresses/templates/addresses/update.html:111
 msgid "Save Address"
 msgstr "Salvar endereço"
 
@@ -409,13 +402,6 @@ msgstr "Seu"
 msgid "order ID"
 msgstr "ID do pedido"
 
-#: carts/templates/carts/checkout/has_billingprofile.html:5
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:40
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:41
-#: orders/templates/orders/order_detail.html:34
-msgid "Billing Address"
-msgstr "Endereço de Cobrança"
-
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:5
 msgid "CHECK and CHOOSE"
 msgstr "VERIFIQUE e ESCOLHA"
@@ -434,40 +420,33 @@ msgstr "Itens do carrinho"
 msgid "Order number: "
 msgstr "Número do pedido: "
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:31
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:32
-#: carts/templates/carts/checkout/has_billingprofile_shiprequired.html:5
-#: orders/templates/orders/order_detail.html:25
-msgid "Shipping Address"
-msgstr "Endereço para envio"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:55
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:57
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:46
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:48
 msgid "Cart Total"
 msgstr "Total do carrinho"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:60
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:62
-#: orders/templates/orders/order_detail.html:52
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:51
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:53
+#: orders/templates/orders/order_detail.html:43
 msgid "Shipping Total"
 msgstr "Total de envio"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:65
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:67
-#: orders/templates/orders/order_detail.html:61
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:56
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:58
+#: orders/templates/orders/order_detail.html:52
 msgid "Order Total"
 msgstr "Total de pedidos"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:76
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:67
 msgid "Choose method of payment"
 msgstr "Escolha a forma de pagamento"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:81
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:93
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:72
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:84
 msgid "PayPal"
 msgstr "PayPal"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:85
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:76
 msgid "Bank card binding"
 msgstr "Vinculação de cartão bancário"
 
@@ -475,19 +454,19 @@ msgstr "Vinculação de cartão bancário"
 msgid "Finalize Checkout"
 msgstr "Finalizar compra"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:73
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:64
 msgid "Default Payment"
 msgstr "Pagamento padrão"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:77
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:68
 msgid "Payment Method"
 msgstr "Forma de pagamento"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:78
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:69
 msgid "Change"
 msgstr "Mudar"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:87
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:78
 msgid "Pay"
 msgstr "Pagar"
 
@@ -513,7 +492,7 @@ msgid "Price"
 msgstr "Preço"
 
 #: carts/templates/carts/home.html:35
-#: orders/templates/orders/order_detail.html:43
+#: orders/templates/orders/order_detail.html:34
 msgid "Subtotal"
 msgstr "Subtotal"
 
@@ -616,7 +595,7 @@ msgstr "Ainda não há pedidos"
 msgid "Items"
 msgstr "Unid"
 
-#: orders/templates/orders/order_detail.html:70
+#: orders/templates/orders/order_detail.html:61
 msgid "Order Status"
 msgstr "Status do pedido"
 
@@ -873,3 +852,18 @@ msgstr "atualizar cedo"
 #: templates/select_sort.html:28
 msgid "update last"
 msgstr "atualizar por último"
+
+#~ msgid "Billing address"
+#~ msgstr "Endereço de Cobrança"
+
+#~ msgid "Shipping address"
+#~ msgstr "Endereço para envio"
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#~ msgid "Billing Address"
+#~ msgstr "Endereço de Cobrança"
+
+#~ msgid "Shipping Address"
+#~ msgstr "Endereço para envio"

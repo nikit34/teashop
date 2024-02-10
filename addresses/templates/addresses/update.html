@@ -37,18 +37,6 @@
                     </div>
                 </div>
                 <div class="row bank-canvas-cell-empty">
-                    <div class="col-2">
-                        <label for="{{ form.address_type.id_for_label }}">{% trans "Type" %}: </label>
-                    </div>
-                    <div class="col">
-                        <select name="address_type" class="form-control" required="" id="id_address_type">
-                            <option value="">---------</option>
-                            <option value="billing" selected="">{% trans "Billing address" %}</option>
-                            <option value="shipping">{% trans "Shipping address" %}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row bank-canvas-cell-empty">
                     <div class="col">
                         <label for="{{ form.address_line_1.id_for_label }}">{% trans "Address" %} 1:</label>
                     </div>

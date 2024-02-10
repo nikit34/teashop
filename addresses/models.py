@@ -5,17 +5,11 @@ from django.utils.translation import gettext_lazy
 
 from billing.models import BillingProfile
 
-ADDRESS_TYPES = (
-    ('billing', gettext_lazy('Billing address')),
-    ('shipping' , gettext_lazy('Shipping address'))
-)
-
 
 class Address(models.Model):
     billing_profile = models.ForeignKey(BillingProfile, on_delete=models.DO_NOTHING)
     name = models.CharField(max_length=120, null=True, blank=True, help_text=gettext_lazy('Shipping to? Who is it for?'))
     nickname = models.CharField(max_length=120, null=True, blank=True, help_text=gettext_lazy('Internal Reference Nickname'))
-    address_type = models.CharField(max_length=120, choices=ADDRESS_TYPES)
     address_line_1 = models.CharField(max_length=120)
     address_line_2 = models.CharField(max_length=120, null=True, blank=True)
     country = models.CharField(max_length=2, default='RU', validators=[RegexValidator('^[A-Z]{2}$', gettext_lazy('Only uppercase letters and length has be 2'))])

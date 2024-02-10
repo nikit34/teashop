@@ -7,9 +7,9 @@
     {% include "carts/checkout/has_nothing.html" %}
 {% else %}
 
-    {% if not object.shipping_address and shipping_address_required %}
+    {% if not object.address and address_required %}
         {% include "carts/checkout/has_billingprofile_shiprequired.html" %}
-    {% elif not object.billing_address %}
+    {% elif not object.address %}
         {% include "carts/checkout/has_billingprofile.html" %}
     {% else %}
 

@@ -69,7 +69,6 @@ class AddressUpdateViewTest(TestCase):
         billing_profile.save()
         self.address = Address.objects.create(
             billing_profile=billing_profile,
-            address_type='billing',
             address_line_1='Testogorsk',
             state='Testovskya',
             city='Testovo',
