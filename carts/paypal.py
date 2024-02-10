@@ -102,11 +102,11 @@ def structurng_input(order_obj, cart_obj):
         'items': items,
         'shipping': {
             'address': {
-                'address_line_1': order_obj.billing_address.address_line_1,
-                'address_line_2': order_obj.billing_address.address_line_2,
-                'admin_area_2': order_obj.billing_address.city,
-                'admin_area_1': order_obj.billing_address.country,
-                'postal_code': order_obj.billing_address.postal_code,
+                'address_line_1': order_obj.address.address_line_1,
+                'address_line_2': order_obj.address.address_line_2,
+                'admin_area_2': order_obj.address.city,
+                'admin_area_1': order_obj.address.country,
+                'postal_code': order_obj.address.postal_code,
                 'country_code': 'RU',
             }
         }

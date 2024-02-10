@@ -107,10 +107,8 @@ class OrderManager(models.Manager):
 class Order(models.Model):
     billing_profile = models.ForeignKey(BillingProfile, on_delete=models.DO_NOTHING, null=True, blank=True)
     order_id = models.CharField(max_length=120, blank=True)
-    shipping_address = models.ForeignKey(Address, related_name='shipping_address', on_delete=models.DO_NOTHING, null=True, blank=True)
-    billing_address = models.ForeignKey(Address, related_name='billing_address', on_delete=models.DO_NOTHING, null=True, blank=True)
-    shipping_address_final = models.TextField(blank=True, null=True)
-    billing_address_final = models.TextField(blank=True, null=True)
+    address = models.ForeignKey(Address, related_name='address', on_delete=models.DO_NOTHING, null=True, blank=True)
+    address_final = models.TextField(blank=True, null=True)
     cart = models.ForeignKey(Cart, on_delete=models.DO_NOTHING)
     status = models.CharField(max_length=120, default='created', choices=ORDER_STATUS_CHOICES)
     shipping_total = models.DecimalField(default=5.50, max_digits=100, decimal_places=2)
@@ -147,19 +145,19 @@ class Order(models.Model):
         return new_total
 
     def check_done(self):
-        shipping_address_required = self.cart.delivery
-        shipping_address = self.shipping_address
-        shipping_done = False
-        if shipping_address_required and shipping_address:
-            shipping_done = True
-        elif shipping_address_required and not shipping_address:
-            shipping_done = False
+        address_required = self.cart.delivery
+        address = self.address
+        done = False
+        if address_required and address:
+            done = True
+        elif address_required and not address:
+            done = False
         else:
-            shipping_done = True
+            done = True
         billing_profile = self.billing_profile
-        billing_address = self.billing_address
+        address = self.address
         total = self.total
-        if billing_profile and shipping_done and billing_address and total > 0:
+        if billing_profile and done and address and total > 0:
             return True
         return False
 
@@ -188,10 +186,8 @@ def pre_save_create_order_id(sender, instance, *args, **kwargs):
     qs = Order.objects.filter(cart=instance.cart).exclude(billing_profile=instance.billing_profile)
     if qs.exists():
         qs.update(active=False)
-    if instance.shipping_address and not instance.shipping_address_final:
-        instance.shipping_address_final = instance.shipping_address.get_address()
-    if instance.billing_address and not instance.billing_address_final:
-        instance.billing_address_final = instance.billing_address.get_address()
+    if instance.address and not instance.address_final:
+        instance.address_final = instance.address.get_address()
 
 
 pre_save.connect(pre_save_create_order_id, sender=Order)

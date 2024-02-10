@@ -27,7 +27,7 @@ class CollectionView(LoginRequiredMixin, ListView):
 
 class VerifyOwnership(View):
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             data = request.GET
             product_id = request.GET.get('product_id', None)
             if product_id is not None:
