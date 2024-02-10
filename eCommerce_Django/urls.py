@@ -33,6 +33,8 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': global_maps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', RobotsTxtView.as_view()),
 
+    path("__debug__/", include("debug_toolbar.urls")),
+
   ] + i18n_patterns(
 
     path('i18n/', include('django.conf.urls.i18n')),

@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'tags',
     'chats',
     'search',
+
+    'debug_toolbar',
 ]
 
 SITE_ID = 1
@@ -84,6 +86,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 
@@ -160,3 +164,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
 
 PROTECTED_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "protected_media")
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
