@@ -60,7 +60,7 @@ def cart_update(request):
             cart_obj.products.add(product_obj)
             added = True
         request.session['cart_items'] = cart_obj.products.count()
-        if request.is_ajax():
+        if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             print('Ajax request')
             json_data = {
                 'added': added,

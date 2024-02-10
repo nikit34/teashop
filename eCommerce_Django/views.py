@@ -60,12 +60,12 @@ def contact_page(request):
             send_mail(fullname, msg_content, email, [support_email])
         except BadHeaderError:
             return HttpResponse(gettext('Invalid header found.'))
-        if request.is_ajax():
+        if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             return JsonResponse({'message': gettext('Thank you for your submission')})
 
     if contact_form.errors:
         errors = contact_form.errors.as_json()
-        if request.is_ajax():
+        if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             return JsonResponse(errors, status=400, content_type='application/json')
     return render(request, "contact/view.html", context)
 
