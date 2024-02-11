@@ -102,7 +102,7 @@ def checkout_home(request):
         if is_prepared:
             did_charge, order_id = billing_profile.charge('S', order_obj)
             if did_charge:
-                order_obj.mark_paid() # sort signal
+                order_obj.mark_paid()  # sort signal
                 request.session['cart_items'] = 0
                 del request.session['cart_id']
                 if not billing_profile.user:
@@ -159,7 +159,7 @@ def paypal_checkout_home(request):
             if response.status_code == 201 and response.result.status == 'CREATED':
                 did_charge, order_id = billing_profile.charge('P', order_obj, response)
                 if did_charge:
-                    order_obj.mark_paid() # sort signal
+                    order_obj.mark_paid()  # sort signal
                     request.session['cart_items'] = 0
                     del request.session['cart_id']
                     return redirect(reverse('cart:success', kwargs={'orderID': order_id}))
