@@ -10,3 +10,7 @@ venv/**
 db.sqlite3
 
 .coverage
+
+# IDE folders
+.idea/
+.vscode/
