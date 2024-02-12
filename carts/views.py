@@ -61,7 +61,6 @@ def cart_update(request):
             added = True
         request.session['cart_items'] = cart_obj.products.count()
         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-            print('Ajax request')
             json_data = {
                 'added': added,
                 'removed': not added,
