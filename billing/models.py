@@ -154,7 +154,7 @@ class ChargeManager(models.Manager):
             return False, gettext('No cards available')
         try:
             c = stripe.Charge.create(
-                amount=int(order_obj.total * 100),
+                amount=int(float(order_obj.total) * 100),
                 currency='usd',
                 customer=billing_profile.customer_id,
                 source=card_obj.stripe_id,
