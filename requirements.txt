@@ -13,12 +13,14 @@ Django==4.2.10
 django-debug-toolbar==4.3.0
 django-storages==1.6.5
 docutils==0.14
+exceptiongroup==1.2.0
 fire==0.4.0
 gitdb==4.0.10
 gitdb2==2.0.3
 GitPython==3.1.7
 gunicorn==19.7.1
 idna==2.6
+iniconfig==2.0.0
 jmespath==0.9.3
 linode-api4==5.7.2
 olefile==0.44
@@ -26,10 +28,12 @@ packaging==23.1
 paypal-checkout-serversdk==1.0.1
 paypalhttp==1.0.0
 Pillow==7.2.0
+pluggy==1.4.0
 polling==0.3.2
 pycparser==2.20
 pyOpenSSL==23.2.0
 python-dateutil==2.6.1
+python-decouple==3.8
 pytz==2017.2
 requests==2.23.0
 s3transfer==0.1.11
@@ -40,5 +44,6 @@ sqlparse==0.4.4
 stripe==5.5.0
 tblib==1.6.0
 termcolor==2.3.0
+tomli==2.0.1
 typing_extensions==4.7.1
 urllib3==1.25.9
