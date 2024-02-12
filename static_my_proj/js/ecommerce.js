@@ -105,58 +105,6 @@ $(document).ready(function () {
   // product-cart
   var productForm = $(".form-product-ajax");
 
-  function getOwnedProduct(productId, submitSpan) {
-    var actionEndpoint = "/orders/endpoint/verify/ownership/";
-    var httpMethod = "GET";
-    var data = { product_id: productId };
-    var isOwner;
-    let lang = localization();
-    $.ajax({
-      url: actionEndpoint,
-      method: httpMethod,
-      data: data,
-      success: function (data) {
-        if (data.owner) {
-          isOwner = true;
-          if (lang == "en") {
-            submitSpan.html(
-              "<a class='btn btn-warning' href='/collection/'>In Collection</a>"
-            );
-          } else if (lang == "ru") {
-            submitSpan.html(
-              "<a class='btn btn-warning' href='/collection/'>Приобретено</a>"
-            );
-          } else if (lang == "pt") {
-            submitSpan.html(
-              "<a class='btn btn-warning' href='/collection/'>Na coleção</a>"
-            );
-          } else {
-            submitSpan.html(
-              "<div class='btn-group'>Undefined langueges in js</div>"
-            );
-          }
-        } else {
-          isOwner = false;
-        }
-      },
-      error: function (erorr) {
-        console.log(error);
-      },
-    });
-    return isOwner;
-  }
-  $.each(productForm, function (index, object) {
-    var $this = $(this);
-    var isUser = $this.attr("data-user");
-    var submitSpan = $this.find(".submit-span");
-    var productInput = $this.find("[name='product_id']");
-    var productId = productInput.attr("value");
-    var productIsDelivery = productInput.attr("data-is-delivery");
-    if (productIsDelivery && isUser) {
-      var isOwned = getOwnedProduct(productId, submitSpan);
-    }
-  });
-
   productForm.submit(function (event) {
     event.preventDefault();
     var thisForm = $(this);
