@@ -23,8 +23,8 @@ jmespath==0.9.3
 linode-api4==5.7.2
 olefile==0.44
 packaging==23.1
-paypal-checkout-serversdk==1.0.1
-paypalhttp==1.0.0
+paypal-checkout-serversdk==1.0.3
+paypalhttp==1.0.1
 Pillow==7.2.0
 polling==0.3.2
 pycparser==2.20
