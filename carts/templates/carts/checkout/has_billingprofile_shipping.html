@@ -68,10 +68,11 @@
     </div>
 </div>
 <div class="row payments-form-api payments-desktop payments-mobile">
-    <div id="paypal-block" class="col">
-        <h2 style="color:blue;">{% trans "PayPal" %}</h2>
-        <div id="paypal-button-container"></div>
-    </div>
+<!--    TODO: PayPal-->
+<!--    <div id="paypal-block" class="col">-->
+<!--        <h2 style="color:blue;">{% trans "PayPal" %}</h2>-->
+<!--        <div id="paypal-button-container"></div>-->
+<!--    </div>-->
     <div class="col">
         <h2 style="color:red;">{% trans "Bank card binding" %}</h2>
         <div class="stripe-payment-form" data-token='{{ publish_key }}' data-next-url='{{ request.build_absolute_uri }}' data-btn-title="Add Payment Method"></div>

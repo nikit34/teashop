@@ -1,7 +1,7 @@
 import json
 
 from django.conf import settings
-from paypalcheckoutsdk.core import PayPalHttpClient, LiveEnvironment
+from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersCreateRequest
 
 
@@ -9,7 +9,7 @@ class PayPalClient:
     def __init__(self):
         self.client_id = getattr(settings, 'PAYPAL_CLIENT_ID', None)
         self.client_secret = getattr(settings, 'PAYPAL_CLIENT_SECRET', None)
-        self.environment = LiveEnvironment(client_id=self.client_id, client_secret=self.client_secret)
+        self.environment = SandboxEnvironment(client_id=self.client_id, client_secret=self.client_secret)
         self.client = PayPalHttpClient(self.environment)
 
     def object_to_json(self, json_data):
@@ -78,7 +78,7 @@ def structurng_input(order_obj, cart_obj):
         items.append({
             'name': item.title,
             'unit_amount': {
-                'currency_code': 'RUB',
+                'currency_code': 'USD',
                 'value': str(item.price)
             },
             'quantity': '1',
@@ -86,15 +86,15 @@ def structurng_input(order_obj, cart_obj):
         })
     prepared_data_order = {
         'amount': {
-            'currency_code': 'RUB',
+            'currency_code': 'USD',
             'value': str(order_obj.total),
             'breakdown': {
                 'item_total': {
-                    'currency_code': 'RUB',
+                    'currency_code': 'USD',
                     'value': str(cart_obj.total)
                 },
                 'shipping': {
-                    'currency_code': 'RUB',
+                    'currency_code': 'USD',
                     'value': str(order_obj.shipping_total)
                 }
             }
@@ -107,7 +107,7 @@ def structurng_input(order_obj, cart_obj):
                 'admin_area_2': order_obj.address.city,
                 'admin_area_1': order_obj.address.country,
                 'postal_code': order_obj.address.postal_code,
-                'country_code': 'RU',
+                'country_code': 'PT',
             }
         }
     }
