@@ -78,7 +78,7 @@ def structurng_input(order_obj, cart_obj):
         items.append({
             'name': item.title,
             'unit_amount': {
-                'currency_code': 'RUB',
+                'currency_code': 'USD',
                 'value': str(item.price)
             },
             'quantity': '1',
@@ -86,15 +86,15 @@ def structurng_input(order_obj, cart_obj):
         })
     prepared_data_order = {
         'amount': {
-            'currency_code': 'RUB',
+            'currency_code': 'USD',
             'value': str(order_obj.total),
             'breakdown': {
                 'item_total': {
-                    'currency_code': 'RUB',
+                    'currency_code': 'USD',
                     'value': str(cart_obj.total)
                 },
                 'shipping': {
-                    'currency_code': 'RUB',
+                    'currency_code': 'USD',
                     'value': str(order_obj.shipping_total)
                 }
             }
