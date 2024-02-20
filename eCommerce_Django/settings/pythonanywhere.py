@@ -20,12 +20,10 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.humanize',
-
-    'accounts',
-
     'django.contrib.admin',
     'django.contrib.auth',
 
+    'accounts',
     'billing',
     'analytics',
     'addresses',
@@ -142,7 +140,7 @@ LOCALE_PATHS = [ os.path.join(BASE_DIR, 'locale'), ]
 LANGUAGE_CODE = 'en-us'
 # LANGUAGE_CODE = 'ru'
 
-LANGUAGES = [ ('en', 'English'), ('ru', 'Russian'), ]
+LANGUAGES = [('en', 'English'), ('ru', 'Russian'), ('pt', 'Portugal'), ]
 
 TIME_ZONE = 'UTC'
 
