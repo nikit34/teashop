@@ -16,9 +16,8 @@ jobs:
     - name: Install Dependencies
       run: pip install -r requirements.txt
     - name: Check Migrations
-      run:
+      run: |
         chmod +x ./migrations.sh
-        ls -la
         ./migrations.sh
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
