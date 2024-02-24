@@ -1,4 +1,4 @@
-name: Unit tests
+name: Check Migrations
 
 on:
   push:
@@ -15,8 +15,10 @@ jobs:
         python-version: 3.9
     - name: Install Dependencies
       run: pip install -r requirements.txt
-    - name: Run Tests
-      run: python manage.py test
+    - name: Check Migrations
+      run: |
+        chmod +x ./migrations.sh
+        ./migrations.sh
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         SUPPORT_EMAIL: ${{ secrets.SUPPORT_EMAIL }}

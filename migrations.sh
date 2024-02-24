@@ -15,5 +15,7 @@ apps=(
 for app in "${apps[@]}"
 do
   python manage.py makemigrations $app
-  python manage.py migrate $app
 done
+python manage.py migrate
+
+# https://stackoverflow.com/questions/44651760/django-db-migrations-exceptions-inconsistentmigrationhistory
