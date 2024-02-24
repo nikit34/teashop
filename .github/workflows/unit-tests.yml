@@ -31,4 +31,6 @@ jobs:
         PAYPAL_CLIENT_ID: ${{ secrets.PAYPAL_CLIENT_ID }}
         PAYPAL_CLIENT_SECRET: ${{ secrets.PAYPAL_CLIENT_SECRET }}
     - name: Run Migrations
-      run: ./migrations.sh
+      run: |
+        chmod +x ./migrations.sh
+        ./migrations.sh
