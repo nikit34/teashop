@@ -12,6 +12,7 @@ apps=(
   'chats'
 )
 
+echo 'Start migrations'
 for app in "${apps[@]}"
 do
   python manage.py makemigrations $app
