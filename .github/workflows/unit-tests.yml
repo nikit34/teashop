@@ -18,3 +18,15 @@ jobs:
       run: pip install -r requirements.txt
     - name: Run Tests
       run: python manage.py test
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        SUPPORT_EMAIL: ${{ secrets.SUPPORT_EMAIL }}
+        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+        MAILCHIMP_API_KEY: ${{ secrets.MAILCHIMP_API_KEY }}
+        MAILCHIMP_EMAIL_LIST_ID: ${{ secrets.MAILCHIMP_EMAIL_LIST_ID }}
+        MAILCHIMP_EMAIL_ADMIN: ${{ secrets.MAILCHIMP_EMAIL_ADMIN }}
+        STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+        STRIPE_PUB_KEY: ${{ secrets.STRIPE_PUB_KEY }}
+        PAYPAL_BASE_URL: ${{ secrets.PAYPAL_BASE_URL }}
+        PAYPAL_CLIENT_ID: ${{ secrets.PAYPAL_CLIENT_ID }}
+        PAYPAL_CLIENT_SECRET: ${{ secrets.PAYPAL_CLIENT_SECRET }}
