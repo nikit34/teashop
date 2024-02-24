@@ -15,6 +15,8 @@
                 <tr>
                     <th>#</th>
                     <th>{% trans "Product Name" %}</th>
+                    <th>{% trans "Available" %}</th>
+                    <th>{% trans "Quantity" %}</th>
                     <th>{% trans "Price" %}</th>
                 </tr>
             </thead>
@@ -22,8 +24,20 @@
                 {% for product in cart.products.all %}
                 <tr class="cart-product">
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td><a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-                        {% include 'carts/remove-product.html' with product_id=product.id %}</td>
+                    <td>
+                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                        {% include 'carts/remove-product.html' with product_id=product.id %}
+                    </td>
+                    <td>
+                        {{ product.quantity }}&nbsp;{% trans "pcs" %}
+                    </td>
+                    <td>
+                        <div class="input-group text-center">
+                            <button class="input-group-text decrement-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ product.id }}">-</button>
+                            <input type="text" name="quantity" class="form-control currentQuantity text-center" value="1" min="1">
+                            <button class="input-group-text increment-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ product.id }}">+</button>
+                        </div>
+                    </td>
                     <td>{{ product.price | floatformat:2 }}</td>
                 </tr>
                 {% endfor %}
