@@ -87,13 +87,13 @@ def unique_slug_generator(instance, new_slug=None):
     return slug
 
 
-def get_secret_key(root_path, name):
-    key = None
+def get_secret_key(root_path, key):
+    value = None
     with open(root_path + "/secret", "r") as f:
         for line in f.readlines():
-            if name in line:
-                key = line.replace(name + '=', '').replace('\n', '')
+            if key in line:
+                value = line.replace(key + '=', '').replace('\n', '')
                 break
-    if not key:
+    if not value:
         raise KeyError("ERROR: key not found")
-    return key
+    return value
