@@ -18,6 +18,7 @@ jobs:
     - name: Check Migrations
       run:
         chmod +x ./migrations.sh
+        ls -la
         ./migrations.sh
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
