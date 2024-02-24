@@ -17,3 +17,5 @@ do
   python manage.py makemigrations $app
 done
 python manage.py migrate
+
+# https://stackoverflow.com/questions/44651760/django-db-migrations-exceptions-inconsistentmigrationhistory
