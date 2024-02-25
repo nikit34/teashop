@@ -54,10 +54,9 @@ def cart_update(request):
             return redirect('cart:home')
         cart_obj, new_obj = Cart.objects.new_or_get(request)
 
-        quantity = int(new_quantity)
-        if quantity > 0:
-            for _ in range(quantity):
-                cart_obj.products.add(product_obj)
+        need_quantity = int(new_quantity)
+        if 0 < need_quantity <= product_obj.quantity:
+            cart_obj.products.add(product_obj)
         else:
             cart_obj.products.remove(product_obj)
         request.session['cart_items'] = cart_obj.products.count()
