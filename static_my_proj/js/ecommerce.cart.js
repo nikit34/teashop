@@ -15,7 +15,7 @@ $(document).ready(function () {
       url: actionEndpoint,
       data: {
         'product_id': productId,
-        'quantity': newQuantity
+        'new_quantity': newQuantity
       },
       success: function(data) {
         if (data.removed) {
@@ -46,7 +46,7 @@ $(document).ready(function () {
       url: actionEndpoint,
       data: {
         'product_id': productId,
-        'quantity': newQuantity
+        'new_quantity': newQuantity
       },
       success: function(data) {
         if (data.added) {
