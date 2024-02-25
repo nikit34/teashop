@@ -1,7 +1,5 @@
 {% load i18n %}
-<form class="form form-product-ajax" method="POST" action="{% url 'cart:update' %}"
-    data-endpoint="{% url 'cart:update' %}" {% if request.user.is_authenticated %}data-user='abc'{% endif %}
->
+<form class="form form-product-ajax" method="POST" action="{% url 'cart:update' %}" data-endpoint="{% url 'cart:update' %}">
     {% csrf_token %}
     <input type="hidden" name="product_id" value="{{ product.id }}" {% if product.delivery %} data-is-delivery='true'{% endif %} />
 
