@@ -27,52 +27,52 @@ $(document).ready(function(){
         }
     });
 
-  // PayPal
-  if ( !! document.getElementById('paypal-block')) {
-    let csrftoken = getCookie('csrftoken');
-    let url = "/cart/create-paypal-transaction/";
-    let order_done = false;
-
-    paypal.Buttons({
-      style: {
-        color:  'blue',
-        shape:  'pill',
-        label:  'pay',
-        height: 50
-      },
-
-      createOrder: function() {
-        return fetch(url, {
-          method: 'post',
-          headers: {
-            'content-type': 'application/json',
-            "X-CSRFToken": csrftoken,
-          }
-        }).then(function(data) {
-          let orderID = data.url.split('/')[7];
-          order_done = data.url;
-          return orderID;
-        });
-      },
-
-      onError: function(error) {
-        order_done = false;
-        location.replace('/cart/');
-        console.log(error);
-      },
-
-      onCancel: function() {
-        order_done = false;
-        location.replace('/');
-      }
-    }).render('#paypal-button-container');
-
-    setInterval(function(){
-      if(order_done){
-        if(! document.querySelector("[id^='paypal-overlay-']")) {
-          location.replace(order_done);
-        }
-      }
-    }, 1000);
-  }
+//  TODO: PayPal
+//  if ( !! document.getElementById('paypal-block')) {
+//    let csrftoken = getCookie('csrftoken');
+//    let url = "/cart/create-paypal-transaction/";
+//    let order_done = false;
+//
+//    paypal.Buttons({
+//      style: {
+//        color:  'blue',
+//        shape:  'pill',
+//        label:  'pay',
+//        height: 50
+//      },
+//
+//      createOrder: function() {
+//        return fetch(url, {
+//          method: 'post',
+//          headers: {
+//            'content-type': 'application/json',
+//            "X-CSRFToken": csrftoken,
+//          }
+//        }).then(function(data) {
+//          let orderID = data.url.split('/')[7];
+//          order_done = data.url;
+//          return orderID;
+//        });
+//      },
+//
+//      onError: function(error) {
+//        order_done = false;
+//        location.replace('/cart/');
+//        console.log(error);
+//      },
+//
+//      onCancel: function() {
+//        order_done = false;
+//        location.replace('/');
+//      }
+//    }).render('#paypal-button-container');
+//
+//    setInterval(function(){
+//      if(order_done){
+//        if(! document.querySelector("[id^='paypal-overlay-']")) {
+//          location.replace(order_done);
+//        }
+//      }
+//    }, 1000);
+//  }
 })

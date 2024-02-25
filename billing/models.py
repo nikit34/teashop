@@ -100,15 +100,24 @@ class CardManager(models.Manager):
     def add_new(self, billing_profile, token):
         if token:
             customer = stripe.Customer.retrieve(billing_profile.customer_id)
-            stripe_card_response = customer.sources.create(source=token)
+            payment_method = stripe.PaymentMethod.create(
+                type='card',
+                card={
+                    'token': token,
+                },
+            )
+            stripe.PaymentMethod.attach(
+                payment_method.id,
+                customer=customer.id,
+            )
             new_card = self.model(
                 billing_profile=billing_profile,
-                stripe_id=stripe_card_response.id,
-                brand=stripe_card_response.brand,
-                country=stripe_card_response.country,
-                exp_month=stripe_card_response.exp_month,
-                exp_year=stripe_card_response.exp_year,
-                last4=stripe_card_response.last4
+                stripe_id=payment_method.id,
+                brand=payment_method.card.brand,
+                country=payment_method.card.country,
+                exp_month=payment_method.card.exp_month,
+                exp_year=payment_method.card.exp_year,
+                last4=payment_method.card.last4
             )
             new_card.save()
             return new_card
