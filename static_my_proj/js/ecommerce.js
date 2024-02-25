@@ -7,15 +7,21 @@ $(document).ready(function () {
   function displaySubmitting(submitBtn, defaultText, doSubmit) {
     if (doSubmit) {
       submitBtn.addClass("disabled");
-      if (lang == "en") {
-        submitBtn.html('<i class="fa fa-spin fa-spinner"></i>Sending...');
-      } else if (lang == "ru") {
-        submitBtn.html('<i class="fa fa-spin fa-spinner"></i>Отправление...');
-      } else if (lang == "pt") {
-        submitBtn.html('<i class="fa fa-spin fa-spinner"></i>Enviando...');
-      } else {
-        submitBtn.html('<i class="fa fa-spin fa-spinner"></i>Undefined langueges in js');
+      var fragment;
+      switch (lang) {
+        case "en":
+          fragment = '<i class="fa fa-spin fa-spinner"></i>Sending...';
+          break;
+        case "ru":
+          fragment = '<i class="fa fa-spin fa-spinner"></i>Отправление...';
+          break;
+        case "pt":
+          fragment = '<i class="fa fa-spin fa-spinner"></i>Enviando...';
+          break;
+        default:
+          fragment = '<i class="fa fa-spin fa-spinner"></i>Undefined langueges in js';
       }
+      searchBtn.html(fragment);
     } else {
       submitBtn.removeClass("disabled");
       submitBtn.html(defaultText);
@@ -85,15 +91,21 @@ $(document).ready(function () {
   function displaySearching() {
     let lang = localization();
     searchBtn.addClass("disabled");
-    if (lang == "en") {
-      searchBtn.html('<i class="fa fa-spin fa-spinner"></i>Searching...');
-    } else if (lang == "ru") {
-      searchBtn.html('<i class="fa fa-spin fa-spinner"></i>Поиск...');
-    } else if (lang == "pt") {
-      searchBtn.html('<i class="fa fa-spin fa-spinner"></i>Procurando...');
-    } else {
-      searchBtn.html('<i class="fa fa-spin fa-spinner"></i>Undefined langueges in js');
+    var fragment;
+    switch (lang) {
+      case "en":
+        fragment = '<i class="fa fa-spin fa-spinner"></i>Searching...';
+        break;
+      case "ru":
+        fragment = '<i class="fa fa-spin fa-spinner"></i>Поиск...';
+        break;
+      case "pt":
+        fragment = '<i class="fa fa-spin fa-spinner"></i>Procurando...';
+        break;
+      default:
+        fragment = '<i class="fa fa-spin fa-spinner"></i>Undefined langueges in js';
     }
+    searchBtn.html(fragment);
   }
   function perfomSearch() {
     displaySearching();
