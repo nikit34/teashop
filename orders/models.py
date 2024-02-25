@@ -67,9 +67,9 @@ class OrderManagerQuerySet(models.query.QuerySet):
 
     def cart_data(self):
         return self.aggregate(
-            Sum("cart__products__price"),
-            Avg("cart__products__price"),
-            Count("cart__products")
+            Sum("cart__cart_items__product__price"),
+            Avg("cart__cart_items__product__price"),
+            Count("cart__cart_items")
         )
 
     def by_status(self, status="shipped"):
@@ -169,7 +169,6 @@ class Order(models.Model):
                 billing_profile=self.billing_profile
             )
         return ProductPurchase.objects.filter(order_id=self.order_id).count()
-
 
     def mark_paid(self):
         if self.status != 'succeeded':
