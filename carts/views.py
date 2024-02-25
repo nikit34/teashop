@@ -44,8 +44,9 @@ def cart_home(request):
 
 def cart_update(request):
     product_id = request.POST.get('product_id')
+    new_quantity = request.POST.get('new_quantity')
 
-    if product_id is not None:
+    if product_id and new_quantity:
         try:
             product_obj = Product.objects.get(id=product_id)
         except Product.DoesNotExist:
@@ -53,17 +54,15 @@ def cart_update(request):
             return redirect('cart:home')
         cart_obj, new_obj = Cart.objects.new_or_get(request)
 
-        if product_obj in cart_obj.products.all():
-            cart_obj.products.remove(product_obj)
-            added = False
+        quantity = int(new_quantity)
+        if quantity > 0:
+            for _ in range(quantity):
+                cart_obj.products.add(product_obj)
         else:
-            cart_obj.products.add(product_obj)
-            added = True
+            cart_obj.products.remove(product_obj)
         request.session['cart_items'] = cart_obj.products.count()
         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             json_data = {
-                'added': added,
-                'removed': not added,
                 'cartItemCount': cart_obj.products.count()
             }
             return JsonResponse(json_data, status=200)

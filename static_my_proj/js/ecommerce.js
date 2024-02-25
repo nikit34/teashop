@@ -114,53 +114,38 @@ $(document).ready(function () {
       window.location.href = "/search/?q=" + query;
     }, 1000);
   }
-  // product-cart
-  var productForm = $(".form-product-ajax");
 
-  productForm.submit(function (event) {
-    event.preventDefault();
-    var thisForm = $(this);
-    var actionEndpoint = thisForm.attr("data-endpoint");
-    var httpMethod = thisForm.attr("method");
-    var formData = thisForm.serialize();
-    let lang = localization();
+  // product-cart
+  $('.form').on('click', '.add-to-cart-btn', function() {
+    var thisForm = $(this).closest('form');
+    var productIdInput = thisForm.find('input[name="product_id"]');
+    var newQuantity = 1;
+
     $.ajax({
-      url: actionEndpoint,
-      method: httpMethod,
-      data: formData,
-      success: function (data) {
+      url: thisForm.data('endpoint'),
+      type: thisForm.attr('method'),
+      data: {
+        'product_id': productIdInput.val(),
+        'new_quantity': newQuantity
+      },
+      dataType: 'json',
+      success: function(data) {
         var submitSpan = thisForm.find(".submit-span");
         var fragment;
-        if (data.added) {
-          switch (lang) {
-            case "en":
-              fragment = "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>In cart</a> <button type='submit' class='btn btn-outline-danger'>Remove?</button></div>";
-              break;
-            case "ru":
-              fragment = "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>Корзина</a> <button type='submit' class='btn btn-outline-danger'>Удалить?</button></div>";
-              break;
-            case "pt":
-              fragment = "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>No carrinho</a> <button type='submit' class='btn btn-outline-danger'>Remover?</button></div>";
-              break;
-            default:
-              fragment = "<div class='btn-group'>Undefined langueges in js</div>";
-          }
-        } else {
-          switch (lang) {
-            case "en":
-              fragment = '<button type="submit" class="btn btn-success">Add to cart</button>';
-              break;
-            case "ru":
-              fragment = '<button type="submit" class="btn btn-success">Добавить в корзину</button>';
-              break;
-            case "pt":
-              fragment = '<button type="submit" class="btn btn-success">Adicionar ao carrinho</button>';
-              break;
-            default:
-              fragment = "<div class='btn-group'>Undefined langueges in js</div>";
-          }
+        switch (lang) {
+          case "en":
+            fragment = "In cart</a> <button type='button' class='btn btn-outline-danger remove-btn'>Remove?";
+            break;
+          case "ru":
+            fragment = "Корзина</a> <button type='button' class='btn btn-outline-danger remove-btn'>Удалить?";
+            break;
+          case "pt":
+            fragment = "No carrinho</a> <button type='button' class='btn btn-outline-danger remove-btn'>Remover?";
+            break;
+          default:
+            fragment = "<div class='btn-group'>Undefined langueges in js</div>";
         }
-        submitSpan.html(fragment);
+        submitSpan.html("<div class='btn-group'> <a class='btn btn-success' href='/cart/'>" + fragment + "</button></div>");
         var navbarCount = $(".navbar-cart-count");
         navbarCount.text(data.cartItemCount);
         var currentPath = window.location.href;
@@ -174,7 +159,54 @@ $(document).ready(function () {
           content: "An error occurred",
           theme: "modern",
         });
+      }
+    });
+  });
+
+  $('.form').on('click', '.remove-btn', function() {
+    var thisForm = $(this).closest('form');
+    var productIdInput = thisForm.find('input[name="product_id"]');
+    var newQuantity = 0;
+
+    $.ajax({
+      url: thisForm.data('endpoint'),
+      type: thisForm.attr('method'),
+      data: {
+        'product_id': productIdInput.val(),
+        'new_quantity': newQuantity
       },
+      dataType: 'json',
+      success: function(data) {
+        var submitSpan = thisForm.find(".submit-span");
+        var fragment;
+        switch (lang) {
+          case "en":
+            fragment = 'Add to cart';
+            break;
+          case "ru":
+            fragment = 'Добавить в корзину';
+            break;
+          case "pt":
+            fragment = 'Adicionar ao carrinho';
+            break;
+          default:
+            fragment = "<div class='btn-group'>Undefined langueges in js</div>";
+        }
+        submitSpan.html('<button type="button" class="btn btn-success add-to-cart-btn">' + fragment + "</button>");
+        var navbarCount = $(".navbar-cart-count");
+        navbarCount.text(data.cartItemCount);
+        var currentPath = window.location.href;
+        if (currentPath.indexOf("cart") != -1) {
+          refreshCart();
+        }
+      },
+      error: function (errorData) {
+        $.alert({
+          title: "Break!",
+          content: "An error occurred",
+          theme: "modern",
+        });
+      }
     });
   });
 
