@@ -118,43 +118,37 @@ $(document).ready(function () {
       data: formData,
       success: function (data) {
         var submitSpan = thisForm.find(".submit-span");
+        var fragment;
         if (data.added) {
-          if (lang == "en") {
-            submitSpan.html(
-              "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>In cart</a> <button type='submit' class='btn btn-outline-danger'>Remove?</button></div>"
-            );
-          } else if (lang == "ru") {
-            submitSpan.html(
-              "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>Корзина</a> <button type='submit' class='btn btn-outline-danger'>Удалить?</button></div>"
-            );
-          } else if (lang == "pt") {
-            submitSpan.html(
-              "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>No carrinho</a> <button type='submit' class='btn btn-outline-danger'>Remover?</button></div>"
-            );
-          } else {
-            submitSpan.html(
-              "<div class='btn-group'>Undefined langueges in js</div>"
-            );
+          switch (lang) {
+            case "en":
+              fragment = "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>In cart</a> <button type='submit' class='btn btn-outline-danger'>Remove?</button></div>";
+              break;
+            case "ru":
+              fragment = "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>Корзина</a> <button type='submit' class='btn btn-outline-danger'>Удалить?</button></div>";
+              break;
+            case "pt":
+              fragment = "<div class='btn-group'> <a class='btn btn-success' href='/cart/'>No carrinho</a> <button type='submit' class='btn btn-outline-danger'>Remover?</button></div>";
+              break;
+            default:
+              fragment = "<div class='btn-group'>Undefined langueges in js</div>";
           }
         } else {
-          if (lang == "en") {
-            submitSpan.html(
-              '<button type="submit" class="btn btn-success">Add to cart</button>'
-            );
-          } else if (lang == "ru") {
-            submitSpan.html(
-              '<button type="submit" class="btn btn-success">Добавить в корзину</button>'
-            );
-          } else if (lang == "pt") {
-            submitSpan.html(
-              '<button type="submit" class="btn btn-success">Adicionar ao carrinho</button>'
-            );
-          } else {
-            submitSpan.html(
-              "<div class='btn-group'>Undefined langueges in js</div>"
-            );
+          switch (lang) {
+            case "en":
+              fragment = '<button type="submit" class="btn btn-success">Add to cart</button>';
+              break;
+            case "ru":
+              fragment = '<button type="submit" class="btn btn-success">Добавить в корзину</button>';
+              break;
+            case "pt":
+              fragment = '<button type="submit" class="btn btn-success">Adicionar ao carrinho</button>';
+              break;
+            default:
+              fragment = "<div class='btn-group'>Undefined langueges in js</div>";
           }
         }
+        submitSpan.html(fragment);
         var navbarCount = $(".navbar-cart-count");
         navbarCount.text(data.cartItemCount);
         var currentPath = window.location.href;
