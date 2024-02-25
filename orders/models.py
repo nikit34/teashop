@@ -147,16 +147,11 @@ class Order(models.Model):
     def check_done(self):
         address_required = self.cart.delivery
         address = self.address
-        done = False
-        if address_required and address:
-            done = True
-        elif address_required and not address:
+        done = True
+        if address_required and not address:
             done = False
-        else:
-            done = True
         billing_profile = self.billing_profile
-        address = self.address
-        total = self.total
+        total = int(self.total)
         if billing_profile and done and address and total > 0:
             return True
         return False
