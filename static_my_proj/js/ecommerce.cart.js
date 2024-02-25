@@ -7,7 +7,8 @@ $(document).ready(function () {
     var productId = thisBtn.data('product-id');
     var actionEndpoint = thisBtn.attr("data-endpoint");
     var method = thisBtn.data('method');
-    var currentQuantity = parseInt($('.currentQuantity[data-product-id="' + productId + '"]').val());
+    var inputField = $('.currentQuantity[data-product-id="' + productId + '"]');
+    var currentQuantity = parseInt(inputField.val());
 
     var newQuantity = currentQuantity - 1;
     $.ajax({
@@ -18,7 +19,7 @@ $(document).ready(function () {
         'new_quantity': newQuantity
       },
       success: function(data) {
-        $('.currentQuantity[data-product-id="' + productId + '"]').val(newQuantity);
+        inputField.val(newQuantity);
       },
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);
@@ -33,7 +34,8 @@ $(document).ready(function () {
     var productId = thisBtn.data('product-id');
     var actionEndpoint = thisBtn.attr("data-endpoint");
     var method = thisBtn.data('method');
-    var currentQuantity = parseInt($('.currentQuantity[data-product-id="' + productId + '"]').val());
+    var inputField = $('.currentQuantity[data-product-id="' + productId + '"]');
+    var currentQuantity = parseInt(inputField.val());
 
     var newQuantity = currentQuantity + 1;
     $.ajax({
@@ -44,7 +46,7 @@ $(document).ready(function () {
         'new_quantity': newQuantity
       },
       success: function(data) {
-        $('.currentQuantity[data-product-id="' + productId + '"]').val(newQuantity);
+        inputField.val(newQuantity);
       },
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);
