@@ -3,7 +3,7 @@ $(document).ready(function () {
   var decrementBtn = $('.decrement-btn')
   decrementBtn.click(function(event) {
     event.preventDefault();
-    var currentQuantity = $('.currentQuantity').val();
+    var currentQuantity = parseInt($('.currentQuantity').val());
     var thisBtn = $(this);
     var productId = thisBtn.data('product-id');
     var actionEndpoint = thisBtn.attr("data-endpoint");
@@ -34,7 +34,7 @@ $(document).ready(function () {
   var incrementBtn = $('.increment-btn')
   incrementBtn.click(function(event) {
     event.preventDefault();
-    var currentQuantity = $('.currentQuantity').val();
+    var currentQuantity = parseInt($('.currentQuantity').val());
     var thisBtn = $(this);
     var productId = thisBtn.data('product-id');
     var actionEndpoint = thisBtn.attr("data-endpoint");
