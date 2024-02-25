@@ -162,17 +162,17 @@ class Order(models.Model):
         return False
 
     def update_purchases(self):
-        for p in self.cart.products.all():
+        for cart_item in self.cart.cart_items.all():
             obj, created = ProductPurchase.objects.get_or_create(
                 order_id=self.order_id,
-                product=p,
+                product=cart_item.product,
                 billing_profile=self.billing_profile
             )
         return ProductPurchase.objects.filter(order_id=self.order_id).count()
 
 
     def mark_paid(self):
-        if self.status != 'paid':
+        if self.status != 'succeeded':
             if self.check_done():
                 self.status = 'paid'
                 self.save()

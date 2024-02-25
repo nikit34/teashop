@@ -162,25 +162,25 @@ class ChargeManager(models.Manager):
         if card_obj is None:
             return False, gettext('No cards available')
         try:
-            c = stripe.Charge.create(
+            intent = stripe.PaymentIntent.create(
                 amount=int(float(order_obj.total) * 100),
                 currency='usd',
                 customer=billing_profile.customer_id,
-                source=card_obj.stripe_id,
-                metadata={'order_id': order_obj.order_id}
+                payment_method=card_obj.stripe_id,
+                confirm=True,
+                metadata={'order_id': order_obj.order_id},
+                automatic_payment_methods={
+                    'enabled': True,
+                    'allow_redirects': 'never'
+                },
             )
             new_charge_obj = self.model(
                 billing_profile=billing_profile,
-                stripe_id=c.id,
-                paid=c.paid,
-                refunded=c.refunded,
-                outcome=c.outcome,
-                outcome_type=c.outcome['type'],
-                seller_message=c.outcome.get('seller_message'),
-                risk_level=c.outcome.get('risk_level')
+                stripe_id=intent.id,
+                status=intent.status
             )
             new_charge_obj.save()
-            return new_charge_obj.paid, new_charge_obj.stripe_id
+            return new_charge_obj.status, new_charge_obj.stripe_id
 
         except stripe.error.CardError as e:
             messages.info(self.request, f"{e.error.message}")
@@ -207,12 +207,7 @@ class ChargeManager(models.Manager):
 class Charge(models.Model):
     billing_profile = models.ForeignKey(BillingProfile, on_delete=models.DO_NOTHING)
     stripe_id = models.CharField(max_length=120)
-    paid = models.BooleanField(default=False)
-    refunded = models.BooleanField(default=False)
-    outcome = models.TextField(null=True, blank=True)
-    outcome_type = models.CharField(max_length=120, null=True, blank=True)
-    seller_message = models.CharField(max_length=120, null=True, blank=True)
-    risk_level = models.CharField(max_length=120, null=True, blank=True)
+    status = models.CharField(max_length=20, null=True, blank=True)
 
     objects = ChargeManager()
 

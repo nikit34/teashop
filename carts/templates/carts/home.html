@@ -8,7 +8,7 @@
         <hr/>
     </div>
 </div>
-{% if cart.products.exists %}
+{% if cart.cart_items.exists %}
     <div class="canvas-cart-table">
         <table class="table cart-table">
             <thead>
@@ -21,24 +21,24 @@
                 </tr>
             </thead>
             <tbody class="cart-body">
-                {% for product in cart.products.all %}
+                {% for cart_item in cart.cart_items.all %}
                 <tr class="cart-product">
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>
-                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-                        {% include 'carts/remove-product.html' with product_id=product.id %}
+                        <a href="{{ product.get_absolute_url }}">{{ cart_item.product.title }}</a>
+                        {% include 'carts/remove-product.html' with product_id=cart_item.product.id %}
                     </td>
                     <td>
-                        {{ product.quantity }}&nbsp;{% trans "pcs" %}
+                        {{ cart_item.product.quantity }}&nbsp;{% trans "pcs" %}
                     </td>
                     <td>
                         <div class="input-group text-center">
-                            <button class="input-group-text decrement-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ product.id }}">-</button>
-                            <input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="{{ product.id }}" value="1" min="1">
-                            <button class="input-group-text increment-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ product.id }}">+</button>
+                            <button class="input-group-text decrement-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ cart_item.product.id }}">-</button>
+                            <input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="{{ cart_item.product.id }}" value="1" min="1">
+                            <button class="input-group-text increment-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ cart_item.product.id }}">+</button>
                         </div>
                     </td>
-                    <td>{{ product.price | floatformat:2 }}</td>
+                    <td>{{ cart_item.product.price | floatformat:2 }}</td>
                 </tr>
                 {% endfor %}
                 <tr>
@@ -73,9 +73,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="cart-item-remove-form" style="display: none">
-        {% include 'carts/remove-product.html' %}
     </div>
 {% else %}
     <a href='{% url "home" %}'>
