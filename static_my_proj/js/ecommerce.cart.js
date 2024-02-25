@@ -19,7 +19,7 @@ $(document).ready(function () {
       },
       success: function(data) {
         if (data.removed) {
-          $('.currentQuantity').value = newQuantity;
+          $('.currentQuantity[data-product-id="' + productId + '"]').val(newQuantity);
           console.log('Quantity decrement successfully');
         } else {
           console.log('Failed to update quantity:', data.error);
@@ -50,7 +50,7 @@ $(document).ready(function () {
       },
       success: function(data) {
         if (data.added) {
-          $('.currentQuantity').value = newQuantity;
+          $('.currentQuantity[data-product-id="' + productId + '"]').val(newQuantity);
           console.log('Quantity increment successfully');
         } else {
           console.log('Failed to update quantity:', data.error);
