@@ -1,4 +1,9 @@
+import { localization } from './base.js';
+
+
 $(document).ready(function () {
+  let lang = localization();
+
   $('.form').on('click', '.add-to-cart-btn', function() {
     var thisForm = $(this).closest('form');
     var productIdInput = thisForm.find('input[name="product_id"]');

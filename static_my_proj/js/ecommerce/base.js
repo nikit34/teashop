@@ -208,3 +208,5 @@ function localization(){
   }
   return lang;
 }
+
+export { localization };
