@@ -26,13 +26,16 @@ def cart_detail_api_view(request):
             'id': item.product.id,
             'url': item.product.get_absolute_url(),
             'name': item.product.name,
-            'price': item.product.price
+            'price': item.product.price,
+            'quantity': item.product.quantity,
+            'cartItemQuantity': item.quantity
         } for item in cart_obj.cart_items.all()
     ]
     cart_data = {
         'products': products,
         'subtotal': cart_obj.subtotal,
-        'total': cart_obj.total
+        'total': cart_obj.total,
+        'cartItemsCount': cart_obj.cart_items.count()
     }
     return JsonResponse(cart_data)
 
