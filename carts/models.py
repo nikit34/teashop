@@ -72,7 +72,7 @@ def cart_post_save_receiver(sender, instance, created, **kwargs):
     for item in cart.cart_items.all():
         subtotal += item.product.price * item.quantity
     cart.subtotal = subtotal
-    cart.save(update_fields=['subtotal'])
+    cart.save(update_fields=['subtotal', 'total'])
 
 
 post_save.connect(cart_post_save_receiver, sender=CartItem)
