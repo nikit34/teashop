@@ -115,7 +115,7 @@ $(document).ready(function () {
         var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
         if (data.products.length > 0) {
           productRows.html(" ");
-          i = data.products.length;
+          var i = data.products.length;
           $.each(data.products, function (index, value) {
             var newCartItemRemove = hiddenCartItemRemoveForm.clone();
             newCartItemRemove.css("display", "block");
