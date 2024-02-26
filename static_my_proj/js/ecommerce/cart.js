@@ -1,6 +1,8 @@
 $(document).ready(function () {
+  var subtotalField = $('.cart-subtotal');
+  var totalField = $('.cart-total');
 
-  var decrementBtn = $('.decrement-btn')
+  var decrementBtn = $('.decrement-btn');
   decrementBtn.click(function(event) {
     event.preventDefault();
     var thisBtn = $(this);
@@ -20,6 +22,8 @@ $(document).ready(function () {
       },
       success: function(data) {
         inputField.val(data.currentQuantity);
+        subtotalField.text(data.subtotal);
+        totalField.text(data.total);
       },
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);
@@ -27,7 +31,7 @@ $(document).ready(function () {
     });
   });
 
-  var incrementBtn = $('.increment-btn')
+  var incrementBtn = $('.increment-btn');
   incrementBtn.click(function(event) {
     event.preventDefault();
     var thisBtn = $(this);
@@ -47,6 +51,8 @@ $(document).ready(function () {
       },
       success: function(data) {
         inputField.val(data.currentQuantity);
+        subtotalField.text(data.subtotal);
+        totalField.text(data.total);
       },
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);

@@ -68,6 +68,8 @@ def cart_update(request):
         request.session['cart_items'] = cart_obj.cart_items.count()
         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             json_data = {
+                'total': cart_obj.total,
+                'subtotal': cart_obj.subtotal,
                 'currentQuantity': current_quantity,
                 'cartItemCount': cart_obj.cart_items.count()
             }
