@@ -19,7 +19,7 @@ $(document).ready(function () {
         'new_quantity': newQuantity
       },
       success: function(data) {
-        inputField.val(newQuantity);
+        inputField.val(data.currentQuantity);
       },
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);
@@ -46,7 +46,7 @@ $(document).ready(function () {
         'new_quantity': newQuantity
       },
       success: function(data) {
-        inputField.val(newQuantity);
+        inputField.val(data.currentQuantity);
       },
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);

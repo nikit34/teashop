@@ -55,16 +55,20 @@ def cart_update(request):
 
         cart_obj, new_obj = Cart.objects.new_or_get(request)
 
-        need_quantity = int(new_quantity)
-        if 0 < need_quantity <= product_obj.quantity:
+        current_quantity = int(new_quantity)
+        if 0 < current_quantity <= product_obj.quantity:
             cart_item, created = cart_obj.cart_items.get_or_create(product=product_obj)
-            cart_item.quantity = new_quantity
+            cart_item.quantity = current_quantity
             cart_item.save()
+        elif current_quantity > product_obj.quantity:
+            current_quantity = product_obj.quantity
         else:
+            current_quantity = 0
             cart_obj.cart_items.filter(product=product_obj).delete()
         request.session['cart_items'] = cart_obj.cart_items.count()
         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             json_data = {
+                'currentQuantity': current_quantity,
                 'cartItemCount': cart_obj.cart_items.count()
             }
             return JsonResponse(json_data, status=200)
