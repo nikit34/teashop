@@ -2,7 +2,7 @@ from decimal import Decimal
 
 from django.conf import settings
 from django.db import models
-from django.db.models.signals import pre_save, m2m_changed
+from django.db.models.signals import pre_save, post_save
 
 from products.models import Product
 
@@ -66,17 +66,16 @@ class Cart(models.Model):
         return self.cart_items.filter(product__delivery=True).exists()
 
 
-def m2m_changed_cart_receiver(sender, instance, action, *args, **kwargs):
-    if action in ['post_add', 'post_remove', 'post_clear']:
-        cart = instance.cart
-        total = Decimal(0)
-        for item in cart.cartitem_set.all():
-            total += item.product.price * item.quantity
-        instance.subtotal = total
-        instance.save()
+def cart_post_save_receiver(sender, instance, created, **kwargs):
+    cart = instance.cart
+    subtotal = Decimal(0)
+    for item in cart.cart_items.all():
+        subtotal += item.product.price * item.quantity
+    cart.subtotal = subtotal
+    cart.save(update_fields=['subtotal'])
 
 
-m2m_changed.connect(m2m_changed_cart_receiver, sender=CartItem)
+post_save.connect(cart_post_save_receiver, sender=CartItem)
 
 
 def product_pre_save_receiver(sender, instance, *args, **kwargs):
