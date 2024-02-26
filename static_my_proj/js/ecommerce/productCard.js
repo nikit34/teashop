@@ -102,7 +102,7 @@ $(document).ready(function () {
     var cartTable = $(".cart-table");
     var cartBody = cartTable.find(".cart-body");
     var productRows = cartBody.find(".cart-product");
-    var correntUrl = window.location.href;
+    var currentUrl = window.location.href;
 
     var refreshCartUrl = "/api/cart/";
     var refreshCartMethod = "GET";
@@ -138,7 +138,7 @@ $(document).ready(function () {
           cartBody.find(".cart-subtotal").text(data.subtotal);
           cartBody.find(".cart-total").text(data.total);
         } else {
-          window.location.href = correntUrl;
+          window.location.href = currentUrl;
         }
       },
       error: function (errorData) {
