@@ -1,6 +1,8 @@
+import { localization } from './base.js';
+
+
 $(document).ready(function () {
-  var subtotalField = $('.cart-subtotal');
-  var totalField = $('.cart-total');
+  let lang = localization();
 
   var decrementBtn = $('.decrement-btn');
   decrementBtn.click(function(event) {
@@ -20,11 +22,7 @@ $(document).ready(function () {
         'product_id': productId,
         'new_quantity': newQuantity
       },
-      success: function(data) {
-        inputField.val(data.currentQuantity);
-        subtotalField.text(data.subtotal);
-        totalField.text(data.total);
-      },
+      success: refreshCart(),
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);
       }
@@ -49,13 +47,56 @@ $(document).ready(function () {
         'product_id': productId,
         'new_quantity': newQuantity
       },
-      success: function(data) {
-        inputField.val(data.currentQuantity);
-        subtotalField.text(data.subtotal);
-        totalField.text(data.total);
-      },
+      success: refreshCart(),
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);
+      }
+    });
+  });
+
+  $('.form').on('click', '.remove-btn', function() {
+    var thisForm = $(this).closest('form');
+    var productIdInput = thisForm.find('input[name="product_id"]');
+    var newQuantity = 0;
+
+    $.ajax({
+      url: thisForm.data('endpoint'),
+      type: thisForm.attr('method'),
+      data: {
+        'product_id': productIdInput.val(),
+        'new_quantity': newQuantity
+      },
+      dataType: 'json',
+      success: function(data) {
+        var submitSpan = thisForm.find(".submit-span");
+        var fragment;
+        switch (lang) {
+          case "en":
+            fragment = 'Add to cart';
+            break;
+          case "ru":
+            fragment = 'Добавить в корзину';
+            break;
+          case "pt":
+            fragment = 'Adicionar ao carrinho';
+            break;
+          default:
+            fragment = "<div class='btn-group'>Undefined langueges in js</div>";
+        }
+        submitSpan.html('<button type="button" class="btn btn-success add-to-cart-btn">' + fragment + "</button>");
+        var navbarCount = $(".navbar-cart-count");
+        navbarCount.text(data.cartItemCount);
+        var currentPath = window.location.href;
+        if (currentPath.indexOf("cart") != -1) {
+          refreshCart();
+        }
+      },
+      error: function (errorData) {
+        $.alert({
+          title: "Break!",
+          content: "An error occurred",
+          theme: "modern",
+        });
       }
     });
   });
@@ -75,25 +116,29 @@ $(document).ready(function () {
       data: data,
       success: function (data) {
         var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
-        if (data.products.length > 0) {
+        var productsLength = data.products.length;
+        if (productsLength > 0) {
           productRows.html(" ");
-          var i = data.products.length;
-          $.each(data.products, function (index, value) {
+          var i = productsLength;
+          $.each(data.products, function (index, productItem) {
             var newCartItemRemove = hiddenCartItemRemoveForm.clone();
             newCartItemRemove.css("display", "block");
-            newCartItemRemove.find(".cart-item-product-id").val(value.id);
+            newCartItemRemove.find(".cart-item-product-id").val(productItem.id);
             cartBody.prepend(
-              '<tr><th scope="row">' +
-                i +
-                '</th><td><a href="' +
-                value.url +
-                '">' +
-                value.name +
-                "</a>" +
+              '<th scope="row">' + i + '</th>' +
+              '<td><a href="' + productItem.url + '">' + productItem.title + '</a>' +
                 newCartItemRemove.html() +
-                "</td><td>" +
-                value.price +
-                "</tb></tr>"
+              '</td><td>' +
+                productItem.quantity + '&nbsp;' +
+              '</td><td>' +
+                '<div class="input-group text-center">' +
+                  '<button class="input-group-text decrement-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update" data-product-id="' + productItem.id + '">-</button>' +
+                  '<input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="' + productItem.id + '" value="' + productItem.quantity + '" min="1">' +
+                  '<button class="input-group-text increment-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update" data-product-id="' + productItem.id + '">+</button>' +
+                '</div>' +
+              '</td><td>' +
+                productItem.price +
+              '</tb></tr>'
             );
             i--;
           });
@@ -112,6 +157,4 @@ $(document).ready(function () {
       },
     });
   }
-
-  window.refreshCart = refreshCart;
 });
