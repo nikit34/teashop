@@ -54,7 +54,7 @@ $(document).ready(function () {
     });
   });
 
-  $('.form').on('click', '.remove-btn', function() {
+  $('.cart-body').on('click', '.remove-btn', function() {
     var thisForm = $(this).closest('form');
     var productIdInput = thisForm.find('input[name="product_id"]');
     var newQuantity = 0;
