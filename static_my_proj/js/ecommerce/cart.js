@@ -118,27 +118,29 @@ $(document).ready(function () {
         var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
         var productsLength = data.products.length;
         if (productsLength > 0) {
-          productRows.html(" ");
+          productRows.remove();
           var i = productsLength;
           $.each(data.products, function (index, productItem) {
             var newCartItemRemove = hiddenCartItemRemoveForm.clone();
             newCartItemRemove.css("display", "block");
             newCartItemRemove.find(".cart-item-product-id").val(productItem.id);
             cartBody.prepend(
-              '<th scope="row">' + i + '</th>' +
-              '<td><a href="' + productItem.url + '">' + productItem.title + '</a>' +
-                newCartItemRemove.html() +
-              '</td><td>' +
-                productItem.quantity + '&nbsp;' +
-              '</td><td>' +
-                '<div class="input-group text-center">' +
-                  '<button class="input-group-text decrement-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update" data-product-id="' + productItem.id + '">-</button>' +
-                  '<input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="' + productItem.id + '" value="' + productItem.quantity + '" min="1">' +
-                  '<button class="input-group-text increment-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update" data-product-id="' + productItem.id + '">+</button>' +
-                '</div>' +
-              '</td><td>' +
-                productItem.price +
-              '</tb></tr>'
+              '<tr class="cart-product">' +
+                '<th scope="row">' + i + '</th>' +
+                '<td><a href="' + productItem.url + '">' + productItem.title + '</a>' +
+                  newCartItemRemove.html() +
+                '</td><td>' +
+                  productItem.quantity + '&nbsp;' +
+                '</td><td>' +
+                  '<div class="input-group text-center">' +
+                    '<button class="input-group-text decrement-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update" data-product-id="' + productItem.id + '">-</button>' +
+                    '<input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="' + productItem.id + '" value="' + productItem.quantity + '" min="1">' +
+                    '<button class="input-group-text increment-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update" data-product-id="' + productItem.id + '">+</button>' +
+                  '</div>' +
+                '</td><td>' +
+                  productItem.price +
+                '</tb>' +
+              '</tr>'
             );
             i--;
           });
