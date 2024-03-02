@@ -102,11 +102,6 @@ $(document).ready(function () {
   });
 
   function refreshCart() {
-    var cartTable = $(".cart-table");
-    var cartBody = cartTable.find(".cart-body");
-    var productRows = cartBody.find(".cart-product");
-    var currentUrl = window.location.href;
-
     var refreshCartUrl = "/api/cart/";
     var refreshCartMethod = "GET";
     var data = {};
@@ -115,20 +110,24 @@ $(document).ready(function () {
       method: refreshCartMethod,
       data: data,
       success: function (data) {
+        var cartTable = $(".cart-table");
+        var cartBody = cartTable.find(".cart-body");
+        var productRows = cartBody.find(".cart-product");
+        var currentUrl = window.location.href;
         var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
         var productsLength = data.products.length;
         if (productsLength > 0) {
           productRows.remove();
           var i = productsLength;
           $.each(data.products, function (index, productItem) {
-            var newCartItemRemove = hiddenCartItemRemoveForm.clone();
-            newCartItemRemove.css("display", "block");
-            newCartItemRemove.find(".cart-item-product-id").val(productItem.id);
+            var newCartItem = hiddenCartItemRemoveForm.clone();
+            newCartItem.css("display", "block");
+            newCartItem.find(".cart-item-product-id").val(productItem.id);
             cartBody.prepend(
               '<tr class="cart-product">' +
                 '<th scope="row">' + i + '</th>' +
                 '<td><a href="' + productItem.url + '">' + productItem.title + '</a>' +
-                  newCartItemRemove.html() +
+                  newCartItem.html() +
                 '</td><td>' +
                   productItem.quantity + '&nbsp;' +
                 '</td><td>' +
