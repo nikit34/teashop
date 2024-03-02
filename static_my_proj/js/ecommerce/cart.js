@@ -4,8 +4,8 @@ import { localization } from './base.js';
 $(document).ready(function () {
   let lang = localization();
 
-  var decrementBtn = $('.decrement-btn');
-  decrementBtn.click(function(event) {
+  var cartBody = $('.cart-body');
+  cartBody.on('click', '.decrement-btn', function(event) {
     event.preventDefault();
     var thisBtn = $(this);
     var productId = thisBtn.data('product-id');
@@ -29,8 +29,7 @@ $(document).ready(function () {
     });
   });
 
-  var incrementBtn = $('.increment-btn');
-  incrementBtn.click(function(event) {
+  cartBody.on('click', '.increment-btn', function(event) {
     event.preventDefault();
     var thisBtn = $(this);
     var productId = thisBtn.data('product-id');
@@ -54,7 +53,7 @@ $(document).ready(function () {
     });
   });
 
-  $('.cart-body').on('click', '.remove-btn', function() {
+  cartBody.on('click', '.remove-btn', function() {
     var thisForm = $(this).closest('form');
     var productIdInput = thisForm.find('input[name="product_id"]');
     var newQuantity = 0;
@@ -110,8 +109,6 @@ $(document).ready(function () {
       method: refreshCartMethod,
       data: data,
       success: function (data) {
-        var cartTable = $(".cart-table");
-        var cartBody = cartTable.find(".cart-body");
         var productRows = cartBody.find(".cart-product");
         var currentUrl = window.location.href;
         var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
