@@ -20,24 +20,26 @@ stripe.api_key = STRIPE_SECRET_KEY
 from .paypal import CreateOrder
 
 
-def cart_detail_api_view(request):
-    cart_obj, new_obj = Cart.objects.new_or_get(request)
+def _get_cart_detail(cart_obj):
     products = [{
-            'id': item.product.id,
-            'url': item.product.get_absolute_url(),
-            'title': item.product.title,
-            'price': item.product.price,
-            'quantity': item.product.quantity,
-            'cartItemQuantity': item.quantity
-        } for item in cart_obj.cart_items.all()
-    ]
-    cart_data = {
+        'id': item.product.id,
+        'url': item.product.get_absolute_url(),
+        'title': item.product.title,
+        'price': item.product.price,
+        'quantity': item.product.quantity,
+        'cartItemQuantity': item.quantity
+    } for item in cart_obj.cart_items.all()]
+    return {
         'products': products,
         'subtotal': cart_obj.subtotal,
         'total': cart_obj.total,
         'cartItemsCount': cart_obj.cart_items.count()
     }
-    return JsonResponse(cart_data)
+
+
+def cart_detail_api_view(request):
+    cart_obj, new_obj = Cart.objects.new_or_get(request)
+    return JsonResponse(_get_cart_detail(cart_obj))
 
 
 def cart_home(request):
@@ -65,8 +67,6 @@ def cart_update(request):
         elif int(new_quantity) <= 0:
             cart_obj.cart_items.filter(product=product_obj).delete()
         request.session['cart_items'] = cart_obj.cart_items.count()
-        if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-            return cart_detail_api_view(request)
     return redirect('cart:home')
 
 
