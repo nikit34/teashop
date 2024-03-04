@@ -66,6 +66,7 @@ def cart_update(request):
             cart_item.save()
         elif int(new_quantity) <= 0:
             cart_obj.cart_items.filter(product=product_obj).delete()
+            cart_obj.save()
         request.session['cart_items'] = cart_obj.cart_items.count()
         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             return JsonResponse(_get_cart_detail(cart_obj))
