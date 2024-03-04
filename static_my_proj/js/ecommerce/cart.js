@@ -61,10 +61,12 @@ $(document).ready(function () {
     var thisForm = $(this).closest('form');
     var productIdInput = thisForm.find('input[name="product_id"]');
     var newQuantity = 0;
+    var actionEndpoint = thisForm.data('endpoint');
+    var method = thisForm.attr('method');
 
     $.ajax({
-      url: thisForm.data('endpoint'),
-      type: thisForm.attr('method'),
+      type: method,
+      url: actionEndpoint,
       data: {
         'product_id': productIdInput.val(),
         'new_quantity': newQuantity
