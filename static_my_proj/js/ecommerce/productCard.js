@@ -35,7 +35,7 @@ $(document).ready(function () {
         }
         submitSpan.html("<div class='btn-group'> <a class='btn btn-success' href='/cart/'>" + fragment + "</button></div>");
         var navbarCount = $(".navbar-cart-count");
-        navbarCount.text(data.cartItemCount);
+        navbarCount.text(data.cartItemsCount);
       },
       error: function (errorData) {
         $.alert({

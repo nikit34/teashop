@@ -89,8 +89,6 @@ $(document).ready(function () {
             fragment = "<div class='btn-group'>Undefined langueges in js</div>";
         }
         submitSpan.html('<button type="button" class="btn btn-success add-to-cart-btn">' + fragment + "</button>");
-        var navbarCount = $(".navbar-cart-count");
-        navbarCount.text(data.cartItemCount);
         var currentPath = window.location.href;
         if (currentPath.indexOf("cart") != -1) {
           refreshCart();
@@ -128,6 +126,8 @@ $(document).ready(function () {
   }
 
   function refreshData(data) {
+    var navbarCount = $(".navbar-cart-count");
+    navbarCount.text(data.cartItemsCount);
     var productRows = cartBody.find(".cart-product");
     var currentUrl = window.location.href;
     var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
