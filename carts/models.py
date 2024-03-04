@@ -67,6 +67,18 @@ class Cart(models.Model):
 
 
 def cart_post_save_receiver(sender, instance, created, **kwargs):
+    subtotal = Decimal(0)
+    for item in instance.cart_items.all():
+        subtotal += item.product.price * item.quantity
+    if instance.subtotal != subtotal:
+        instance.subtotal = subtotal
+        instance.save(update_fields=['subtotal', 'total'])
+
+
+post_save.connect(cart_post_save_receiver, sender=Cart)
+
+
+def cart_item_post_save_receiver(sender, instance, created, **kwargs):
     cart = instance.cart
     subtotal = Decimal(0)
     for item in cart.cart_items.all():
@@ -75,14 +87,14 @@ def cart_post_save_receiver(sender, instance, created, **kwargs):
     cart.save(update_fields=['subtotal', 'total'])
 
 
-post_save.connect(cart_post_save_receiver, sender=CartItem)
+post_save.connect(cart_item_post_save_receiver, sender=CartItem)
 
 
-def product_pre_save_receiver(sender, instance, *args, **kwargs):
+def cart_pre_save_receiver(sender, instance, *args, **kwargs):
     if instance.subtotal > 0:
         instance.total = instance.subtotal  # here can change final cost
     else:
         instance.total = Decimal(0.00)
 
 
-pre_save.connect(product_pre_save_receiver, sender=Cart)
+pre_save.connect(cart_pre_save_receiver, sender=Cart)
