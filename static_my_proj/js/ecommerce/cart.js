@@ -73,26 +73,7 @@ $(document).ready(function () {
       },
       dataType: 'json',
       success: function(data) {
-        var submitSpan = thisForm.find(".submit-span");
-        var fragment;
-        switch (lang) {
-          case "en":
-            fragment = 'Add to cart';
-            break;
-          case "ru":
-            fragment = 'Добавить в корзину';
-            break;
-          case "pt":
-            fragment = 'Adicionar ao carrinho';
-            break;
-          default:
-            fragment = "<div class='btn-group'>Undefined langueges in js</div>";
-        }
-        submitSpan.html('<button type="button" class="btn btn-success add-to-cart-btn">' + fragment + "</button>");
-        var currentPath = window.location.href;
-        if (currentPath.indexOf("cart") != -1) {
-          refreshCart();
-        }
+        refreshData(data);
       },
       error: function (errorData) {
         $.alert({
