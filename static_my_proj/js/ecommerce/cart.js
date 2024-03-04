@@ -22,7 +22,9 @@ $(document).ready(function () {
         'product_id': productId,
         'new_quantity': newQuantity
       },
-      success: refreshCart(),
+      success: function(data) {
+        refreshData(data);
+      },
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);
       }
@@ -46,7 +48,9 @@ $(document).ready(function () {
         'product_id': productId,
         'new_quantity': newQuantity
       },
-      success: refreshCart(),
+      success: function(data) {
+        refreshData(data);
+      },
       error: function(xhr, errmsg, err) {
         console.log(xhr.status + ': ' + xhr.responseText);
       }
@@ -108,43 +112,8 @@ $(document).ready(function () {
       url: refreshCartUrl,
       method: refreshCartMethod,
       data: data,
-      success: function (data) {
-        var productRows = cartBody.find(".cart-product");
-        var currentUrl = window.location.href;
-        var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
-        var productsLength = data.products.length;
-        if (productsLength > 0) {
-          productRows.remove();
-          var i = productsLength;
-          $.each(data.products, function (index, productItem) {
-            var newCartItem = hiddenCartItemRemoveForm.clone();
-            newCartItem.css("display", "block");
-            newCartItem.find(".cart-item-product-id").val(productItem.id);
-            cartBody.prepend(
-              '<tr class="cart-product">' +
-                '<th scope="row">' + i + '</th>' +
-                '<td><a href="' + productItem.url + '">' + productItem.title + '</a>' +
-                  newCartItem.html() +
-                '</td><td>' +
-                  productItem.quantity + '&nbsp;' +
-                '</td><td>' +
-                  '<div class="input-group text-center">' +
-                    '<button class="input-group-text decrement-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update/" data-product-id="' + productItem.id + '">-</button>' +
-                    '<input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="' + productItem.id + '" value="' + productItem.cartItemQuantity + '" min="1">' +
-                    '<button class="input-group-text increment-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update/" data-product-id="' + productItem.id + '">+</button>' +
-                  '</div>' +
-                '</td><td>' +
-                  productItem.price +
-                '</tb>' +
-              '</tr>'
-            );
-            i--;
-          });
-          cartBody.find(".cart-subtotal").text(data.subtotal);
-          cartBody.find(".cart-total").text(data.total);
-        } else {
-          window.location.href = currentUrl;
-        }
+      success: function(data) {
+        refreshData(data);
       },
       error: function (errorData) {
         $.alert({
@@ -154,5 +123,44 @@ $(document).ready(function () {
         });
       },
     });
+  }
+
+  function refreshData(data) {
+    var productRows = cartBody.find(".cart-product");
+    var currentUrl = window.location.href;
+    var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
+    var productsLength = data.products.length;
+    if (productsLength > 0) {
+      productRows.remove();
+      var i = productsLength;
+      $.each(data.products, function (index, productItem) {
+        var newCartItem = hiddenCartItemRemoveForm.clone();
+        newCartItem.css("display", "block");
+        newCartItem.find(".cart-item-product-id").val(productItem.id);
+        cartBody.prepend(
+          '<tr class="cart-product">' +
+            '<th scope="row">' + i + '</th>' +
+            '<td><a href="' + productItem.url + '">' + productItem.title + '</a>' +
+              newCartItem.html() +
+            '</td><td>' +
+              productItem.quantity + '&nbsp;' +
+            '</td><td>' +
+              '<div class="input-group text-center">' +
+                '<button class="input-group-text decrement-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update/" data-product-id="' + productItem.id + '">-</button>' +
+                '<input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="' + productItem.id + '" value="' + productItem.cartItemQuantity + '" min="1">' +
+                '<button class="input-group-text increment-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update/" data-product-id="' + productItem.id + '">+</button>' +
+              '</div>' +
+            '</td><td>' +
+              productItem.price +
+            '</tb>' +
+          '</tr>'
+        );
+        i--;
+      });
+      cartBody.find(".cart-subtotal").text(data.subtotal);
+      cartBody.find(".cart-total").text(data.total);
+    } else {
+      window.location.href = currentUrl;
+    }
   }
 });
