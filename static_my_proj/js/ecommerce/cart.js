@@ -135,7 +135,7 @@ $(document).ready(function () {
                 '<button class="input-group-text increment-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update/" data-product-id="' + productItem.id + '">+</button>' +
               '</div>' +
             '</td><td>' +
-              productItem.price +
+              productItem.price * productItem.cartItemQuantity +
             '</tb>' +
           '</tr>'
         );
