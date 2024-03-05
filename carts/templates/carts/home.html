@@ -34,7 +34,7 @@
                     <td>
                         <div class="input-group text-center">
                             <button class="input-group-text decrement-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ cart_item.product.id }}">-</button>
-                            <input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="{{ cart_item.product.id }}" value="1" min="1">
+                            <input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="{{ cart_item.product.id }}" value="{{ cart_item.quantity }}" min="1">
                             <button class="input-group-text increment-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ cart_item.product.id }}">+</button>
                         </div>
                     </td>
