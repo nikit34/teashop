@@ -23,7 +23,7 @@
                   {{ object.price }} &#36;
                 </h2>
                 <div class="col align-middle">
-                  {% include 'products/update-cart.html' with product=object cart=cart %}
+                  {% include 'products/update-cart.html' with product=object in_cart=in_cart %}
                 </div>
             </div>
         </div>

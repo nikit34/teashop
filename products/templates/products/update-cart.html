@@ -4,7 +4,7 @@
     <input type="hidden" name="product_id" value="{{ product.id }}" {% if product.delivery %} data-is-delivery='true'{% endif %} />
 
     <span class="submit-span">
-        {% if cart_item in cart.cart_items.all %}
+        {% if in_cart %}
             <div class='btn-group'>
                 <a class='btn btn-success' href='/cart/'>{% trans "In cart" %}</a>
                 <button type="button" class="btn btn-outline-danger remove-btn">{% trans "Remove" %}?</button>

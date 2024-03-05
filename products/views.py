@@ -22,6 +22,14 @@ class UserProductHistoryView(LoginRequiredMixin, ListView):
         context = super(UserProductHistoryView, self).get_context_data(*args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
         context['cart'] = cart_obj
+        in_cart_list = []
+        for product in context['object_list']:
+            in_cart_list.append(False)
+            for cart_item in cart_obj.cart_items.all():
+                if product == cart_item.product:
+                    in_cart_list[len(in_cart_list) - 1] = True
+                    break
+        context['object_list'] = zip(context['object_list'], in_cart_list)
         return context
 
     def get_queryset(self, *args, **kwargs):
@@ -37,6 +45,14 @@ class ProductListView(ListView):
         context = super(ProductListView, self).get_context_data(*args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
         context['cart'] = cart_obj
+        in_cart_list = []
+        for product in context['object_list']:
+            in_cart_list.append(False)
+            for cart_item in cart_obj.cart_items.all():
+                if product == cart_item.product:
+                    in_cart_list[len(in_cart_list) - 1] = True
+                    break
+        context['object_list'] = zip(context['object_list'], in_cart_list)
         return context
 
     def get_queryset(self, *args, **kwargs):
@@ -74,6 +90,11 @@ class ProductDetailSlugView(ObjectViewedMixin, DetailView):
             instance.save()
             context['views'] = instance.views
             context['comments'] = instance.comments.filter(active=True)
+            context['in_cart'] = False
+            for cart_item in cart_obj.cart_items.all():
+                if instance == cart_item.product:
+                    context['in_cart'] = True
+                    break
         except Comment.DoesNotExist:
             raise Http404('Not found..')
         except:

@@ -24,7 +24,7 @@
                         <a href="{{ instance.get_absolute_url }}" class="btn btn-danger">{% trans "View" %}</a>
                     </div>
                     <div class="col-lg-6">
-                        {% include 'products/update-cart.html' with product=instance cart=cart %}
+                        {% include 'products/update-cart.html' with product=instance in_cart=in_cart %}
                     </div>
                 </div>
             </div>
