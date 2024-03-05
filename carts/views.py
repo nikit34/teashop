@@ -69,7 +69,8 @@ def cart_update(request):
             cart_obj.save()
         request.session['cart_items'] = cart_obj.cart_items.count()
         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-            return JsonResponse(_get_cart_detail(cart_obj))
+            data_cart_detail = _get_cart_detail(cart_obj)
+            return JsonResponse(data_cart_detail)
     return redirect('cart:home')
 
 

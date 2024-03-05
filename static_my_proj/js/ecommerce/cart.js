@@ -113,10 +113,11 @@ $(document).ready(function () {
     var currentUrl = window.location.href;
     var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
     var productsLength = data.products.length;
+    var products = data.products.reverse();
     if (productsLength > 0) {
       productRows.remove();
       var i = productsLength;
-      $.each(data.products, function (index, productItem) {
+      $.each(products, function (index, productItem) {
         var newCartItem = hiddenCartItemRemoveForm.clone();
         newCartItem.css("display", "block");
         newCartItem.find(".cart-item-product-id").val(productItem.id);
