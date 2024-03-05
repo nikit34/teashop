@@ -12,14 +12,11 @@ class SearchProductView(ListView):
         query = self.request.GET.get('q')
         context['query'] = query
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
-        in_cart_list = []
         for product in context['object_list']:
-            in_cart_list.append(False)
             for cart_item in cart_obj.cart_items.all():
                 if product == cart_item.product:
-                    in_cart_list[len(in_cart_list) - 1] = True
+                    product.in_cart = True
                     break
-        context['object_list'] = zip(context['object_list'], in_cart_list)
         return context
 
     def get_queryset(self, *args, **kwargs):

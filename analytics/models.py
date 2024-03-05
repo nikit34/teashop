@@ -16,6 +16,8 @@ FORCE_INACTIVE_USER_ENDSESSION = getattr(settings, 'FORCE_INACTIVE_USER_ENDSESSI
 
 
 class ObjectViewedQuerySet(models.query.QuerySet):
+    in_cart = models.BooleanField(default=False)
+
     def by_model(self, model_class, model_queryset=False):
         c_type = ContentType.objects.get_for_model(model_class)
         qs = self.filter(content_type=c_type)

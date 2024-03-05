@@ -25,6 +25,8 @@ def upload_image_path(instance, filename):
 
 
 class ProductQuerySet(models.query.QuerySet):
+    in_cart = models.BooleanField(default=False)
+
     def active(self):
         return self.filter(active=True)
 
