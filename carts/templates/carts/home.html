@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load custom_filters %}
 {% block content %}
 
 <div class='row'>
@@ -38,7 +39,7 @@
                             <button class="input-group-text increment-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ cart_item.product.id }}">+</button>
                         </div>
                     </td>
-                    <td>{{ cart_item.product.price | floatformat:2 }}</td>
+                    <td>{{ cart_item.product.price|multiply:cart_item.quantity | floatformat:2 }}</td>
                 </tr>
                 {% endfor %}
                 <tr>
