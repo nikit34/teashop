@@ -25,6 +25,8 @@ def upload_image_path(instance, filename):
 
 
 class ProductQuerySet(models.query.QuerySet):
+    in_cart = models.BooleanField(default=False)
+
     def active(self):
         return self.filter(active=True)
 
@@ -66,7 +68,8 @@ class Product(models.Model):
     active = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     delivery = models.BooleanField(default=True)
-    views = models.IntegerField(default=0)
+    views = models.PositiveIntegerField(default=0)
+    quantity = models.PositiveIntegerField(default=1)
 
     objects = ProductManager()
 

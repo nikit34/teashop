@@ -9,14 +9,18 @@
     crossorigin="anonymous"></script>
 <!-- jquery confirm JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-<!-- eCommerce Sales Data JS -->
-<script src='{% static "js/ecommerce.sales.js" %}'></script>
-<!-- ecommerce custom JS -->
-<script src="{% static 'js/ecommerce.js' %}"></script>
-<!-- ecommerce main JS -->
-<script src="{% static 'js/ecommerce.main.js' %}"></script>
-<!-- csrf security AJAX JS -->
+
+<!-- custom scripts -->
+<script src='{% static "js/ecommerce/sales.js" %}'></script>
+<script type="module" src='{% static "js/ecommerce/contact.js" %}'></script>
+<script type="module" src="{% static 'js/ecommerce/search.js' %}"></script>
+<script type="module" src="{% static 'js/ecommerce/base.js' %}"></script>
+<script type="module" src="{% static 'js/ecommerce/cart.js' %}"></script>
+<script type="module" src="{% static 'js/ecommerce/productCard.js' %}"></script>
+<script src="{% static 'js/ecommerce/productDetails.js' %}"></script>
+<script src="{% static 'js/ecommerce/main.js' %}"></script>
 <script src="{% static 'js/csrf.ajax.js' %}"></script>
+
 <!-- stripe JS -->
 <script src="https://js.stripe.com/v3/"></script>
 <!-- JS render -->

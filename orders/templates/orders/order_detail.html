@@ -16,7 +16,7 @@
                 <h4>{% trans "Items" %}:</h4>
             </div>
             <div class="col">
-                <h4>{% for product in object.cart.products.all %}{{ product }}{% if not forloop.last %}, {% endif %}{% endfor %}</h4>
+                <h4>{% for cart_item in object.cart.cart_items.all %}{{ cart_item.product }}{% if not forloop.last %}, {% endif %}{% endfor %}</h4>
             </div>
         </div>
         <hr>

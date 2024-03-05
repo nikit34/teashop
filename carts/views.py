@@ -20,21 +20,26 @@ stripe.api_key = STRIPE_SECRET_KEY
 from .paypal import CreateOrder
 
 
-def cart_detail_api_view(request):
-    cart_obj, new_obj = Cart.objects.new_or_get(request)
+def _get_cart_detail(cart_obj):
     products = [{
-            'id': x.id,
-            'url': x.get_absolute_url(),
-            'name': x.name,
-            'price': x.price
-        } for x in cart_obj.products.all()
-    ]
-    cart_data = {
+        'id': item.product.id,
+        'url': item.product.get_absolute_url(),
+        'title': item.product.title,
+        'price': item.product.price,
+        'quantity': item.product.quantity,
+        'cartItemQuantity': item.quantity
+    } for item in cart_obj.cart_items.all()]
+    return {
         'products': products,
         'subtotal': cart_obj.subtotal,
-        'total': cart_obj.total
+        'total': cart_obj.total,
+        'cartItemsCount': cart_obj.cart_items.count()
     }
-    return JsonResponse(cart_data)
+
+
+def cart_detail_api_view(request):
+    cart_obj, new_obj = Cart.objects.new_or_get(request)
+    return JsonResponse(_get_cart_detail(cart_obj))
 
 
 def cart_home(request):
@@ -44,35 +49,34 @@ def cart_home(request):
 
 def cart_update(request):
     product_id = request.POST.get('product_id')
+    new_quantity = request.POST.get('new_quantity')
 
-    if product_id is not None:
+    if product_id is not None and new_quantity is not None:
         try:
             product_obj = Product.objects.get(id=product_id)
         except Product.DoesNotExist:
             print('Show message to user, product is gone?')
             return redirect('cart:home')
+
         cart_obj, new_obj = Cart.objects.new_or_get(request)
 
-        if product_obj in cart_obj.products.all():
-            cart_obj.products.remove(product_obj)
-            added = False
-        else:
-            cart_obj.products.add(product_obj)
-            added = True
-        request.session['cart_items'] = cart_obj.products.count()
+        if 0 < int(new_quantity) <= product_obj.quantity:
+            cart_item, created = cart_obj.cart_items.get_or_create(product=product_obj)
+            cart_item.quantity = int(new_quantity)
+            cart_item.save()
+        elif int(new_quantity) <= 0:
+            cart_obj.cart_items.filter(product=product_obj).delete()
+            cart_obj.save()
+        request.session['cart_items'] = cart_obj.cart_items.count()
         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-            json_data = {
-                'added': added,
-                'removed': not added,
-                'cartItemCount': cart_obj.products.count()
-            }
-            return JsonResponse(json_data, status=200)
+            data_cart_detail = _get_cart_detail(cart_obj)
+            return JsonResponse(data_cart_detail)
     return redirect('cart:home')
 
 
 def checkout_home(request):
     cart_obj, cart_created = Cart.objects.new_or_get(request)
-    if cart_created or cart_obj.products.count() == 0:
+    if cart_created or cart_obj.cart_items.count() == 0:
         return redirect('cart:home')
 
     login_form = LoginForm(request=request)
@@ -100,7 +104,7 @@ def checkout_home(request):
         is_prepared = order_obj.check_done()
         if is_prepared:
             did_charge, orderID = billing_profile.charge('S', order_obj)
-            if did_charge:
+            if did_charge == 'succeeded':
                 order_obj.mark_paid()  # sort signal
                 request.session['cart_items'] = 0
                 del request.session['cart_id']
@@ -126,7 +130,7 @@ def checkout_home(request):
 
 def paypal_checkout_home(request):
     cart_obj, cart_created = Cart.objects.new_or_get(request)
-    if cart_created or cart_obj.products.count() == 0:
+    if cart_created or cart_obj.cart_items.count() == 0:
         return redirect('cart:home')
 
     login_form = LoginForm(request=request)

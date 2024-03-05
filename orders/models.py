@@ -67,9 +67,9 @@ class OrderManagerQuerySet(models.query.QuerySet):
 
     def cart_data(self):
         return self.aggregate(
-            Sum("cart__products__price"),
-            Avg("cart__products__price"),
-            Count("cart__products")
+            Sum("cart__cart_items__product__price"),
+            Avg("cart__cart_items__product__price"),
+            Count("cart__cart_items")
         )
 
     def by_status(self, status="shipped"):
@@ -147,32 +147,26 @@ class Order(models.Model):
     def check_done(self):
         address_required = self.cart.delivery
         address = self.address
-        done = False
-        if address_required and address:
-            done = True
-        elif address_required and not address:
+        done = True
+        if address_required and not address:
             done = False
-        else:
-            done = True
         billing_profile = self.billing_profile
-        address = self.address
-        total = self.total
+        total = int(self.total)
         if billing_profile and done and address and total > 0:
             return True
         return False
 
     def update_purchases(self):
-        for p in self.cart.products.all():
+        for cart_item in self.cart.cart_items.all():
             obj, created = ProductPurchase.objects.get_or_create(
                 order_id=self.order_id,
-                product=p,
+                product=cart_item.product,
                 billing_profile=self.billing_profile
             )
         return ProductPurchase.objects.filter(order_id=self.order_id).count()
 
-
     def mark_paid(self):
-        if self.status != 'paid':
+        if self.status != 'succeeded':
             if self.check_done():
                 self.status = 'paid'
                 self.save()

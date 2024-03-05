@@ -2,27 +2,34 @@ from decimal import Decimal
 
 from django.conf import settings
 from django.db import models
-from django.db.models.signals import pre_save, m2m_changed
+from django.db.models.signals import pre_save, post_save
 
 from products.models import Product
 
 User = settings.AUTH_USER_MODEL
 
+
 class CartManager(models.Manager):
     def new_or_get(self, request):
-        cart_id = request.session.get('cart_id', None)
-        qs = self.get_queryset().filter(id=cart_id)
+        cart_id = request.session.get('cart_id')
+        user = request.user
+        new_obj = False
 
-        if qs.count() == 1:
-            new_obj = False
-            cart_obj = qs.first()
-            if request.user.is_authenticated and cart_obj.user is None:
-                cart_obj.user = request.user
-                cart_obj.save()
+        if cart_id is not None:
+            cart_obj = self.get_queryset().filter(id=cart_id).first()
+            if cart_obj:
+                if user.is_authenticated and cart_obj.user is None:
+                    cart_obj.user = user
+                    cart_obj.save()
+            else:
+                cart_obj = self.new(user=user)
+                new_obj = True
+                request.session['cart_id'] = cart_obj.id
         else:
-            cart_obj = Cart.objects.new(user=request.user)
+            cart_obj = self.new(user=user)
             new_obj = True
             request.session['cart_id'] = cart_obj.id
+
         return cart_obj, new_obj
 
     def new(self, user=None):
@@ -33,9 +40,17 @@ class CartManager(models.Manager):
         return self.model.objects.create(user=user_obj)
 
 
+class CartItem(models.Model):
+    cart = models.ForeignKey('Cart', related_name='cart_items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.product.title} - {self.quantity}"
+
+
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
-    products = models.ManyToManyField(Product, blank=True)
     subtotal = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     updated = models.DateTimeField(auto_now=True)
@@ -48,31 +63,38 @@ class Cart(models.Model):
 
     @property
     def delivery(self):
-        qs = self.products.all()
-        new_qs = qs.filter(delivery=True)
-        if new_qs.exists():
-            return True
-        return False
+        return self.cart_items.filter(product__delivery=True).exists()
 
 
-def m2m_changed_cart_receiver(sender, instance, action, *args, **kwargs):
-    if action == 'post_add' or action == 'post_remove' or action == 'post_clear':
-        products = instance.products.all()
-        total = 0
-        for x in products:
-            total += x.price
-        if instance.subtotal != total:
-            instance.subtotal = total
-            instance.save()
+def cart_post_save_receiver(sender, instance, created, **kwargs):
+    subtotal = Decimal(0)
+    for item in instance.cart_items.all():
+        subtotal += item.product.price * item.quantity
+    if instance.subtotal != subtotal:
+        instance.subtotal = subtotal
+        instance.save(update_fields=['subtotal', 'total'])
 
 
-m2m_changed.connect(m2m_changed_cart_receiver, sender=Cart.products.through)
+post_save.connect(cart_post_save_receiver, sender=Cart)
 
 
-def product_pre_save_receiver(sender, instance, *args, **kwargs):
+def cart_item_post_save_receiver(sender, instance, created, **kwargs):
+    cart = instance.cart
+    subtotal = Decimal(0)
+    for item in cart.cart_items.all():
+        subtotal += item.product.price * item.quantity
+    cart.subtotal = subtotal
+    cart.save(update_fields=['subtotal', 'total'])
+
+
+post_save.connect(cart_item_post_save_receiver, sender=CartItem)
+
+
+def cart_pre_save_receiver(sender, instance, *args, **kwargs):
     if instance.subtotal > 0:
-        instance.total = Decimal(instance.subtotal)  # here can change final cost
+        instance.total = instance.subtotal  # here can change final cost
     else:
-        instance.total = 0.00
+        instance.total = Decimal(0.00)
 
-pre_save.connect(product_pre_save_receiver, sender=Cart)
+
+pre_save.connect(cart_pre_save_receiver, sender=Cart)

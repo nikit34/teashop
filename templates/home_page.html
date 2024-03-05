@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
         {% for obj in object_list %}
             <div class="col-11 col-sm-8 col-lg-10 col-xl-8">
-                {% include 'products/card.html' with instance=obj complet="1" %}
+                {% include 'products/card.html' with instance=obj complet="1" in_cart=obj.in_cart %}
                 <br>
             </div>
         {% endfor %}

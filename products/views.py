@@ -22,6 +22,11 @@ class UserProductHistoryView(LoginRequiredMixin, ListView):
         context = super(UserProductHistoryView, self).get_context_data(*args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
         context['cart'] = cart_obj
+        for product in context['object_list']:
+            for cart_item in cart_obj.cart_items.all():
+                if product == cart_item.product:
+                    product.in_cart = True
+                    break
         return context
 
     def get_queryset(self, *args, **kwargs):
@@ -37,10 +42,14 @@ class ProductListView(ListView):
         context = super(ProductListView, self).get_context_data(*args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
         context['cart'] = cart_obj
+        for product in context['object_list']:
+            for cart_item in cart_obj.cart_items.all():
+                if product == cart_item.product:
+                    product.in_cart = True
+                    break
         return context
 
     def get_queryset(self, *args, **kwargs):
-        request = self.request
         return Product.objects.all()
 
 
@@ -49,13 +58,11 @@ class ProductDetailSlugView(ObjectViewedMixin, DetailView):
     template_name = 'products/detail.html'
 
     def post(self, request, *args, **kwargs):
-        slug = self.kwargs.get('slug')
-        self.object = self.get_object()
+        object = self.get_object()
         comment_form = CommentForm(data=request.POST)
-        new_comment = None
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
-            new_comment.listing = self.object
+            new_comment.listing = object
             new_comment.sender = request.user
             new_comment.save()
             context = super(ProductDetailSlugView, self).get_context_data(*args, **kwargs)
@@ -73,10 +80,15 @@ class ProductDetailSlugView(ObjectViewedMixin, DetailView):
         context['comment_form'] = CommentForm()
         try:
             instance = Product.objects.get(slug=slug, active=True)
-            context['comments'] = instance.comments.filter(active=True)
             instance.views = instance.views + 1
-            context['views'] = instance.views
             instance.save()
+            context['views'] = instance.views
+            context['comments'] = instance.comments.filter(active=True)
+            context['in_cart'] = False
+            for cart_item in cart_obj.cart_items.all():
+                if instance == cart_item.product:
+                    context['in_cart'] = True
+                    break
         except Comment.DoesNotExist:
             raise Http404('Not found..')
         except:
@@ -84,7 +96,6 @@ class ProductDetailSlugView(ObjectViewedMixin, DetailView):
         return context
 
     def get_object(self, *args, **kwargs):
-        request = self.request
         slug = self.kwargs.get('slug')
         try:
             instance = Product.objects.get(slug=slug, active=True)
@@ -102,7 +113,6 @@ class ProductFeaturedListView(ListView):
     template_name = 'products/list.html'
 
     def get_queryset(self, *args, **kwargs):
-        request = self.request
         return Product.objects.all().featured()
 
 
