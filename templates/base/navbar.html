@@ -44,43 +44,21 @@
           <li class="nav-item {% if request.path == account_url %}active{% endif %}">
             <a class="nav-link" href="{{ account_url }}">{% trans "Account" %}</a>
           </li>
-          <li class="nav-item right-group dropdown">
-          {% if user %}
-            {% if user.admin %}
-              <a class="nav-link dropdown-toggle" href="#" style="color:red;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {% else %}
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {% if user.staff %}
-                <i class="fa fa-star mr-4 ml-2 my-0" style="color:rgba(255, 0, 0, 0.75); margin-top:12px; margin-left:50px;"></i>
-              {% endif %}
-            {% endif %}
-            {{ user }}
-            </a>
-          {% else %}
-            Account
-          {% endif %}
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           {% if user.admin %}
-            <a class="dropdown-item " href="{{ admin }}">{% trans "Admin" %}</a>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ admin }}">{% trans "Admin" %}</a>
+            </li>
           {% endif %}
-          {% if user.is_staff %}
-            <a class="dropdown-item {% if request.path == analyze %}active{% endif %}" href="{{ analyze }}">{% trans "Statistics" %}</a>
-          {% endif %}
-          <a class="dropdown-item {% if request.path == contact_url %}active{% endif %}" href="{{ contact_url }}">{% trans "Contact" %}</a>
-          <a class="dropdown-item {% if request.path ==  collection %}active{% endif %}" href="{{ collection }}">{% trans "Collection" %}</a>
-          <a class="dropdown-item {% if request.path ==  billing_payment %}active{% endif %}" href="{{ billing_payment }}">{% trans "Payment" %}</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{{ logout_url }}">{% trans "Logout" %}</a>
-        </div>
-      </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="{{ logout_url }}">{% trans "Logout" %}</a>
+          </li>
         {% else %}
-        <li class="nav-item {% if request.path == register_url %}active{% endif %}">
-          <a class="nav-link" href="{{ register_url }}">{% trans "Register" %}</a>
-        </li>
-        <li class="nav-item {% if request.path == login_url %}active{% endif %}">
-          <a class="nav-link" href="{{ login_url }}">{% trans "Login" %}</a>
-        </li>
+          <li class="nav-item {% if request.path == register_url %}active{% endif %}">
+            <a class="nav-link" href="{{ register_url }}">{% trans "Register" %}</a>
+          </li>
+          <li class="nav-item {% if request.path == login_url %}active{% endif %}">
+            <a class="nav-link" href="{{ login_url }}">{% trans "Login" %}</a>
+          </li>
         {% endif %}
       </ul>
       {% include 'search/search-form.html' %}

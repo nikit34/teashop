@@ -3,14 +3,8 @@
 {% load custom_filters %}
 {% block content %}
 
-<div class='row'>
-    <div class='col'>
-         <h1>{% trans "Cart" %}</h1>
-        <hr/>
-    </div>
-</div>
 {% if cart.cart_items.exists %}
-    <div class="canvas-cart-table">
+    <div class="cart-container canvas-cart-table">
         <table class="table cart-table">
             <thead>
                 <tr>
@@ -79,11 +73,13 @@
         {% include 'carts/remove-product.html' %}
     </div>
 {% else %}
-    <a href='{% url "home" %}'>
-        <div class="bank-canvas-cell-small-2">
-            <h1>{% trans "Is empty" %}</h1>
-        </div>
-    </a>
+    <div class="cart-container">
+        <a href='{% url "home" %}'>
+            <div class="bank-canvas-cell-small-2">
+                <h1>{% trans "Is empty" %}</h1>
+            </div>
+        </a>
+    </div>
 {% endif %}
 
 {% endblock %}

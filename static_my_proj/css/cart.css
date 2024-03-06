@@ -1,3 +1,41 @@
 .currentQuantity {
   max-width: 60px;
 }
+
+.cart-container {
+    margin-top: 5%;
+    padding: 5px 25px 5px 25px;
+    display: inline-block;
+    width: 100%;
+}
+.canvas-cart-table {
+    border: 1px solid green;
+    background-color: white;
+    border-radius: 15px;
+}
+.canvas-cart-table h1 {
+    text-align: center;
+    margin: 30px 0 30px 0;
+}
+table.cart-table td, table.cart-table th {
+    background: white;
+    border: none;
+    font-weight: normal;
+    font-size: x-large;
+}
+table.cart-table td a {
+  text-decoration-color: #00ff0080;
+}
+table.cart-table td a:hover {
+  text-decoration-color: #00ff0010;
+}
+table.cart-table td button{
+  transition: color 0.5s;
+}
+table.cart-table td button:hover {
+  text-decoration: none;
+  color:red;
+}
+table.cart-table a {
+    width: 50%;
+}
