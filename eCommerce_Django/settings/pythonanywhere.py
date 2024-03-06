@@ -137,7 +137,7 @@ SESSION_COOKIE_SAMESITE = 'Lax'
 
 LOCALE_PATHS = [ os.path.join(BASE_DIR, 'locale'), ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 # LANGUAGE_CODE = 'ru'
 
 LANGUAGES = [('en', 'English'), ('ru', 'Russian'), ('pt', 'Portugal'), ]
