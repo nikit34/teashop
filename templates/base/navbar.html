@@ -35,10 +35,10 @@
         {% if user.is_authenticated %}
           <li class="nav-item {% if request.path == cart_url %}active{% endif %}">
             <a class="nav-link" href="{{ cart_url }}">
-              {% trans "Cart" %}
-              <span class="navbar-cart-count">
-                {{ request.session.cart_items }}
-              </span>
+              <div class="navbar-cart-btn">
+                <span class="navbar-cart-text">{% trans "Cart" %}</span>
+                <span class="navbar-item-count">{{ request.session.cart_items }}</span>
+              </div>
             </a>
           </li>
           <li class="nav-item {% if request.path == account_url %}active{% endif %}">
