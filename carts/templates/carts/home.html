@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load custom_filters %}
+{% load static %}
 {% block content %}
 
 {% if cart.cart_items.exists %}
@@ -75,9 +76,7 @@
 {% else %}
     <div class="cart-container">
         <a href='{% url "home" %}'>
-            <div class="bank-canvas-cell-small-2">
-                <h1>{% trans "Is empty" %}</h1>
-            </div>
+            <img class="cart-empty-img" src="{% static 'img/empty_cart.png' %}" alt="Empty Cart">
         </a>
     </div>
 {% endif %}
