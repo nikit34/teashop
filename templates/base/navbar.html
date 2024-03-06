@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse mx-4" id="navbarSupportedContent">
       <ul class="navbar-nav col-md-10">
         <li class="nav-item {% if request.path == home_url %}active{% endif %}">
-          <a class="nav-link" href="{{ home_url }}">{% trans "Home" %} <i class="fa fa-home" aria-hidden="true"></i></a>
+          <a class="nav-link" href="{{ home_url }}">{% trans "Home" %}</a>
         </li>
         {% if user.is_authenticated %}
           <li class="nav-item {% if request.path == cart_url %}active{% endif %}">
@@ -39,11 +39,10 @@
               <span class="navbar-cart-count">
                 {{ request.session.cart_items }}
               </span>
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             </a>
           </li>
           <li class="nav-item {% if request.path == account_url %}active{% endif %}">
-            <a class="nav-link" href="{{ account_url }}">{% trans "Account" %} <i class="fa fa-id-card" aria-hidden="true"></i></a>
+            <a class="nav-link" href="{{ account_url }}">{% trans "Account" %}</a>
           </li>
           <li class="nav-item right-group dropdown">
           {% if user %}
@@ -77,10 +76,10 @@
 
         {% else %}
         <li class="nav-item {% if request.path == register_url %}active{% endif %}">
-          <a class="nav-link" href="{{ register_url }}">{% trans "Register" %} <i class="fa fa-key" aria-hidden="true"></i></a>
+          <a class="nav-link" href="{{ register_url }}">{% trans "Register" %}</a>
         </li>
         <li class="nav-item {% if request.path == login_url %}active{% endif %}">
-          <a class="nav-link" href="{{ login_url }}">{% trans "Login" %} <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+          <a class="nav-link" href="{{ login_url }}">{% trans "Login" %}</a>
         </li>
         {% endif %}
       </ul>
