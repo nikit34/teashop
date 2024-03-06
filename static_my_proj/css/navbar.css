@@ -1,0 +1,46 @@
+.navbar {
+    margin-right:10px;
+    border-style: none;
+    border-bottom-style: groove;
+    background: radial-gradient(circle, whitesmoke 50%, rgba(255, 255, 255, 0) 100%);
+    min-width: 300px;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.navbar .nav-item .nav-link {
+    font-family: 'Times New Roman';
+    font-style: italic;
+    font-size: smaller;
+    background-image: linear-gradient(0deg, lightgreen 0%, whitesmoke 80%, #ffffff00 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 80%;
+    border-radius: 10px;
+    transition: background-size 0.25s ease-out;
+    max-width: 15em;
+}
+.navbar .nav-item .nav-link:hover{
+    background-size: 100% 80%;
+}
+.navbar .nav-item.active .nav-link{
+    background-size: 100% 80%;
+}
+.navbar .nav-item .dropdown-item {
+    margin-bottom: 0.2em;
+    border-radius: 10px;
+    transition: background-color 0.25s ease-out;
+}
+.navbar .nav-item .dropdown-item.active {
+    color: green;
+    background-color: #0000001f;
+}
+.navbar .nav-item .dropdown-item:hover{
+    background-color: lightgreen;
+}
+.navbar .nav-item {
+    margin-right: 0.2em;
+}
+.navbar-toggler {
+    background-color: gray;
+}
