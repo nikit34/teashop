@@ -8,7 +8,16 @@ html {
     -webkit-touch-callout: none;
 }
 
+:root {
+  --soft-brown-color: rgb(153, 125, 100);
+  --hard-brown-color: rgb(101, 67, 33);
+  --transparent-color: rgba(255, 255, 255, 0);
+  --grey-color: grey;
+  --whitesmoke-color: whitesmoke;
 
+  --duration: 0.3s;
+  --long-duration: 0.5s;
+}
 
 body {
     background-color: white;
@@ -42,27 +51,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-.search-form {
-    float: right;
-}
-.search-form .form-control {
-    border: none;
-    border-radius: 0;
-    border-bottom: 2px solid green;
-    max-width: 20vw;
-    background: rgba(255, 255, 255, 0);
-}
-.search-form button {
-    border: none;
-    transition: all 0.5s;
-}
-.search-form button:hover {
-    color: green;
-    background: rgba(255, 255, 255, 0);
-}
-
-
-
 .card-home {
     width: 100%;
 }
@@ -78,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
 .list-group-item {
     font-size: large;
     text-align: center;
-    transition: background-color 0.5s;
+    transition: background-color var(--long-duration);
 }
 .list-group-item:hover {
     text-decoration: none;
@@ -87,7 +75,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 div.left-field {
-    background: linear-gradient(270deg, #ffffff00 50%, whitesmoke 100%);
+    background: linear-gradient(270deg, #ffffff00 50%, var(--whitesmoke-color) 100%);
     top:0.5vh;
     background-color: rgba(0, 0, 0, 0);
     min-height: 90vh;
@@ -97,7 +85,7 @@ div.left-field {
 }
 div.left-field i{
     margin-top: 45vh;
-    color: whitesmoke;
+    color: var(--whitesmoke-color);
     position: relative;
     transition: color 1s;
 }
@@ -105,7 +93,7 @@ div.left-field:hover i{
     color: #ffffff;
 }
 div.left-field:hover {
-    background-color: whitesmoke;
+    background-color: var(--whitesmoke-color);
 }
 
 
@@ -262,7 +250,7 @@ footer.footer{
     transition: all 0.8s;
 }
 footer.footer:hover{
-    background: whitesmoke;
+    background: var(--whitesmoke-color);
 }
 footer.footer #instagram{
     font-size: 1.2em;

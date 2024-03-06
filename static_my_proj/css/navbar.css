@@ -1,8 +1,7 @@
 .navbar {
-    margin-right:10px;
     border-style: none;
     border-bottom-style: groove;
-    background: radial-gradient(circle, whitesmoke 50%, rgba(255, 255, 255, 0) 100%);
+    background: radial-gradient(circle, var(--whitesmoke-color) 50%, var(--transparent-color) 100%);
     min-width: 300px;
 }
 .navbar-toggler-icon {
@@ -15,52 +14,61 @@
     position: relative;
     display: inline-block;
     padding-bottom: 2px;
-    color: #997d64;
-    transition: color 0.3s ease;
+    color: var(--soft-brown-color);
+    transition: color var(--duration) ease;
 }
 .navbar .nav-item .nav-link:hover {
-    color: #654321;
+    color: var(--hard-brown-color);
 }
 .navbar .nav-item.active .nav-link {
-    color: #654321;
-}
-.navbar .nav-item .dropdown-item {
-    margin-bottom: 0.2em;
-    border-radius: 10px;
-    transition: background-color 0.25s ease-out;
-}
-.navbar .nav-item .dropdown-item.active {
-    color: green;
-    background-color: #0000001f;
-}
-.navbar .nav-item .dropdown-item:hover {
-    background-color: lightgreen;
-}
-.navbar .nav-item {
-    margin-right: 0.2em;
+    color: var(--hard-brown-color);
 }
 .navbar-toggler {
-    background-color: gray;
+    background-color: var(--grey-color);
 }
+
 .navbar-cart-btn {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   width: auto;
 }
-
 .navbar-cart-text {
   margin-right: 7px;
 }
-
 .navbar-cart-count {
   display: inline-block;
   width: 17px;
   height: 17px;
-  background-color: #ccc;
+  background-color: var(--soft-brown-color);
   border-radius: 50%;
   color: white;
   font-size: 12px;
   text-align: center;
   line-height: 17px;
+  transition: background-color var(--duration) ease;
+}
+.navbar .nav-item .nav-link:hover .navbar-cart-count {
+  background-color: var(--hard-brown-color);
+}
+.navbar .nav-item.active .nav-link .navbar-cart-count {
+  background-color: var(--hard-brown-color);
+}
+
+.navbar-search-form {
+    float: right;
+}
+.navbar-search-form .form-control {
+    border: none;
+    border-bottom: 2px solid var(--grey-color);
+    max-width: 20vw;
+    background: var(--transparent-color);
+}
+.navbar-search-form button {
+    border: none;
+    transition: all var(--long-duration);
+}
+.navbar-search-form button:hover {
+    color: green;
+    background: var(--transparent-color);
 }

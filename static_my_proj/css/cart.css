@@ -30,7 +30,7 @@ table.cart-table td a:hover {
   text-decoration-color: #00ff0010;
 }
 table.cart-table td button{
-  transition: color 0.5s;
+  transition: color var(--long-duration);
 }
 table.cart-table td button:hover {
   text-decoration: none;

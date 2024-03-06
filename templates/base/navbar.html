@@ -15,19 +15,13 @@
 
 <nav class="row navbar navbar-expand-lg px-4">
   <div class="container">
-    <a class="navbar-brand" href="{{ home_url }}">
-      {% if brand_name %}
-        {{ brand_name }}
-      {% else %}
-        {% trans "TeaShop" %}
-      {% endif %}
-    </a>
+    <a class="navbar-brand" href="{{ home_url }}">{% trans "TeaShop" %}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
       aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse mx-4" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse mx-4" id="navbar-supported-content">
       <ul class="navbar-nav col-md-10">
         <li class="nav-item {% if request.path == home_url %}active{% endif %}">
           <a class="nav-link" href="{{ home_url }}">{% trans "Home" %}</a>

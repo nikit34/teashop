@@ -56,7 +56,7 @@
 
 
 .payments-form-api {
-    background-color: whitesmoke;
+    background-color: var(--whitesmoke-color);
     border: 2px solid green;
     border-radius: 15px;
     padding: 20px 25px 5px 25px;
@@ -85,7 +85,7 @@
 
 #blue {
   color: rgb(0, 0, 255);
-  transition: 0.5s all;
+  transition: var(--long-duration) all;
 }
 #blue:hover {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.75);
@@ -95,7 +95,7 @@
 }
 #red {
   color: rgb(255, 0, 0);
-  transition: 0.5s all;
+  transition: var(--long-duration) all;
 }
 #red:hover {
   color: rgba(255, 0, 0, 0.5);
@@ -104,7 +104,7 @@
 }
 #yellow {
   color: rgb(220, 255, 0);
-  transition: 0.5s all;
+  transition: var(--long-duration) all;
 }
 #yellow:hover {
   color: rgba(220, 255, 0, 0.5);

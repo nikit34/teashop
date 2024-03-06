@@ -46,12 +46,12 @@
     margin: auto;
     border: none;
     border-radius: 5%;
-    transition: all 0.5s;
+    transition: all var(--long-duration);
 }
 .card:hover {
-    -webkit-box-shadow: 0px 0px 15px 15px whitesmoke;
-    -moz-box-shadow: 0px 0px 15px 15px whitesmoke;
-    box-shadow: 0px 0px 15px 15px whitesmoke;
+    -webkit-box-shadow: 0px 0px 15px 15px var(--whitesmoke-color);
+    -moz-box-shadow: 0px 0px 15px 15px var(--whitesmoke-color);
+    box-shadow: 0px 0px 15px 15px var(--whitesmoke-color);
 }
 .card-img-top {
     max-height: 80vh;
