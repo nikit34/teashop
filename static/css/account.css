@@ -4,6 +4,8 @@
 
 .card-home {
     width: 100%;
+    overflow: hidden;
+    border-radius: 5%;
 }
 .card-home-body {
     padding: 1.25em 1em 1em 1em;
@@ -22,12 +24,18 @@
     border-radius: 5%;
 }
 .image-container.rotate img {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 .card-home-title {
-  text-align: center;
-  padding-top: 0.5em;
-  padding-bottom: 1em;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    z-index: 1;
+    position: relative;
+    color: var(--white-color);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 1em;
 }
 .list-group-item {
     font-size: large;
@@ -36,5 +44,5 @@
 }
 .list-group-item:hover {
     text-decoration: none;
-    background-color: lightgreen;
+    background-color: var(--soft-light-brown-color);
 }

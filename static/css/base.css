@@ -10,10 +10,12 @@ html {
 
 :root {
   --soft-brown-color: rgb(153, 125, 100);
+  --soft-light-brown-color: rgb(179, 156, 137);
   --hard-brown-color: rgb(101, 67, 33);
   --transparent-color: rgba(255, 255, 255, 0);
   --grey-color: grey;
   --whitesmoke-color: whitesmoke;
+  --white-color: white;
 
   --duration: 0.3s;
   --long-duration: 0.5s;
