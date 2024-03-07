@@ -19,6 +19,7 @@
 .image-container img {
     width: 100%;
     height: auto;
+    border-radius: 5%;
 }
 .image-container.rotate img {
   transform: rotate(180deg);
