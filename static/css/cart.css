@@ -24,10 +24,10 @@ table.cart-table td, table.cart-table th {
     font-size: x-large;
 }
 table.cart-table td a {
-  text-decoration-color: #00ff0080;
+  text-decoration-color: var(--soft-light-brown-color);
 }
 table.cart-table td a:hover {
-  text-decoration-color: #00ff0010;
+  text-decoration-color: var(--soft-brown-color);
 }
 table.cart-table td button{
   transition: color var(--long-duration);
