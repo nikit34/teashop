@@ -22,3 +22,23 @@
 .left-field:hover {
     background-color: var(--whitesmoke-color);
 }
+
+.filters {
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+}
+
+.main-filter-label {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--hard-brown-color);
+}
+
+.main-filter-btn {
+    color: var(--soft-brown-color);
+}
+
+.main-filter-btn:hover {
+    color: var(--hard-brown-color);
+}

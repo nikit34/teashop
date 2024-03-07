@@ -1,11 +1,3 @@
-.sort-dropup-block{
-    padding: 0 0 1em 0;
-}
-
-.btn:focus, .btn.focus {
-    box-shadow: none !important;
-}
-
 .card {
     margin: auto;
     border: none;
