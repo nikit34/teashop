@@ -42,7 +42,7 @@
   height: 17px;
   background-color: var(--soft-brown-color);
   border-radius: 50%;
-  color: white;
+  color: var(--white-color);
   font-size: 12px;
   text-align: center;
   line-height: 17px;
@@ -68,9 +68,10 @@
 }
 .navbar-search-form button {
     border: none;
+    color: var(--soft-brown-color);
     transition: all var(--long-duration);
 }
 .navbar-search-form button:hover {
-    color: green;
+    color: var(--hard-brown-color);
     background: var(--transparent-color);
 }
