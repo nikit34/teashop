@@ -9,9 +9,9 @@
     width: 100%;
 }
 .canvas-cart-table {
-    border: 1px solid green;
-    background-color: white;
     border-radius: 15px;
+    position: relative;
+    box-shadow: 0 4px 8px var(--shadow-color);
 }
 .canvas-cart-table h1 {
     text-align: center;
