@@ -11,12 +11,14 @@ html {
 :root {
   --soft-brown-color: rgb(153, 125, 100);
   --soft-light-brown-color: rgb(179, 156, 137);
+  --brown-color: rgb(131, 87, 63);
   --hard-brown-color: rgb(101, 67, 33);
   --transparent-color: rgba(255, 255, 255, 0);
   --grey-color: grey;
   --whitesmoke-color: whitesmoke;
   --white-color: white;
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --red-color: red;
 
   --duration: 0.3s;
   --long-duration: 0.5s;
@@ -52,15 +54,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* btn */
 .btn-danger {
-    border-color: green;
+    border-color: var(--soft-brown-color);
     color: black;
-    background-color: green;
-    transition: border-color 1.5s, background-color 0.5s;
-}
-.btn-warning {
-    border-color: yellow;
-    color: black;
-    background-color: yellowgreen;
+    background-color: var(--soft-brown-color);
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-success {
@@ -78,14 +74,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* btn hover */
 .btn-danger:hover {
-    border-color: green;
+    border-color: var(--brown-color);
     color: black;
-    background-color: green;
-}
-.btn-warning:hover {
-    border-color: yellow;
-    color: black;
-    background-color: yellowgreen;
+    background-color: var(--brown-color);
 }
 .btn-success:hover {
     border-color: lightgreen;
@@ -150,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .form-errors {
-    color: #ff0000;
+    color: var(--red-color);
 }
 
 
