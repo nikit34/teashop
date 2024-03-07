@@ -1,5 +1,6 @@
-.account h3 {
-    text-align: center;
+.account-title {
+    text-align: right;
+    color: var(--soft-brown-color);
 }
 
 .card-home {
