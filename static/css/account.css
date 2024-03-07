@@ -1,0 +1,39 @@
+.card-home-body h3 {
+    text-align: center;
+}
+
+.card-home {
+    width: 100%;
+}
+.card-home-body {
+    padding: 1.25em 1em 1em 1em;
+    border-radius: 5%;
+    position: relative;
+}
+.image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+.image-container.rotate img {
+  transform: rotate(180deg);
+}
+.card-home-title {
+  text-align: center;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+}
+.list-group-item {
+    font-size: large;
+    text-align: center;
+    transition: background-color var(--long-duration);
+}
+.list-group-item:hover {
+    text-decoration: none;
+    background-color: lightgreen;
+}

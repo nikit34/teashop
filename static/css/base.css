@@ -43,74 +43,9 @@ h1 {
     padding-top: 0.5em;
 }
 
-h3 {
-    text-align: center;
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
-
-.card-home {
-    width: 100%;
-}
-.card-home-body {
-    padding: 1.25em 1em 1em 1em;
-    border-radius: 5%;
-    position: relative;
-}
-.image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.image-container img {
-    width: 100%;
-    height: auto;
-}
-.image-container.rotate img {
-  transform: rotate(180deg);
-}
-.card-home-title {
-  text-align: center;
-  padding-top: 0.5em;
-  padding-bottom: 1em;
-}
-.list-group-item {
-    font-size: large;
-    text-align: center;
-    transition: background-color var(--long-duration);
-}
-.list-group-item:hover {
-    text-decoration: none;
-    background-color: lightgreen;
-}
-
-
-div.left-field {
-    background: linear-gradient(270deg, #ffffff00 50%, var(--whitesmoke-color) 100%);
-    top:0.5vh;
-    background-color: rgba(0, 0, 0, 0);
-    min-height: 90vh;
-    max-width: 8em;
-    transition: background-color 1s;
-    text-align:center;
-}
-div.left-field i{
-    margin-top: 45vh;
-    color: var(--whitesmoke-color);
-    position: relative;
-    transition: color 1s;
-}
-div.left-field:hover i{
-    color: #ffffff;
-}
-div.left-field:hover {
-    background-color: var(--whitesmoke-color);
-}
-
-
 
 /* btn */
 .btn-danger {
