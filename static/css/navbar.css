@@ -60,9 +60,11 @@
 }
 .navbar-search-form .form-control {
     border: none;
-    border-bottom: 2px solid var(--grey-color);
+    background: var(--white-color) !important;
+    box-shadow: 0 2px 2px var(--shadow-color);
     max-width: 20vw;
     background: var(--transparent-color);
+    border-radius: 10px !important;
 }
 .navbar-search-form button {
     border: none;
