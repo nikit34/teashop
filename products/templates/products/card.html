@@ -20,10 +20,10 @@
         {% if complet == "1" %}
             <div class="col-5 card-button">
                 <div class="row justify-content-end">
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                         <a href="{{ instance.get_absolute_url }}" class="btn btn-default">{% trans "View" %}</a>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
                         {% include 'products/update-cart.html' with product=instance in_cart=in_cart %}
                     </div>
                 </div>

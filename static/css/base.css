@@ -56,6 +56,7 @@ h1, h2, h3, h4, h5, h6 {
 /* btn */
 .btn-default {
     border: none;
+    margin-bottom: 10px;
     color: var(--black-color);
     background-color: var(--transparent-color);
     box-shadow: 0 4px 8px var(--grey-color) !important;

@@ -7,7 +7,7 @@
     <div class="col">
         <form action="{% url 'home' %}" method="GET">
             <div class="row">
-                <div class="col-6">
+                <div class="col-lg-6">
                     <div class="row">
                         <span class="main-filter-label">{% trans "Price" %}</span>
                         <button type="submit" name="price" value="descend" class="btn main-filter-btn">{% trans "descending" %}</button>
@@ -15,7 +15,7 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-lg-6">
                     <div class="row">
                         <span class="main-filter-label">{% trans "Time" %}</span>
                         <button type="submit" name="time_update" value="descend" class="btn main-filter-btn">{% trans "update early" %}</button>
