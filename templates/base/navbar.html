@@ -1,15 +1,10 @@
 {% url 'home' as home_url %}
-{% url 'contact' as contact_url %}
 {% url 'login' as login_url %}
-{% url 'logout' as logout_url %}
 {% url 'register' as register_url %}
 {% url 'accounts:account-home' as account_url %}
-{% url 'accounts:user-product-history' as history %}
 {% url 'cart:home' as cart_url %}
-{% url 'collection' as collection %}
 {% url 'admin:index' as admin %}
-{% url 'sales-analytics' as analyze %}
-{% url 'billing-payment-method' as billing_payment %}
+
 {% load i18n %}
 {% load static %}
 
@@ -43,9 +38,6 @@
               <a class="nav-link" href="{{ admin }}">{% trans "Admin" %}</a>
             </li>
           {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ logout_url }}">{% trans "Logout" %}</a>
-          </li>
         {% else %}
           <li class="nav-item {% if request.path == register_url %}active{% endif %}">
             <a class="nav-link" href="{{ register_url }}">{% trans "Register" %}</a>
