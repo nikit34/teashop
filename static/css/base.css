@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* btn outline */
 .btn-outline-danger {
-    border-color: green;
+    border-color: var(--soft-brown-color);
     color: black;
     transition: border-color 1.5s, background-color 0.5s;
 }
@@ -113,9 +113,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* btn outline hover */
 .btn-outline-danger:hover {
-    border-color: green;
+    border-color: var(--soft-brown-color);
     color: black;
-    background-color: green;
+    background-color: var(--soft-brown-color);
 }
 .btn-outline-warning:hover {
     border-color: yellow;
