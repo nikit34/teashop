@@ -8,25 +8,29 @@
     overflow: hidden;
     border-radius: 5%;
 }
+
 .card-home-body {
     padding: 1.25em 1em 1em 1em;
-    border-radius: 5%;
+    border-radius: 10px;
     position: relative;
+    background-image: url('/static/img/account-cards.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.image-container {
+
+.card-home-body.rotate::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
+    background-image: url('/static/img/account-cards.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(180deg); /* Поворачиваем фоновое изображение на 180 градусов */
 }
-.image-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 5%;
-}
-.image-container.rotate img {
-    transform: rotate(180deg);
-}
+
 .card-home-title {
     text-align: center;
     padding-top: 0.5em;
@@ -38,11 +42,13 @@
     border-radius: 10px;
     margin-bottom: 1em;
 }
+
 .list-group-item {
     font-size: large;
     text-align: center;
     transition: background-color var(--long-duration);
 }
+
 .list-group-item:hover {
     text-decoration: none;
     background-color: var(--soft-light-brown-color);

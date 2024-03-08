@@ -9,12 +9,9 @@
         <h5 class="account-title">{{ user }}</h5>
         <hr/>
     </div>
-    <div class='col-12 col-sm-6 col-md-3 my-3'>
+    <div class='col-lg-3 col-sm-6 col-md-6 my-3'>
         <div class="card-home">
           <div class="card-home-body">
-              <div class="image-container">
-                  <img src="{% static 'img/account-cards.png' %}">
-              </div>
               <h3 class="card-home-title">{% trans "Billing" %}</h3>
               <div class='list-group'>
                 <a class='list-group-item' href='{% url "orders:list" %}'>{% trans "Orders" %}</a>
@@ -25,12 +22,9 @@
         </div>
     </div>
 
-    <div class='col-12 col-sm-6 col-md-3 my-3'>
+    <div class='col-lg-3 col-sm-6 col-md-6 my-3'>
         <div class="card-home">
-          <div class="card-home-body">
-              <div class="image-container rotate">
-                  <img src="{% static 'img/account-cards.png' %}">
-              </div>
+          <div class="card-home-body rotate">
               <h3 class="card-home-title">{% trans "History" %}</h3>
               <div class='list-group'>
                   <a class='list-group-item' href='{% url "accounts:user-product-history" %}'>{% trans "Products" %}</a>
@@ -43,12 +37,9 @@
         </div>
     </div>
 
-    <div class='col-12 col-sm-6 col-md-3 my-3'>
+    <div class='col-lg-3 col-sm-6 col-md-6 my-3'>
         <div class="card-home">
           <div class="card-home-body">
-              <div class="image-container">
-                  <img src="{% static 'img/account-cards.png' %}">
-              </div>
             <h3 class="card-home-title">{% trans "Support" %}</h3>
             <div class='list-group'>
                 {% if user.admin %}
@@ -61,12 +52,9 @@
         </div>
     </div>
 
-    <div class='col-12 col-sm-6 col-md-3 my-3'>
+    <div class='col-lg-3 col-sm-6 col-md-6 my-3'>
         <div class="card-home">
-          <div class="card-home-body">
-            <div class="image-container rotate">
-                <img src="{% static 'img/account-cards.png' %}">
-            </div>
+          <div class="card-home-body rotate">
             <h3 class="card-home-title">{% trans "Account Details" %}</h3>
             <div class='list-group'>
                 <a class='list-group-item' href='{% url "marketing-pref" %}'>{% trans "Email Marketing" %}</a>
