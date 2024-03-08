@@ -19,6 +19,7 @@ html {
   --white-color: white;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --red-color: red;
+  --black-color: black;
 
   --duration: 0.3s;
   --long-duration: 0.5s;
@@ -55,86 +56,83 @@ h1, h2, h3, h4, h5, h6 {
 /* btn */
 .btn-default {
     border: none;
-    color: black;
+    color: var(--black-color);
     background-color: var(--transparent-color);
-    box-shadow: 0 4px 8px var(--grey-color);
+    box-shadow: 0 4px 8px var(--grey-color) !important;
     transition: box-shadow var(--duration);
 }
-.btn-success {
-    border-color: lightgreen;
-    color: black;
-    background-color: lightgreen;
-    transition: border-color 1.5s, background-color 0.5s;
+.btn-general {
+    border: none;
+    color: var(--black-color);
+    background-color: var(--soft-light-brown-color);
+    box-shadow: 0 4px 8px var(--grey-color) !important;
+    transition: box-shadow var(--duration);
 }
 .btn-info {
     border-color: green;
-    color: black;
+    color: var(--black-color);
     background-color: lightgreen;
     transition: border-color 1.5s, background-color 0.5s;
 }
 
 /* btn hover */
 .btn-default:hover {
-    color: black;
-    background-color: var(--transparent-color);
-    box-shadow: 0 2px 4px var(--grey-color);
+    box-shadow: 0 2px 4px var(--grey-color) !important;
 }
-.btn-success:hover {
-    border-color: lightgreen;
-    color: black;
-    background-color: lightgreen;
+.btn-general:hover {
+    box-shadow: 0 2px 4px var(--grey-color) !important;
 }
 .btn-info:hover {
     border-color: green;
-    color: black;
+    color: var(--black-color);
     background-color: lightgreen;
 }
 
 /* btn outline */
-.btn-outline-danger {
+.btn-outline-default {
     border-color: var(--soft-brown-color);
-    color: black;
+    color: var(--black-color);
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-outline-warning {
     border-color: yellow;
-    color: black;
+    color: var(--black-color);
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-outline-success {
     border-color: lightgreen;
-    color: black;
+    color: var(--black-color);
     transition: border-color 1.5s, background-color 0.5s;
 }
 .btn-outline-info {
     border-color: green;
-    color: black;
+    color: var(--black-color);
     transition: border-color 1.5s, background-color 0.5s;
 }
 
 /* btn outline hover */
-.btn-outline-danger:hover {
+.btn-outline-default:hover {
     border-color: var(--soft-brown-color);
-    color: black;
+    color: var(--black-color);
     background-color: var(--soft-brown-color);
 }
 .btn-outline-warning:hover {
     border-color: yellow;
-    color: black;
+    color: var(--black-color);
     background-color: yellowgreen;
 }
 .btn-outline-success:hover {
     border-color: lightgreen;
-    color: black;
+    color: var(--black-color);
     background-color: lightgreen;
 }
 .btn-outline-info:hover {
     border-color: green;
-    color: black;
+    color: var(--black-color);
     background-color: lightgreen;
 }
 
-.btn-outline-danger:not(:disabled):not(.disabled):active {
+.btn-outline-default:not(:disabled):not(.disabled):active {
     background-color: green;
     border-color: green;
 }

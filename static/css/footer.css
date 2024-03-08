@@ -58,7 +58,7 @@
 
 .footer-btn {
     border-color: var(--soft-brown-color);
-    color: black;
+    color: var(--black-color);
     transition: background-color var(--long-duration);
 }
 

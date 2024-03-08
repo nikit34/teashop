@@ -23,18 +23,18 @@ $(document).ready(function () {
         var fragment;
         switch (lang) {
           case "en":
-            fragment = "In cart</a> <button type='button' class='btn btn-outline-danger remove-btn'>Remove?";
+            fragment = "In cart</a> <button type='button' class='btn btn-general remove-btn'>Remove?";
             break;
           case "ru":
-            fragment = "Корзина</a> <button type='button' class='btn btn-outline-danger remove-btn'>Удалить?";
+            fragment = "Корзина</a> <button type='button' class='btn btn-general remove-btn'>Удалить?";
             break;
           case "pt":
-            fragment = "No carrinho</a> <button type='button' class='btn btn-outline-danger remove-btn'>Remover?";
+            fragment = "No carrinho</a> <button type='button' class='btn btn-general remove-btn'>Remover?";
             break;
           default:
             fragment = "<div class='btn-group'>Undefined langueges in js</div>";
         }
-        submitSpan.html("<div class='btn-group'> <a class='btn btn-success' href='/cart/'>" + fragment + "</button></div>");
+        submitSpan.html("<div class='btn-group'> <a class='btn btn-general' href='/cart/'>" + fragment + "</button></div>");
         var navbarCount = $(".navbar-cart-count");
         navbarCount.text(data.cartItemsCount);
       },
@@ -79,7 +79,7 @@ $(document).ready(function () {
           default:
             fragment = "<div class='btn-group'>Undefined langueges in js</div>";
         }
-        submitSpan.html('<button type="button" class="btn btn-success add-to-cart-btn">' + fragment + "</button>");
+        submitSpan.html('<button type="button" class="btn btn-general add-to-cart-btn">' + fragment + "</button>");
         var navbarCount = $(".navbar-cart-count");
         navbarCount.text(data.cartItemsCount);
       },
