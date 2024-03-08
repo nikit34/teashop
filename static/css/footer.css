@@ -1,48 +1,67 @@
-footer.footer {
+.footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 3.75vh;
     text-align: center;
-    transition: all 0.8s;
+    transition: all var(--long-duration);
 }
-footer.footer:hover {
+
+.footer:hover {
     background: var(--whitesmoke-color);
 }
-footer.footer #instagram {
+
+.footer #instagram {
     font-size: 1.2em;
-    transition: all 0.8s;
+    transition: all var(--long-duration);
     max-width: none !important;
     background-color: rgba(128, 0, 128, 0.5);
 }
-footer.footer #instagram:hover {
+
+.footer #instagram:hover {
     background-color: purple;
 }
-footer.footer #pinterest {
+
+.footer #pinterest {
     font-size: 1.2em;
-    transition: all 0.8s;
+    transition: all var(--long-duration);
     max-width: none !important;
     background-color: rgba(112, 128, 144, 0.5);
 }
-footer.footer #pinterest:hover {
+
+.footer #pinterest:hover {
     background-color: slategray;
 }
-footer.footer #facebook {
+
+.footer #facebook {
     padding-top: 0.3em;
-    transition: all 0.8s;
+    transition: all var(--long-duration);
     max-width: none !important;
     background-color: rgba(90, 181, 255, 0.5);
 }
-footer.footer #facebook:hover {
+
+.footer #facebook:hover {
     background-color: white;
 }
-footer.footer #etsy {
+
+.footer #etsy {
     font-size: 0.8em;
     padding-top: 0.5em;
-    transition: all 0.8s;
+    transition: all var(--long-duration);
     max-width: none !important;
     background-color: rgba(255, 255, 0, 0.5);
 }
-footer.footer #etsy:hover {
+
+.footer #etsy:hover {
     background-color: yellow;
+}
+
+.footer-btn {
+    border-color: var(--soft-brown-color);
+    color: black;
+    transition: background-color var(--long-duration);
+}
+
+.footer-btn:hover {
+    background-color: var(--soft-brown-color);
 }

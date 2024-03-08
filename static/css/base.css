@@ -53,11 +53,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* btn */
-.btn-danger {
-    border-color: var(--soft-brown-color);
+.btn-default {
+    border: none;
     color: black;
-    background-color: var(--soft-brown-color);
-    transition: border-color 1.5s, background-color 0.5s;
+    background-color: var(--transparent-color);
+    box-shadow: 0 4px 8px var(--grey-color);
+    transition: box-shadow var(--duration);
 }
 .btn-success {
     border-color: lightgreen;
@@ -73,10 +74,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* btn hover */
-.btn-danger:hover {
-    border-color: var(--brown-color);
+.btn-default:hover {
     color: black;
-    background-color: var(--brown-color);
+    background-color: var(--transparent-color);
+    box-shadow: 0 2px 4px var(--grey-color);
 }
 .btn-success:hover {
     border-color: lightgreen;
