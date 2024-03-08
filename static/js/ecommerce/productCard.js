@@ -23,13 +23,13 @@ $(document).ready(function () {
         var fragment;
         switch (lang) {
           case "en":
-            fragment = "In cart</a> <button type='button' class='btn btn-general remove-btn'>Remove?";
+            fragment = "In cart</a> <button type='button' class='btn btn-default remove-btn'>Remove?";
             break;
           case "ru":
-            fragment = "Корзина</a> <button type='button' class='btn btn-general remove-btn'>Удалить?";
+            fragment = "Корзина</a> <button type='button' class='btn btn-default remove-btn'>Удалить?";
             break;
           case "pt":
-            fragment = "No carrinho</a> <button type='button' class='btn btn-general remove-btn'>Remover?";
+            fragment = "No carrinho</a> <button type='button' class='btn btn-default remove-btn'>Remover?";
             break;
           default:
             fragment = "<div class='btn-group'>Undefined langueges in js</div>";
