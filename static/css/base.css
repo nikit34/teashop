@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* btn outline */
-.btn-outline-default {
+.btn-outline-general {
     border-color: var(--soft-brown-color);
     color: var(--black-color);
     transition: border-color 1.5s, background-color 0.5s;
@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* btn outline hover */
-.btn-outline-default:hover {
+.btn-outline-general:hover {
     border-color: var(--soft-brown-color);
     color: var(--black-color);
     background-color: var(--soft-brown-color);
@@ -122,7 +122,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: lightgreen;
 }
 
-.btn-outline-default:not(:disabled):not(.disabled):active {
+.btn-outline-general:not(:disabled):not(.disabled):active {
     background-color: var(--hard-brown-color);
     border-color: var(--hard-brown-color);
 }
