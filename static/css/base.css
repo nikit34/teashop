@@ -89,51 +89,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* btn outline */
+.btn-outline-default {
+    border-color: var(--soft-light-brown-color);
+    color: var(--black-color);
+    transition: border-color 1.5s, background-color 0.5s;
+}
 .btn-outline-general {
     border-color: var(--soft-brown-color);
     color: var(--black-color);
     transition: border-color 1.5s, background-color 0.5s;
 }
-.btn-outline-warning {
-    border-color: yellow;
-    color: var(--black-color);
-    transition: border-color 1.5s, background-color 0.5s;
-}
-.btn-outline-success {
-    border-color: lightgreen;
-    color: var(--black-color);
-    transition: border-color 1.5s, background-color 0.5s;
-}
 
 /* btn outline hover */
+.btn-outline-default:hover {
+    border-color: var(--soft-light-brown-color);
+    color: var(--black-color);
+    background-color: var(--soft-light-brown-color);
+}
 .btn-outline-general:hover {
     border-color: var(--soft-brown-color);
     color: var(--black-color);
     background-color: var(--soft-brown-color);
 }
-.btn-outline-warning:hover {
-    border-color: yellow;
-    color: var(--black-color);
-    background-color: yellowgreen;
-}
-.btn-outline-success:hover {
-    border-color: lightgreen;
-    color: var(--black-color);
-    background-color: lightgreen;
-}
-
-.btn-outline-general:not(:disabled):not(.disabled):active {
-    background-color: var(--hard-brown-color);
-    border-color: var(--hard-brown-color);
-}
-
-
 
 .form-errors {
     color: var(--red-color);
 }
-
-
 
 /* canvas blue */
 .base-canvas-cell {

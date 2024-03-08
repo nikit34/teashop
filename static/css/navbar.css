@@ -65,6 +65,7 @@
     max-width: 20vw;
     background: var(--transparent-color);
     border-radius: 10px !important;
+    margin-top: 4px;
 }
 .navbar .navbar-search-form .search-btn {
     border: none;
@@ -76,3 +77,6 @@
     background: var(--transparent-color);
 }
 
+.search-input-group-btn {
+  padding-top: 8px;
+}
