@@ -12,7 +12,7 @@
             <h3>{% trans "Cart Items" %}:</h3>
             <hr>
             {% for cart_item in object.cart.cart_items.all %}
-                {% if forloop.counter|divisibleby:2 %}<p style="color:rgb(150,0,150);">{% else %}<p style="color:rgb(200,0,200);">{% endif %}{{ forloop.counter }}) {{ cart_item.product }}</p>
+                {% if forloop.counter|divisibleby:2 %}<p class="bank-product-item odd">{% else %}<p class="bank-product-item even">{% endif %}{{ forloop.counter }}) {{ cart_item.product }}</p>
             {% endfor %}
             <hr>
             <div class="row">
@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-3">
                     <div class="bank-canvas-cell-small">
-                        <h2 style="color:red;">{% trans "Default Payment" %}</h2>
+                        <h2 class="title-payment">{% trans "Default Payment" %}</h2>
                         <hr>
                         <div class="row">
                             <div class="col">

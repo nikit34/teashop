@@ -2,19 +2,31 @@
     text-align: center;
     margin: 1em 0 1em 0;
 }
+
 .checkout-title h2 {
     text-align: center;
     margin: 1em 0 1em 0;
 }
+
 .checkout-table h3 {
     text-align: center;
 }
+
 .checkout-total .bank-canvas-cell {
     text-align: center;
     padding: 1em 0.75em 1em 0.75em;
 }
+
+.bank-product-item.odd {
+    color: var(--hard-brown-color);
+}
+
+.bank-product-item.even {
+    color: var(--soft-brown-color);
+}
+
 .checkout-total h1 {
-    color:rgb(100, 0, 100);
+    color: var(--soft-brown-color);
 }
 
 /* canvas red */
@@ -49,6 +61,10 @@
   text-align: center;
 }
 
+
+.title-payment {
+  color: var(--soft-brown-color);
+}
 
 
 .payments-form-api {
