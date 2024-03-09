@@ -9,7 +9,7 @@
         <p class="text-center mt-2 mb-2">{% trans "Image not found :(" %}</p>
     {% endif %}
     <div class="row card-body">
-        <div class="col-4 card-text">
+        <div class="col-xl-4 card-text">
             {% if complet == "1" %}
                 <h5>{{ instance.title }}</h5>
                 <p class="preview">{{ instance.description|safe|linebreaks|truncatewords:18 }}</p>
@@ -18,18 +18,18 @@
             {% endif %}
         </div>
         {% if complet == "1" %}
-            <div class="col-5 card-button">
+            <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-5 card-button">
                 <div class="row justify-content-end">
-                    <div class="col-lg-5 mb-2">
+                    <div class="col-4 col-sm-4 col-md-4 col-xl-5 mb-2">
                         <a href="{{ instance.get_absolute_url }}" class="btn btn-default">{% trans "View" %}</a>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-8 col-sm-8 col-md-8 col-xl-7">
                         {% include 'products/update-cart.html' with product=instance in_cart=in_cart %}
                     </div>
                 </div>
             </div>
         {% else %}
-            <div class="col-3 card-button">
+            <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-5 card-button">
                 <div class="row">
                     <div class="col text-right">
                         <a href="{{ instance.get_absolute_url }}" class="btn btn-default">{% trans "View" %}</a>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         {% endif %}
-        <div class="col-3 pl-0 card-price text-right">
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-3 pl-0 card-price text-right">
             <h2>{{ instance.price }} &#36;</h2>
         </div>
     </div>
