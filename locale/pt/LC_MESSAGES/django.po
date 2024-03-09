@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-10 12:56+0000\n"
+"POT-Creation-Date: 2024-03-06 00:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,7 +108,7 @@ msgstr "Alterar a senha"
 msgid "Submit"
 msgstr "Enviar"
 
-#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:41
+#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:46
 msgid "Account"
 msgstr "Conta"
 
@@ -139,11 +139,11 @@ msgid "Products"
 msgstr "Produtos"
 
 #: accounts/templates/accounts/home.html:31
-#: orders/templates/orders/collection.html:8 templates/base/navbar.html:66
+#: orders/templates/orders/collection.html:8 templates/base/navbar.html:71
 msgid "Collection"
 msgstr "Coleção"
 
-#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:63
+#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:68
 msgid "Statistics"
 msgstr "Estatisticas"
 
@@ -151,13 +151,13 @@ msgstr "Estatisticas"
 msgid "Support"
 msgstr "Apoiar"
 
-#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:40
+#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:45
 #: templates/contact/about.html:5
 msgid "About"
 msgstr "Sobre"
 
-#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:50
-#: templates/base/navbar.html:65
+#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:55
+#: templates/base/navbar.html:70
 msgid "Contact"
 msgstr "Contato"
 
@@ -175,7 +175,7 @@ msgstr "Detalhes da atualização"
 
 #: accounts/templates/accounts/login.html:8
 #: carts/templates/carts/checkout/has_nothing.html:11
-#: templates/base/navbar.html:78
+#: templates/base/navbar.html:83
 #: templates/registration/password_reset_complete.html:7
 msgid "Login"
 msgstr "Conecte-se"
@@ -184,7 +184,7 @@ msgstr "Conecte-se"
 msgid "Sign in"
 msgstr "Entrar"
 
-#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:75
+#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:80
 msgid "Register"
 msgstr "Registro"
 
@@ -364,7 +364,7 @@ msgstr "Total enviado"
 msgid "Paid Totals"
 msgstr "Totais pagos"
 
-#: billing/models.py:154
+#: billing/models.py:163
 msgid "No cards available"
 msgstr "Nenhum cartão disponível"
 
@@ -441,12 +441,12 @@ msgstr "Total de pedidos"
 msgid "Choose method of payment"
 msgstr "Escolha a forma de pagamento"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:72
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:84
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:73
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:85
 msgid "PayPal"
 msgstr "PayPal"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:76
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:77
 msgid "Bank card binding"
 msgstr "Vinculação de cartão bancário"
 
@@ -478,39 +478,47 @@ msgstr "Escolher"
 msgid "Continue as Guest"
 msgstr "Continuar como convidado"
 
-#: carts/templates/carts/home.html:7 templates/base/navbar.html:37
+#: carts/templates/carts/home.html:8 templates/base/navbar.html:38
 msgid "Cart"
 msgstr "Carrinho"
 
-#: carts/templates/carts/home.html:17
+#: carts/templates/carts/home.html:18
 msgid "Product Name"
 msgstr "Nome do Produto"
 
-#: carts/templates/carts/home.html:18
+#: carts/templates/carts/home.html:19
+msgid "Available"
+msgstr "Disponível"
+
+#: carts/templates/carts/home.html:20
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: carts/templates/carts/home.html:21
 #: orders/templates/orders/collection.html:14 templates/select_sort.html:12
 msgid "Price"
 msgstr "Preço"
 
-#: carts/templates/carts/home.html:35
+#: carts/templates/carts/home.html:50
 #: orders/templates/orders/order_detail.html:34
 msgid "Subtotal"
 msgstr "Subtotal"
 
-#: carts/templates/carts/home.html:48
+#: carts/templates/carts/home.html:63
 #: orders/templates/orders/order_list.html:13
 msgid "Total"
 msgstr "Total"
 
-#: carts/templates/carts/home.html:58
+#: carts/templates/carts/home.html:73
 msgid "Checkout"
 msgstr "Confira"
 
-#: carts/templates/carts/home.html:69
+#: carts/templates/carts/home.html:84
 msgid "Is empty"
 msgstr "Está vazia"
 
 #: carts/templates/carts/remove-product.html:5
-#: products/templates/products/update-cart.html:12
+#: products/templates/products/update-cart.html:10
 msgid "Remove"
 msgstr "Remover"
 
@@ -526,31 +534,31 @@ msgstr "Seu e-mail de contato"
 msgid "Your message"
 msgstr "Sua mensagem"
 
-#: eCommerce_Django/views.py:41
+#: eCommerce_Django/views.py:46
 msgid "Welcome to about page!"
 msgstr "Bem-vindo à página sobre!"
 
-#: eCommerce_Django/views.py:51
+#: eCommerce_Django/views.py:56
 msgid "Here you can leave your feedback."
 msgstr "Aqui você pode deixar seu feedback."
 
-#: eCommerce_Django/views.py:58
+#: eCommerce_Django/views.py:63
 msgid "Send with contact email: "
 msgstr "Enviar com e-mail de contato: "
 
-#: eCommerce_Django/views.py:62
+#: eCommerce_Django/views.py:67
 msgid "Invalid header found."
 msgstr "Cabeçalho inválido encontrado."
 
-#: eCommerce_Django/views.py:64
+#: eCommerce_Django/views.py:69
 msgid "Thank you for your submission"
 msgstr "Obrigado pela sua submissão"
 
-#: eCommerce_Django/views.py:79
+#: eCommerce_Django/views.py:84
 msgid "Update code on server"
 msgstr "Atualizar código no servidor"
 
-#: eCommerce_Django/views.py:81
+#: eCommerce_Django/views.py:86
 msgid "ERROR: Could`t update the code on server"
 msgstr "ERRO: Não foi possível atualizar o código no servidor"
 
@@ -642,11 +650,11 @@ msgstr "Seu comentário está aguardando moderação"
 msgid "Leave a comment"
 msgstr "Deixe um comentário"
 
-#: products/templates/products/update-cart.html:11
+#: products/templates/products/update-cart.html:9
 msgid "In cart"
 msgstr "No carrinho"
 
-#: products/templates/products/update-cart.html:15
+#: products/templates/products/update-cart.html:13
 msgid "Add to cart"
 msgstr "Adicionar ao carrinho"
 
@@ -690,15 +698,15 @@ msgstr "Lar"
 msgid "current"
 msgstr "atual"
 
-#: templates/base/navbar.html:60
+#: templates/base/navbar.html:65
 msgid "Admin"
 msgstr "Administrador"
 
-#: templates/base/navbar.html:67
+#: templates/base/navbar.html:72
 msgid "Payment"
 msgstr "Pagamento"
 
-#: templates/base/navbar.html:69
+#: templates/base/navbar.html:74
 msgid "Logout"
 msgstr "Sair"
 

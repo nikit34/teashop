@@ -1,88 +1,58 @@
-.canvas-cart-table {
-    margin-top: 5%;
-    border: 1px solid green;
-    background-color: white;
-    border-radius: 15px;
-    padding: 5px 25px 5px 25px;
-    display: inline-block;
-    width: 100%;
-}
-.canvas-cart-table h1 {
-    text-align: center;
-    margin: 30px 0 30px 0;
-}
-table.cart-table td, table.cart-table th {
-    background: white;
-    border: none;
-    font-weight: normal;
-    font-size: x-large;
-}
-table.cart-table td a {
-  text-decoration-color: #00ff0080;
-}
-table.cart-table td a:hover {
-  text-decoration-color: #00ff0010;
-}
-table.cart-table td button{
-  transition: color 0.5s;
-}
-table.cart-table td button:hover {
-  text-decoration: none;
-  color:red;
-}
-table.cart-table a {
-    width: 50%;
-}
-
-
-
 .checkout-title h1 {
     text-align: center;
     margin: 1em 0 1em 0;
 }
+
 .checkout-title h2 {
     text-align: center;
     margin: 1em 0 1em 0;
 }
+
 .checkout-table h3 {
     text-align: center;
 }
+
 .checkout-total .bank-canvas-cell {
     text-align: center;
     padding: 1em 0.75em 1em 0.75em;
 }
+
+.bank-product-item.odd {
+    color: var(--hard-brown-color);
+}
+
+.bank-product-item.even {
+    color: var(--soft-brown-color);
+}
+
 .checkout-total h1 {
-    color:rgb(100, 0, 100);
+    color: var(--soft-brown-color);
 }
 
 /* canvas red */
 .bank-canvas-cell {
-    background-color: white;
     padding: 1.5em;
-    border: 2px solid green;
     border-radius: 15px;
     font-size: x-large;
+    box-shadow: 0 2px 4px var(--grey-color);
 }
 
 .bank-canvas-cell-2 {
-    background-color: lightgreen;
     padding: 1em 2em 1em 2em;
-    border: 1px solid green;
     border-radius: 15px;
     font-size: large;
+    box-shadow: 0 2px 4px var(--grey-color);
 }
 .bank-canvas-cell-small {
-    background-color: white;
     padding: 1em;
-    border: 1px solid green;
     border-radius: 15px;
     text-align: center;
+    box-shadow: 0 1px 2px var(--grey-color);
 }
 .bank-canvas-cell-small-2 {
-    background-color: lightgreen;
     padding: 1em;
-    border-left: 1px solid green;
-    border-right: 1px solid green;
+    border-left: 1px solid var(--soft-brown-color);
+    border-right: 1px solid var(--soft-brown-color);
     border-radius: 15px;
     text-align: center;
 }
@@ -92,9 +62,13 @@ table.cart-table a {
 }
 
 
+.title-payment {
+  color: var(--soft-brown-color);
+}
+
 
 .payments-form-api {
-    background-color: whitesmoke;
+    background-color: var(--whitesmoke-color);
     border: 2px solid green;
     border-radius: 15px;
     padding: 20px 25px 5px 25px;
@@ -123,26 +97,27 @@ table.cart-table a {
 
 #blue {
   color: rgb(0, 0, 255);
-  transition: 0.5s all;
+  transition: var(--long-duration) all;
 }
 #blue:hover {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.75);
   margin-top: -2%;
   color: rgba(0, 0, 255, 0.5);
-  transform: rotate(-15deg);
+  transform: rotate(-10deg);
 }
 #red {
   color: rgb(255, 0, 0);
-  transition: 0.5s all;
+  transition: var(--long-duration) all;
+  user-select: text;
 }
 #red:hover {
   color: rgba(255, 0, 0, 0.5);
   margin-top: -2%;
-  transform: rotate(15deg);
+  transform: rotate(5deg);
 }
 #yellow {
   color: rgb(220, 255, 0);
-  transition: 0.5s all;
+  transition: var(--long-duration) all;
 }
 #yellow:hover {
   color: rgba(220, 255, 0, 0.5);

@@ -137,7 +137,7 @@ SESSION_COOKIE_SAMESITE = 'Lax'
 
 LOCALE_PATHS = [ os.path.join(BASE_DIR, 'locale'), ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 # LANGUAGE_CODE = 'ru'
 
 LANGUAGES = [('en', 'English'), ('ru', 'Russian'), ('pt', 'Portugal'), ]
@@ -152,7 +152,7 @@ USE_TZ = True
 
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static_my_proj"),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root")
 
 

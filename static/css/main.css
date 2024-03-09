@@ -1,0 +1,44 @@
+.left-field {
+    background: linear-gradient(270deg, #ffffff00 50%, var(--whitesmoke-color) 100%);
+    top:0.5vh;
+    background-color: rgba(0, 0, 0, 0);
+    min-height: 90vh;
+    max-width: 8em;
+    transition: background-color 1s;
+    text-align:center;
+}
+
+.left-field i {
+    margin-top: 45vh;
+    color: var(--whitesmoke-color);
+    position: relative;
+    transition: color 1s;
+}
+
+.left-field:hover i {
+    color: #ffffff;
+}
+
+.left-field:hover {
+    background-color: var(--whitesmoke-color);
+}
+
+.filters {
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+}
+
+.main-filter-label {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--hard-brown-color);
+}
+
+.main-filter-btn {
+    color: var(--soft-brown-color);
+}
+
+.main-filter-btn:hover {
+    color: var(--hard-brown-color);
+}

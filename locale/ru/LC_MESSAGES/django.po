@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-10 13:01+0000\n"
+"POT-Creation-Date: 2024-03-06 00:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,7 +112,7 @@ msgstr "Сменить пароль"
 msgid "Submit"
 msgstr "Отправить"
 
-#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:41
+#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:46
 msgid "Account"
 msgstr "Личный кабинет"
 
@@ -143,11 +143,11 @@ msgid "Products"
 msgstr "Товары"
 
 #: accounts/templates/accounts/home.html:31
-#: orders/templates/orders/collection.html:8 templates/base/navbar.html:66
+#: orders/templates/orders/collection.html:8 templates/base/navbar.html:71
 msgid "Collection"
 msgstr "Коллекция"
 
-#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:63
+#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:68
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -155,13 +155,13 @@ msgstr "Статистика"
 msgid "Support"
 msgstr "Поддержка"
 
-#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:40
+#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:45
 #: templates/contact/about.html:5
 msgid "About"
 msgstr "О себе"
 
-#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:50
-#: templates/base/navbar.html:65
+#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:55
+#: templates/base/navbar.html:70
 msgid "Contact"
 msgstr "Контакты"
 
@@ -179,7 +179,7 @@ msgstr "Обновить настройки"
 
 #: accounts/templates/accounts/login.html:8
 #: carts/templates/carts/checkout/has_nothing.html:11
-#: templates/base/navbar.html:78
+#: templates/base/navbar.html:83
 #: templates/registration/password_reset_complete.html:7
 msgid "Login"
 msgstr "Авторизация"
@@ -188,7 +188,7 @@ msgstr "Авторизация"
 msgid "Sign in"
 msgstr "Войти"
 
-#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:75
+#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:80
 msgid "Register"
 msgstr "Регистрация"
 
@@ -368,7 +368,7 @@ msgstr "Всего отправлено"
 msgid "Paid Totals"
 msgstr "Сумма оплат"
 
-#: billing/models.py:154
+#: billing/models.py:163
 msgid "No cards available"
 msgstr "Нет доступных карт"
 
@@ -445,12 +445,12 @@ msgstr "Сумма к оплате"
 msgid "Choose method of payment"
 msgstr "Выберите способ оплаты"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:72
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:84
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:73
+#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:85
 msgid "PayPal"
 msgstr "PayPal"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:76
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:77
 msgid "Bank card binding"
 msgstr "Привязка банковской карты"
 
@@ -482,39 +482,47 @@ msgstr "Выберите"
 msgid "Continue as Guest"
 msgstr "Продолжить как гость"
 
-#: carts/templates/carts/home.html:7 templates/base/navbar.html:37
+#: carts/templates/carts/home.html:8 templates/base/navbar.html:38
 msgid "Cart"
 msgstr "Корзина"
 
-#: carts/templates/carts/home.html:17
+#: carts/templates/carts/home.html:18
 msgid "Product Name"
 msgstr "Наименование товара"
 
-#: carts/templates/carts/home.html:18
+#: carts/templates/carts/home.html:19
+msgid "Available"
+msgstr "Доступный"
+
+#: carts/templates/carts/home.html:20
+msgid "Quantity"
+msgstr "Количество"
+
+#: carts/templates/carts/home.html:21
 #: orders/templates/orders/collection.html:14 templates/select_sort.html:12
 msgid "Price"
 msgstr "Цена"
 
-#: carts/templates/carts/home.html:35
+#: carts/templates/carts/home.html:50
 #: orders/templates/orders/order_detail.html:34
 msgid "Subtotal"
 msgstr "Промежуточный итог"
 
-#: carts/templates/carts/home.html:48
+#: carts/templates/carts/home.html:63
 #: orders/templates/orders/order_list.html:13
 msgid "Total"
 msgstr "Итог"
 
-#: carts/templates/carts/home.html:58
+#: carts/templates/carts/home.html:73
 msgid "Checkout"
 msgstr "Отплатить"
 
-#: carts/templates/carts/home.html:69
+#: carts/templates/carts/home.html:84
 msgid "Is empty"
 msgstr "Корзина пуста"
 
 #: carts/templates/carts/remove-product.html:5
-#: products/templates/products/update-cart.html:12
+#: products/templates/products/update-cart.html:10
 msgid "Remove"
 msgstr "Удалить"
 
@@ -530,31 +538,31 @@ msgstr "Отправить с контактным email"
 msgid "Your message"
 msgstr "Ваше сообщение"
 
-#: eCommerce_Django/views.py:41
+#: eCommerce_Django/views.py:46
 msgid "Welcome to about page!"
 msgstr "Добро пожаловать на описание!"
 
-#: eCommerce_Django/views.py:51
+#: eCommerce_Django/views.py:56
 msgid "Here you can leave your feedback."
 msgstr "Здесь Вы можете отправить отзыв или предложение"
 
-#: eCommerce_Django/views.py:58
+#: eCommerce_Django/views.py:63
 msgid "Send with contact email: "
 msgstr "Отправить с контактным email: "
 
-#: eCommerce_Django/views.py:62
+#: eCommerce_Django/views.py:67
 msgid "Invalid header found."
 msgstr "Неверный формат."
 
-#: eCommerce_Django/views.py:64
+#: eCommerce_Django/views.py:69
 msgid "Thank you for your submission"
 msgstr "Спасибо за Ваш заказ"
 
-#: eCommerce_Django/views.py:79
+#: eCommerce_Django/views.py:84
 msgid "Update code on server"
 msgstr "Обновить данные на сервере"
 
-#: eCommerce_Django/views.py:81
+#: eCommerce_Django/views.py:86
 msgid "ERROR: Could`t update the code on server"
 msgstr "ОШИБКА: не удалось обновить код на сервере"
 
@@ -646,11 +654,11 @@ msgstr "Ваш комментарий ждет публикации"
 msgid "Leave a comment"
 msgstr "Оставьте комментарий"
 
-#: products/templates/products/update-cart.html:11
+#: products/templates/products/update-cart.html:9
 msgid "In cart"
 msgstr "В корзине"
 
-#: products/templates/products/update-cart.html:15
+#: products/templates/products/update-cart.html:13
 msgid "Add to cart"
 msgstr "Добавить в корзину"
 
@@ -694,15 +702,15 @@ msgstr "Главная"
 msgid "current"
 msgstr "текущий"
 
-#: templates/base/navbar.html:60
+#: templates/base/navbar.html:65
 msgid "Admin"
 msgstr "Администраторская"
 
-#: templates/base/navbar.html:67
+#: templates/base/navbar.html:72
 msgid "Payment"
 msgstr "Способ оплаты"
 
-#: templates/base/navbar.html:69
+#: templates/base/navbar.html:74
 msgid "Logout"
 msgstr "Выйти"
 

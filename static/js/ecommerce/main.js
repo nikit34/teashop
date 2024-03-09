@@ -58,9 +58,9 @@ $(document).ready(function(){
       var loadTime = 1500;
       var currentTimeout;
       var errorHtml = '<i class="fa fa-warning"></i> An error occured';
-      var errorClasses = "btn btn-danger disabled my-3";
+      var errorClasses = "btn btn-default disabled my-3";
       var loadingHtml = '<i class="fa fa-spin fa-spinner"></i> Loading...';
-      var loadingClasses = "btn btn-success disabled my-3";
+      var loadingClasses = "btn btn-general disabled my-3";
       stripe.createToken(card).then(function (result) {
         if (result.error) {
           var errorElement = $("#card-errors");
