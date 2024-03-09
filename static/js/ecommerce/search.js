@@ -4,7 +4,7 @@ import { localization } from './base.js';
 $(document).ready(function () {
   let lang = localization();
 
-  var searchForm = $(".search-form");
+  var searchForm = $(".navbar-search-form");
   var searchInput = searchForm.find('[name="q"]');
   var typingTimer;
   var typingInterval = 1500;

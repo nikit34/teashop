@@ -4,6 +4,7 @@ from wsgiref.util import FileWrapper
 
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import AnonymousUser
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, View
@@ -58,11 +59,11 @@ class ProductDetailSlugView(ObjectViewedMixin, DetailView):
     template_name = 'products/detail.html'
 
     def post(self, request, *args, **kwargs):
-        object = self.get_object()
+        self.object = self.get_object()
         comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
+        if comment_form.is_valid() and not isinstance(request.user, AnonymousUser):
             new_comment = comment_form.save(commit=False)
-            new_comment.listing = object
+            new_comment.listing = self.object
             new_comment.sender = request.user
             new_comment.save()
             context = super(ProductDetailSlugView, self).get_context_data(*args, **kwargs)

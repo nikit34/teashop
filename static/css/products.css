@@ -1,57 +1,13 @@
-.sort-dropup-block{
-    padding: 0 0 1em 0;
-}
-
-.btn:focus, .btn.focus {
-    box-shadow: none !important;
-}
-
-.detail-top-panel {
-    margin-top: 2.5%;
-}
-.detail-price-update .v-line {
-    border-left: 2px solid rgba(0, 0, 0, 0.25);
-    margin-top: 2.5%;
-    height: 2.5em;
-}
-.detail-price-update h2 {
-    min-width: 150px;
-}
-.detail-price-update form {
-    min-width: 300px;
-}
-.detail-content {
-    padding: 1em 0 0 0;
-}
-.detail-description {
-    background-color: white;
-    padding: 1em;
-    border-radius: 15px;
-    font-size: x-large;
-    font-weight: lighter;
-    height: 100%;
-    text-align: justify;
-}
-.detail-comments {
-    background-color: white;
-    padding: 1em 2.5em 2.5em 2.5em;
-    border-radius: 15px;
-    font-size: x-large;
-    font-weight: lighter;
-}
-
-
-
 .card {
     margin: auto;
     border: none;
     border-radius: 5%;
-    transition: all 0.5s;
+    transition: all var(--long-duration);
 }
 .card:hover {
-    -webkit-box-shadow: 0px 0px 15px 15px whitesmoke;
-    -moz-box-shadow: 0px 0px 15px 15px whitesmoke;
-    box-shadow: 0px 0px 15px 15px whitesmoke;
+    -webkit-box-shadow: 0px 0px 15px 15px var(--whitesmoke-color);
+    -moz-box-shadow: 0px 0px 15px 15px var(--whitesmoke-color);
+    box-shadow: 0px 0px 15px 15px var(--whitesmoke-color);
 }
 .card-img-top {
     max-height: 80vh;
@@ -98,31 +54,31 @@
 
 /* canvas yellow */
 .product-canvas-cell {
-    background-color: white;
+    background-color: var(--white-color);
     padding: 1.5em;
-    border: 2px solid #ffff0080;
     border-radius: 15px;
     font-size: x-large;
+    box-shadow: 0 1px 2px var(--grey-color);
 }
 .product-canvas-cell-2 {
-    background-color: #ffff0010;
+    background-color: var(--whitesmoke-color);
     padding: 1em 2em 1em 2em;
-    border: 1px solid #ffff0080;
     border-radius: 15px;
     font-size: large;
+    box-shadow: 0 1px 2px var(--grey-color);
 }
 .product-canvas-cell-small {
-    background-color: white;
+    background-color: var(--white-color);
     padding: 1em;
-    border: 1px solid #ffff0080;
     border-radius: 15px;
     text-align: center;
+    box-shadow: 0 1px 2px var(--grey-color);
 }
 .product-canvas-cell-small-2 {
-    background-color: #ffff0050;
+    background-color: var(--whitesmoke-color);
     padding: 1em;
-    border-left: 1px solid #ffff0080;
-    border-right: 1px solid #ffff0080;
+    border-left: 1px solid var(--soft-brown-color);
+    border-right: 1px solid var(--soft-brown-color);
     border-radius: 15px;
     text-align: center;
 }

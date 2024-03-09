@@ -6,11 +6,11 @@
     <span class="submit-span">
         {% if in_cart %}
             <div class='btn-group'>
-                <a class='btn btn-success' href='/cart/'>{% trans "In cart" %}</a>
-                <button type="button" class="btn btn-outline-danger remove-btn">{% trans "Remove" %}?</button>
+                <a class='btn btn-general' href='/cart/'>{% trans "In cart" %}</a>
+                <button type="button" class="btn btn-default remove-btn">{% trans "Remove" %}?</button>
             </div>
         {% else %}
-            <button type="button" class="btn btn-success add-to-cart-btn">{% trans "Add to cart" %}</button>
+            <button type="button" class="btn btn-general add-to-cart-btn">{% trans "Add to cart" %}</button>
         {% endif %}
     </span>
 </form>

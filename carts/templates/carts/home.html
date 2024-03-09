@@ -1,16 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load custom_filters %}
+{% load static %}
 {% block content %}
 
-<div class='row'>
-    <div class='col'>
-         <h1>{% trans "Cart" %}</h1>
-        <hr/>
-    </div>
-</div>
 {% if cart.cart_items.exists %}
-    <div class="canvas-cart-table">
+    <div class="cart-container canvas-cart-table">
         <table class="table cart-table">
             <thead>
                 <tr>
@@ -35,7 +30,7 @@
                     <td>
                         <div class="input-group text-center">
                             <button class="input-group-text decrement-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ cart_item.product.id }}">-</button>
-                            <input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="{{ cart_item.product.id }}" value="{{ cart_item.quantity }}" min="1">
+                            <input type="text" name="quantity" class="form-control current-quantity text-center" data-product-id="{{ cart_item.product.id }}" value="{{ cart_item.quantity }}" min="1">
                             <button class="input-group-text increment-btn" data-method="POST" data-endpoint="{% url 'cart:update' %}" data-product-id="{{ cart_item.product.id }}">+</button>
                         </div>
                     </td>
@@ -70,7 +65,7 @@
                 </tr>
                 <tr>
                     <td colspan="2"></td>
-                    <td><a class="btn btn-success" href="{% url 'cart:checkout' %}">{% trans "Checkout" %}</a></td>
+                    <td><a class="btn btn-general" href="{% url 'cart:checkout' %}">{% trans "Checkout" %}</a></td>
                 </tr>
             </tbody>
         </table>
@@ -79,11 +74,11 @@
         {% include 'carts/remove-product.html' %}
     </div>
 {% else %}
-    <a href='{% url "home" %}'>
-        <div class="bank-canvas-cell-small-2">
-            <h1>{% trans "Is empty" %}</h1>
-        </div>
-    </a>
+    <div class="cart-container">
+        <a href='{% url "home" %}'>
+            <img class="cart-empty-img" src="{% static 'img/empty_cart.png' %}" alt="Empty Cart">
+        </a>
+    </div>
 {% endif %}
 
 {% endblock %}

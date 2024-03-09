@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
-{% url 'contact' as contact_url %}
+
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -26,7 +27,7 @@
         {% include 'base/css.html' %}
     </head>
     <body>
-        {% include 'base/navbar.html' with brand_name="TeaShop" %}
+        {% include 'base/navbar.html' %}
 
         <span class="row">
             <div id="up" class="col-1 d-none d-md-block left-field">

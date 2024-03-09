@@ -11,7 +11,7 @@ $(document).ready(function () {
     var productId = thisBtn.data('product-id');
     var actionEndpoint = thisBtn.attr("data-endpoint");
     var method = thisBtn.data('method');
-    var inputField = $('.currentQuantity[data-product-id="' + productId + '"]');
+    var inputField = $('.current-quantity[data-product-id="' + productId + '"]');
     var currentQuantity = parseInt(inputField.val());
 
     var newQuantity = currentQuantity - 1;
@@ -37,7 +37,7 @@ $(document).ready(function () {
     var productId = thisBtn.data('product-id');
     var actionEndpoint = thisBtn.attr("data-endpoint");
     var method = thisBtn.data('method');
-    var inputField = $('.currentQuantity[data-product-id="' + productId + '"]');
+    var inputField = $('.current-quantity[data-product-id="' + productId + '"]');
     var currentQuantity = parseInt(inputField.val());
 
     var newQuantity = currentQuantity + 1;
@@ -131,7 +131,7 @@ $(document).ready(function () {
             '</td><td>' +
               '<div class="input-group text-center">' +
                 '<button class="input-group-text decrement-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update/" data-product-id="' + productItem.id + '">-</button>' +
-                '<input type="text" name="quantity" class="form-control currentQuantity text-center" data-product-id="' + productItem.id + '" value="' + productItem.cartItemQuantity + '" min="1">' +
+                '<input type="text" name="quantity" class="form-control current-quantity text-center" data-product-id="' + productItem.id + '" value="' + productItem.cartItemQuantity + '" min="1">' +
                 '<button class="input-group-text increment-btn" data-method="POST" data-endpoint="/' + lang + '/cart/update/" data-product-id="' + productItem.id + '">+</button>' +
               '</div>' +
             '</td><td>' +
