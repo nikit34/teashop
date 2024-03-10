@@ -4,8 +4,13 @@
     font-size: normal;
     border-style: none;
     border-bottom-style: groove;
-    background: radial-gradient(circle, var(--whitesmoke-color) 50%, var(--transparent-color) 100%);
+    background: radial-gradient(circle, var(--whitesmoke-color) 70%, var(--transparent-color) 100%);
     min-width: 300px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
 }
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
