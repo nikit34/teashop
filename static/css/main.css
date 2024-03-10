@@ -19,8 +19,12 @@
     flex-direction: column;
 }
 
-.onboarding-text h3 {
+.onboarding-text .line-1 {
     margin-top: 17%;
+}
+
+.onboarding-text .line-2 {
+    margin-top: 10%;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -29,7 +33,12 @@
     }
     .onboarding-text h3 {
         font-size: 20px;
-        margin-top: 15%;
+    }
+    .onboarding-text .line-1 {
+        margin-top: 17%;
+    }
+    .onboarding-text .line-2 {
+        margin-top: 7%;
     }
 }
 
@@ -38,8 +47,13 @@
         height: 200px;
     }
     .onboarding-text h3 {
-        font-size: 14px;
-        margin-top: 20%;
+        font-size: 15px;
+    }
+    .onboarding-text .line-1 {
+        margin-top: 25%;
+    }
+    .onboarding-text .line-2 {
+        margin-top: 7%;
     }
 }
 
