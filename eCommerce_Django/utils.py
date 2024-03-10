@@ -89,7 +89,7 @@ def unique_slug_generator(instance, new_slug=None):
 
 def get_secret_key(root_path, key):
     value = os.environ.get(key)
-    if not value:
+    if not value and os.path.isfile(root_path + "/secret"):
         with open(root_path + "/secret", "r") as f:
             for line in f.readlines():
                 if key in line:
