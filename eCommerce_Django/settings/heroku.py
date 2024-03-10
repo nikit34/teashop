@@ -110,14 +110,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'eCommerce_Django.wsgi.application'
 
+HEROKU_DB_PASSWORD = get_secret_key(BASE_DIR, 'HEROKU_DB_PASSWORD')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'teashop',
-        'USER': 'postgres',
-        'PASSWORD': 'teashop',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'd3bfl7lu62kgt7',
+        'USER': 'u3idpplho8jjur',
+        'PASSWORD': HEROKU_DB_PASSWORD,
+        'HOST': 'ceu9lmqblp8t3q.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
