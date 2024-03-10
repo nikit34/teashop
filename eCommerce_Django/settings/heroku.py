@@ -10,7 +10,7 @@ DEBUG = False
 
 DJANGO_TEST_PROCESSES = 8
 
-ALLOWED_HOSTS = ['teashop-e3ec3bce7960.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'teashop-e3ec3bce7960.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.postgres',
 
     'accounts',
     'billing',
@@ -109,11 +110,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'eCommerce_Django.wsgi.application'
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'teashop',
+        'USER': 'postgres',
+        'PASSWORD': 'teashop',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
