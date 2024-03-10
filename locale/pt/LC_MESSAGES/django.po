@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-06 00:27+0000\n"
+"POT-Creation-Date: 2024-03-10 19:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,19 +98,15 @@ msgid "Save"
 msgstr "Salvar"
 
 #: accounts/templates/accounts/detail-update-view.html:27
-#: accounts/templates/accounts/home.html:59
+#: accounts/templates/accounts/home.html:62
 msgid "Change Password"
 msgstr "Alterar a senha"
 
 #: accounts/templates/accounts/form.html:37
 #: addresses/templates/addresses/form.html:102
-#: products/templates/products/detail.html:114 templates/contact/view.html:19
+#: products/templates/products/detail.html:112 templates/contact/view.html:19
 msgid "Submit"
 msgstr "Enviar"
-
-#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:46
-msgid "Account"
-msgstr "Conta"
 
 #: accounts/templates/accounts/home.html:15
 msgid "Billing"
@@ -139,11 +135,11 @@ msgid "Products"
 msgstr "Produtos"
 
 #: accounts/templates/accounts/home.html:31
-#: orders/templates/orders/collection.html:8 templates/base/navbar.html:71
+#: orders/templates/orders/collection.html:8
 msgid "Collection"
 msgstr "Coleção"
 
-#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:68
+#: accounts/templates/accounts/home.html:33
 msgid "Statistics"
 msgstr "Estatisticas"
 
@@ -151,31 +147,38 @@ msgstr "Estatisticas"
 msgid "Support"
 msgstr "Apoiar"
 
-#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:45
+#: accounts/templates/accounts/home.html:46 templates/base/navbar.html:38
+msgid "Admin"
+msgstr "Administrador"
+
+#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:45
 #: templates/contact/about.html:5
 msgid "About"
 msgstr "Sobre"
 
-#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:55
-#: templates/base/navbar.html:70
+#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:55
 msgid "Contact"
 msgstr "Contato"
 
-#: accounts/templates/accounts/home.html:55
+#: accounts/templates/accounts/home.html:58
 msgid "Account Details"
 msgstr "Detalhes da conta"
 
-#: accounts/templates/accounts/home.html:57
+#: accounts/templates/accounts/home.html:60
 msgid "Email Marketing"
 msgstr "Marketing de email"
 
-#: accounts/templates/accounts/home.html:58
+#: accounts/templates/accounts/home.html:61
 msgid "Update Details"
 msgstr "Detalhes da atualização"
 
+#: accounts/templates/accounts/home.html:63
+msgid "Logout"
+msgstr "Sair"
+
 #: accounts/templates/accounts/login.html:8
 #: carts/templates/carts/checkout/has_nothing.html:11
-#: templates/base/navbar.html:83
+#: templates/base/navbar.html:46
 #: templates/registration/password_reset_complete.html:7
 msgid "Login"
 msgstr "Conecte-se"
@@ -184,7 +187,7 @@ msgstr "Conecte-se"
 msgid "Sign in"
 msgstr "Entrar"
 
-#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:80
+#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:43
 msgid "Register"
 msgstr "Registro"
 
@@ -385,13 +388,18 @@ msgid "Success! Your card was added."
 msgstr "Sucesso! Seu cartão foi adicionado."
 
 #: carts/templates/carts/checkout-done.html:8
+#, fuzzy
+#| msgid ""
+#| "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
+#| "div><div id=\"green\">n</div><div id=\"red\">k</div>, <div "
+#| "id=\"blue\">you for your order</div>"
 msgid ""
 "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
-"div><div id=\"green\">n</div><div id=\"red\">k</div>, <div id=\"blue\">you "
-"for your order</div>"
+"div><div id=\"green\">n</div><div id=\"red\">k</div>,&nbsp;<div "
+"id=\"blue\">you for your order</div>"
 msgstr ""
 "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
-"div><div id=\"green\">n</div><div id=\"red\">k</div>, <div id=\"blue\">você "
+"div><div id=\"green\">n</div><div id=\"red\">k</div>,&nbsp;<div id=\"blue\">você "
 "para seu pedido</div>"
 
 #: carts/templates/carts/checkout-done.html:13
@@ -478,44 +486,37 @@ msgstr "Escolher"
 msgid "Continue as Guest"
 msgstr "Continuar como convidado"
 
-#: carts/templates/carts/home.html:8 templates/base/navbar.html:38
-msgid "Cart"
-msgstr "Carrinho"
-
-#: carts/templates/carts/home.html:18
+#: carts/templates/carts/home.html:13
 msgid "Product Name"
 msgstr "Nome do Produto"
 
-#: carts/templates/carts/home.html:19
+#: carts/templates/carts/home.html:14
 msgid "Available"
 msgstr "Disponível"
 
-#: carts/templates/carts/home.html:20
+#: carts/templates/carts/home.html:15
 msgid "Quantity"
 msgstr "Quantidade"
 
-#: carts/templates/carts/home.html:21
-#: orders/templates/orders/collection.html:14 templates/select_sort.html:12
+#: carts/templates/carts/home.html:16
+#: orders/templates/orders/collection.html:14
+#: templates/main/select_sort.html:12
 msgid "Price"
 msgstr "Preço"
 
-#: carts/templates/carts/home.html:50
+#: carts/templates/carts/home.html:45
 #: orders/templates/orders/order_detail.html:34
 msgid "Subtotal"
 msgstr "Subtotal"
 
-#: carts/templates/carts/home.html:63
+#: carts/templates/carts/home.html:58
 #: orders/templates/orders/order_list.html:13
 msgid "Total"
 msgstr "Total"
 
-#: carts/templates/carts/home.html:73
+#: carts/templates/carts/home.html:68
 msgid "Checkout"
 msgstr "Confira"
-
-#: carts/templates/carts/home.html:84
-msgid "Is empty"
-msgstr "Está vazia"
 
 #: carts/templates/carts/remove-product.html:5
 #: products/templates/products/update-cart.html:10
@@ -626,27 +627,19 @@ msgstr "Imagem não encontrada :("
 msgid "View"
 msgstr "Visualizar"
 
-#: products/templates/products/detail.html:73
-msgid "Previous"
-msgstr "Anterior"
-
-#: products/templates/products/detail.html:77
-msgid "Next"
-msgstr "Próximo"
-
-#: products/templates/products/detail.html:85
+#: products/templates/products/detail.html:83
 msgid "comments"
 msgstr "comentários"
 
-#: products/templates/products/detail.html:93
+#: products/templates/products/detail.html:91
 msgid "says"
 msgstr "diz"
 
-#: products/templates/products/detail.html:106
+#: products/templates/products/detail.html:104
 msgid "Your comment is awaiting moderation"
 msgstr "Seu comentário está aguardando moderação"
 
-#: products/templates/products/detail.html:112
+#: products/templates/products/detail.html:110
 msgid "Leave a comment"
 msgstr "Deixe um comentário"
 
@@ -678,7 +671,7 @@ msgstr "Procurar"
 msgid "Results for"
 msgstr "Resultados para"
 
-#: templates/base.html:42
+#: templates/base.html:43
 msgid "Important"
 msgstr "Importante"
 
@@ -686,31 +679,23 @@ msgstr "Importante"
 msgid "Developed"
 msgstr "Desenvolvido"
 
-#: templates/base/navbar.html:22
+#: templates/base/navbar.html:13
 msgid "TeaShop"
 msgstr "TeaShop"
 
-#: templates/base/navbar.html:33
+#: templates/base/navbar.html:22
 msgid "Home"
 msgstr "Lar"
 
-#: templates/base/navbar.html:33
-msgid "current"
-msgstr "atual"
+#: templates/base/navbar.html:28
+msgid "Cart"
+msgstr "Carrinho"
 
-#: templates/base/navbar.html:65
-msgid "Admin"
-msgstr "Administrador"
+#: templates/base/navbar.html:34
+msgid "Account"
+msgstr "Conta"
 
-#: templates/base/navbar.html:72
-msgid "Payment"
-msgstr "Pagamento"
-
-#: templates/base/navbar.html:74
-msgid "Logout"
-msgstr "Sair"
-
-#: templates/contact/about.html:18 templates/home_page.html:30
+#: templates/contact/about.html:18 templates/main/home_page.html:28
 msgid "Premium Content"
 msgstr "Conteúdo premium"
 
@@ -739,21 +724,45 @@ msgstr "Ops, desculpe. Ocorreu um erro no servidor"
 msgid "Error | We have been notified and are working on a fix"
 msgstr "Erro | Fomos notificados e estamos trabalhando em uma correção"
 
-#: templates/home_page.html:5
+#: templates/main/home_page.html:6
 msgid "Home page"
 msgstr "Pagina inicial"
 
-#: templates/home_page.html:14
-msgid "Free delivery throughout Porto and Vila Nova de Gaia"
-msgstr "Entrega gratuita em todo o Porto e Vila Nova de Gaia"
-
-#: templates/home_page.html:34
+#: templates/main/home_page.html:32
 msgid "Have any requests or questions?"
 msgstr "Tem alguma solicitação ou dúvida?"
 
-#: templates/home_page.html:37
+#: templates/main/home_page.html:35
 msgid "Write me, please"
 msgstr "Escreva-me por favor"
+
+#: templates/main/onboarding.html:10
+msgid "Take care of your health, live long - drink quality tea"
+msgstr "Cuide da sua saúde, viva por muito tempo - beba chá de qualidade"
+
+#: templates/main/onboarding.html:11
+msgid "Free delivery throughout Porto and Vila Nova de Gaia"
+msgstr "Entrega gratuita em todo o Porto e Vila Nova de Gaia"
+
+#: templates/main/select_sort.html:13
+msgid "descending"
+msgstr "descendente"
+
+#: templates/main/select_sort.html:14
+msgid "ascending"
+msgstr "ascendente"
+
+#: templates/main/select_sort.html:20
+msgid "Time"
+msgstr "Tempo"
+
+#: templates/main/select_sort.html:21
+msgid "update early"
+msgstr "atualizar cedo"
+
+#: templates/main/select_sort.html:22
+msgid "update last"
+msgstr "atualizar por último"
 
 #: templates/registration/activation-error.html:7
 msgid "Activation Error. Please try again"
@@ -781,8 +790,7 @@ msgstr "Nova Senha"
 
 #: templates/registration/password_change_form.html:38
 msgid "Your password can't be too similar to your other personal information"
-msgstr ""
-"Sua senha não pode ser muito semelhante às suas outras informações pessoais"
+msgstr "Sua senha não pode ser muito semelhante às suas outras informações pessoais"
 
 #: templates/registration/password_change_form.html:39
 msgid "Your password must contain at least 8 characters"
@@ -841,25 +849,20 @@ msgstr "Redefinir sua senha"
 msgid "Reset Password"
 msgstr "Redefinir senha"
 
-#: templates/select_sort.html:16
-msgid "descending"
-msgstr "descendente"
+#~ msgid "Is empty"
+#~ msgstr "Está vazia"
 
-#: templates/select_sort.html:17
-msgid "ascending"
-msgstr "ascendente"
+#~ msgid "Previous"
+#~ msgstr "Anterior"
 
-#: templates/select_sort.html:23
-msgid "Time"
-msgstr "Tempo"
+#~ msgid "Next"
+#~ msgstr "Próximo"
 
-#: templates/select_sort.html:27
-msgid "update early"
-msgstr "atualizar cedo"
+#~ msgid "current"
+#~ msgstr "atual"
 
-#: templates/select_sort.html:28
-msgid "update last"
-msgstr "atualizar por último"
+#~ msgid "Payment"
+#~ msgstr "Pagamento"
 
 #~ msgid "Billing address"
 #~ msgstr "Endereço de Cobrança"
