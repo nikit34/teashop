@@ -11,9 +11,7 @@
 
 {% block content %}
 
-    <div class="text-center">
-        <h1>{% trans "Free delivery throughout Porto and Vila Nova de Gaia" %}</h1>
-    </div>
+    {% include 'main/onboarding.html' %}
     {% include 'main/select_sort.html' %}
     <div class="row justify-content-center">
         {% for obj in object_list %}

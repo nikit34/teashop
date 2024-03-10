@@ -1,3 +1,48 @@
+.onboarding {
+    height: 400px;
+}
+
+.onboarding-cover {
+    position: relative;
+    transform: translateY(20%);
+}
+
+.onboarding-img {
+    transform:  translate(-60%, -40%) rotate(-45deg);
+    border-radius: 30px;
+    width: 200%;
+}
+
+.onboarding-text {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.onboarding-text h3 {
+    margin-top: 17%;
+}
+
+@media only screen and (max-width: 1200px) {
+    .onboarding {
+        height: 300px;
+    }
+    .onboarding-text h3 {
+        font-size: 20px;
+        margin-top: 15%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .onboarding {
+        height: 200px;
+    }
+    .onboarding-text h3 {
+        font-size: 14px;
+        margin-top: 20%;
+    }
+}
+
 .left-field {
     background: linear-gradient(270deg, #ffffff00 50%, var(--whitesmoke-color) 100%);
     top:0.5vh;
