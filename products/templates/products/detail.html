@@ -34,11 +34,11 @@
         {{ object.description|linebreaks|safe }}
       </div>
       <div class="col-8">
-        <div id="carouselAction" class="carousel slide" data-ride="carousel">
+        <div id="carousel-action" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#carouselAction" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-action" data-slide-to="0" class="active"></li>
           {% for slide in slides %}
-            <li data-target="#carouselAction" data-slide-to="{{ forloop.counter }}"></li>
+            <li data-target="#carousel-action" data-slide-to="{{ forloop.counter }}"></li>
             {{ forloop.counter1 }}
           {% endfor %}
           </ol>
@@ -68,10 +68,10 @@
               </div>
             {% endfor %}
           </div>
-          <a class="carousel-control-prev" href="#carouselAction" role="button" data-slide="prev">
+          <a class="carousel-control-prev" href="#carousel-action" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           </a>
-          <a class="carousel-control-next" href="#carouselAction" role="button" data-slide="next">
+          <a class="carousel-control-next" href="#carousel-action" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
           </a>
         </div>
