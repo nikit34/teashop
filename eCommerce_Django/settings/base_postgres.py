@@ -6,11 +6,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SECRET_KEY = get_secret_key(BASE_DIR, 'SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 DJANGO_TEST_PROCESSES = 8
 
-ALLOWED_HOSTS = ['teashop-e3ec3bce7960.herokuapp.com']
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'tags',
     'chats',
     'search',
+
+    'debug_toolbar',
 ]
 
 SITE_ID = 1
@@ -61,7 +63,7 @@ MANAGERS = (
 ADMINS = MANAGERS
 
 
-BASE_URL = 'teashop-e3ec3bce7960.herokuapp.com'
+BASE_URL = '127.0.0.1:8000'
 
 
 MAILCHIMP_API_KEY = get_secret_key(BASE_DIR, 'MAILCHIMP_API_KEY')
@@ -85,6 +87,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 
@@ -110,14 +114,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'eCommerce_Django.wsgi.application'
 
-HEROKU_DB_PASSWORD = get_secret_key(BASE_DIR, 'HEROKU_DB_PASSWORD')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3bfl7lu62kgt7',
-        'USER': 'u3idpplho8jjur',
-        'PASSWORD': HEROKU_DB_PASSWORD,
-        'HOST': 'ceu9lmqblp8t3q.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+        'NAME': 'teashop',
+        'USER': 'postgres',
+        'PASSWORD': 'teashop',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -166,3 +169,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
 
 PROTECTED_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "protected_media")
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
