@@ -11,6 +11,7 @@
     transform:  translate(-60%, -40%) rotate(-45deg);
     border-radius: 30px;
     width: 200%;
+    opacity: 0.5;
 }
 
 .onboarding-text {

@@ -2,13 +2,13 @@
     margin: auto;
     border: none;
     border-radius: 5%;
+    margin-bottom: 4vh;
+    box-shadow: 0px 0px 15px 10px var(--shadow-color);
     transition: all var(--long-duration);
 }
 
 .card:hover {
-    -webkit-box-shadow: 0px 0px 15px 15px var(--whitesmoke-color);
-    -moz-box-shadow: 0px 0px 15px 15px var(--whitesmoke-color);
-    box-shadow: 0px 0px 15px 15px var(--whitesmoke-color);
+    box-shadow: 0px 0px 15px 15px var(--shadow-color);
 }
 
 .card-img-top {
