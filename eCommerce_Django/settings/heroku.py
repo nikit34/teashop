@@ -10,7 +10,7 @@ DEBUG = False
 
 DJANGO_TEST_PROCESSES = 8
 
-ALLOWED_HOSTS = ['teashop.pythonanywhere.com']
+ALLOWED_HOSTS = ['teashop-e3ec3bce7960.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
@@ -60,7 +60,7 @@ MANAGERS = (
 ADMINS = MANAGERS
 
 
-BASE_URL = 'teashop.pythonanywhere.com'
+BASE_URL = 'teashop-e3ec3bce7960.herokuapp.com'
 
 
 MAILCHIMP_API_KEY = get_secret_key(BASE_DIR, 'MAILCHIMP_API_KEY')
