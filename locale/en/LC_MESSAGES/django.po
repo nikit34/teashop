@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-06 00:26+0000\n"
+"POT-Creation-Date: 2024-03-10 19:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: accounts/forms.py:21
 #, python-format
 msgid ""
@@ -93,18 +94,14 @@ msgid "Save"
 msgstr ""
 
 #: accounts/templates/accounts/detail-update-view.html:27
-#: accounts/templates/accounts/home.html:59
+#: accounts/templates/accounts/home.html:62
 msgid "Change Password"
 msgstr ""
 
 #: accounts/templates/accounts/form.html:37
 #: addresses/templates/addresses/form.html:102
-#: products/templates/products/detail.html:114 templates/contact/view.html:19
+#: products/templates/products/detail.html:112 templates/contact/view.html:19
 msgid "Submit"
-msgstr ""
-
-#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:46
-msgid "Account"
 msgstr ""
 
 #: accounts/templates/accounts/home.html:15
@@ -134,11 +131,11 @@ msgid "Products"
 msgstr ""
 
 #: accounts/templates/accounts/home.html:31
-#: orders/templates/orders/collection.html:8 templates/base/navbar.html:71
+#: orders/templates/orders/collection.html:8
 msgid "Collection"
 msgstr ""
 
-#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:68
+#: accounts/templates/accounts/home.html:33
 msgid "Statistics"
 msgstr ""
 
@@ -146,31 +143,38 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:45
+#: accounts/templates/accounts/home.html:46 templates/base/navbar.html:38
+msgid "Admin"
+msgstr ""
+
+#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:45
 #: templates/contact/about.html:5
 msgid "About"
 msgstr ""
 
-#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:55
-#: templates/base/navbar.html:70
+#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:55
 msgid "Contact"
 msgstr ""
 
-#: accounts/templates/accounts/home.html:55
+#: accounts/templates/accounts/home.html:58
 msgid "Account Details"
 msgstr ""
 
-#: accounts/templates/accounts/home.html:57
+#: accounts/templates/accounts/home.html:60
 msgid "Email Marketing"
 msgstr ""
 
-#: accounts/templates/accounts/home.html:58
+#: accounts/templates/accounts/home.html:61
 msgid "Update Details"
+msgstr ""
+
+#: accounts/templates/accounts/home.html:63
+msgid "Logout"
 msgstr ""
 
 #: accounts/templates/accounts/login.html:8
 #: carts/templates/carts/checkout/has_nothing.html:11
-#: templates/base/navbar.html:83
+#: templates/base/navbar.html:46
 #: templates/registration/password_reset_complete.html:7
 msgid "Login"
 msgstr ""
@@ -179,7 +183,7 @@ msgstr ""
 msgid "Sign in"
 msgstr ""
 
-#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:80
+#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:43
 msgid "Register"
 msgstr ""
 
@@ -380,8 +384,8 @@ msgstr ""
 #: carts/templates/carts/checkout-done.html:8
 msgid ""
 "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
-"div><div id=\"green\">n</div><div id=\"red\">k</div>, <div id=\"blue\">you "
-"for your order</div>"
+"div><div id=\"green\">n</div><div id=\"red\">k</div>,&nbsp;<div "
+"id=\"blue\">you for your order</div>"
 msgstr ""
 
 #: carts/templates/carts/checkout-done.html:13
@@ -468,43 +472,36 @@ msgstr ""
 msgid "Continue as Guest"
 msgstr ""
 
-#: carts/templates/carts/home.html:8 templates/base/navbar.html:38
-msgid "Cart"
-msgstr ""
-
-#: carts/templates/carts/home.html:18
+#: carts/templates/carts/home.html:13
 msgid "Product Name"
 msgstr ""
 
-#: carts/templates/carts/home.html:19
+#: carts/templates/carts/home.html:14
 msgid "Available"
 msgstr ""
 
-#: carts/templates/carts/home.html:20
+#: carts/templates/carts/home.html:15
 msgid "Quantity"
 msgstr ""
 
-#: carts/templates/carts/home.html:21
-#: orders/templates/orders/collection.html:14 templates/select_sort.html:12
+#: carts/templates/carts/home.html:16
+#: orders/templates/orders/collection.html:14
+#: templates/main/select_sort.html:12
 msgid "Price"
 msgstr ""
 
-#: carts/templates/carts/home.html:50
+#: carts/templates/carts/home.html:45
 #: orders/templates/orders/order_detail.html:34
 msgid "Subtotal"
 msgstr ""
 
-#: carts/templates/carts/home.html:63
+#: carts/templates/carts/home.html:58
 #: orders/templates/orders/order_list.html:13
 msgid "Total"
 msgstr ""
 
-#: carts/templates/carts/home.html:73
+#: carts/templates/carts/home.html:68
 msgid "Checkout"
-msgstr ""
-
-#: carts/templates/carts/home.html:84
-msgid "Is empty"
 msgstr ""
 
 #: carts/templates/carts/remove-product.html:5
@@ -616,27 +613,19 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: products/templates/products/detail.html:73
-msgid "Previous"
-msgstr ""
-
-#: products/templates/products/detail.html:77
-msgid "Next"
-msgstr ""
-
-#: products/templates/products/detail.html:85
+#: products/templates/products/detail.html:83
 msgid "comments"
 msgstr ""
 
-#: products/templates/products/detail.html:93
+#: products/templates/products/detail.html:91
 msgid "says"
 msgstr ""
 
-#: products/templates/products/detail.html:106
+#: products/templates/products/detail.html:104
 msgid "Your comment is awaiting moderation"
 msgstr ""
 
-#: products/templates/products/detail.html:112
+#: products/templates/products/detail.html:110
 msgid "Leave a comment"
 msgstr ""
 
@@ -668,7 +657,7 @@ msgstr ""
 msgid "Results for"
 msgstr ""
 
-#: templates/base.html:42
+#: templates/base.html:43
 msgid "Important"
 msgstr ""
 
@@ -676,31 +665,23 @@ msgstr ""
 msgid "Developed"
 msgstr ""
 
-#: templates/base/navbar.html:22
+#: templates/base/navbar.html:13
 msgid "TeaShop"
 msgstr ""
 
-#: templates/base/navbar.html:33
+#: templates/base/navbar.html:22
 msgid "Home"
 msgstr ""
 
-#: templates/base/navbar.html:33
-msgid "current"
+#: templates/base/navbar.html:28
+msgid "Cart"
 msgstr ""
 
-#: templates/base/navbar.html:65
-msgid "Admin"
+#: templates/base/navbar.html:34
+msgid "Account"
 msgstr ""
 
-#: templates/base/navbar.html:72
-msgid "Payment"
-msgstr ""
-
-#: templates/base/navbar.html:74
-msgid "Logout"
-msgstr ""
-
-#: templates/contact/about.html:18 templates/home_page.html:30
+#: templates/contact/about.html:18 templates/main/home_page.html:28
 msgid "Premium Content"
 msgstr ""
 
@@ -729,20 +710,44 @@ msgstr ""
 msgid "Error | We have been notified and are working on a fix"
 msgstr ""
 
-#: templates/home_page.html:5
+#: templates/main/home_page.html:6
 msgid "Home page"
 msgstr ""
 
-#: templates/home_page.html:14
-msgid "Free delivery throughout Porto and Vila Nova de Gaia"
-msgstr ""
-
-#: templates/home_page.html:34
+#: templates/main/home_page.html:32
 msgid "Have any requests or questions?"
 msgstr ""
 
-#: templates/home_page.html:37
+#: templates/main/home_page.html:35
 msgid "Write me, please"
+msgstr ""
+
+#: templates/main/onboarding.html:10
+msgid "Take care of your health, live long - drink quality tea"
+msgstr ""
+
+#: templates/main/onboarding.html:11
+msgid "Free delivery throughout Porto and Vila Nova de Gaia"
+msgstr ""
+
+#: templates/main/select_sort.html:13
+msgid "descending"
+msgstr ""
+
+#: templates/main/select_sort.html:14
+msgid "ascending"
+msgstr ""
+
+#: templates/main/select_sort.html:20
+msgid "Time"
+msgstr ""
+
+#: templates/main/select_sort.html:21
+msgid "update early"
+msgstr ""
+
+#: templates/main/select_sort.html:22
+msgid "update last"
 msgstr ""
 
 #: templates/registration/activation-error.html:7
@@ -824,24 +829,4 @@ msgstr ""
 
 #: templates/registration/password_reset_form.html:10
 msgid "Reset Password"
-msgstr ""
-
-#: templates/select_sort.html:16
-msgid "descending"
-msgstr ""
-
-#: templates/select_sort.html:17
-msgid "ascending"
-msgstr ""
-
-#: templates/select_sort.html:23
-msgid "Time"
-msgstr ""
-
-#: templates/select_sort.html:27
-msgid "update early"
-msgstr ""
-
-#: templates/select_sort.html:28
-msgid "update last"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-06 00:30+0000\n"
+"POT-Creation-Date: 2024-03-10 19:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,19 +102,15 @@ msgid "Save"
 msgstr "Сохранить"
 
 #: accounts/templates/accounts/detail-update-view.html:27
-#: accounts/templates/accounts/home.html:59
+#: accounts/templates/accounts/home.html:62
 msgid "Change Password"
 msgstr "Сменить пароль"
 
 #: accounts/templates/accounts/form.html:37
 #: addresses/templates/addresses/form.html:102
-#: products/templates/products/detail.html:114 templates/contact/view.html:19
+#: products/templates/products/detail.html:112 templates/contact/view.html:19
 msgid "Submit"
 msgstr "Отправить"
-
-#: accounts/templates/accounts/home.html:8 templates/base/navbar.html:46
-msgid "Account"
-msgstr "Личный кабинет"
 
 #: accounts/templates/accounts/home.html:15
 msgid "Billing"
@@ -143,11 +139,11 @@ msgid "Products"
 msgstr "Товары"
 
 #: accounts/templates/accounts/home.html:31
-#: orders/templates/orders/collection.html:8 templates/base/navbar.html:71
+#: orders/templates/orders/collection.html:8
 msgid "Collection"
 msgstr "Коллекция"
 
-#: accounts/templates/accounts/home.html:33 templates/base/navbar.html:68
+#: accounts/templates/accounts/home.html:33
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -155,31 +151,38 @@ msgstr "Статистика"
 msgid "Support"
 msgstr "Поддержка"
 
-#: accounts/templates/accounts/home.html:45 eCommerce_Django/views.py:45
+#: accounts/templates/accounts/home.html:46 templates/base/navbar.html:38
+msgid "Admin"
+msgstr "Администраторская"
+
+#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:45
 #: templates/contact/about.html:5
 msgid "About"
 msgstr "О себе"
 
-#: accounts/templates/accounts/home.html:46 eCommerce_Django/views.py:55
-#: templates/base/navbar.html:70
+#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:55
 msgid "Contact"
 msgstr "Контакты"
 
-#: accounts/templates/accounts/home.html:55
+#: accounts/templates/accounts/home.html:58
 msgid "Account Details"
 msgstr "Дополнительные настройки"
 
-#: accounts/templates/accounts/home.html:57
+#: accounts/templates/accounts/home.html:60
 msgid "Email Marketing"
 msgstr "Рекламная рассылка"
 
-#: accounts/templates/accounts/home.html:58
+#: accounts/templates/accounts/home.html:61
 msgid "Update Details"
 msgstr "Обновить настройки"
 
+#: accounts/templates/accounts/home.html:63
+msgid "Logout"
+msgstr "Выйти"
+
 #: accounts/templates/accounts/login.html:8
 #: carts/templates/carts/checkout/has_nothing.html:11
-#: templates/base/navbar.html:83
+#: templates/base/navbar.html:46
 #: templates/registration/password_reset_complete.html:7
 msgid "Login"
 msgstr "Авторизация"
@@ -188,7 +191,7 @@ msgstr "Авторизация"
 msgid "Sign in"
 msgstr "Войти"
 
-#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:80
+#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:43
 msgid "Register"
 msgstr "Регистрация"
 
@@ -389,14 +392,19 @@ msgid "Success! Your card was added."
 msgstr "Успех! Ваша карта была добавлена."
 
 #: carts/templates/carts/checkout-done.html:8
+#, fuzzy
+#| msgid ""
+#| "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
+#| "div><div id=\"green\">n</div><div id=\"red\">k</div>, <div "
+#| "id=\"blue\">you for your order</div>"
 msgid ""
 "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
-"div><div id=\"green\">n</div><div id=\"red\">k</div>, <div id=\"blue\">you "
-"for your order</div>"
+"div><div id=\"green\">n</div><div id=\"red\">k</div>,&nbsp;<div "
+"id=\"blue\">you for your order</div>"
 msgstr ""
 "<div id=\"blue\">С</div><div id=\"red\">п</div><div id=\"yellow\">а</"
 "div><div id=\"green\">с</div><div id=\"red\">и</div><div id=\"yellow\">б</"
-"div><div id=\"green\">о</div>, <div id=\"blue\">за Ваш заказ</div>"
+"div><div id=\"green\">о</div>,&nbsp;<div id=\"blue\">за Ваш заказ</div>"
 
 #: carts/templates/carts/checkout-done.html:13
 msgid "Your"
@@ -482,44 +490,37 @@ msgstr "Выберите"
 msgid "Continue as Guest"
 msgstr "Продолжить как гость"
 
-#: carts/templates/carts/home.html:8 templates/base/navbar.html:38
-msgid "Cart"
-msgstr "Корзина"
-
-#: carts/templates/carts/home.html:18
+#: carts/templates/carts/home.html:13
 msgid "Product Name"
 msgstr "Наименование товара"
 
-#: carts/templates/carts/home.html:19
+#: carts/templates/carts/home.html:14
 msgid "Available"
 msgstr "Доступный"
 
-#: carts/templates/carts/home.html:20
+#: carts/templates/carts/home.html:15
 msgid "Quantity"
 msgstr "Количество"
 
-#: carts/templates/carts/home.html:21
-#: orders/templates/orders/collection.html:14 templates/select_sort.html:12
+#: carts/templates/carts/home.html:16
+#: orders/templates/orders/collection.html:14
+#: templates/main/select_sort.html:12
 msgid "Price"
 msgstr "Цена"
 
-#: carts/templates/carts/home.html:50
+#: carts/templates/carts/home.html:45
 #: orders/templates/orders/order_detail.html:34
 msgid "Subtotal"
 msgstr "Промежуточный итог"
 
-#: carts/templates/carts/home.html:63
+#: carts/templates/carts/home.html:58
 #: orders/templates/orders/order_list.html:13
 msgid "Total"
 msgstr "Итог"
 
-#: carts/templates/carts/home.html:73
+#: carts/templates/carts/home.html:68
 msgid "Checkout"
 msgstr "Отплатить"
-
-#: carts/templates/carts/home.html:84
-msgid "Is empty"
-msgstr "Корзина пуста"
 
 #: carts/templates/carts/remove-product.html:5
 #: products/templates/products/update-cart.html:10
@@ -630,27 +631,19 @@ msgstr "Изображения нет :("
 msgid "View"
 msgstr "Посмотреть"
 
-#: products/templates/products/detail.html:73
-msgid "Previous"
-msgstr "Предыдущий"
-
-#: products/templates/products/detail.html:77
-msgid "Next"
-msgstr "Следующий"
-
-#: products/templates/products/detail.html:85
+#: products/templates/products/detail.html:83
 msgid "comments"
 msgstr "комментариев"
 
-#: products/templates/products/detail.html:93
+#: products/templates/products/detail.html:91
 msgid "says"
 msgstr "написано"
 
-#: products/templates/products/detail.html:106
+#: products/templates/products/detail.html:104
 msgid "Your comment is awaiting moderation"
 msgstr "Ваш комментарий ждет публикации"
 
-#: products/templates/products/detail.html:112
+#: products/templates/products/detail.html:110
 msgid "Leave a comment"
 msgstr "Оставьте комментарий"
 
@@ -682,7 +675,7 @@ msgstr "Поиск"
 msgid "Results for"
 msgstr "Результаты поиска"
 
-#: templates/base.html:42
+#: templates/base.html:43
 msgid "Important"
 msgstr "Важно"
 
@@ -690,31 +683,23 @@ msgstr "Важно"
 msgid "Developed"
 msgstr "Разработано"
 
-#: templates/base/navbar.html:22
+#: templates/base/navbar.html:13
 msgid "TeaShop"
 msgstr ""
 
-#: templates/base/navbar.html:33
+#: templates/base/navbar.html:22
 msgid "Home"
 msgstr "Главная"
 
-#: templates/base/navbar.html:33
-msgid "current"
-msgstr "текущий"
+#: templates/base/navbar.html:28
+msgid "Cart"
+msgstr "Корзина"
 
-#: templates/base/navbar.html:65
-msgid "Admin"
-msgstr "Администраторская"
+#: templates/base/navbar.html:34
+msgid "Account"
+msgstr "Личный кабинет"
 
-#: templates/base/navbar.html:72
-msgid "Payment"
-msgstr "Способ оплаты"
-
-#: templates/base/navbar.html:74
-msgid "Logout"
-msgstr "Выйти"
-
-#: templates/contact/about.html:18 templates/home_page.html:30
+#: templates/contact/about.html:18 templates/main/home_page.html:28
 msgid "Premium Content"
 msgstr "Премиум"
 
@@ -743,21 +728,45 @@ msgstr "Ой, простите. Произошла ошибка сервера"
 msgid "Error | We have been notified and are working on a fix"
 msgstr "Ошибка | Мы были уведомлены и работаем над исправлением"
 
-#: templates/home_page.html:5
+#: templates/main/home_page.html:6
 msgid "Home page"
 msgstr "Главная страница"
 
-#: templates/home_page.html:14
-msgid "Free delivery throughout Porto and Vila Nova de Gaia"
-msgstr "Бесплатная доставка по Porto и Vila Nova de Gaia"
-
-#: templates/home_page.html:34
+#: templates/main/home_page.html:32
 msgid "Have any requests or questions?"
 msgstr "Есть какие-либо пожелания или вопросы?"
 
-#: templates/home_page.html:37
+#: templates/main/home_page.html:35
 msgid "Write me, please"
 msgstr "Напиши мне пожалуйста"
+
+#: templates/main/onboarding.html:10
+msgid "Take care of your health, live long - drink quality tea"
+msgstr "Берегите свое здоровье, живите долго - пейте качественный чай"
+
+#: templates/main/onboarding.html:11
+msgid "Free delivery throughout Porto and Vila Nova de Gaia"
+msgstr "Бесплатная доставка по Porto и Vila Nova de Gaia"
+
+#: templates/main/select_sort.html:13
+msgid "descending"
+msgstr "по убыванию"
+
+#: templates/main/select_sort.html:14
+msgid "ascending"
+msgstr "по возростанию"
+
+#: templates/main/select_sort.html:20
+msgid "Time"
+msgstr "Время"
+
+#: templates/main/select_sort.html:21
+msgid "update early"
+msgstr "ранее"
+
+#: templates/main/select_sort.html:22
+msgid "update last"
+msgstr "позже"
 
 #: templates/registration/activation-error.html:7
 msgid "Activation Error. Please try again"
@@ -844,25 +853,20 @@ msgstr "Сбросить свой пароль"
 msgid "Reset Password"
 msgstr "Сброс пароля"
 
-#: templates/select_sort.html:16
-msgid "descending"
-msgstr "по убыванию"
+#~ msgid "Is empty"
+#~ msgstr "Корзина пуста"
 
-#: templates/select_sort.html:17
-msgid "ascending"
-msgstr "по возростанию"
+#~ msgid "Previous"
+#~ msgstr "Предыдущий"
 
-#: templates/select_sort.html:23
-msgid "Time"
-msgstr "Время"
+#~ msgid "Next"
+#~ msgstr "Следующий"
 
-#: templates/select_sort.html:27
-msgid "update early"
-msgstr "ранее"
+#~ msgid "current"
+#~ msgstr "текущий"
 
-#: templates/select_sort.html:28
-msgid "update last"
-msgstr "позже"
+#~ msgid "Payment"
+#~ msgstr "Способ оплаты"
 
 #~ msgid "Billing address"
 #~ msgstr "Адрес выставления счета"
