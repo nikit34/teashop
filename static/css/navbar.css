@@ -4,7 +4,7 @@
     font-size: normal;
     border-style: none;
     border-bottom-style: groove;
-    background: radial-gradient(circle, var(--whitesmoke-color) 50%, var(--transparent-color) 100%);
+    background: radial-gradient(circle, var(--whitesmoke-color) 70%, var(--transparent-color) 100%);
     min-width: 300px;
     position: fixed;
     top: 0;
