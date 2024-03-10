@@ -13,7 +13,7 @@ from .forms import ContactForm
 
 
 class ProductListView(ListView):
-    template_name = 'home_page.html'
+    template_name = 'main/home_page.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(ProductListView, self).get_context_data(*args, **kwargs)
