@@ -112,7 +112,7 @@ def upload_product_file_loc(instance, filename):
 
 
 class ProductFile(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     name = models.CharField(max_length=120, default='', null=True, blank=True)
     description = models.TextField(default='', null=True, blank=True)
     image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
