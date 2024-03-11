@@ -14,8 +14,12 @@ class Address(models.Model):
     address_line_2 = models.CharField(max_length=120, null=True, blank=True)
     country = models.CharField(max_length=2, default='PT', validators=[RegexValidator('^[A-Z]{2}$', gettext_lazy('Only uppercase letters and length has be 2'))])
     state = models.CharField(max_length=120, default='Porto')
-    city = models.CharField(max_length=120, default='Porto')
     postal_code = models.CharField(max_length=120, default='000-000')
+    AVAILABLE_CITIES = (
+        ('Porto', 'Porto'),
+        ('Vila Nova de Gaia', 'Vila Nova de Gaia'),
+    )
+    city = models.CharField(max_length=120, choices=AVAILABLE_CITIES)
 
     def __str__(self):
         if self.nickname:
