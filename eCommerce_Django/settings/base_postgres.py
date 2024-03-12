@@ -10,7 +10,7 @@ DEBUG = True
 
 DJANGO_TEST_PROCESSES = 8
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
@@ -113,6 +113,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'eCommerce_Django.wsgi.application'
+
 
 DATABASES = {
     'default': {
