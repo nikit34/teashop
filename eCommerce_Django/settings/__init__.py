@@ -1,4 +1,3 @@
 from .heroku import *
-# from .pythonanywhere import *
-# from .base import *
+# from .base_sqlite import *
 # from .base_postgres import *
