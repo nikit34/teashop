@@ -63,7 +63,7 @@ urlpatterns = [
     path('analytics/sales/', SalesView.as_view(), name='sales-analytics'),
     path('analytics/sales/data/', SalesAjaxView.as_view(), name='sales-analytics-data'),
 
-    path('cart/', include(('carts.urls','eCommerce_Django'), namespace='cart')),
+    path('cart/', include(('carts.urls', 'eCommerce_Django'), namespace='cart')),
 
     path('billing/payment-method/', payment_method_view, name='billing-payment-method'),
 
