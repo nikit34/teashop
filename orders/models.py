@@ -248,7 +248,7 @@ class ProductPurchaseManager(models.Manager):
 class ProductPurchase(models.Model):
     order_id = models.CharField(max_length=120)
     billing_profile = models.ForeignKey(BillingProfile, on_delete=models.DO_NOTHING)
-    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     refunded = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
