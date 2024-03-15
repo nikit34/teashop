@@ -5,6 +5,7 @@ venv/**
 **/.vscode/**
 **/.git/**
 **/settings/__init__.py
+nginx/*.log
 
 .coverage
 
@@ -13,3 +14,5 @@ venv/**
 .vscode/
 
 secret
+
+static_cdn/
