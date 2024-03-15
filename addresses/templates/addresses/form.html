@@ -54,43 +54,22 @@
             <label for="{{ form.city.id_for_label }}">{% trans "City" %}:</label>
         </div>
         <div class="col-lg-4 col-md-8">
-            {{ form.city }}
-        </div>
-        <div class="col-lg-2 col-md-4">
-            <label for="{{ form.country.id_for_label }}">{% trans "Country code" %}:</label>
-        </div>
-        <div class="col-lg-4 col-md-8">
-            {{ form.country }}
+            <select name="city">
+                {% for value, label in form.city.field.choices %}
+                    {% if value %}
+                        {% if value == form.city.value %}
+                            <option value="{{ value }}" selected>{{ label }}</option>
+                        {% else %}
+                            <option value="{{ value }}">{{ label }}</option>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </select>
         </div>
     </div>
     <div class="row form-errors">
         <div class="col">
             {{ form.city.errors }}
-        </div>
-        <div class="col">
-            {{ form.country.errors }}
-        </div>
-    </div>
-    <div class="row bank-canvas-cell-empty">
-        <div class="col-lg-2 col-md-4">
-            <label for="{{ form.state.id_for_label }}">{% trans "State" %}:</label>
-        </div>
-        <div class="col-lg-4 col-md-8">
-            {{ form.state }}
-        </div>
-        <div class="col-lg-2 col-md-4">
-            <label for="{{ form.postal_code.id_for_label }}">{% trans "Postal code" %}:</label>
-        </div>
-        <div class="col-lg-4 col-md-8">
-            {{ form.postal_code }}
-        </div>
-    </div>
-    <div class="row form-errors">
-        <div class="col">
-            {{ form.state.errors }}
-        </div>
-        <div class="col">
-            {{ form.postal_code.errors }}
         </div>
     </div>
     <hr>
