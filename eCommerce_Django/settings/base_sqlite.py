@@ -6,11 +6,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SECRET_KEY = get_secret_key(BASE_DIR, 'SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 DJANGO_TEST_PROCESSES = 8
 
-ALLOWED_HOSTS = ['teashop.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'tags',
     'chats',
     'search',
+
+    'debug_toolbar',
 ]
 
 SITE_ID = 1
@@ -60,7 +62,7 @@ MANAGERS = (
 ADMINS = MANAGERS
 
 
-BASE_URL = 'teashop.pythonanywhere.com'
+BASE_URL = '127.0.0.1:8000'
 
 
 MAILCHIMP_API_KEY = get_secret_key(BASE_DIR, 'MAILCHIMP_API_KEY')
@@ -84,6 +86,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 
@@ -154,10 +158,14 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root")
+STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn", "static_root")
 
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
+MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 
-PROTECTED_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "protected_media")
+PROTECTED_ROOT = os.path.join(BASE_DIR, "static_cdn", "protected_media")
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
