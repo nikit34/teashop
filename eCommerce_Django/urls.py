@@ -6,6 +6,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.contrib.sitemaps.views import sitemap
 from django.views.generic import RedirectView
+from django.views.static import serve
 
 from accounts.views import LoginView, RegisterView
 from addresses.views import (
@@ -34,6 +35,8 @@ urlpatterns = [
     path('robots.txt', RobotsTxtView.as_view()),
 
     path("__debug__/", include("debug_toolbar.urls")),
+
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
   ] + i18n_patterns(
 
@@ -75,9 +78,9 @@ urlpatterns = [
 )
 
 
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 admin.site.site_header = 'TeaShop'
