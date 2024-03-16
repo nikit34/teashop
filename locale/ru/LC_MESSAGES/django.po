@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-10 19:11+0000\n"
+"POT-Creation-Date: 2024-03-16 15:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,7 +107,7 @@ msgid "Change Password"
 msgstr "Сменить пароль"
 
 #: accounts/templates/accounts/form.html:37
-#: addresses/templates/addresses/form.html:102
+#: addresses/templates/addresses/form.html:81
 #: products/templates/products/detail.html:112 templates/contact/view.html:19
 msgid "Submit"
 msgstr "Отправить"
@@ -268,21 +268,6 @@ msgstr "Квартира"
 msgid "City"
 msgstr "Город"
 
-#: addresses/templates/addresses/form.html:60
-#: addresses/templates/addresses/update.html:69
-msgid "Country code"
-msgstr "Код страны"
-
-#: addresses/templates/addresses/form.html:76
-#: addresses/templates/addresses/update.html:85
-msgid "State"
-msgstr "Статус"
-
-#: addresses/templates/addresses/form.html:82
-#: addresses/templates/addresses/update.html:91
-msgid "Postal code"
-msgstr "Почтовый индекс"
-
 #: addresses/templates/addresses/list.html:7
 msgid "es"
 msgstr "а"
@@ -322,7 +307,7 @@ msgstr "Обновить адрес"
 msgid "Create Address"
 msgstr "Создать новый"
 
-#: addresses/templates/addresses/update.html:111
+#: addresses/templates/addresses/update.html:90
 msgid "Save Address"
 msgstr "Сохранить адрес"
 
@@ -740,13 +725,15 @@ msgstr "Есть какие-либо пожелания или вопросы?"
 msgid "Write me, please"
 msgstr "Напиши мне пожалуйста"
 
-#: templates/main/onboarding.html:10
+#: templates/main/onboarding.html:11
 msgid "Take care of your health, live long - drink quality tea"
 msgstr "Берегите свое здоровье, живите долго - пейте качественный чай"
 
-#: templates/main/onboarding.html:11
-msgid "Free delivery throughout Porto and Vila Nova de Gaia"
-msgstr "Бесплатная доставка по Porto и Vila Nova de Gaia"
+#: templates/main/onboarding.html:12
+#, fuzzy
+#| msgid "Free delivery throughout Porto and Vila Nova de Gaia"
+msgid "Delivery throughout Porto and Vila Nova de Gaia"
+msgstr "Доставка по Porto и Vila Nova de Gaia"
 
 #: templates/main/select_sort.html:13
 msgid "descending"
@@ -852,36 +839,3 @@ msgstr "Сбросить свой пароль"
 #: templates/registration/password_reset_form.html:10
 msgid "Reset Password"
 msgstr "Сброс пароля"
-
-#~ msgid "Is empty"
-#~ msgstr "Корзина пуста"
-
-#~ msgid "Previous"
-#~ msgstr "Предыдущий"
-
-#~ msgid "Next"
-#~ msgstr "Следующий"
-
-#~ msgid "current"
-#~ msgstr "текущий"
-
-#~ msgid "Payment"
-#~ msgstr "Способ оплаты"
-
-#~ msgid "Billing address"
-#~ msgstr "Адрес выставления счета"
-
-#~ msgid "Shipping address"
-#~ msgstr "Адрес доставки"
-
-#~ msgid "Type"
-#~ msgstr "Тип"
-
-#~ msgid "Billing Address"
-#~ msgstr "Адрес выставления счета"
-
-#~ msgid "Shipping Address"
-#~ msgstr "Адрес доставки"
-
-#~ msgid "Sewing Shop"
-#~ msgstr "Швейный магазин"

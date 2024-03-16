@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-10 19:11+0000\n"
+"POT-Creation-Date: 2024-03-16 15:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgid "Change Password"
 msgstr ""
 
 #: accounts/templates/accounts/form.html:37
-#: addresses/templates/addresses/form.html:102
+#: addresses/templates/addresses/form.html:81
 #: products/templates/products/detail.html:112 templates/contact/view.html:19
 msgid "Submit"
 msgstr ""
@@ -258,21 +258,6 @@ msgstr ""
 msgid "City"
 msgstr ""
 
-#: addresses/templates/addresses/form.html:60
-#: addresses/templates/addresses/update.html:69
-msgid "Country code"
-msgstr ""
-
-#: addresses/templates/addresses/form.html:76
-#: addresses/templates/addresses/update.html:85
-msgid "State"
-msgstr ""
-
-#: addresses/templates/addresses/form.html:82
-#: addresses/templates/addresses/update.html:91
-msgid "Postal code"
-msgstr ""
-
 #: addresses/templates/addresses/list.html:7
 msgid "es"
 msgstr ""
@@ -312,7 +297,7 @@ msgstr ""
 msgid "Create Address"
 msgstr ""
 
-#: addresses/templates/addresses/update.html:111
+#: addresses/templates/addresses/update.html:90
 msgid "Save Address"
 msgstr ""
 
@@ -722,12 +707,12 @@ msgstr ""
 msgid "Write me, please"
 msgstr ""
 
-#: templates/main/onboarding.html:10
+#: templates/main/onboarding.html:11
 msgid "Take care of your health, live long - drink quality tea"
 msgstr ""
 
-#: templates/main/onboarding.html:11
-msgid "Free delivery throughout Porto and Vila Nova de Gaia"
+#: templates/main/onboarding.html:12
+msgid "Delivery throughout Porto and Vila Nova de Gaia"
 msgstr ""
 
 #: templates/main/select_sort.html:13
