@@ -1,4 +1,4 @@
-# Online Clothing Store for Dolls
+# Online Store for Tea in Portugal
 
 #### Setup environment
 ```python venv venv```
@@ -14,3 +14,6 @@
 
 #### Launch app
 ```python manage.py runserver```
+
+#### Launch Nginx
+```nginx -c base_nginx.conf```

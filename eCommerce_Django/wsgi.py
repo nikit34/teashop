@@ -1,8 +1,9 @@
 import os
 
-from django.contrib.staticfiles.handlers import StaticFilesHandler
 from django.core.wsgi import get_wsgi_application
+from whitenoise import WhiteNoise
 
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'eCommerce_Django.settings'
-application = StaticFilesHandler(get_wsgi_application())
+application = get_wsgi_application()
+application = WhiteNoise(application)
