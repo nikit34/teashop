@@ -73,6 +73,15 @@
     }
 }
 
+@media only screen and (max-width: 576px) {
+    .onboarding {
+        height: 0px;
+    }
+    .onboarding-text {
+        display: none;
+    }
+}
+
 .left-field {
     background: linear-gradient(270deg, #ffffff00 50%, var(--whitesmoke-color) 100%);
     top:0.5vh;
