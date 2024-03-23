@@ -102,10 +102,3 @@ class ProductDetailSlugView(ObjectViewedMixin, DetailView):
         except:
             raise Http404('Indefinite')
         return instance
-
-
-class ProductFeaturedListView(ListView):
-    template_name = 'products/list.html'
-
-    def get_queryset(self, *args, **kwargs):
-        return Product.objects.all().featured()
