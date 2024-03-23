@@ -1,8 +1,6 @@
 import os
 import random
 
-from django.conf import settings
-from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models import Q
 from django.db.models.signals import pre_save
@@ -126,12 +124,3 @@ class ProductFile(models.Model):
 
     def get_default_url(self):
         return self.product.get_absolute_url()
-
-    def get_download_url(self):
-        return reverse(
-            "products:download",
-            kwargs={
-                "slug": self.product.slug,
-                "pk": self.pk
-            }
-        )
