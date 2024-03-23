@@ -32,24 +32,24 @@ class ProductModelTest(TestCase):
         self.assertEqual(product.quantity, 10)
 
 
-class ProductFileModelTestCase(TestCase):
+class ProductFileModelTest(TestCase):
     def setUp(self):
         self.product = Product.objects.create(
-            title="Test Product",
-            description="This is a test product",
-            price=50.00,
+            title='Test Product',
+            description='This is a test product',
+            price=10.99,
             featured=True,
-            active=True,
-            quantity=10
+            active=True
         )
         self.product_file = ProductFile.objects.create(
             product=self.product,
-            name="Test File",
-            description="This is a test file",
+            name='Test File',
+            description='This is a test file',
         )
 
-    def test_product_file_creation(self):
-        product_file = ProductFile.objects.get(name="Test File")
-        self.assertEqual(product_file.product, self.product)
-        self.assertEqual(product_file.display_name, "Test File")
+    def test_display_name(self):
+        self.assertEqual(self.product_file.product, self.product)
+        self.assertEqual(self.product_file.display_name, 'Test File')
 
+    def test_get_default_url(self):
+        self.assertEqual(self.product_file.get_default_url(), self.product_file.product.get_absolute_url())
