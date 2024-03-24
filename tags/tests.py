@@ -20,10 +20,10 @@ class TagsModelTest(TestCase):
 
     def test_tag_slug_auto_generation(self):
         tag = Tag.objects.create(title='Test Tag 3')
-        self.assertTrue(slugify(tag.title) in tag.slug)
+        self.assertIn(slugify(tag.title), tag.slug)
 
     def test_tag_pre_save_signal(self):
         tag = Tag.objects.create(title='Another Test Tag', slug='another-test-tag')
         tag.slug = ''
         tag.save()
-        self.assertTrue(slugify(tag.title) in tag.slug)
+        self.assertIn(slugify(tag.title), tag.slug)
