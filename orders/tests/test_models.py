@@ -2,7 +2,7 @@ from django.test import TestCase, RequestFactory
 
 from accounts.models import User
 from carts.models import Cart
-from .models import Order, BillingProfile
+from orders.models import Order, BillingProfile
 
 
 class OrderManagerQuerySetTests(TestCase):
@@ -18,7 +18,7 @@ class OrderManagerQuerySetTests(TestCase):
         self.request = self.factory.get('orders/list')
         self.request.user = self.user
         self.request.session = {}
-        self.billing_profile, created = BillingProfile.objects.new_or_get(
+        self.billing_profile, _ = BillingProfile.objects.new_or_get(
             request=self.request
         )
 
