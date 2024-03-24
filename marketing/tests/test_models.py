@@ -4,7 +4,7 @@ from django.conf import settings
 from unittest.mock import patch
 
 from accounts.models import User
-from .models import MarketingPreference, marketing_pref_create_receiver, marketing_pref_update_receiver, make_marketing_pref_receiver
+from marketing.models import MarketingPreference, marketing_pref_create_receiver, marketing_pref_update_receiver, make_marketing_pref_receiver
 
 
 class MarketingPreferenceTests(TestCase):
