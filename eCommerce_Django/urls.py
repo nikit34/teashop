@@ -8,7 +8,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.views.generic import RedirectView
 from django.views.static import serve
 
-from accounts.views import LoginView, RegisterView
+from accounts.views import LoginView, RegisterView, GuestRegisterView
 from addresses.views import (
     AddressCreateView,
     AddressListView,
@@ -48,6 +48,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('register/', RegisterView.as_view(), name='register'),
+    path('register/guest/', GuestRegisterView.as_view(), name='guest_register'),
     path('collection/', CollectionView.as_view(), name='collection'),
     path('search/', include(('search.urls', 'eCommerce_Django'), namespace='search')),
     path('settings/email/', MarketingPreferenceUpdateView.as_view(), name='marketing-pref'),

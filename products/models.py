@@ -1,8 +1,6 @@
 import os
 import random
 
-from django.conf import settings
-from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models import Q
 from django.db.models.signals import pre_save
@@ -116,26 +114,13 @@ class ProductFile(models.Model):
     name = models.CharField(max_length=120, default='', null=True, blank=True)
     description = models.TextField(default='', null=True, blank=True)
     image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
-    file = models.FileField(upload_to=upload_product_file_loc, storage=FileSystemStorage(location=settings.PROTECTED_ROOT), blank=True)
-
-    def __str__(self):
-        return str(self.file)
 
     @property
     def display_name(self):
         if self.name:
             return self.name
-        og_name = get_filename(self.file.name)
+        og_name = get_filename(self.image.name)
         return og_name
 
     def get_default_url(self):
         return self.product.get_absolute_url()
-
-    def get_download_url(self):
-        return reverse(
-            "products:download",
-            kwargs={
-                "slug": self.product.slug,
-                "pk": self.pk
-            }
-        )

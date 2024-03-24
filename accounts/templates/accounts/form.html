@@ -17,17 +17,19 @@
     <div class="row form-errors">
         {{ form.email.errors }}
     </div>
-    <div class="row">
-        <div class="col">
-            <label for="{{ form.password.id_for_label }}">{% trans "Password" %}:</label>
+    {% if not action_url %}
+        <div class="row">
+            <div class="col">
+                <label for="{{ form.password.id_for_label }}">{% trans "Password" %}:</label>
+            </div>
+            <div class="col">
+                {{ form.password }}
+            </div>
         </div>
-        <div class="col">
-            {{ form.password }}
+        <div class="row form-errors">
+            {{ form.password.errors }}
         </div>
-    </div>
-    <div class="row form-errors">
-        {{ form.password.errors }}
-    </div>
+    {% endif %}
     <hr>
     <div class="row">
         <div class="col-8 form-errors">

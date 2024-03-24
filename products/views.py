@@ -1,13 +1,7 @@
-import os
-from mimetypes import guess_type
-from wsgiref.util import FileWrapper
-
-from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import AnonymousUser
-from django.http import Http404, HttpResponse, JsonResponse
-from django.shortcuts import redirect
-from django.views.generic import ListView, DetailView, View
+from django.http import Http404, JsonResponse
+from django.views.generic import ListView, DetailView
 
 from analytics.mixins import ObjectViewedMixin
 from carts.models import Cart
@@ -108,34 +102,3 @@ class ProductDetailSlugView(ObjectViewedMixin, DetailView):
         except:
             raise Http404('Indefinite')
         return instance
-
-
-class ProductFeaturedListView(ListView):
-    template_name = 'products/list.html'
-
-    def get_queryset(self, *args, **kwargs):
-        return Product.objects.all().featured()
-
-
-class ProductDownloadView(View):
-    def get(self, request, *args, **kwargs):
-        file_root = settings.PROTECTED_ROOT
-        slug = kwargs.get('slug')
-        pk = kwargs.get('pk')
-        downloads_qs = ProductFile.objects.filter(pk=pk, product__slug=slug)
-        if downloads_qs.count() != 1:
-            raise Http404("Download not found")
-        download_obj = downloads_qs.first()
-        filepath = download_obj.file.path
-        final_filepath = os.path.join(file_root, filepath)
-        with open(final_filepath, 'rb') as f:
-            wrapper = FileWrapper(f)
-            mimetype = 'application/force-download'
-            gussed_mimetype = guess_type(filepath)[0]
-            if gussed_mimetype:
-                mimetype = gussed_mimetype
-            response = HttpResponse(wrapper, content_type=mimetype)
-            response['Content-Disposition'] = "attachment;filename=%s" %(download_obj.name)
-            response["X-SendFile"] = str(download_obj.name)
-            return response
-        return redirect(download_obj.get_default_url())
