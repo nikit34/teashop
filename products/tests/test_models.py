@@ -26,7 +26,7 @@ class ProductModelTest(TestCase):
         product = Product.objects.get(title='Test Product')
         self.assertEqual(str(product), 'Test Product')
         self.assertEqual(product.slug, "test-product")
-        self.assertEqual(product.price, Decimal('10.99') )
+        self.assertEqual(product.price, Decimal('10.99'))
         self.assertTrue(product.active)
         self.assertTrue(product.featured)
         self.assertEqual(product.quantity, 10)
