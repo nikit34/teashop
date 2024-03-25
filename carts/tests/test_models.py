@@ -2,7 +2,7 @@ from decimal import Decimal
 
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from .models import Cart, CartItem
+from carts.models import Cart, CartItem
 from products.models import Product
 
 User = get_user_model()

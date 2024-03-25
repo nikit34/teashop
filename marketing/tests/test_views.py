@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AnonymousUser
 from django.db.models.signals import post_save, pre_save
 from django.test import TestCase, RequestFactory
+from django.urls import reverse
 
 from accounts.models import User
 from billing.models import user_created_receiver
@@ -15,14 +16,14 @@ class MarketingPreferenceUpdateViewTest(TestCase):
         self.factory = RequestFactory()
 
     def test_redirect_unauthenticated_user(self):
-        request = self.factory.get(reversed('marketing-pref'))
+        request = self.factory.get(reverse('marketing-pref'))
         request.user = AnonymousUser()
         response = MarketingPreferenceUpdateView.as_view()(request)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, '/login/?next=/settings/email/')
 
     def test_get_object(self):
-        request = self.factory.get(reversed('marketing-pref'))
+        request = self.factory.get(reverse('marketing-pref'))
         user = User.objects.create_user(
             email='usermodeltest@gmail.com',
             full_name='Test',
@@ -47,7 +48,7 @@ class MailchimpWebhookViewTest(TestCase):
         )
         MarketingPreference.objects.create(user=user, subscribed=True, mailchimp_subscribed=False)
 
-        request = RequestFactory().post(reversed('webhooks-mailchimp'))
+        request = RequestFactory().post(reverse('webhooks-mailchimp'))
         request.user = user
 
         response = MailchimpWebhookView.as_view()(request)
