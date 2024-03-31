@@ -10,7 +10,7 @@ DEBUG = True
 
 DJANGO_TEST_PROCESSES = 8
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
