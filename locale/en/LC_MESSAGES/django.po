@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-16 15:42+0000\n"
+"POT-Creation-Date: 2024-03-31 13:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid ""
 msgstr ""
 
 #: accounts/forms.py:27 accounts/forms.py:90 accounts/forms.py:127
-#: accounts/templates/accounts/form.html:22
+#: accounts/templates/accounts/form.html:23
 #: accounts/templates/accounts/login.html:22
 #: accounts/templates/accounts/register.html:33
 msgid "Password"
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Change Password"
 msgstr ""
 
-#: accounts/templates/accounts/form.html:37
+#: accounts/templates/accounts/form.html:39
 #: addresses/templates/addresses/form.html:81
 #: products/templates/products/detail.html:112 templates/contact/view.html:19
 msgid "Submit"
@@ -366,18 +366,18 @@ msgstr ""
 msgid "Success! Your card was added."
 msgstr ""
 
-#: carts/templates/carts/checkout-done.html:8
+#: carts/templates/carts/checkout/done.html:8
 msgid ""
 "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
 "div><div id=\"green\">n</div><div id=\"red\">k</div>,&nbsp;<div "
 "id=\"blue\">you for your order</div>"
 msgstr ""
 
-#: carts/templates/carts/checkout-done.html:13
+#: carts/templates/carts/checkout/done.html:13
 msgid "Your"
 msgstr ""
 
-#: carts/templates/carts/checkout-done.html:13
+#: carts/templates/carts/checkout/done.html:13
 msgid "order ID"
 msgstr ""
 
@@ -494,6 +494,10 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
+#: carts/views.py:122
+msgid "We are starting to collect your order"
+msgstr ""
+
 #: eCommerce_Django/forms.py:6
 msgid "Your full name"
 msgstr ""
@@ -588,8 +592,8 @@ msgid "Status"
 msgstr ""
 
 #: products/templates/products/card.html:9
-#: products/templates/products/detail.html:54
-#: products/templates/products/detail.html:66
+#: products/templates/products/detail.html:51
+#: products/templates/products/detail.html:63
 msgid "Image not found :("
 msgstr ""
 

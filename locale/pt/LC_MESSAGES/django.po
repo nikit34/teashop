@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-16 15:41+0000\n"
+"POT-Creation-Date: 2024-03-31 13:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid ""
 msgstr "Este e-mail não existe, gostaria de <a href=\"%(link)s\">register</a>?"
 
 #: accounts/forms.py:27 accounts/forms.py:90 accounts/forms.py:127
-#: accounts/templates/accounts/form.html:22
+#: accounts/templates/accounts/form.html:23
 #: accounts/templates/accounts/login.html:22
 #: accounts/templates/accounts/register.html:33
 msgid "Password"
@@ -102,7 +102,7 @@ msgstr "Salvar"
 msgid "Change Password"
 msgstr "Alterar a senha"
 
-#: accounts/templates/accounts/form.html:37
+#: accounts/templates/accounts/form.html:39
 #: addresses/templates/addresses/form.html:81
 #: products/templates/products/detail.html:112 templates/contact/view.html:19
 msgid "Submit"
@@ -372,7 +372,7 @@ msgstr "Não foi possível encontrar este usuário"
 msgid "Success! Your card was added."
 msgstr "Sucesso! Seu cartão foi adicionado."
 
-#: carts/templates/carts/checkout-done.html:8
+#: carts/templates/carts/checkout/done.html:8
 #, fuzzy
 #| msgid ""
 #| "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
@@ -387,11 +387,11 @@ msgstr ""
 "div><div id=\"green\">n</div><div id=\"red\">k</div>,&nbsp;<div "
 "id=\"blue\">você para seu pedido</div>"
 
-#: carts/templates/carts/checkout-done.html:13
+#: carts/templates/carts/checkout/done.html:13
 msgid "Your"
 msgstr "Seu"
 
-#: carts/templates/carts/checkout-done.html:13
+#: carts/templates/carts/checkout/done.html:13
 msgid "order ID"
 msgstr "ID do pedido"
 
@@ -508,6 +508,10 @@ msgstr "Confira"
 msgid "Remove"
 msgstr "Remover"
 
+#: carts/views.py:122
+msgid "We are starting to collect your order"
+msgstr "Estamos começando a coletar seu pedido"
+
 #: eCommerce_Django/forms.py:6
 msgid "Your full name"
 msgstr "Seu nome completo"
@@ -602,8 +606,8 @@ msgid "Status"
 msgstr "Status"
 
 #: products/templates/products/card.html:9
-#: products/templates/products/detail.html:54
-#: products/templates/products/detail.html:66
+#: products/templates/products/detail.html:51
+#: products/templates/products/detail.html:63
 msgid "Image not found :("
 msgstr "Imagem não encontrada :("
 
