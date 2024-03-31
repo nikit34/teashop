@@ -31,7 +31,7 @@ class AddressUpdateView(LoginRequiredMixin, UpdateView):
 
 class AddressDeleteView(LoginRequiredMixin, DeleteView):
     model = Address
-    success_url = reverse_lazy('addresses')
+    success_url = reverse_lazy('addresses:main')
 
 
 class AddressCreateView(LoginRequiredMixin, CreateView):
