@@ -16,7 +16,7 @@
         {% if not has_card %}
             {% include "carts/checkout/has_billingprofile_shipping.html" %}
         {% else %}
-            {% include "carts/checkout/has_billingprofile_shipping_card.html" %}
+            {% include "carts/checkout/final.html" %}
         {% endif %}
 
     {% endif %}

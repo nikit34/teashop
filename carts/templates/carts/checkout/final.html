@@ -44,17 +44,17 @@
     <div class="col">
         <div class="bank-canvas-cell">
             <div class="row">
-                <div class="col mt-5">
+                <div class="col">
                     <h4>{% trans "Cart Total" %}</h4>
                     <hr>
                     <h1>{{ object.cart.total | floatformat:2 }}</h1>
                 </div>
-                <div class="col mt-5">
+                <div class="col">
                     <h4>{% trans "Shipping Total" %}</h4>
                     <hr>
                     <h1>{{ object.shipping_total | floatformat:2 }}</h1>
                 </div>
-                <div class="col mt-5">
+                <div class="col">
                     <h4>{% trans "Order Total" %}</h4>
                     <hr>
                     <h1 id="order-total">{{ object.total | floatformat:2 }}</h1>
