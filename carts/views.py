@@ -124,7 +124,7 @@ def checkout_home(request):
         'publish_key': STRIPE_PUB_KEY,
         'address_required': address_required,
     }
-    return render(request, 'carts/checkout.html', context)
+    return render(request, 'carts/checkout/main.html', context)
 
 
 def paypal_checkout_home(request):
@@ -178,8 +178,8 @@ def paypal_checkout_home(request):
         'has_card': has_card,
         'address_required': address_required,
     }
-    return render(request, 'carts/checkout.html', context)
+    return render(request, 'carts/checkout/main.html', context)
 
 
 def checkout_done_view(request, orderID=None):
-    return render(request, 'carts/checkout-done.html', {'orderID': orderID})
+    return render(request, 'carts/checkout/done.html', {'orderID': orderID})

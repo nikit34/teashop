@@ -69,4 +69,4 @@ class CartViewsTest(TestCase):
         order_id = 'test_order_id'
         response = self.client.get(reverse('cart:success', kwargs={'orderID': order_id}))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'carts/checkout-done.html')
+        self.assertTemplateUsed(response, 'carts/checkout/done.html')
