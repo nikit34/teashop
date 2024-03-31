@@ -23,3 +23,4 @@ static_cdn/
 
 # test db
 test_db.sqlite3
+test_db.sqlite3-journal
