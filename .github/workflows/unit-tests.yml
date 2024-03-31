@@ -32,7 +32,7 @@ jobs:
     - name: Change Settings File for Tests
       run: echo "from .base_sqlite import *" > eCommerce_Django/settings/__init__.py
     - name: Run Tests
-      run: python manage.py test --parallel=16
+      run: python manage.py test --parallel=16 --keepdb --noinput
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         SUPPORT_EMAIL: ${{ secrets.SUPPORT_EMAIL }}
