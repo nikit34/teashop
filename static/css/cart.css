@@ -50,6 +50,10 @@ table.cart-table a {
     max-height: 80vh;
 }
 
+.fa.fa-copy.copy-icon {
+    cursor: pointer;
+}
+
 .order-id {
   user-select: text;
 }
