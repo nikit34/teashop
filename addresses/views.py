@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.utils.http import url_has_allowed_host_and_scheme
-from django.views.generic import ListView, UpdateView, CreateView
+from django.views.generic import ListView, UpdateView, CreateView, DeleteView
 
 from billing.models import BillingProfile
 from .forms import AddressCheckoutForm, AddressForm
@@ -26,6 +27,11 @@ class AddressUpdateView(LoginRequiredMixin, UpdateView):
         request = self.request
         billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
         return Address.objects.filter(billing_profile=billing_profile)
+
+
+class AddressDeleteView(LoginRequiredMixin, DeleteView):
+    model = Address
+    success_url = reverse_lazy('addresses')
 
 
 class AddressCreateView(LoginRequiredMixin, CreateView):

@@ -13,6 +13,7 @@ from addresses.views import (
     AddressCreateView,
     AddressListView,
     AddressUpdateView,
+    AddressDeleteView,
     checkout_address_create_view,
     checkout_address_reuse_view
 )
@@ -63,6 +64,7 @@ urlpatterns = [
     path('addresses/', AddressListView.as_view(), name='addresses'),
     path('addresses/create/', AddressCreateView.as_view(), name='address-create'),
     re_path(r'^addresses/(?P<pk>\d+)/$', AddressUpdateView.as_view(), name='address-update'),
+    re_path(r'^addresses/(?P<pk>\d+)/delete/$', AddressDeleteView.as_view(), name='address-delete'),
 
     path('analytics/sales/', SalesView.as_view(), name='sales-analytics'),
     path('analytics/sales/data/', SalesAjaxView.as_view(), name='sales-analytics-data'),

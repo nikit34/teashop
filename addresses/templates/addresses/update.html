@@ -91,6 +91,16 @@
                     </div>
                 </div>
             </form>
+            {% if form.instance.address_line_1 %}
+                <form method="POST"  class="remove" action="{% url 'address-delete' form.instance.pk %}">
+                    {% csrf_token %}
+                    <div class="row bank-canvas-cell-empty">
+                        <div class="col text-left">
+                            <button type="submit" class="btn btn-default">{% trans "Remove" %}</button>
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
         </div>
     </div>
 </div>
