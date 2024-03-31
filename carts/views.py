@@ -55,7 +55,6 @@ def cart_update(request):
         try:
             product_obj = Product.objects.get(id=product_id)
         except Product.DoesNotExist:
-            print('Show message to user, product is gone?')
             return redirect('cart:home')
 
         cart_obj, new_obj = Cart.objects.new_or_get(request)
