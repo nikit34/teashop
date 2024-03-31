@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-16 15:40+0000\n"
+"POT-Creation-Date: 2024-03-31 13:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgstr ""
 "a>?"
 
 #: accounts/forms.py:27 accounts/forms.py:90 accounts/forms.py:127
-#: accounts/templates/accounts/form.html:22
+#: accounts/templates/accounts/form.html:23
 #: accounts/templates/accounts/login.html:22
 #: accounts/templates/accounts/register.html:33
 msgid "Password"
@@ -106,7 +106,7 @@ msgstr "Сохранить"
 msgid "Change Password"
 msgstr "Сменить пароль"
 
-#: accounts/templates/accounts/form.html:37
+#: accounts/templates/accounts/form.html:39
 #: addresses/templates/addresses/form.html:81
 #: products/templates/products/detail.html:112 templates/contact/view.html:19
 msgid "Submit"
@@ -376,7 +376,7 @@ msgstr "Пользователь не найден"
 msgid "Success! Your card was added."
 msgstr "Успех! Ваша карта была добавлена."
 
-#: carts/templates/carts/checkout-done.html:8
+#: carts/templates/carts/checkout/done.html:8
 #, fuzzy
 #| msgid ""
 #| "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
@@ -391,11 +391,11 @@ msgstr ""
 "div><div id=\"green\">с</div><div id=\"red\">и</div><div id=\"yellow\">б</"
 "div><div id=\"green\">о</div>,&nbsp;<div id=\"blue\">за Ваш заказ</div>"
 
-#: carts/templates/carts/checkout-done.html:13
+#: carts/templates/carts/checkout/done.html:13
 msgid "Your"
 msgstr "Ваш"
 
-#: carts/templates/carts/checkout-done.html:13
+#: carts/templates/carts/checkout/done.html:13
 msgid "order ID"
 msgstr "ID заказа"
 
@@ -512,6 +512,10 @@ msgstr "Отплатить"
 msgid "Remove"
 msgstr "Удалить"
 
+#: carts/views.py:122
+msgid "We are starting to collect your order"
+msgstr "Мы начинаем собирать ваш заказ"
+
 #: eCommerce_Django/forms.py:6
 msgid "Your full name"
 msgstr "Ваше полное имя"
@@ -606,8 +610,8 @@ msgid "Status"
 msgstr "Статус"
 
 #: products/templates/products/card.html:9
-#: products/templates/products/detail.html:54
-#: products/templates/products/detail.html:66
+#: products/templates/products/detail.html:51
+#: products/templates/products/detail.html:63
 msgid "Image not found :("
 msgstr "Изображения нет :("
 
