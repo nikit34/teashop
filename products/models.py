@@ -24,6 +24,7 @@ def upload_image_path(instance, filename):
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
+    ordering = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -31,6 +32,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
+        ordering = ['ordering']
 
 
 class ProductQuerySet(models.query.QuerySet):
