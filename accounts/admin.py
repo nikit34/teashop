@@ -20,9 +20,11 @@ class UserAdmin(BaseUserAdmin):
         ('Permissions', {'fields': ('admin', 'staff', 'is_active')}),
     )
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2')}
+        (
+            None, {
+                'classes': ('wide',),
+                'fields': ('email', 'password1', 'password2')
+            }
         ),
     )
     search_fields = ('email', 'full_name',)
@@ -36,6 +38,7 @@ admin.site.unregister(Group)
 
 class EmailActivationAdmin(admin.ModelAdmin):
     search_fields = ['email']
+
     class Meta:
         model = EmailActivation
 
@@ -45,6 +48,7 @@ admin.site.register(EmailActivation, EmailActivationAdmin)
 
 class GuestEmailAdmin(admin.ModelAdmin):
     search_field = ['email']
+
     class Meta:
         model = GuestEmail
 

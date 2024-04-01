@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, ProductFile
+from .models import Product, ProductFile, Category
 
 
 class ProductFileInline(admin.TabularInline):
@@ -10,7 +10,7 @@ class ProductFileInline(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'slug', 'delivery']
-    inlines = [ ProductFileInline ]
+    inlines = [ProductFileInline]
 
     class Meta:
         model = Product
@@ -20,3 +20,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
+
+
+admin.site.register(Category)
