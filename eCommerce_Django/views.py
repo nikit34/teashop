@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView
 
 from carts.models import Cart
-from products.models import Product
+from products.models import Product, Category
 from .forms import ContactForm
 
 
@@ -18,6 +18,7 @@ class ProductListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(ProductListView, self).get_context_data(*args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
+        context['categories'] = Category.objects.all()
         context['cart'] = cart_obj
         for product in context['object_list']:
             for cart_item in cart_obj.cart_items.all():
@@ -26,18 +27,24 @@ class ProductListView(ListView):
                     break
         return context
 
-    def get_queryset(self, *args, **kwargs):
-        request = self.request
-        if request.GET.get("price") == "descend":
-            return Product.objects.order_by('price')
-        elif request.GET.get("price") == "ascend":
-            return Product.objects.order_by('-price')
-        elif request.GET.get("time_update") == "descend":
-            return Product.objects.order_by('timestamp')
-        elif request.GET.get("time_update") == "ascend":
-            return Product.objects.order_by('-timestamp')
-        else:
-            return Product.objects.all()
+    def get_queryset(self):
+        queryset = Product.objects.all()
+
+        category = self.request.GET.get('category')
+        if category and category != 'reset':
+            queryset = queryset.filter(category__name=category)
+
+        price_order = self.request.GET.get("price")
+        time_order = self.request.GET.get("time_update")
+        if price_order == "descend":
+            queryset = queryset.order_by('price')
+        elif price_order == "ascend":
+            queryset = queryset.order_by('-price')
+        elif time_order == "descend":
+            queryset = queryset.order_by('timestamp')
+        elif time_order == "ascend":
+            queryset = queryset.order_by('-timestamp')
+        return queryset
 
 
 def about_page(request):
