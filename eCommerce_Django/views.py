@@ -18,7 +18,11 @@ class ProductListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(ProductListView, self).get_context_data(*args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
+
         context['categories'] = Category.objects.all()
+        category_param = self.request.GET.get('category')
+        context['active_category'] = category_param if category_param and category_param != 'reset' else None
+
         context['cart'] = cart_obj
         for product in context['object_list']:
             for cart_item in cart_obj.cart_items.all():
