@@ -20,12 +20,12 @@
     padding: 1.25em 1em 1em 1em;
 }
 
-.card-text {
+.card-text .preview {
     display: block;
 }
 
-@media screen and (max-width: 1200px) {
-    .card-text {
+@media screen and (max-width: 768px) {
+    .card-text .preview {
         display: none;
     }
 }
