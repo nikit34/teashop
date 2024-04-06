@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 13:44+0000\n"
+"POT-Creation-Date: 2024-04-06 01:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,7 +108,7 @@ msgstr "Сменить пароль"
 
 #: accounts/templates/accounts/form.html:39
 #: addresses/templates/addresses/form.html:81
-#: products/templates/products/detail.html:112 templates/contact/view.html:19
+#: products/templates/products/detail.html:114 templates/contact/view.html:19
 msgid "Submit"
 msgstr "Отправить"
 
@@ -155,12 +155,12 @@ msgstr "Поддержка"
 msgid "Admin"
 msgstr "Администраторская"
 
-#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:45
+#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:56
 #: templates/contact/about.html:5
 msgid "About"
 msgstr "О себе"
 
-#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:55
+#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:66
 msgid "Contact"
 msgstr "Контакты"
 
@@ -279,9 +279,9 @@ msgstr "Создать новый"
 #: addresses/templates/addresses/list.html:21
 #: addresses/templates/addresses/update.html:41
 #: addresses/templates/addresses/update.html:47
+#: carts/templates/carts/checkout/final.html:35
 #: carts/templates/carts/checkout/has_billingprofile.html:5
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:31
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:32
 #: carts/templates/carts/checkout/has_billingprofile_shiprequired.html:5
 #: orders/templates/orders/order_detail.html:25
 msgid "Address"
@@ -310,6 +310,12 @@ msgstr "Создать новый"
 #: addresses/templates/addresses/update.html:90
 msgid "Save Address"
 msgstr "Сохранить адрес"
+
+#: addresses/templates/addresses/update.html:99
+#: carts/templates/carts/remove-product.html:5
+#: products/templates/products/update-cart.html:10
+msgid "Remove"
+msgstr "Удалить"
 
 #: analytics/templates/analytics/sales.html:7
 msgid "Sales Data"
@@ -376,28 +382,71 @@ msgstr "Пользователь не найден"
 msgid "Success! Your card was added."
 msgstr "Успех! Ваша карта была добавлена."
 
-#: carts/templates/carts/checkout/done.html:8
+#: carts/templates/carts/checkout/done.html:14
 #, fuzzy
-#| msgid ""
-#| "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
-#| "div><div id=\"green\">n</div><div id=\"red\">k</div>, <div "
-#| "id=\"blue\">you for your order</div>"
-msgid ""
-"<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
-"div><div id=\"green\">n</div><div id=\"red\">k</div>,&nbsp;<div "
-"id=\"blue\">you for your order</div>"
-msgstr ""
-"<div id=\"blue\">С</div><div id=\"red\">п</div><div id=\"yellow\">а</"
-"div><div id=\"green\">с</div><div id=\"red\">и</div><div id=\"yellow\">б</"
-"div><div id=\"green\">о</div>,&nbsp;<div id=\"blue\">за Ваш заказ</div>"
+#| msgid "Thank you for your submission"
+msgid "Thank, you for your order"
+msgstr "Спасибо за Ваш заказ"
 
-#: carts/templates/carts/checkout/done.html:13
+#: carts/templates/carts/checkout/done.html:16
 msgid "Your"
 msgstr "Ваш"
 
-#: carts/templates/carts/checkout/done.html:13
+#: carts/templates/carts/checkout/done.html:16
 msgid "order ID"
 msgstr "ID заказа"
+
+#: carts/templates/carts/checkout/final.html:6
+msgid "Finalize Checkout"
+msgstr "Завершить оформление заказа"
+
+#: carts/templates/carts/checkout/final.html:13
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:11
+msgid "Cart Items"
+msgstr "Корзина"
+
+#: carts/templates/carts/checkout/final.html:21
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:19
+msgid "Order number: "
+msgstr "Номер заказа: "
+
+#: carts/templates/carts/checkout/final.html:51
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:46
+msgid "Cart Total"
+msgstr "Стоимость товаров"
+
+#: carts/templates/carts/checkout/final.html:57
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:51
+#: orders/templates/orders/order_detail.html:43
+msgid "Shipping Total"
+msgstr "Доставка"
+
+#: carts/templates/carts/checkout/final.html:63
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:56
+#: orders/templates/orders/order_detail.html:52
+msgid "Order Total"
+msgstr "Сумма к оплате"
+
+#: carts/templates/carts/checkout/final.html:70
+msgid "Default Payment"
+msgstr "Способ оплаты"
+
+#: carts/templates/carts/checkout/final.html:74
+msgid "Payment Method"
+msgstr "Способ оплаты"
+
+#: carts/templates/carts/checkout/final.html:75
+msgid "Change"
+msgstr "Изменить"
+
+#: carts/templates/carts/checkout/final.html:84
+msgid "Pay"
+msgstr "Оплатить"
+
+#: carts/templates/carts/checkout/final.html:91
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:73
+msgid "PayPal"
+msgstr "PayPal"
 
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:5
 msgid "CHECK and CHOOSE"
@@ -407,65 +456,13 @@ msgstr "ПРОВЕРИТЬ и ВЫБРАТЬ"
 msgid "method of payment for order"
 msgstr "способ оплаты заказа"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:11
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:12
-msgid "Cart Items"
-msgstr "Корзина"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:19
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:20
-msgid "Order number: "
-msgstr "Номер заказа: "
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:46
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:48
-msgid "Cart Total"
-msgstr "Стоимость товаров"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:51
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:53
-#: orders/templates/orders/order_detail.html:43
-msgid "Shipping Total"
-msgstr "Доставка"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:56
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:58
-#: orders/templates/orders/order_detail.html:52
-msgid "Order Total"
-msgstr "Сумма к оплате"
-
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:67
 msgid "Choose method of payment"
 msgstr "Выберите способ оплаты"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:73
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:85
-msgid "PayPal"
-msgstr "PayPal"
-
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:77
 msgid "Bank card binding"
 msgstr "Привязка банковской карты"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:5
-msgid "Finalize Checkout"
-msgstr "Завершить оформление заказа"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:64
-msgid "Default Payment"
-msgstr "Способ оплаты"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:68
-msgid "Payment Method"
-msgstr "Способ оплаты"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:69
-msgid "Change"
-msgstr "Изменить"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:78
-msgid "Pay"
-msgstr "Оплатить"
 
 #: carts/templates/carts/checkout/has_nothing.html:5
 msgid "Choose"
@@ -507,11 +504,6 @@ msgstr "Итог"
 msgid "Checkout"
 msgstr "Отплатить"
 
-#: carts/templates/carts/remove-product.html:5
-#: products/templates/products/update-cart.html:10
-msgid "Remove"
-msgstr "Удалить"
-
 #: carts/views.py:122
 msgid "We are starting to collect your order"
 msgstr "Мы начинаем собирать ваш заказ"
@@ -528,31 +520,31 @@ msgstr "Отправить с контактным email"
 msgid "Your message"
 msgstr "Ваше сообщение"
 
-#: eCommerce_Django/views.py:46
+#: eCommerce_Django/views.py:57
 msgid "Welcome to about page!"
 msgstr "Добро пожаловать на описание!"
 
-#: eCommerce_Django/views.py:56
+#: eCommerce_Django/views.py:67
 msgid "Here you can leave your feedback."
 msgstr "Здесь Вы можете отправить отзыв или предложение"
 
-#: eCommerce_Django/views.py:63
+#: eCommerce_Django/views.py:74
 msgid "Send with contact email: "
 msgstr "Отправить с контактным email: "
 
-#: eCommerce_Django/views.py:67
+#: eCommerce_Django/views.py:78
 msgid "Invalid header found."
 msgstr "Неверный формат."
 
-#: eCommerce_Django/views.py:69
+#: eCommerce_Django/views.py:80
 msgid "Thank you for your submission"
 msgstr "Спасибо за Ваш заказ"
 
-#: eCommerce_Django/views.py:84
+#: eCommerce_Django/views.py:95
 msgid "Update code on server"
 msgstr "Обновить данные на сервере"
 
-#: eCommerce_Django/views.py:86
+#: eCommerce_Django/views.py:97
 msgid "ERROR: Could`t update the code on server"
 msgstr "ОШИБКА: не удалось обновить код на сервере"
 
@@ -610,29 +602,29 @@ msgid "Status"
 msgstr "Статус"
 
 #: products/templates/products/card.html:9
-#: products/templates/products/detail.html:51
-#: products/templates/products/detail.html:63
+#: products/templates/products/detail.html:53
+#: products/templates/products/detail.html:65
 msgid "Image not found :("
 msgstr "Изображения нет :("
 
 #: products/templates/products/card.html:24
-#: products/templates/products/card.html:35
+#: products/templates/products/card.html:33
 msgid "View"
 msgstr "Посмотреть"
 
-#: products/templates/products/detail.html:83
+#: products/templates/products/detail.html:85
 msgid "comments"
 msgstr "комментариев"
 
-#: products/templates/products/detail.html:91
+#: products/templates/products/detail.html:93
 msgid "says"
 msgstr "написано"
 
-#: products/templates/products/detail.html:104
+#: products/templates/products/detail.html:106
 msgid "Your comment is awaiting moderation"
 msgstr "Ваш комментарий ждет публикации"
 
-#: products/templates/products/detail.html:110
+#: products/templates/products/detail.html:112
 msgid "Leave a comment"
 msgstr "Оставьте комментарий"
 
@@ -688,7 +680,7 @@ msgstr "Корзина"
 msgid "Account"
 msgstr "Личный кабинет"
 
-#: templates/contact/about.html:18 templates/main/home_page.html:28
+#: templates/contact/about.html:18 templates/main/home_page.html:30
 msgid "Premium Content"
 msgstr "Премиум"
 
@@ -717,15 +709,19 @@ msgstr "Ой, простите. Произошла ошибка сервера"
 msgid "Error | We have been notified and are working on a fix"
 msgstr "Ошибка | Мы были уведомлены и работаем над исправлением"
 
+#: templates/main/categories.html:12
+msgid "reset"
+msgstr "сброс"
+
 #: templates/main/home_page.html:6
 msgid "Home page"
 msgstr "Главная страница"
 
-#: templates/main/home_page.html:32
+#: templates/main/home_page.html:34
 msgid "Have any requests or questions?"
 msgstr "Есть какие-либо пожелания или вопросы?"
 
-#: templates/main/home_page.html:35
+#: templates/main/home_page.html:37
 msgid "Write me, please"
 msgstr "Напиши мне пожалуйста"
 

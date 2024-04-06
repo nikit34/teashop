@@ -54,6 +54,6 @@ table.cart-table a {
     cursor: pointer;
 }
 
-.order-id {
+#order-id {
   user-select: text;
 }
