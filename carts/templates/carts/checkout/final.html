@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static %}
 
 <div class="row checkout checkout-title">
     <div class="col">
@@ -7,7 +8,7 @@
 </div>
 
 <div class="row checkout checkout-table">
-    <div class="col">
+    <div class="col-12 col-md-6">
         <div class="bank-canvas-cell">
             <h3>{% trans "Cart Items" %}:</h3>
             <hr>
@@ -20,46 +21,51 @@
                     <h4>{% trans "Order number: " %}</h4>
                 </div>
                 <div class="col">
-                    <p id="order-id">{{ object.order_id }}</p>
+                    <i class="fa fa-copy copy-icon"></i>
+                    <span id="order-id">{{ object.order_id }}</span>
                 </div>
             </div>
         </div>
+        <br>
     </div>
-    <div class="col">
+    <div class="col-12 col-md-6">
         <div class="bank-canvas-cell">
             <div class="row">
-                <div class="col">
+                <div class="col-12 col-sm-4 col-md-12 col-lg-4">
                     <h4>{% trans "Address" %}:</h4>
                 </div>
-                <div class="col">
+                <div class="col-12 col-sm-8 col-md-12 col-lg-8">
                     <p>{{ object.address_final }}</p>
                 </div>
             </div>
         </div>
+        <br>
     </div>
 </div>
-<br>
 
 <div class="row checkout checkout-total">
     <div class="col">
         <div class="bank-canvas-cell">
             <div class="row">
-                <div class="col mt-5">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <h4>{% trans "Cart Total" %}</h4>
                     <hr>
                     <h1>{{ object.cart.total | floatformat:2 }}</h1>
+                    <br>
                 </div>
-                <div class="col mt-5">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <h4>{% trans "Shipping Total" %}</h4>
                     <hr>
                     <h1>{{ object.shipping_total | floatformat:2 }}</h1>
+                    <br>
                 </div>
-                <div class="col mt-5">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <h4>{% trans "Order Total" %}</h4>
                     <hr>
                     <h1 id="order-total">{{ object.total | floatformat:2 }}</h1>
+                    <br>
                 </div>
-                <div class="col-3">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <div class="bank-canvas-cell-small">
                         <h2 class="title-payment">{% trans "Default Payment" %}</h2>
                         <hr>

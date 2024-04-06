@@ -1,0 +1,15 @@
+{% load i18n %}
+
+<div class="row categories">
+    <div class="col-3">
+    </div>
+    <div class="col-9">
+        <form action="{% url 'home' %}" method="GET">
+            {% for category in categories.all %}
+                <button type="submit" name="category" value="{{ category.name }}" class="btn {% if active_category == category.name %}btn-general{% else %}btn-default{% endif %} category-btn">{{ category.name }}</button>
+                &nbsp;
+            {% endfor %}
+            <button type="submit" name="category" value="reset" class="btn btn-general category-btn">{% trans "reset" %}</button>
+        </form>
+    </div>
+</div>

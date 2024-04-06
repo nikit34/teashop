@@ -147,4 +147,29 @@ $(document).ready(function () {
       window.location.href = currentUrl;
     }
   }
+
+  var copyBtn = $('.fa.fa-copy.copy-icon');
+  copyBtn.click(function() {
+      var text = document.getElementById('order-id').innerText.trim();
+      if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text);
+      } else {
+          const textArea = document.createElement("textarea");
+          textArea.value = text;
+
+          textArea.style.position = "absolute";
+          textArea.style.left = "-999999px";
+
+          document.body.prepend(textArea);
+          textArea.select();
+
+          try {
+              document.execCommand('copy');
+          } catch (error) {
+              console.error(error);
+          } finally {
+              textArea.remove();
+          }
+      }
+  });
 });

@@ -1,0 +1,90 @@
+.done {
+    height: 500px;
+}
+
+.done-cover {
+    position: relative;
+    transform: translateY(20%);
+}
+
+.done-img {
+    transform:  translate(-60%, -40%) rotate(-45deg);
+    border-radius: 30px;
+    width: 200%;
+    opacity: 0.5;
+}
+
+.done-text {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: var(--brown-color);
+}
+
+.done-text .line-1 {
+    margin-top: 30%;
+}
+
+.done-text .line-2 {
+    margin-top: 10%;
+}
+
+@media only screen and (max-width: 1200px) {
+    .done {
+        height: 400px;
+    }
+    .done-text h3 {
+        font-size: 25px;
+    }
+    .done-text .line-1 {
+        margin-top: 30%;
+    }
+    .done-text .line-2 {
+        margin-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .done {
+        height: 300px;
+    }
+    .done-text h3 {
+        font-size: 22px;
+    }
+    .done-text .line-1 {
+        margin-top: 30%;
+    }
+    .done-text .line-2 {
+        margin-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .done {
+        height: 200px;
+    }
+    .done-text h3 {
+        font-size: 20px;
+    }
+    .done-text .line-1 {
+        margin-top: 30%;
+    }
+    .done-text .line-2 {
+        margin-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .done {
+        height: 0px;
+    }
+    .done-text h3 {
+        font-size: 20px;
+    }
+    .done-text .line-1 {
+        margin-top: 10%;
+    }
+    .done-text .line-2 {
+        margin-top: 10%;
+    }
+}

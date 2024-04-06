@@ -1,5 +1,6 @@
 venv/**
 
+# temporary files
 **/*.pyc
 **/__pycache__/**
 **/.vscode/**
@@ -7,12 +8,19 @@ venv/**
 **/settings/__init__.py
 nginx/*.log
 
+# utilities
 .coverage
 
 # IDE folders
 .idea/
 .vscode/
 
+# secrets
 secret
 
+# cdn folders
 static_cdn/
+
+# test db
+test_db.sqlite3
+test_db.sqlite3-journal

@@ -1,9 +1,11 @@
-from django.conf import settings
 import stripe
 from django.conf import settings
+from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.template.loader import get_template
 from django.urls import reverse
+from django.utils.translation import gettext
 
 from accounts.forms import LoginForm, GuestForm
 from addresses.forms import AddressCheckoutForm
@@ -12,6 +14,7 @@ from billing.models import BillingProfile
 from orders.models import Order
 from products.models import Product
 from .models import Cart
+
 
 STRIPE_SECRET_KEY = getattr(settings, 'STRIPE_SECRET_KEY', None)
 STRIPE_PUB_KEY = getattr(settings, 'STRIPE_PUB_KEY', None)
@@ -109,6 +112,24 @@ def checkout_home(request):
                 del request.session['cart_id']
                 if not billing_profile.user:
                     billing_profile.set_cards_inactive()
+                if request.user.is_authenticated:
+                    context = {
+                        'orderID': orderID,
+                        'time': '2 days'
+                    }
+                    txt_ = get_template("registration/emails/verify.txt").render(context)
+                    html_ = get_template("carts/checkout/mail/done.html").render(context)
+                    subject = gettext('We are starting to collect your order')
+                    from_email = settings.DEFAULT_FROM_EMAIL
+                    recipient_list = [request.user.email]
+                    send_mail(
+                        subject,
+                        txt_,
+                        from_email,
+                        recipient_list,
+                        html_message=html_,
+                        fail_silently=False,
+                    )
                 return redirect(reverse('cart:success', kwargs={'orderID': orderID}))
             else:
                 return redirect('cart:checkout')
@@ -124,7 +145,7 @@ def checkout_home(request):
         'publish_key': STRIPE_PUB_KEY,
         'address_required': address_required,
     }
-    return render(request, 'carts/checkout.html', context)
+    return render(request, 'carts/checkout/main.html', context)
 
 
 def paypal_checkout_home(request):
@@ -178,8 +199,8 @@ def paypal_checkout_home(request):
         'has_card': has_card,
         'address_required': address_required,
     }
-    return render(request, 'carts/checkout.html', context)
+    return render(request, 'carts/checkout/main.html', context)
 
 
 def checkout_done_view(request, orderID=None):
-    return render(request, 'carts/checkout-done.html', {'orderID': orderID})
+    return render(request, 'carts/checkout/done.html', {'orderID': orderID})

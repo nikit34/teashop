@@ -1,0 +1,7 @@
+Hello
+
+Your order {{ orderID }} is being assembled and will be ready to ship soon, delivery time is {{ time }}
+Thank you for your order, we want it to bring you warmth and pleasure!
+
+We wish you good health,
+TeaShop

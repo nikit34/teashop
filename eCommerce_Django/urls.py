@@ -13,6 +13,7 @@ from addresses.views import (
     AddressCreateView,
     AddressListView,
     AddressUpdateView,
+    AddressDeleteView,
     checkout_address_create_view,
     checkout_address_reuse_view
 )
@@ -59,10 +60,8 @@ urlpatterns = [
     path('checkout/address/create/', checkout_address_create_view, name='checkout_address_create'),
     path('checkout/address/reuse/', checkout_address_reuse_view, name='checkout_address_reuse'),
 
-    path('address/', RedirectView.as_view(url='/addresses')),
-    path('addresses/', AddressListView.as_view(), name='addresses'),
-    path('addresses/create/', AddressCreateView.as_view(), name='address-create'),
-    re_path(r'^addresses/(?P<pk>\d+)/$', AddressUpdateView.as_view(), name='address-update'),
+    path('address/', RedirectView.as_view(url='/addresses/')),
+    path('addresses/', include(('addresses.urls', 'eCommerce_Django'), namespace='addresses')),
 
     path('analytics/sales/', SalesView.as_view(), name='sales-analytics'),
     path('analytics/sales/data/', SalesAjaxView.as_view(), name='sales-analytics-data'),

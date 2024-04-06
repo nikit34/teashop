@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-16 15:41+0000\n"
+"POT-Creation-Date: 2024-04-06 02:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid ""
 msgstr "Este e-mail não existe, gostaria de <a href=\"%(link)s\">register</a>?"
 
 #: accounts/forms.py:27 accounts/forms.py:90 accounts/forms.py:127
-#: accounts/templates/accounts/form.html:22
+#: accounts/templates/accounts/form.html:23
 #: accounts/templates/accounts/login.html:22
 #: accounts/templates/accounts/register.html:33
 msgid "Password"
@@ -102,9 +102,9 @@ msgstr "Salvar"
 msgid "Change Password"
 msgstr "Alterar a senha"
 
-#: accounts/templates/accounts/form.html:37
+#: accounts/templates/accounts/form.html:39
 #: addresses/templates/addresses/form.html:81
-#: products/templates/products/detail.html:112 templates/contact/view.html:19
+#: products/templates/products/detail.html:114 templates/contact/view.html:19
 msgid "Submit"
 msgstr "Enviar"
 
@@ -151,12 +151,12 @@ msgstr "Apoiar"
 msgid "Admin"
 msgstr "Administrador"
 
-#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:45
+#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:56
 #: templates/contact/about.html:5
 msgid "About"
 msgstr "Sobre"
 
-#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:55
+#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:66
 msgid "Contact"
 msgstr "Contato"
 
@@ -275,9 +275,9 @@ msgstr "Crie um novo"
 #: addresses/templates/addresses/list.html:21
 #: addresses/templates/addresses/update.html:41
 #: addresses/templates/addresses/update.html:47
+#: carts/templates/carts/checkout/final.html:35
 #: carts/templates/carts/checkout/has_billingprofile.html:5
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:31
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:32
 #: carts/templates/carts/checkout/has_billingprofile_shiprequired.html:5
 #: orders/templates/orders/order_detail.html:25
 msgid "Address"
@@ -306,6 +306,12 @@ msgstr "Criar endereço"
 #: addresses/templates/addresses/update.html:90
 msgid "Save Address"
 msgstr "Salvar endereço"
+
+#: addresses/templates/addresses/update.html:99
+#: carts/templates/carts/remove-product.html:5
+#: products/templates/products/update-cart.html:10
+msgid "Remove"
+msgstr "Remover"
 
 #: analytics/templates/analytics/sales.html:7
 msgid "Sales Data"
@@ -372,28 +378,69 @@ msgstr "Não foi possível encontrar este usuário"
 msgid "Success! Your card was added."
 msgstr "Sucesso! Seu cartão foi adicionado."
 
-#: carts/templates/carts/checkout-done.html:8
-#, fuzzy
-#| msgid ""
-#| "<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
-#| "div><div id=\"green\">n</div><div id=\"red\">k</div>, <div "
-#| "id=\"blue\">you for your order</div>"
-msgid ""
-"<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
-"div><div id=\"green\">n</div><div id=\"red\">k</div>,&nbsp;<div "
-"id=\"blue\">you for your order</div>"
-msgstr ""
-"<div id=\"blue\">T</div><div id=\"red\">h</div><div id=\"yellow\">a</"
-"div><div id=\"green\">n</div><div id=\"red\">k</div>,&nbsp;<div "
-"id=\"blue\">você para seu pedido</div>"
+#: carts/templates/carts/checkout/done.html:14
+msgid "Thank, you for your order"
+msgstr "Obrigado pela sua submissão"
 
-#: carts/templates/carts/checkout-done.html:13
+#: carts/templates/carts/checkout/done.html:16
 msgid "Your"
 msgstr "Seu"
 
-#: carts/templates/carts/checkout-done.html:13
+#: carts/templates/carts/checkout/done.html:16
 msgid "order ID"
 msgstr "ID do pedido"
+
+#: carts/templates/carts/checkout/final.html:6
+msgid "Finalize Checkout"
+msgstr "Finalizar compra"
+
+#: carts/templates/carts/checkout/final.html:13
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:11
+msgid "Cart Items"
+msgstr "Itens do carrinho"
+
+#: carts/templates/carts/checkout/final.html:21
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:19
+msgid "Order number: "
+msgstr "Número do pedido: "
+
+#: carts/templates/carts/checkout/final.html:51
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:46
+msgid "Cart Total"
+msgstr "Total do carrinho"
+
+#: carts/templates/carts/checkout/final.html:57
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:51
+#: orders/templates/orders/order_detail.html:43
+msgid "Shipping Total"
+msgstr "Total de envio"
+
+#: carts/templates/carts/checkout/final.html:63
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:56
+#: orders/templates/orders/order_detail.html:52
+msgid "Order Total"
+msgstr "Total de pedidos"
+
+#: carts/templates/carts/checkout/final.html:70
+msgid "Default Payment"
+msgstr "Pagamento padrão"
+
+#: carts/templates/carts/checkout/final.html:74
+msgid "Payment Method"
+msgstr "Forma de pagamento"
+
+#: carts/templates/carts/checkout/final.html:75
+msgid "Change"
+msgstr "Mudar"
+
+#: carts/templates/carts/checkout/final.html:84
+msgid "Pay"
+msgstr "Pagar"
+
+#: carts/templates/carts/checkout/final.html:91
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:73
+msgid "PayPal"
+msgstr "PayPal"
 
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:5
 msgid "CHECK and CHOOSE"
@@ -403,65 +450,13 @@ msgstr "VERIFIQUE e ESCOLHA"
 msgid "method of payment for order"
 msgstr "forma de pagamento do pedido"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:11
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:12
-msgid "Cart Items"
-msgstr "Itens do carrinho"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:19
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:20
-msgid "Order number: "
-msgstr "Número do pedido: "
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:46
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:48
-msgid "Cart Total"
-msgstr "Total do carrinho"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:51
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:53
-#: orders/templates/orders/order_detail.html:43
-msgid "Shipping Total"
-msgstr "Total de envio"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:56
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:58
-#: orders/templates/orders/order_detail.html:52
-msgid "Order Total"
-msgstr "Total de pedidos"
-
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:67
 msgid "Choose method of payment"
 msgstr "Escolha a forma de pagamento"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:73
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:85
-msgid "PayPal"
-msgstr "PayPal"
-
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:77
 msgid "Bank card binding"
 msgstr "Vinculação de cartão bancário"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:5
-msgid "Finalize Checkout"
-msgstr "Finalizar compra"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:64
-msgid "Default Payment"
-msgstr "Pagamento padrão"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:68
-msgid "Payment Method"
-msgstr "Forma de pagamento"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:69
-msgid "Change"
-msgstr "Mudar"
-
-#: carts/templates/carts/checkout/has_billingprofile_shipping_card.html:78
-msgid "Pay"
-msgstr "Pagar"
 
 #: carts/templates/carts/checkout/has_nothing.html:5
 msgid "Choose"
@@ -503,10 +498,9 @@ msgstr "Total"
 msgid "Checkout"
 msgstr "Confira"
 
-#: carts/templates/carts/remove-product.html:5
-#: products/templates/products/update-cart.html:10
-msgid "Remove"
-msgstr "Remover"
+#: carts/views.py:122
+msgid "We are starting to collect your order"
+msgstr "Estamos começando a coletar seu pedido"
 
 #: eCommerce_Django/forms.py:6
 msgid "Your full name"
@@ -520,31 +514,31 @@ msgstr "Seu e-mail de contato"
 msgid "Your message"
 msgstr "Sua mensagem"
 
-#: eCommerce_Django/views.py:46
+#: eCommerce_Django/views.py:57
 msgid "Welcome to about page!"
 msgstr "Bem-vindo à página sobre!"
 
-#: eCommerce_Django/views.py:56
+#: eCommerce_Django/views.py:67
 msgid "Here you can leave your feedback."
 msgstr "Aqui você pode deixar seu feedback."
 
-#: eCommerce_Django/views.py:63
+#: eCommerce_Django/views.py:74
 msgid "Send with contact email: "
 msgstr "Enviar com e-mail de contato: "
 
-#: eCommerce_Django/views.py:67
+#: eCommerce_Django/views.py:78
 msgid "Invalid header found."
 msgstr "Cabeçalho inválido encontrado."
 
-#: eCommerce_Django/views.py:69
+#: eCommerce_Django/views.py:80
 msgid "Thank you for your submission"
 msgstr "Obrigado pela sua submissão"
 
-#: eCommerce_Django/views.py:84
+#: eCommerce_Django/views.py:95
 msgid "Update code on server"
 msgstr "Atualizar código no servidor"
 
-#: eCommerce_Django/views.py:86
+#: eCommerce_Django/views.py:97
 msgid "ERROR: Could`t update the code on server"
 msgstr "ERRO: Não foi possível atualizar o código no servidor"
 
@@ -602,29 +596,29 @@ msgid "Status"
 msgstr "Status"
 
 #: products/templates/products/card.html:9
-#: products/templates/products/detail.html:54
-#: products/templates/products/detail.html:66
+#: products/templates/products/detail.html:53
+#: products/templates/products/detail.html:65
 msgid "Image not found :("
 msgstr "Imagem não encontrada :("
 
 #: products/templates/products/card.html:24
-#: products/templates/products/card.html:35
+#: products/templates/products/card.html:33
 msgid "View"
 msgstr "Visualizar"
 
-#: products/templates/products/detail.html:83
+#: products/templates/products/detail.html:85
 msgid "comments"
 msgstr "comentários"
 
-#: products/templates/products/detail.html:91
+#: products/templates/products/detail.html:93
 msgid "says"
 msgstr "diz"
 
-#: products/templates/products/detail.html:104
+#: products/templates/products/detail.html:106
 msgid "Your comment is awaiting moderation"
 msgstr "Seu comentário está aguardando moderação"
 
-#: products/templates/products/detail.html:110
+#: products/templates/products/detail.html:112
 msgid "Leave a comment"
 msgstr "Deixe um comentário"
 
@@ -680,7 +674,7 @@ msgstr "Carrinho"
 msgid "Account"
 msgstr "Conta"
 
-#: templates/contact/about.html:18 templates/main/home_page.html:28
+#: templates/contact/about.html:18 templates/main/home_page.html:30
 msgid "Premium Content"
 msgstr "Conteúdo premium"
 
@@ -709,15 +703,19 @@ msgstr "Ops, desculpe. Ocorreu um erro no servidor"
 msgid "Error | We have been notified and are working on a fix"
 msgstr "Erro | Fomos notificados e estamos trabalhando em uma correção"
 
+#: templates/main/categories.html:12
+msgid "reset"
+msgstr "reiniciar"
+
 #: templates/main/home_page.html:6
 msgid "Home page"
 msgstr "Pagina inicial"
 
-#: templates/main/home_page.html:32
+#: templates/main/home_page.html:34
 msgid "Have any requests or questions?"
 msgstr "Tem alguma solicitação ou dúvida?"
 
-#: templates/main/home_page.html:35
+#: templates/main/home_page.html:37
 msgid "Write me, please"
 msgstr "Escreva-me por favor"
 
@@ -726,8 +724,6 @@ msgid "Take care of your health, live long - drink quality tea"
 msgstr "Cuide da sua saúde, viva por muito tempo - beba chá de qualidade"
 
 #: templates/main/onboarding.html:12
-#, fuzzy
-#| msgid "Free delivery throughout Porto and Vila Nova de Gaia"
 msgid "Delivery throughout Porto and Vila Nova de Gaia"
 msgstr "Entrega em todo o Porto e Vila Nova de Gaia"
 

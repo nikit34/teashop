@@ -9,36 +9,40 @@
         <p class="text-center mt-2 mb-2">{% trans "Image not found :(" %}</p>
     {% endif %}
     <div class="row card-body">
-        <div class="col-xl-4 card-text">
+        <div class="col-3 col-sm-5 col-md-7 col-lg-4 col-xl-5 card-text">
+            <h5>{{ instance.title }}</h5>
             {% if complet == "1" %}
-                <h5>{{ instance.title }}</h5>
-                <p class="preview">{{ instance.description|safe|linebreaks|truncatewords:18 }}</p>
-            {% else %}
-                <h5>{{ instance.title }}</h5>
+                <div class="preview">
+                    <p>{{ instance.description|safe|linebreaks|truncatewords:18 }}</p>
+                </div>
             {% endif %}
         </div>
-        {% if complet == "1" %}
-            <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-5 card-button">
+        <div class="col-9 col-sm-7 col-md-5 col-lg-8 col-xl-7 card-button">
+            {% if complet == "1" %}
                 <div class="row justify-content-end">
-                    <div class="col-4 col-sm-4 col-md-4 col-xl-5 mb-2">
+                    <div class="col-4 mb-2 text-right">
                         <a href="{{ instance.get_absolute_url }}" class="btn btn-default">{% trans "View" %}</a>
                     </div>
-                    <div class="col-8 col-sm-8 col-md-8 col-xl-7">
+                    <div class="col-8 text-right">
                         {% include 'products/update-cart.html' with product=instance in_cart=in_cart %}
                     </div>
                 </div>
-            </div>
-        {% else %}
-            <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-5 card-button">
+            {% else %}
                 <div class="row">
                     <div class="col text-right">
                         <a href="{{ instance.get_absolute_url }}" class="btn btn-default">{% trans "View" %}</a>
                     </div>
                 </div>
+            {% endif %}
+            <div class="row">
+                <div class="col pl-0 card-price text-right">
+                    {% if instance.grammage %}
+                        <h2>{{ instance.price }} &#36; / {{ instance.grammage }}</h2>
+                    {% else %}
+                        <h2>{{ instance.price }} &#36;</h2>
+                    {% endif %}
+                </div>
             </div>
-        {% endif %}
-        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-3 pl-0 card-price text-right">
-            <h2>{{ instance.price }} &#36;</h2>
         </div>
     </div>
 </div>

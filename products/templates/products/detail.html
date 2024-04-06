@@ -10,19 +10,21 @@
 {% endblock extra_head_tags %}
 
     <div class="row ml-2 ml-md-0 detail-top-panel">
-        <div class="col-8">
+        <div class="col-4">
             <h4><b>{{ object.title }}</b></h4>
             <span class="badge badge-secondary">{{ object.timestamp|timesince }} {% trans "ago" %}</span>
             <span class="badge badge-secondary">{{ object.views }} views </span>
         </div>
-        <div class="col">
-            <div class="row detail-price-update">
-                <div class="v-line">
-                </div>
-                <h2 class="col text-left align-middle">
-                  {{ object.price }} &#36;
+        <div class="col-8">
+            <div class="row">
+                <h2 class="col-12 col-md-6 col-lg-8 text-right">
+                  {% if object.grammage %}
+                        {{ object.price }} &#36; / {{ object.grammage }}
+                    {% else %}
+                        {{ object.price }} &#36;
+                    {% endif %}
                 </h2>
-                <div class="col align-middle">
+                <div class="col-12 col-md-6 col-lg-4 text-right">
                   {% include 'products/update-cart.html' with product=object in_cart=in_cart %}
                 </div>
             </div>

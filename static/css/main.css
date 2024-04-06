@@ -126,3 +126,11 @@
 .main-filter-btn:hover {
     color: var(--hard-brown-color);
 }
+
+.categories {
+    text-align: right;
+}
+
+.category-btn {
+    margin-top: 1em;
+}

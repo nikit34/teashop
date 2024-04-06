@@ -12,10 +12,12 @@
 {% block content %}
 
     {% include 'main/onboarding.html' %}
+    {% include 'main/categories.html' %}
+    <br>
     {% include 'main/select_sort.html' %}
     <div class="row justify-content-center">
         {% for obj in object_list %}
-            <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="col-12 col-lg-6">
                 {% include 'products/card.html' with instance=obj complet="1" in_cart=obj.in_cart %}
             </div>
         {% endfor %}

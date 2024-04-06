@@ -34,7 +34,7 @@ class AddressListViewTest(TestCase):
             full_name='Test',
             password='test'
         )
-        response = self.client.get(reverse('addresses'))
+        response = self.client.get(reverse('addresses:main'))
         self.assertEqual(response.status_code, 200)
 
     def test_correct_template(self):
@@ -112,7 +112,7 @@ class AddressCreateViewTest(TestCase):
             full_name='Test',
             password='test'
         )
-        response = self.client.get(reverse('address-create'))
+        response = self.client.get(reverse('addresses:create'))
         self.assertEqual(response.status_code, 200)
 
     def test_correct_template(self):
