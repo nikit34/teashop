@@ -379,8 +379,6 @@ msgid "Success! Your card was added."
 msgstr "Sucesso! Seu cartão foi adicionado."
 
 #: carts/templates/carts/checkout/done.html:14
-#, fuzzy
-#| msgid "Thank you for your submission"
 msgid "Thank, you for your order"
 msgstr "Obrigado pela sua submissão"
 
@@ -726,8 +724,6 @@ msgid "Take care of your health, live long - drink quality tea"
 msgstr "Cuide da sua saúde, viva por muito tempo - beba chá de qualidade"
 
 #: templates/main/onboarding.html:12
-#, fuzzy
-#| msgid "Free delivery throughout Porto and Vila Nova de Gaia"
 msgid "Delivery throughout Porto and Vila Nova de Gaia"
 msgstr "Entrega em todo o Porto e Vila Nova de Gaia"
 

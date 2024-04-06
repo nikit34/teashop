@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-2 d-none d-md-block"></div>
     <div class="col-12 col-sm-8 col-md-6 done-text">
-        <h3 class="line-1">{% trans 'Thank, you for your order' %} !</h3>
+        <h3 class="line-1">{% trans "Thank, you for your order" %} !</h3>
         <h3 class="line-2">
             {% trans "Your" %} {% if orderID|length == 17 %} PayPal {% else %} Stripe {% endif %} {% trans "order ID" %}:
             <div id="order-id" class="mt-4"><i class="fa fa-copy copy-icon"></i> {{ orderID }}</div>

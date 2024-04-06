@@ -383,8 +383,6 @@ msgid "Success! Your card was added."
 msgstr "Успех! Ваша карта была добавлена."
 
 #: carts/templates/carts/checkout/done.html:14
-#, fuzzy
-#| msgid "Thank you for your submission"
 msgid "Thank, you for your order"
 msgstr "Спасибо за Ваш заказ"
 
@@ -730,8 +728,6 @@ msgid "Take care of your health, live long - drink quality tea"
 msgstr "Берегите свое здоровье, живите долго - пейте качественный чай"
 
 #: templates/main/onboarding.html:12
-#, fuzzy
-#| msgid "Free delivery throughout Porto and Vila Nova de Gaia"
 msgid "Delivery throughout Porto and Vila Nova de Gaia"
 msgstr "Доставка по Porto и Vila Nova de Gaia"
 
