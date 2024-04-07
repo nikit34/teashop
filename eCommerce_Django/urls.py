@@ -10,20 +10,17 @@ from django.views.static import serve
 
 from accounts.views import LoginView, RegisterView, GuestRegisterView
 from addresses.views import (
-    AddressCreateView,
-    AddressListView,
-    AddressUpdateView,
-    AddressDeleteView,
     checkout_address_create_view,
     checkout_address_reuse_view
 )
 from analytics.views import SalesView, SalesAjaxView
 from billing.views import payment_method_view, payment_method_createview
-from carts.views import cart_detail_api_view  # , paypal_checkout_home TODO: PayPal
+from carts.views import cart_detail_api_view, checkout_api_view  # , paypal_checkout_home TODO: PayPal
 from marketing.views import MarketingPreferenceUpdateView, MailchimpWebhookView
 from orders.views import CollectionView
 from .sitemaps import global_maps, RobotsTxtView
 from .views import ProductListView, about_page, contact_page, update
+
 
 urlpatterns = [
     path('update_server/', update, name='update'),
@@ -31,6 +28,7 @@ urlpatterns = [
     # path('cart/create-paypal-transaction/', paypal_checkout_home, name='paypal-checkout'), TODO: PayPal
     path('webhooks/mailchimp/', MailchimpWebhookView.as_view(), name='webhooks-mailchimp'),
     path('api/cart/', cart_detail_api_view, name='api-cart'),
+    path('api/checkout/', checkout_api_view, name='api-checkout'),
 
     path('sitemap.xml', sitemap, {'sitemaps': global_maps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', RobotsTxtView.as_view()),

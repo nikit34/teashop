@@ -1,7 +1,7 @@
 import stripe
 from django.conf import settings
 from django.core.mail import send_mail
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import get_template
 from django.urls import reverse
@@ -74,6 +74,19 @@ def cart_update(request):
             data_cart_detail = _get_cart_detail(cart_obj)
             return JsonResponse(data_cart_detail)
     return redirect('cart:home')
+
+
+def checkout_api_view(request):
+    if request.method == 'POST':
+        cart_obj, cart_created = Cart.objects.new_or_get(request)
+        if not cart_created:
+            billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+            if not billing_profile_created:
+                order_obj, _ = Order.objects.new_or_get(billing_profile, cart_obj)
+                order_obj.description = request.POST.get('msg')
+                order_obj.save()
+                return HttpResponse(status=200)
+    return HttpResponse(status=400)
 
 
 def checkout_home(request):

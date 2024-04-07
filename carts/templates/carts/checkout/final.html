@@ -38,6 +38,22 @@
                     <p>{{ object.address_final }}</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 col-sm-4 col-md-12 col-lg-4">
+                    <h4>{% trans "Description" %}:</h4>
+                </div>
+                <div class="col-12 col-sm-8 col-md-12 col-lg-8">
+                    <form method="POST" id="form_checkout">
+                        {% csrf_token %}
+                        <div class="row ml-1">
+                            <label for="{{ form.msg.id_for_label }}"></label>
+                            <textarea name="msg" rows="1" required="" id="id_msg" placeholder="{% trans 'Recipient\'s name' %}"></textarea>
+                            &nbsp;
+                            <button type="submit" class="btn btn-outline-default">{% trans "Submit" %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <br>
     </div>
