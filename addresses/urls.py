@@ -15,6 +15,6 @@ urlpatterns = [
     path('create/', AddressCreateView.as_view(), name='create'),
     re_path(r'^(?P<pk>\d+)/$', AddressUpdateView.as_view(), name='update'),
     re_path(r'^(?P<pk>\d+)/delete/$', AddressDeleteView.as_view(), name='delete'),
-    path('checkout/address/create/', checkout_address_create_view, name='checkout_address_create'),
-    path('checkout/address/reuse/', checkout_address_reuse_view, name='checkout_address_reuse'),
+    path('address/create/', checkout_address_create_view, name='checkout_address_create'),
+    path('address/reuse/', checkout_address_reuse_view, name='checkout_address_reuse'),
 ]
