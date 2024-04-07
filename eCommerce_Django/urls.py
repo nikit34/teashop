@@ -27,8 +27,7 @@ urlpatterns = [
     path('billing/payment-method/create/', payment_method_createview, name='billing-payment-method-endpoint'),
     # path('cart/create-paypal-transaction/', paypal_checkout_home, name='paypal-checkout'), TODO: PayPal
     path('webhooks/mailchimp/', MailchimpWebhookView.as_view(), name='webhooks-mailchimp'),
-    path('api/cart/', cart_detail_api_view, name='api-cart'),
-    path('api/checkout/', checkout_api_view, name='api-checkout'),
+    path('api/', include(('apis.urls', 'eCommerce_Django'), namespace='apis')),
 
     path('sitemap.xml', sitemap, {'sitemaps': global_maps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', RobotsTxtView.as_view()),
