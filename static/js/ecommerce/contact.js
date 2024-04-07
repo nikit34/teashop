@@ -1,4 +1,4 @@
-import { localization } from './base.js';
+import { localization, displaySubmitting } from './base.js';
 
 
 $(document).ready(function () {
@@ -7,29 +7,6 @@ $(document).ready(function () {
   var contactForm = $(".contact-form");
   var contactFormMethod = contactForm.attr("method");
   var contactFormEndpoint = contactForm.attr("action");
-  function displaySubmitting(submitBtn, defaultText, doSubmit) {
-    if (doSubmit) {
-      submitBtn.addClass("disabled");
-      var fragment;
-      switch (lang) {
-        case "en":
-          fragment = '<i class="fa fa-spin fa-spinner"></i>Sending...';
-          break;
-        case "ru":
-          fragment = '<i class="fa fa-spin fa-spinner"></i>Отправление...';
-          break;
-        case "pt":
-          fragment = '<i class="fa fa-spin fa-spinner"></i>Enviando...';
-          break;
-        default:
-          fragment = '<i class="fa fa-spin fa-spinner"></i>Undefined langueges in js';
-      }
-      submitBtn.html(fragment);
-    } else {
-      submitBtn.removeClass("disabled");
-      submitBtn.html(defaultText);
-    }
-  }
   contactForm.submit(function (event) {
     event.preventDefault();
     var contactFormSubmitBtn = contactForm.find('[type="submit"]');
