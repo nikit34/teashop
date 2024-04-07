@@ -44,9 +44,9 @@ class ProductListView(ListView):
             queryset = queryset.order_by('price')
         elif price_order == "descend":
             queryset = queryset.order_by('-price')
-        elif time_order == "descend":
-            queryset = queryset.order_by('timestamp')
         elif time_order == "ascend":
+            queryset = queryset.order_by('timestamp')
+        elif time_order == "descend":
             queryset = queryset.order_by('-timestamp')
         return queryset
 
