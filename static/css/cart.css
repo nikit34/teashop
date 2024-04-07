@@ -56,4 +56,5 @@ table.cart-table a {
 
 #order-id {
   user-select: text;
+  color: var(--black-color);
 }
