@@ -10,7 +10,6 @@ from django.views.static import serve
 
 from accounts.views import LoginView, RegisterView, GuestRegisterView
 
-from analytics.views import SalesView, SalesAjaxView
 from billing.views import payment_method_view, payment_method_createview
 from marketing.views import MarketingPreferenceUpdateView, MailchimpWebhookView
 from orders.views import CollectionView
@@ -55,8 +54,7 @@ urlpatterns = [
     path('address/', RedirectView.as_view(url='/addresses/')),
     path('addresses/', include(('addresses.urls', 'eCommerce_Django'), namespace='addresses')),
 
-    path('analytics/sales/', SalesView.as_view(), name='sales-analytics'),
-    path('analytics/sales/data/', SalesAjaxView.as_view(), name='sales-analytics-data'),
+    path('analytics/', include(('analytics.urls', 'eCommerce_Django'), namespace='analytics')),
 
     path('cart/', include(('carts.urls', 'eCommerce_Django'), namespace='cart')),
 
