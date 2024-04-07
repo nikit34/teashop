@@ -67,33 +67,6 @@
 }
 
 
-.payments-form-api {
-    background-color: var(--whitesmoke-color);
-    border: 2px solid green;
-    border-radius: 15px;
-    padding: 20px 25px 5px 25px;
-    width: 100%;
-    -webkit-box-direction: normal;
-}
-.payments-form-api h2{
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 1em;
-}
-@media only screen and (max-width: 675px) {
-    .payments-mobile{
-        -webkit-box-orient: vertical;
-        flex-direction: column;
-    }
-}
-@media only screen and (min-width: 675px){
-    .payments-desktop {
-    -webkit-box-orient: horizontal;
-    flex-direction: row;
-    }
-}
-
-
 #blink:hover {
   -webkit-animation: blink 0.5s 0.7s ease infinite;
   -moz-animation: blink 0.5s 0.7s ease infinite;
