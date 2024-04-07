@@ -10,7 +10,7 @@ DEBUG = False
 
 DJANGO_TEST_PROCESSES = 8
 
-ALLOWED_HOSTS = ['teashop-e3ec3bce7960.herokuapp.com', 'teashop.today']
+ALLOWED_HOSTS = ['teashop-e3ec3bce7960.herokuapp.com', 'portotea.today']
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
