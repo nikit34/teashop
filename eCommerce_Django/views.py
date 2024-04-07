@@ -40,9 +40,9 @@ class ProductListView(ListView):
 
         price_order = self.request.GET.get("price")
         time_order = self.request.GET.get("time_update")
-        if price_order == "descend":
+        if price_order == "ascend":
             queryset = queryset.order_by('price')
-        elif price_order == "ascend":
+        elif price_order == "descend":
             queryset = queryset.order_by('-price')
         elif time_order == "descend":
             queryset = queryset.order_by('timestamp')
