@@ -17,7 +17,7 @@
             <hr>
             <div class="row">
                 <div class="col">
-                    <h4>{% trans "Order number: " %}</h4>
+                    <h4>{% trans "Order number" %}: </h4>
                 </div>
                 <div class="col">
                     <i class="fa fa-copy copy-icon"></i>
@@ -46,7 +46,7 @@
                         {% csrf_token %}
                         <div class="row ml-1">
                             <label for="{{ form.msg.id_for_label }}"></label>
-                            <textarea name="msg" rows="1" required="" id="id_msg" placeholder="{% trans 'Recipient\'s name' %}"></textarea>
+                            <textarea name="msg" rows="1" required="" id="id_msg" placeholder="{% trans 'Recipients name' %}"></textarea>
                             &nbsp;
                             <button type="submit" class="btn btn-outline-default">{% trans "Submit" %}</button>
                         </div>
@@ -87,7 +87,7 @@
 <br>
 <div class="row checkout checkout-title">
     <div class="col">
-        <h1>{% trans "Add a payment method" %}</h1>
+        <h1>{% trans "Add Payment Method" %}</h1>
     </div>
 </div>
 <div class="row payments-form-api payments-desktop payments-mobile">
