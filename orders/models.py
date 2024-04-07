@@ -116,6 +116,7 @@ class Order(models.Model):
     active = models.BooleanField(default=True)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+    description = models.TextField(blank=True, null=True, max_length=30)
 
     def __str__(self):
         return self.order_id

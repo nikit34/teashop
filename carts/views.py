@@ -1,7 +1,7 @@
 import stripe
 from django.conf import settings
 from django.core.mail import send_mail
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import get_template
 from django.urls import reverse
@@ -76,6 +76,19 @@ def cart_update(request):
     return redirect('cart:home')
 
 
+def checkout_api_view(request):
+    if request.method == 'POST':
+        cart_obj, cart_created = Cart.objects.new_or_get(request)
+        if not cart_created:
+            billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+            if not billing_profile_created:
+                order_obj, _ = Order.objects.new_or_get(billing_profile, cart_obj)
+                order_obj.description = request.POST.get('msg')
+                order_obj.save()
+                return HttpResponse(status=200)
+    return HttpResponse(status=400)
+
+
 def checkout_home(request):
     cart_obj, cart_created = Cart.objects.new_or_get(request)
     if cart_created or cart_obj.cart_items.count() == 0:
@@ -112,11 +125,12 @@ def checkout_home(request):
                 del request.session['cart_id']
                 if not billing_profile.user:
                     billing_profile.set_cards_inactive()
+                context = {
+                    'orderID': orderID,
+                    'orderDescription': gettext('To your health!') if order_obj.description is None else order_obj.description,
+                    'time': '2 days'
+                }
                 if request.user.is_authenticated:
-                    context = {
-                        'orderID': orderID,
-                        'time': '2 days'
-                    }
                     txt_ = get_template("registration/emails/verify.txt").render(context)
                     html_ = get_template("carts/checkout/mail/done.html").render(context)
                     subject = gettext('We are starting to collect your order')
@@ -130,6 +144,7 @@ def checkout_home(request):
                         html_message=html_,
                         fail_silently=False,
                     )
+                request.session['checkout_data'] = context
                 return redirect(reverse('cart:success', kwargs={'orderID': orderID}))
             else:
                 return redirect('cart:checkout')
@@ -148,59 +163,62 @@ def checkout_home(request):
     return render(request, 'carts/checkout/main.html', context)
 
 
-def paypal_checkout_home(request):
-    cart_obj, cart_created = Cart.objects.new_or_get(request)
-    if cart_created or cart_obj.cart_items.count() == 0:
-        return redirect('cart:home')
-
-    login_form = LoginForm(request=request)
-    guest_form = GuestForm(request=request)
-    address_form = AddressCheckoutForm()
-    address_id = request.session.get('address_id', None)
-    address_required = cart_obj.delivery
-    billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
-
-    address_qs = None
-    has_card = False
-    order_obj = None
-
-    if billing_profile is not None:
-        if request.user.is_authenticated:
-            address_qs = Address.objects.filter(billing_profile=billing_profile)
-        order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
-        if address_id:
-            order_obj.address = Address.objects.get(id=address_id)
-            del request.session['address_id']
-            order_obj.save()
-        has_card = billing_profile.has_card
-
-    if request.method == 'POST':
-        is_prepared = order_obj.check_done()
-        if is_prepared:
-            order_done = CreateOrder(order_obj, cart_obj)
-            response = order_done.get_response()
-            if response.status_code == 201 and response.result.status == 'CREATED':
-                did_charge, orderID = billing_profile.charge('P', order_obj, response)
-                if did_charge:
-                    order_obj.mark_paid()  # sort signal
-                    request.session['cart_items'] = 0
-                    del request.session['cart_id']
-                    return redirect(reverse('cart:success', kwargs={'orderID': orderID}))
-                else:
-                    return redirect('cart:checkout')
-
-    context = {
-        'object': order_obj,
-        'billing_profile': billing_profile,
-        'login_form': login_form,
-        'guest_form': guest_form,
-        'address_form': address_form,
-        'address_qs': address_qs,
-        'has_card': has_card,
-        'address_required': address_required,
-    }
-    return render(request, 'carts/checkout/main.html', context)
+# def paypal_checkout_home(request):
+#     cart_obj, cart_created = Cart.objects.new_or_get(request)
+#     if cart_created or cart_obj.cart_items.count() == 0:
+#         return redirect('cart:home')
+#
+#     login_form = LoginForm(request=request)
+#     guest_form = GuestForm(request=request)
+#     address_form = AddressCheckoutForm()
+#     address_id = request.session.get('address_id', None)
+#     address_required = cart_obj.delivery
+#     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+#
+#     address_qs = None
+#     has_card = False
+#     order_obj = None
+#
+#     if billing_profile is not None:
+#         if request.user.is_authenticated:
+#             address_qs = Address.objects.filter(billing_profile=billing_profile)
+#         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
+#         if address_id:
+#             order_obj.address = Address.objects.get(id=address_id)
+#             del request.session['address_id']
+#             order_obj.save()
+#         has_card = billing_profile.has_card
+#
+#     if request.method == 'POST':
+#         is_prepared = order_obj.check_done()
+#         if is_prepared:
+#             order_done = CreateOrder(order_obj, cart_obj)
+#             response = order_done.get_response()
+#             if response.status_code == 201 and response.result.status == 'CREATED':
+#                 did_charge, orderID = billing_profile.charge('P', order_obj, response)
+#                 if did_charge:
+#                     order_obj.mark_paid()  # sort signal
+#                     request.session['cart_items'] = 0
+#                     del request.session['cart_id']
+#                     return redirect(reverse('cart:success', kwargs={'orderID': orderID}))
+#                 else:
+#                     return redirect('cart:checkout')
+#
+#     context = {
+#         'object': order_obj,
+#         'billing_profile': billing_profile,
+#         'login_form': login_form,
+#         'guest_form': guest_form,
+#         'address_form': address_form,
+#         'address_qs': address_qs,
+#         'has_card': has_card,
+#         'address_required': address_required,
+#     }
+#     return render(request, 'carts/checkout/main.html', context)
 
 
 def checkout_done_view(request, orderID=None):
-    return render(request, 'carts/checkout/done.html', {'orderID': orderID})
+    context = request.session.pop('checkout_data', None)
+    if context is None:
+        return render(request, 'carts/checkout/done.html', {'orderID': orderID})
+    return render(request, 'carts/checkout/done.html', context)

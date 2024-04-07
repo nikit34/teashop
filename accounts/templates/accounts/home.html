@@ -30,7 +30,7 @@
                   <a class='list-group-item' href='{% url "accounts:user-product-history" %}'>{% trans "Products" %}</a>
                   <a class='list-group-item' href='{% url "collection" %}'>{% trans "Collection" %}</a>
                   {% if user.staff %}
-                    <a class='list-group-item' href='{% url "sales-analytics" %}'>{% trans "Statistics" %}</a>
+                    <a class='list-group-item' href='{% url "analytics:sales-analytics" %}'>{% trans "Statistics" %}</a>
                   {% endif %}
               </div>
           </div>

@@ -4,7 +4,9 @@ from .views import (
     AddressListView,
     AddressCreateView,
     AddressUpdateView,
-    AddressDeleteView
+    AddressDeleteView,
+    checkout_address_create_view,
+    checkout_address_reuse_view
 )
 
 
@@ -13,4 +15,6 @@ urlpatterns = [
     path('create/', AddressCreateView.as_view(), name='create'),
     re_path(r'^(?P<pk>\d+)/$', AddressUpdateView.as_view(), name='update'),
     re_path(r'^(?P<pk>\d+)/delete/$', AddressDeleteView.as_view(), name='delete'),
+    path('address/create/', checkout_address_create_view, name='checkout_address_create'),
+    path('address/reuse/', checkout_address_reuse_view, name='checkout_address_reuse'),
 ]
