@@ -2,60 +2,83 @@
 
 <div class="row checkout checkout-title">
     <div class="col">
-        <h1>{% trans "CHECK and CHOOSE" %}<br>{% trans "method of payment for order" %}</h1>
+        <h1>{% trans "Finalize Checkout" %}</h1>
     </div>
 </div>
+
 <div class="row checkout checkout-table">
-    <div class="col">
+    <div class="col-12 col-md-6">
         <div class="bank-canvas-cell">
             <h3>{% trans "Cart Items" %}:</h3>
             <hr>
             {% for cart_item in object.cart.cart_items.all %}
-                {% if forloop.counter|divisibleby:2 %}<p style="color:rgb(150,0,150);">{% else %}<p style="color:rgb(200,0,200);">{% endif %}{{ forloop.counter }}) {{ cart_item.product }}</p>
+                {% if forloop.counter|divisibleby:2 %}<p class="bank-product-item odd">{% else %}<p class="bank-product-item even">{% endif %}{{ forloop.counter }}) {{ cart_item.product }}</p>
             {% endfor %}
             <hr>
             <div class="row">
                 <div class="col">
-                    <h4>{% trans "Order number: " %}</h4>
+                    <h4>{% trans "Order number" %}: </h4>
                 </div>
                 <div class="col">
-                    <p id="order-id">{{ object.order_id }}</p>
+                    <i class="fa fa-copy copy-icon"></i>
+                    <span id="order-id">{{ object.order_id }}</span>
                 </div>
             </div>
         </div>
+        <br>
     </div>
-    <div class="col">
+    <div class="col-12 col-md-6">
         <div class="bank-canvas-cell">
             <div class="row">
-                <div class="col-4">
+                <div class="col-12 col-sm-4 col-md-12 col-lg-4">
                     <h4>{% trans "Address" %}:</h4>
                 </div>
-                <div class="col-8">
+                <div class="col-12 col-sm-8 col-md-12 col-lg-8">
                     <p>{{ object.address_final }}</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 col-sm-4 col-md-12 col-lg-4">
+                    <h4>{% trans "Description" %}:</h4>
+                </div>
+                <div class="col-12 col-sm-8 col-md-12 col-lg-8">
+                    <form method="POST" id="form_checkout">
+                        {% csrf_token %}
+                        <div class="row ml-1">
+                            <label for="{{ form.msg.id_for_label }}"></label>
+                            <textarea name="msg" rows="1" required="" id="id_msg" placeholder="{% trans 'Recipients name' %}"></textarea>
+                            &nbsp;
+                            <button type="submit" class="btn btn-outline-default">{% trans "Submit" %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
+        <br>
     </div>
 </div>
-<br>
+
 <div class="row checkout checkout-total">
     <div class="col">
         <div class="bank-canvas-cell">
             <div class="row">
-                <div class="col">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <h4>{% trans "Cart Total" %}</h4>
                     <hr>
-                    <h2>{{ object.cart.total | floatformat:2 }}</h2>
+                    <h1>{{ object.cart.total | floatformat:2 }}</h1>
+                    <br>
                 </div>
-                <div class="col">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <h4>{% trans "Shipping Total" %}</h4>
                     <hr>
-                    <h2>{{ object.shipping_total | floatformat:2 }}</h2>
+                    <h1>{{ object.shipping_total | floatformat:2 }}</h1>
+                    <br>
                 </div>
-                <div class="col">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <h4>{% trans "Order Total" %}</h4>
                     <hr>
-                    <h2 id="order-total">{{ object.total | floatformat:2 }}</h2>
+                    <h1 id="order-total">{{ object.total | floatformat:2 }}</h1>
+                    <br>
                 </div>
             </div>
         </div>
@@ -64,7 +87,7 @@
 <br>
 <div class="row checkout checkout-title">
     <div class="col">
-        <h1>{% trans "Choose method of payment" %}</h1>
+        <h1>{% trans "Add Payment Method" %}</h1>
     </div>
 </div>
 <div class="row payments-form-api payments-desktop payments-mobile">
@@ -74,7 +97,7 @@
 <!--        <div id="paypal-button-container"></div>-->
 <!--    </div>-->
     <div class="col">
-        <h2 style="color:red;">{% trans "Bank card binding" %}</h2>
+        <h2>{% trans "Bank card binding" %}</h2>
         <div class="stripe-payment-form" data-token='{{ publish_key }}' data-next-url='{{ request.build_absolute_uri }}' data-btn-title="Add Payment Method"></div>
     </div>
 </div>

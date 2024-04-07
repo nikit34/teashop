@@ -9,28 +9,20 @@ from django.views.generic import RedirectView
 from django.views.static import serve
 
 from accounts.views import LoginView, RegisterView, GuestRegisterView
-from addresses.views import (
-    AddressCreateView,
-    AddressListView,
-    AddressUpdateView,
-    AddressDeleteView,
-    checkout_address_create_view,
-    checkout_address_reuse_view
-)
-from analytics.views import SalesView, SalesAjaxView
+
 from billing.views import payment_method_view, payment_method_createview
-from carts.views import cart_detail_api_view  # , paypal_checkout_home TODO: PayPal
 from marketing.views import MarketingPreferenceUpdateView, MailchimpWebhookView
 from orders.views import CollectionView
 from .sitemaps import global_maps, RobotsTxtView
 from .views import ProductListView, about_page, contact_page, update
+
 
 urlpatterns = [
     path('update_server/', update, name='update'),
     path('billing/payment-method/create/', payment_method_createview, name='billing-payment-method-endpoint'),
     # path('cart/create-paypal-transaction/', paypal_checkout_home, name='paypal-checkout'), TODO: PayPal
     path('webhooks/mailchimp/', MailchimpWebhookView.as_view(), name='webhooks-mailchimp'),
-    path('api/cart/', cart_detail_api_view, name='api-cart'),
+    path('api/', include(('apis.urls', 'eCommerce_Django'), namespace='apis')),
 
     path('sitemap.xml', sitemap, {'sitemaps': global_maps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', RobotsTxtView.as_view()),
@@ -57,14 +49,12 @@ urlpatterns = [
     path('accounts/', RedirectView.as_view(url='/account')),
     path('account/', include(('accounts.urls', 'eCommerce_Django'), namespace='accounts')),
     path('accounts/', include('accounts.passwords.urls')),
-    path('checkout/address/create/', checkout_address_create_view, name='checkout_address_create'),
-    path('checkout/address/reuse/', checkout_address_reuse_view, name='checkout_address_reuse'),
+    path('checkout/', include(('addresses.urls', 'eCommerce_Django'), namespace='checkout')),
 
     path('address/', RedirectView.as_view(url='/addresses/')),
     path('addresses/', include(('addresses.urls', 'eCommerce_Django'), namespace='addresses')),
 
-    path('analytics/sales/', SalesView.as_view(), name='sales-analytics'),
-    path('analytics/sales/data/', SalesAjaxView.as_view(), name='sales-analytics-data'),
+    path('analytics/', include(('analytics.urls', 'eCommerce_Django'), namespace='analytics')),
 
     path('cart/', include(('carts.urls', 'eCommerce_Django'), namespace='cart')),
 

@@ -15,6 +15,11 @@
         <h3 class="line-2">
             {% trans "Your" %} {% if orderID|length == 17 %} PayPal {% else %} Stripe {% endif %} {% trans "order ID" %}:
             <div id="order-id" class="mt-4"><i class="fa fa-copy copy-icon"></i> {{ orderID }}</div>
+            <br>
+            {% if time %}
+                <p>{% trans "Delivery time is" %} {{ time }}</p>
+                <p>{% trans "With the inscription on the packaging" %}: "{{ orderDescription }}"</p>
+            {% endif %}
         </h3>
     </div>
 </div>

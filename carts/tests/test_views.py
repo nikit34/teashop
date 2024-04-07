@@ -20,7 +20,7 @@ class CartViewsTest(TestCase):
         self.factory = RequestFactory()
 
     def test_cart_detail_api_view(self):
-        request = self.factory.get(reverse('api-cart'))
+        request = self.factory.get(reverse('apis:api-cart'))
         request.user = AnonymousUser()
         request.session = {}
         response = views.cart_detail_api_view(request)
