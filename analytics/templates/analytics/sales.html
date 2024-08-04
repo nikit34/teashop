@@ -14,7 +14,7 @@
     <div class='col-4 product-canvas-cell-2'>
         <h3>{% trans "Today's sales" %}</h3>
         <hr/>
-        <p>{% trans "Recent Total" %}: ${{ today.recent_data.total__sum }}</p>
+        <p>{% trans "Recent Total" %}: ${{ today.recent_data.total__sum|floatformat:2 }}</p>
         <ul>
         {% for order in today.recent|slice:":5" %}
             <li class='my-3'>{% trans "Order" %} #{{ order.order_id }}<br/>
@@ -25,7 +25,7 @@
 
     <h3>{% trans "This week's sales" %}</h3>
     <hr/>
-        <p>{% trans "Recent Total" %}: ${{ this_week.recent_data.total__sum }}</p>
+        <p>{% trans "Recent Total" %}: ${{ this_week.recent_data.total__sum|floatformat:2 }}</p>
         <ul>
         {% for order in this_week.recent|slice:":5" %}
             <li class='my-3'>{% trans "Order" %} #{{ order.order_id }}<br/>
