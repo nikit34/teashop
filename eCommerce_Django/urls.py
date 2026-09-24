@@ -27,8 +27,6 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': global_maps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', RobotsTxtView.as_view()),
 
-    path("__debug__/", include("debug_toolbar.urls")),
-
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
   ] + i18n_patterns(
@@ -71,6 +69,9 @@ urlpatterns = [
 # if settings.DEBUG:
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += [path("__debug__/", include("debug_toolbar.urls"))]
 
 
 admin.site.site_header = 'TeaShop'
