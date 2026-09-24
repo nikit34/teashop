@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+
+<div class="row justify-content-center mt-3">
+    <div class="col-12 col-lg-10 col-xl-8">
+        <h3>{% trans "Ask our gourmet assistant" %}</h3>
+        <p class="text-muted">{% trans "Describe what you want in your own words - a gift, a taste, a budget - and we will pick from what is in stock." %}</p>
+        <form method="get" action="{% url 'search:ask' %}" class="form-inline mb-3">
+            <input type="text" name="q" value="{{ query }}" class="form-control mr-2" style="flex:1;min-width:220px;"
+                   placeholder="{% trans 'e.g. a gift for someone who loves fish, under 40 euro' %}">
+            <button type="submit" class="btn btn-default">{% trans "Ask" %}</button>
+        </form>
+
+        {% if result %}
+            {% if result.summary %}
+                <div class="alert alert-secondary">
+                    <p class="mb-0">{{ result.summary }}</p>
+                </div>
+            {% endif %}
+
+            {% if result.clarifying_question %}
+                <div class="mb-3">
+                    <p class="mb-1"><b>{{ result.clarifying_question }}</b></p>
+                    {% for option in result.clarifying_options %}
+                        <a class="btn btn-sm btn-outline-secondary mb-1"
+                           href="{% url 'search:ask' %}?q={{ query|urlencode }}%20{{ option|urlencode }}">{{ option }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    {% for item in result.products %}
+        <div class="col-11 col-sm-8 col-lg-10 col-xl-8">
+            {% include 'products/card.html' with instance=item.product complet="1" in_cart=item.product.in_cart %}
+            {% if item.explanation %}
+                <p class="text-muted pl-2"><small>{{ item.explanation }}</small></p>
+            {% endif %}
+            <br>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

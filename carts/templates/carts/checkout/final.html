@@ -65,19 +65,19 @@
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <h4>{% trans "Cart Total" %}</h4>
                     <hr>
-                    <h1>{{ object.cart.total | floatformat:2 }}</h1>
+                    <h1>{{ object.cart.total | floatformat:2 }} &euro;</h1>
                     <br>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <h4>{% trans "Shipping Total" %}</h4>
                     <hr>
-                    <h1>{{ object.shipping_total | floatformat:2 }}</h1>
+                    <h1>{{ object.shipping_total | floatformat:2 }} &euro;</h1>
                     <br>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                     <h4>{% trans "Order Total" %}</h4>
                     <hr>
-                    <h1 id="order-total">{{ object.total | floatformat:2 }}</h1>
+                    <h1 id="order-total">{{ object.total | floatformat:2 }} &euro;</h1>
                     <br>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3">

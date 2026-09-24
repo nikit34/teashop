@@ -6,7 +6,9 @@
             <img class="card-img-top" src="{{ instance.image.url }}" alt="{{ instance.title }} logo">
         </a>
     {% else %}
-        <p class="text-center mt-2 mb-2">{% trans "Image not found :(" %}</p>
+        <a href="{{ instance.get_absolute_url }}" class="product-placeholder card-img-top" aria-label="{{ instance.title }}">
+            <span>{{ instance.title }}</span>
+        </a>
     {% endif %}
     <div class="row card-body">
         <div class="col-3 col-sm-5 col-md-7 col-lg-4 col-xl-5 card-text">
@@ -37,9 +39,9 @@
             <div class="row">
                 <div class="col pl-0 card-price text-right">
                     {% if instance.grammage %}
-                        <h2>{{ instance.price }} &#36; / {{ instance.grammage }}</h2>
+                        <h2>{{ instance.price }} &euro; / {{ instance.grammage }}</h2>
                     {% else %}
-                        <h2>{{ instance.price }} &#36;</h2>
+                        <h2>{{ instance.price }} &euro;</h2>
                     {% endif %}
                 </div>
             </div>

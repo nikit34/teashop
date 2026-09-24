@@ -76,6 +76,8 @@ STRIPE_PUB_KEY = get_secret_key(BASE_DIR, 'STRIPE_PUB_KEY')
 PAYPAL_CLIENT_ID = get_secret_key(BASE_DIR, 'PAYPAL_CLIENT_ID')
 PAYPAL_CLIENT_SECRET = get_secret_key(BASE_DIR, 'PAYPAL_CLIENT_SECRET')
 
+MAX_QUERY_CHARS = 500
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -45,7 +45,7 @@
                                 {% trans "Subtotal" %}:
                             </div>
                             <div class="col">
-                                $<span class="cart-subtotal">{{ cart.subtotal | floatformat:2 }}</span>
+                                <span class="cart-subtotal">{{ cart.subtotal | floatformat:2 }}</span> &euro;
                             </div>
                         </div>
                     </td>
@@ -58,7 +58,7 @@
                                 {% trans "Total" %}:
                             </div>
                             <div class="col">
-                                $<span class="cart-total">{{ cart.total | floatformat:2 }}</span>
+                                <span class="cart-total">{{ cart.total | floatformat:2 }}</span> &euro;
                             </div>
                         </div>
                     </td>

@@ -6,7 +6,7 @@
 {% load static %}
 
 {% block extra_head_tags %}
-<meta name="Description" content="{{ object.title }} TeaShop">
+<meta name="Description" content="{{ object.title }}{% if object.category %} - {{ object.category.name }}{% endif %}. Portuguese gourmet, shipped from Portugal.">
 {% endblock extra_head_tags %}
 
     <div class="row ml-2 ml-md-0 detail-top-panel">
@@ -19,9 +19,9 @@
             <div class="row">
                 <h2 class="col-12 col-md-6 col-lg-8 text-right">
                   {% if object.grammage %}
-                        {{ object.price }} &#36; / {{ object.grammage }}
+                        {{ object.price }} &euro; / {{ object.grammage }}
                     {% else %}
-                        {{ object.price }} &#36;
+                        {{ object.price }} &euro;
                     {% endif %}
                 </h2>
                 <div class="col-12 col-md-6 col-lg-4 text-right">
@@ -50,7 +50,7 @@
                       <p class="preview">{{ object.description|safe }}</p>
                     </div>
                 {% else %}
-                  <p style="margin-left:50%; margin-top:50px;">{% trans "Image not found :(" %}</p>
+                  <div class="product-placeholder product-placeholder--detail"><span>{{ object.title }}</span></div>
                 {% endif %}
             </div>
             {% for slide in slides %}
