@@ -1,4 +1,13 @@
 User-Agent: *
 Disallow: /update_server/
 Disallow: /webhooks/mailchimp/
-Disallow: /api/cart/
+Disallow: /api/
+Disallow: /*/cart/
+Disallow: /*/checkout/
+Disallow: /*/account/
+Disallow: /*/addresses/
+Disallow: /*/orders/
+Disallow: /*/analytics/
+Disallow: /*/admin/
+
+Sitemap: https://{{ request.get_host }}/sitemap.xml
