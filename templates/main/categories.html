@@ -1,15 +1,8 @@
 {% load i18n %}
 
-<div class="row categories">
-    <div class="col-3">
-    </div>
-    <div class="col-9">
-        <form action="{% url 'home' %}" method="GET">
-            {% for category in categories.all %}
-                <button type="submit" name="category" value="{{ category.name }}" class="btn {% if active_category == category.name %}btn-general{% else %}btn-default{% endif %} category-btn">{{ category.name }}</button>
-                &nbsp;
-            {% endfor %}
-            <button type="submit" name="category" value="reset" class="btn btn-general category-btn">{% trans "reset" %}</button>
-        </form>
-    </div>
-</div>
+<nav class="category-chips" aria-label="{% trans 'Categories' %}">
+    <a class="chip {% if not active_category %}active{% endif %}" href="{% url 'home' %}">{% trans "All" %}</a>
+    {% for category in categories %}
+        <a class="chip {% if active_category and active_category.pk == category.pk %}active{% endif %}" href="{% url 'home' %}?category={% firstof category.slug category.name %}">{{ category.name }}</a>
+    {% endfor %}
+</nav>

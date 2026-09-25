@@ -74,6 +74,6 @@ if settings.DEBUG:
     urlpatterns += [path("__debug__/", include("debug_toolbar.urls"))]
 
 
-admin.site.site_header = 'TeaShop'
-admin.site.index_title = 'TeaShop'
-admin.site.site_title = 'TeaShop'
+admin.site.site_header = settings.STORE_NAME
+admin.site.index_title = settings.STORE_NAME
+admin.site.site_title = settings.STORE_NAME

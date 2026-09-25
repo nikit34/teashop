@@ -103,6 +103,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'eCommerce_Django.context_processors.store',
             ],
         },
     },
@@ -161,3 +162,6 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 
 PROTECTED_ROOT = os.path.join(BASE_DIR, "static_cdn", "protected_media")
+
+STORE_NAME = 'Portuguese Pantry'
+STORE_TAGLINE = 'Curated food and gifts from small Portuguese producers'

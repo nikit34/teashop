@@ -20,8 +20,9 @@ class ProductListView(ListView):
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
 
         context['categories'] = Category.objects.all()
-        category_param = self.request.GET.get('category')
-        context['active_category'] = category_param if category_param and category_param != 'reset' else None
+        context['active_category'] = self._active_category()
+        context['sort'] = self.request.GET.get('sort', 'recommended')
+        context['products_count'] = len(context['object_list'])
 
         context['cart'] = cart_obj
         for product in context['object_list']:
@@ -31,24 +32,31 @@ class ProductListView(ListView):
                     break
         return context
 
+    def _active_category(self):
+        value = self.request.GET.get('category')
+        if not value or value in ('reset', 'all'):
+            return None
+        return Category.objects.filter(slug=value).first() or Category.objects.filter(name=value).first()
+
     def get_queryset(self):
-        queryset = Product.objects.all()
+        queryset = Product.objects.all().select_related('category')
 
-        category = self.request.GET.get('category')
-        if category and category != 'reset':
-            queryset = queryset.filter(category__name=category)
+        category = self._active_category()
+        if category is not None:
+            queryset = queryset.filter(category=category)
 
+        sort = self.request.GET.get('sort')
         price_order = self.request.GET.get("price")
         time_order = self.request.GET.get("time_update")
-        if price_order == "ascend":
-            queryset = queryset.order_by('price')
-        elif price_order == "descend":
-            queryset = queryset.order_by('-price')
-        elif time_order == "ascend":
-            queryset = queryset.order_by('timestamp')
-        elif time_order == "descend":
-            queryset = queryset.order_by('-timestamp')
-        return queryset
+        if sort == 'price_asc' or price_order == "ascend":
+            return queryset.order_by('price')
+        if sort == 'price_desc' or price_order == "descend":
+            return queryset.order_by('-price')
+        if sort == 'newest' or time_order == "descend":
+            return queryset.order_by('-timestamp')
+        if time_order == "ascend":
+            return queryset.order_by('timestamp')
+        return queryset.order_by('-featured', 'category__ordering', 'title')
 
 
 def about_page(request):

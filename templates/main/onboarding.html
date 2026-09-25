@@ -1,14 +1,16 @@
-{% load static %}
 {% load i18n %}
 
-<div class="row onboarding">
-    <div class="col-4">
-        <div class="onboarding-cover">
-            <img class="onboarding-img" src="{% static 'img/tea_health.png' %}">
-        </div>
+<section class="hero">
+    <p class="hero-eyebrow">{% trans "From small Portuguese producers" %}</p>
+    <h1>{% trans "The Portuguese pantry, curated and ready to gift" %}</h1>
+    <p class="hero-lead">{% trans "Tinned fish, olive oil, Azores tea, honey and gift hampers, chosen for flavour and packed with care." %}</p>
+    <ul class="hero-points">
+        <li>{% trans "Delivery across Portugal" %}</li>
+        <li>{% trans "Pay after we confirm your order" %}</li>
+        <li>{% trans "Christmas hampers for teams" %}</li>
+    </ul>
+    <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="{% url 'home' %}?category=cabazes">{% trans "Shop gift hampers" %}</a>
+        <a class="btn btn-default btn-lg" href="{% url 'search:ask' %}">{% trans "Ask our assistant" %}</a>
     </div>
-    <div class="col-8 onboarding-text text-center">
-        <h3 class="line-1">{% trans "Take care of your health, live long - drink quality tea" %}</h3>
-        <h3 class="line-2">{% trans "Delivery throughout Porto and Vila Nova de Gaia" %}</h3>
-    </div>
-</div>
+</section>

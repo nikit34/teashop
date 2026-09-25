@@ -1,126 +1,106 @@
 {% extends "base.html" %}
 {% load i18n %}
-
-{% block content %}
 {% load humanize %}
 {% load static %}
 
+{% block title %}{{ object.title_primary }} - {{ STORE_NAME }}{% endblock %}
+
 {% block extra_head_tags %}
-<meta name="Description" content="{{ object.title }}{% if object.category %} - {{ object.category.name }}{% endif %}. Portuguese gourmet, shipped from Portugal.">
+<meta name="description" content="{{ object.title }}{% if object.category %} - {{ object.category.name }}{% endif %}. {{ object.description|striptags|truncatechars:140 }}">
 {% endblock extra_head_tags %}
 
-    <div class="row ml-2 ml-md-0 detail-top-panel">
-        <div class="col-4">
-            <h4><b>{{ object.title }}</b></h4>
-            <span class="badge badge-secondary">{{ object.timestamp|timesince }} {% trans "ago" %}</span>
-            <span class="badge badge-secondary">{{ object.views }} views </span>
-        </div>
-        <div class="col-8">
-            <div class="row">
-                <h2 class="col-12 col-md-6 col-lg-8 text-right">
-                  {% if object.grammage %}
-                        {{ object.price }} &euro; / {{ object.grammage }}
-                    {% else %}
-                        {{ object.price }} &euro;
-                    {% endif %}
-                </h2>
-                <div class="col-12 col-md-6 col-lg-4 text-right">
-                  {% include 'products/update-cart.html' with product=object in_cart=in_cart %}
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr/>
-    <div class="row ml-2 ml-md-0 detail-content">
-      <div class="col-md-8">
-        <div id="carousel-action" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-action" data-slide-to="0" class="active"></li>
-          {% for slide in slides %}
-            <li data-target="#carousel-action" data-slide-to="{{ forloop.counter }}"></li>
-            {{ forloop.counter1 }}
-          {% endfor %}
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-                {% if object.image %}
-                    <img src="{{ object.image.url }}" class="d-block w-100">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>{{ object.title }}</h5>
-                      <p class="preview">{{ object.description|safe }}</p>
-                    </div>
-                {% else %}
-                  <div class="product-placeholder product-placeholder--detail"><span>{{ object.title }}</span></div>
-                {% endif %}
-            </div>
-            {% for slide in slides %}
-              <div class="carousel-item">
-                  {% if slide.image %}
-                    <img src="{{ slide.image.url }}" class="d-block w-100">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>{{ slide.name }}</h5>
-                      <p class="preview">{{ slide.description|safe }}</p>
-                    </div>
-                  {% else %}
-                    <p style="margin-left:50%; margin-top:50px;">{% trans "Image not found :(" %}</p>
-                  {% endif %}
-              </div>
-            {% endfor %}
-          </div>
-          <a class="carousel-control-prev" href="#carousel-action" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </a>
-          <a class="carousel-control-next" href="#carousel-action" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-4 detail-description preview">
-        {{ object.description|linebreaks|safe }}
-      </div>
-    </div>
-    <hr/>
-    <div class="row detail-comments">
-        <div class="col">
-            <h6 class="text-right">{{ comments.count }} {% trans "comments" %}</h6>
-            {% for comment in comments %}
-                <hr/>
-                <div class="row container">
-                    <div class="col">
-                        <h6><span class="badge badge-secondary">{{ comment.sender }}</span></h6>
-                    </div>
-                    <div class="col text-right">
-                        <h6><em>{% trans "says" %}: {{ comment.send_time|naturaltime }}</em></h6>
-                    </div>
-                </div>
-                <div class="container">
-                    {{ comment.msg }}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="row pt-4">
-        <div class="col">
-            {% if new_comment %}
-                <div class="alert alert-success" role="alert">
-                    {% trans "Your comment is awaiting moderation" %}
-                </div>
+{% block content %}
+
+<nav class="breadcrumbs" aria-label="{% trans 'Breadcrumbs' %}">
+    <a href="{% url 'home' %}">{% trans "Shop" %}</a>
+    {% if object.category %}
+        / <a href="{% url 'home' %}?category={% firstof object.category.slug object.category.name %}">{{ object.category.name }}</a>
+    {% endif %}
+</nav>
+
+<div class="row">
+    <div class="col-12 col-md-6 mb-4">
+        <div class="detail-media">
+            {% if object.image %}
+                <img src="{{ object.image.url }}" alt="{{ object.title_primary }}">
             {% else %}
-                <form method="POST" id="form_comments">
-                    {% csrf_token %}
-                    <div class="row d-flex justify-content-center">
-                        <h2 class="text-center">{% trans "Leave a comment" %}</h2>
-                        <div class="col-4"></div>
-                        <button type="submit" class="btn btn-outline-default">{% trans "Submit" %}</button>
-                    </div>
-                    <br/>
-                    <div class="row d-flex justify-content-center">
-                        <label for="{{ form.msg.id_for_label }}"></label>
-                        <textarea name="msg" cols="100" rows="5" required="" id="id_msg"></textarea>
-                    </div>
-                </form>
+                {% include 'products/illustration.html' with icon=object.category.icon %}
             {% endif %}
         </div>
+        {% if slides %}
+            <div class="row mt-2">
+                {% for slide in slides %}
+                    {% if slide.image %}
+                        <div class="col-3 mb-2">
+                            <img src="{{ slide.image.url }}" class="img-fluid rounded" alt="{{ slide.display_name }}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
+
+    <div class="col-12 col-md-6 detail-info">
+        {% if object.category %}
+            <p class="product-card-category">{{ object.category.name }}</p>
+        {% endif %}
+        <h1>{{ object.title_primary }}</h1>
+        {% if object.title_secondary %}
+            <p class="detail-subtitle">{{ object.title_secondary }}</p>
+        {% endif %}
+        <p class="detail-price">
+            {{ object.price }} &euro;
+            {% if object.grammage %}<small>/ {{ object.grammage }}</small>{% endif %}
+        </p>
+
+        {% include 'products/update-cart.html' with product=object in_cart=in_cart %}
+
+        <ul class="info-list">
+            <li><i class="fa fa-truck"></i> {% trans "Delivery across Portugal, date confirmed with you" %}</li>
+            <li><i class="fa fa-credit-card"></i> {% trans "Pay after confirmation: MB WAY, Multibanco or bank transfer" %}</li>
+            <li><i class="fa fa-gift"></i> {% trans "Gift message on request" %}</li>
+        </ul>
+
+        <div class="detail-description">
+            {{ object.description|safe|linebreaks }}
+        </div>
+    </div>
+</div>
+
+{% if comments %}
+    <section class="mt-5">
+        <h2 class="panel-title">{% trans "Questions and reviews" %}</h2>
+        {% for comment in comments %}
+            <div class="panel mb-3">
+                <p class="small text-muted mb-1">{{ comment.sender }} &middot; {{ comment.send_time|naturaltime }}</p>
+                <p class="mb-0">{{ comment.msg }}</p>
+            </div>
+        {% endfor %}
+    </section>
+{% endif %}
+
+<section class="mt-4">
+    {% if user.is_authenticated %}
+        {% if new_comment %}
+            <div class="alert alert-success" role="alert">
+                {% trans "Your comment is awaiting moderation" %}
+            </div>
+        {% else %}
+            <form method="POST" id="form_comments">
+                {% csrf_token %}
+                <label for="id_msg" class="font-weight-bold">{% trans "Have a question about this product?" %}</label>
+                <textarea name="msg" rows="3" required="" id="id_msg" class="form-control mb-2"></textarea>
+                <button type="submit" class="btn btn-default">{% trans "Send" %}</button>
+            </form>
+        {% endif %}
+    {% else %}
+        <p class="text-muted">
+            {% trans "Questions about this product?" %}
+            <a href="{% url 'contact' %}">{% trans "Write to us" %}</a>
+            {% trans "or" %}
+            <a href="{% url 'search:ask' %}">{% trans "ask our assistant" %}</a>.
+        </p>
+    {% endif %}
+</section>
 
 {% endblock content %}

@@ -34,7 +34,7 @@ $(document).ready(function () {
           default:
             fragment = "<div class='btn-group'>Undefined langueges in js</div>";
         }
-        submitSpan.html("<div class='btn-group'> <a class='btn btn-general' href='/cart/'>" + fragment + "</button></div>");
+        submitSpan.html("<div class='btn-group'> <a class='btn btn-general' href='/" + lang + "/cart/'>" + fragment + "</button></div>");
         var navbarCount = $(".navbar-cart-count");
         navbarCount.text(data.cartItemsCount);
       },

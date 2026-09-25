@@ -1,12 +1,12 @@
 {% load i18n %}
-<form class="form " method="POST" action="{% url 'cart:update' %}" data-endpoint="{% url 'cart:update' %}">
+<form class="form" method="POST" action="{% url 'cart:update' %}" data-endpoint="{% url 'cart:update' %}">
     {% csrf_token %}
     <input type="hidden" name="product_id" value="{{ product.id }}" {% if product.delivery %} data-is-delivery='true'{% endif %} />
 
     <span class="submit-span">
         {% if in_cart %}
             <div class='btn-group'>
-                <a class='btn btn-general' href='/cart/'>{% trans "In cart" %}</a>
+                <a class='btn btn-general' href='{% url "cart:home" %}'>{% trans "In cart" %}</a>
                 <button type="button" class="btn btn-default remove-btn">{% trans "Remove" %}?</button>
             </div>
         {% else %}

@@ -1,28 +1,18 @@
 {% load i18n %}
 
-<div class="row filters">
-    <div class="col-5">
-
-    </div>
-    <div class="col-7">
-        <form action="{% url 'home' %}" method="GET">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="row">
-                        <span class="main-filter-label">{% trans "Price" %}</span>
-                        <button type="submit" name="price" value="descend" class="btn main-filter-btn">{% trans "descending" %}</button>
-                        <button type="submit" name="price" value="ascend" class="btn main-filter-btn">{% trans "ascending" %}</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="row">
-                        <span class="main-filter-label">{% trans "Time" %}</span>
-                        <button type="submit" name="time_update" value="descend" class="btn main-filter-btn">{% trans "update early" %}</button>
-                        <button type="submit" name="time_update" value="ascend" class="btn main-filter-btn">{% trans "update last" %}</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+<div class="toolbar">
+    <span>{% blocktrans count counter=products_count %}{{ counter }} product{% plural %}{{ counter }} products{% endblocktrans %}</span>
+    <form method="GET" action="{% url 'home' %}" class="form-inline">
+        {% if active_category %}
+            <input type="hidden" name="category" value="{% firstof active_category.slug active_category.name %}">
+        {% endif %}
+        <label for="sort" class="mr-2 d-none d-sm-inline">{% trans "Sort by" %}</label>
+        <select id="sort" name="sort" class="custom-select custom-select-sm" onchange="this.form.submit()">
+            <option value="recommended" {% if sort == 'recommended' %}selected{% endif %}>{% trans "Recommended" %}</option>
+            <option value="price_asc" {% if sort == 'price_asc' %}selected{% endif %}>{% trans "Price: low to high" %}</option>
+            <option value="price_desc" {% if sort == 'price_desc' %}selected{% endif %}>{% trans "Price: high to low" %}</option>
+            <option value="newest" {% if sort == 'newest' %}selected{% endif %}>{% trans "Newest" %}</option>
+        </select>
+        <noscript><button class="btn btn-sm btn-default ml-2" type="submit">{% trans "Apply" %}</button></noscript>
+    </form>
 </div>

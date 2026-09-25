@@ -1,50 +1,30 @@
 {% load i18n %}
 
-<div class="card">
-    {% if instance.image %}
-        <a href="{{ instance.get_absolute_url }}">
-            <img class="card-img-top" src="{{ instance.image.url }}" alt="{{ instance.title }} logo">
-        </a>
-    {% else %}
-        <a href="{{ instance.get_absolute_url }}" class="product-placeholder card-img-top" aria-label="{{ instance.title }}">
-            <span>{{ instance.title }}</span>
-        </a>
-    {% endif %}
-    <div class="row card-body">
-        <div class="col-3 col-sm-5 col-md-7 col-lg-4 col-xl-5 card-text">
-            <h5>{{ instance.title }}</h5>
-            {% if complet == "1" %}
-                <div class="preview">
-                    <p>{{ instance.description|safe|linebreaks|truncatewords:18 }}</p>
-                </div>
-            {% endif %}
-        </div>
-        <div class="col-9 col-sm-7 col-md-5 col-lg-8 col-xl-7 card-button">
-            {% if complet == "1" %}
-                <div class="row justify-content-end">
-                    <div class="col-4 mb-2 text-right">
-                        <a href="{{ instance.get_absolute_url }}" class="btn btn-default">{% trans "View" %}</a>
-                    </div>
-                    <div class="col-8 text-right">
-                        {% include 'products/update-cart.html' with product=instance in_cart=in_cart %}
-                    </div>
-                </div>
-            {% else %}
-                <div class="row">
-                    <div class="col text-right">
-                        <a href="{{ instance.get_absolute_url }}" class="btn btn-default">{% trans "View" %}</a>
-                    </div>
-                </div>
-            {% endif %}
-            <div class="row">
-                <div class="col pl-0 card-price text-right">
-                    {% if instance.grammage %}
-                        <h2>{{ instance.price }} &euro; / {{ instance.grammage }}</h2>
-                    {% else %}
-                        <h2>{{ instance.price }} &euro;</h2>
-                    {% endif %}
-                </div>
+<article class="product-card">
+    <a href="{{ instance.get_absolute_url }}" class="product-card-media" aria-label="{{ instance.title_primary }}">
+        {% if instance.image %}
+            <img src="{{ instance.image.url }}" alt="{{ instance.title_primary }}" loading="lazy">
+        {% else %}
+            {% include 'products/illustration.html' with icon=instance.category.icon %}
+        {% endif %}
+        {% if instance.featured %}
+            <span class="product-badge">{% trans "Favourite" %}</span>
+        {% endif %}
+    </a>
+    <div class="product-card-body">
+        {% if instance.category %}
+            <p class="product-card-category">{{ instance.category.name }}</p>
+        {% endif %}
+        <h3 class="product-card-title"><a href="{{ instance.get_absolute_url }}">{{ instance.title_primary }}</a></h3>
+        {% if instance.title_secondary %}
+            <p class="product-card-subtitle">{{ instance.title_secondary }}</p>
+        {% endif %}
+        <div class="product-card-footer">
+            <div class="product-price">
+                {{ instance.price }} &euro;
+                {% if instance.grammage %}<span class="product-unit">{{ instance.grammage }}</span>{% endif %}
             </div>
+            {% include 'products/update-cart.html' with product=instance in_cart=in_cart %}
         </div>
     </div>
-</div>
+</article>

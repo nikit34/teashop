@@ -1,21 +1,28 @@
 {% extends "base.html" %}
 {% load i18n %}
+
+{% block title %}{% if query %}{{ query }} - {% endif %}{% trans "Search" %} - {{ STORE_NAME }}{% endblock %}
+
 {% block content %}
-    <div class="row mb-3">
+    <h1 class="page-title">
+        {% if query %}{% trans "Results for" %} &ldquo;{{ query }}&rdquo;{% else %}{% trans "Our favourites" %}{% endif %}
+    </h1>
     {% if query %}
-        <div class="col-12">
-            {% trans "Results for" %} <b>{{ query }}</b>
-            <hr/>
-        </div>
+        <p class="text-muted">
+            {% trans "Not quite it?" %}
+            <a href="{% url 'search:ask' %}?q={{ query|urlencode }}">{% trans "Ask our assistant" %}</a>
+        </p>
     {% endif %}
-    </div>
-    <div class="row justify-content-center">
+
+    <div class="row product-grid">
         {% for obj in object_list %}
-            <div class="col-11 col-sm-8 col-lg-10 col-xl-8">
-                {% include 'products/card.html' with instance=obj complet="1" in_cart=obj.in_cart %}
-                <br>
+            <div class="col-6 col-md-4 col-lg-3">
+                {% include 'products/card.html' with instance=obj in_cart=obj.in_cart %}
+            </div>
+        {% empty %}
+            <div class="col-12 empty-state">
+                <p>{% trans "Nothing found." %} <a href="{% url 'search:ask' %}?q={{ query|urlencode }}">{% trans "Try our assistant" %}</a></p>
             </div>
         {% endfor %}
     </div>
-
 {% endblock %}

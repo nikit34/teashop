@@ -108,6 +108,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'eCommerce_Django.context_processors.store',
             ],
         },
     },
@@ -174,3 +175,6 @@ PROTECTED_ROOT = os.path.join(BASE_DIR, "static_cdn", "protected_media")
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+STORE_NAME = 'Portuguese Pantry'
+STORE_TAGLINE = 'Curated food and gifts from small Portuguese producers'

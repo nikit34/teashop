@@ -1,35 +1,52 @@
 {% url 'home' as home_url %}
 {% url 'login' as login_url %}
-{% url 'register' as register_url %}
 {% url 'accounts:account-home' as account_url %}
 {% url 'cart:home' as cart_url %}
+{% url 'search:ask' as ask_url %}
 {% url 'admin:index' as admin %}
 
 {% load i18n %}
 {% load static %}
 
-<nav class="row navbar navbar-expand-lg px-4">
+<nav class="navbar navbar-expand-lg navbar-light site-nav">
   <div class="container">
-    <a class="navbar-brand" href="{{ home_url }}">{% trans "TeaShop" %}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-supported-content" aria-controls="navbarSupportedContent" aria-expanded="false"
-      aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{{ home_url }}">{{ STORE_NAME }}</a>
+
+    <a class="nav-link nav-cart d-lg-none ml-auto mr-2" href="{{ cart_url }}" aria-label="{% trans 'Cart' %}">
+      <i class="fa fa-shopping-basket"></i>
+      <span class="navbar-cart-count">{{ request.session.cart_items|default:"0" }}</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-supported-content" aria-controls="navbar-supported-content" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse mx-4" id="navbar-supported-content">
-      <ul class="navbar-nav col-md-10">
-        <li class="nav-item {% if request.path == home_url %}active{% endif %}">
-          <a class="nav-link" href="{{ home_url }}">{% trans "Home" %}</a>
+    <div class="collapse navbar-collapse" id="navbar-supported-content">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {% if request.path == home_url and not request.GET.category %}active{% endif %}">
+          <a class="nav-link" href="{{ home_url }}">{% trans "Shop" %}</a>
+        </li>
+        <li class="nav-item {% if request.GET.category == 'cabazes' %}active{% endif %}">
+          <a class="nav-link" href="{{ home_url }}?category=cabazes">{% trans "Gift hampers" %}</a>
+        </li>
+        <li class="nav-item {% if request.GET.category == 'natal' %}active{% endif %}">
+          <a class="nav-link" href="{{ home_url }}?category=natal">{% trans "Christmas" %}</a>
+        </li>
+        <li class="nav-item {% if request.path == ask_url %}active{% endif %}">
+          <a class="nav-link" href="{{ ask_url }}">{% trans "Assistant" %}</a>
+        </li>
+      </ul>
+
+      {% include 'search/search-form.html' %}
+
+      <ul class="navbar-nav ml-lg-3">
+        <li class="nav-item d-none d-lg-block {% if request.path == cart_url %}active{% endif %}">
+          <a class="nav-link nav-cart" href="{{ cart_url }}">
+            <i class="fa fa-shopping-basket"></i> {% trans "Cart" %}
+            <span class="navbar-cart-count">{{ request.session.cart_items|default:"0" }}</span>
+          </a>
         </li>
         {% if user.is_authenticated %}
-          <li class="nav-item {% if request.path == cart_url %}active{% endif %}">
-            <a class="nav-link" href="{{ cart_url }}">
-              <div class="navbar-cart-btn">
-                <span class="navbar-cart-text">{% trans "Cart" %}</span>
-                <span class="navbar-cart-count" >{{ request.session.cart_items|default:"0" }}</span>
-              </div>
-            </a>
-          </li>
           <li class="nav-item {% if request.path == account_url %}active{% endif %}">
             <a class="nav-link" href="{{ account_url }}">{% trans "Account" %}</a>
           </li>
@@ -39,15 +56,11 @@
             </li>
           {% endif %}
         {% else %}
-          <li class="nav-item {% if request.path == register_url %}active{% endif %}">
-            <a class="nav-link" href="{{ register_url }}">{% trans "Register" %}</a>
-          </li>
           <li class="nav-item {% if request.path == login_url %}active{% endif %}">
-            <a class="nav-link" href="{{ login_url }}">{% trans "Login" %}</a>
+            <a class="nav-link" href="{{ login_url }}">{% trans "Log in" %}</a>
           </li>
         {% endif %}
       </ul>
-      {% include 'search/search-form.html' %}
     </div>
   </div>
 </nav>

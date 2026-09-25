@@ -3,22 +3,28 @@
 {% load static %}
 {% url 'contact' as contact_url %}
 
-<title>{% trans "Home page" %}</title>
+{% block title %}{% if active_category %}{{ active_category.name }} - {% endif %}{{ STORE_NAME }}{% endblock %}
 
 {% block extra_head_tags %}
-    <meta name="Description" content="TeaShop">
+    <meta name="description" content="{% if active_category %}{{ active_category.name }}. {% endif %}{{ STORE_TAGLINE }}">
 {% endblock %}
 
 {% block content %}
 
-    {% include 'main/onboarding.html' %}
+    {% if not active_category %}
+        {% include 'main/onboarding.html' %}
+    {% endif %}
     {% include 'main/categories.html' %}
-    <br>
     {% include 'main/select_sort.html' %}
-    <div class="row justify-content-center">
+
+    <div class="row product-grid">
         {% for obj in object_list %}
-            <div class="col-12 col-lg-6">
-                {% include 'products/card.html' with instance=obj complet="1" in_cart=obj.in_cart %}
+            <div class="col-6 col-md-4 col-lg-3">
+                {% include 'products/card.html' with instance=obj in_cart=obj.in_cart %}
+            </div>
+        {% empty %}
+            <div class="col-12 empty-state">
+                <p>{% trans "Nothing here yet." %}</p>
             </div>
         {% endfor %}
     </div>
