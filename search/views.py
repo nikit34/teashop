@@ -1,3 +1,4 @@
+from django.db.models import Case, IntegerField, When
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import ListView
@@ -26,9 +27,13 @@ class SearchProductView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         query = self.request.GET.get('q', None)
-        if query is not None:
-            return hybrid_search(query)
-        return list(Product.objects.featured())
+        if query is None:
+            return Product.objects.featured()
+        ids = [product.id for product in hybrid_search(query)]
+        if not ids:
+            return Product.objects.none()
+        rank = Case(*[When(pk=pk, then=position) for position, pk in enumerate(ids)], output_field=IntegerField())
+        return Product.objects.filter(pk__in=ids).annotate(search_rank=rank).order_by('search_rank')
 
 
 def rag_ask_view(request):

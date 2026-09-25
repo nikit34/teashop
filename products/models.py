@@ -25,6 +25,8 @@ def upload_image_path(instance, filename):
 class Category(models.Model):
     name = models.CharField(max_length=30)
     ordering = models.IntegerField(default=0)
+    slug = models.SlugField(max_length=40, blank=True, default='')
+    icon = models.CharField(max_length=20, blank=True, default='')
 
     def __str__(self):
         return self.name
@@ -98,6 +100,15 @@ class Product(models.Model):
     @property
     def name(self):
         return self.title
+
+    @property
+    def title_primary(self):
+        return self.title.split(' - ', 1)[0]
+
+    @property
+    def title_secondary(self):
+        parts = self.title.split(' - ', 1)
+        return parts[1] if len(parts) > 1 else ''
 
 
 def product_pre_save_receiver(sender, instance, *args, **kwargs):

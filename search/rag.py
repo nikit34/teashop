@@ -44,7 +44,8 @@ def sanitize_query(text):
 
 def _match_reasons(product, query_tokens):
     haystack = set(tokenize(product.title))
-    haystack |= {tag.title.lower() for tag in product.tag_set.all()}
+    for tag in product.tag_set.all():
+        haystack |= set(tokenize(tag.title))
     if product.category_id and product.category:
         haystack |= set(tokenize(product.category.name))
     seen = []

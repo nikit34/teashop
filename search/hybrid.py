@@ -1,5 +1,6 @@
 import re
 import functools
+import unicodedata
 
 from django.conf import settings
 
@@ -10,13 +11,19 @@ RRF_K = 60
 TOP_K_BM25 = 30
 TOP_K_DENSE = 30
 TOP_K_FINAL = 12
+DENSE_MIN_SCORE = getattr(settings, "SEARCH_DENSE_MIN_SCORE", 0.3)
 EMBEDDING_MODEL = getattr(settings, "SEARCH_EMBEDDING_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
 
 _TOKEN_RE = re.compile(r"[^\W\d_]+|\d+", re.UNICODE)
 
 
+def fold_accents(text):
+    decomposed = unicodedata.normalize("NFKD", text or "")
+    return "".join(ch for ch in decomposed if not unicodedata.combining(ch))
+
+
 def tokenize(text):
-    return [t.lower() for t in _TOKEN_RE.findall(text or "")]
+    return [t.lower() for t in _TOKEN_RE.findall(fold_accents(text))]
 
 
 def product_document(product):
@@ -47,8 +54,9 @@ def _bm25_rank(products, query, top_k):
         return []
     bm25 = BM25Okapi(corpus)
     scores = bm25.get_scores(tokens)
+    query_tokens = set(tokens)
     ranked = sorted(
-        ((products[i], scores[i]) for i in range(len(products)) if scores[i] > 0),
+        ((products[i], scores[i]) for i in range(len(products)) if query_tokens & set(corpus[i])),
         key=lambda pair: pair[1],
         reverse=True,
     )
@@ -134,7 +142,9 @@ def _dense_rank(products, query, top_k):
         v_norm = np.linalg.norm(v)
         if v_norm == 0:
             continue
-        scored.append((product, float(q @ (v / v_norm))))
+        score = float(q @ (v / v_norm))
+        if score >= DENSE_MIN_SCORE:
+            scored.append((product, score))
     scored.sort(key=lambda pair: pair[1], reverse=True)
     return scored[:top_k]
 
@@ -160,10 +170,10 @@ def _rrf_merge(bm25_results, dense_results, k_final):
 
 
 def _pin_exact(products, query, ranked, k_final):
-    q = (query or "").strip().lower()
+    q = fold_accents((query or "").strip().lower())
     if not q:
         return ranked[:k_final]
-    pinned = [p for p in products if q in (p.title or "").lower()]
+    pinned = [p for p in products if q in fold_accents((p.title or "").lower())]
     if not pinned:
         return ranked[:k_final]
     seen = set()
@@ -187,6 +197,6 @@ def hybrid_search(query, k_final=TOP_K_FINAL):
     bm25_results = _bm25_rank(products, query, TOP_K_BM25)
     dense_results = _dense_rank(products, query, TOP_K_DENSE)
     if not bm25_results and not dense_results:
-        return _fallback_rank(products, query, k_final)
+        return [product for product, _ in _fallback_rank(products, query, k_final)]
     ranked = _rrf_merge(bm25_results, dense_results, max(k_final * 2, k_final + 10))
     return _pin_exact(products, query, ranked, k_final)
