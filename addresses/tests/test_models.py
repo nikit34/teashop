@@ -34,4 +34,4 @@ class AddressModelTest(TestCase):
 
     def test_get_address(self):
         address = Address.objects.get(id=1)
-        self.assertEqual(address.get_address(), '\nTestogorsk,\n\nTestovo')
+        self.assertEqual(address.get_address(), '\nTestogorsk,\n\n87654321 Testovo')

@@ -1,103 +1,77 @@
 {% load i18n %}
 
-<div class="row checkout checkout-title">
-    <div class="col">
-        <h1>{% trans "Finalize Checkout" %}</h1>
-    </div>
-</div>
+<div class="checkout-page">
+    <h1 class="page-title">{% trans "Review your order" %}</h1>
 
-<div class="row checkout checkout-table">
-    <div class="col-12 col-md-6">
-        <div class="bank-canvas-cell">
-            <h3>{% trans "Cart Items" %}:</h3>
-            <hr>
-            {% for cart_item in object.cart.cart_items.all %}
-                {% if forloop.counter|divisibleby:2 %}<p class="bank-product-item odd">{% else %}<p class="bank-product-item even">{% endif %}{{ forloop.counter }}) {{ cart_item.product }}</p>
-            {% endfor %}
-            <hr>
-            <div class="row">
-                <div class="col">
-                    <h4>{% trans "Order number" %}: </h4>
-                </div>
-                <div class="col">
-                    <i class="fa fa-copy copy-icon"></i>
-                    <span id="order-id">{{ object.order_id }}</span>
-                </div>
-            </div>
-        </div>
-        <br>
-    </div>
-    <div class="col-12 col-md-6">
-        <div class="bank-canvas-cell">
-            <div class="row">
-                <div class="col-12 col-sm-4 col-md-12 col-lg-4">
-                    <h4>{% trans "Address" %}:</h4>
-                </div>
-                <div class="col-12 col-sm-8 col-md-12 col-lg-8">
-                    <p>{{ object.address_final }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-sm-4 col-md-12 col-lg-4">
-                    <h4>{% trans "Description" %}:</h4>
-                </div>
-                <div class="col-12 col-sm-8 col-md-12 col-lg-8">
-                    <form method="POST" id="form_checkout">
-                        {% csrf_token %}
-                        <div class="row ml-1">
-                            <label for="{{ form.msg.id_for_label }}"></label>
-                            <textarea name="msg" rows="1" required="" id="id_msg" placeholder="{% trans 'Recipients name' %}"></textarea>
-                            &nbsp;
-                            <button type="submit" class="btn btn-outline-default">{% trans "Submit" %}</button>
-                        </div>
-                    </form>
+    <div class="row">
+        <div class="col-12 col-lg-7 mb-4">
+            <div class="panel">
+                <h2 class="panel-title">{% trans "Your items" %}</h2>
+                <ul class="order-lines">
+                    {% for cart_item in object.cart.cart_items.all %}
+                        <li class="order-line">
+                            <span class="order-line-title">{{ cart_item.quantity }} &times; {{ cart_item.product.title }}</span>
+                            <span class="order-line-price">{{ cart_item.product.price }} &euro;</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="order-summary">
+                    <div class="order-summary-row">
+                        <span>{% trans "Items" %}</span>
+                        <span>{{ object.cart.total|floatformat:2 }} &euro;</span>
+                    </div>
+                    <div class="order-summary-row text-muted">
+                        <span>{% trans "Delivery" %}</span>
+                        <span>{% trans "confirmed with you before payment" %}</span>
+                    </div>
+                    <div class="order-summary-row order-summary-total">
+                        <span>{% trans "Total" %}</span>
+                        <span id="order-total">{{ object.total|floatformat:2 }} &euro;</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <br>
-    </div>
-</div>
 
-<div class="row checkout checkout-total">
-    <div class="col">
-        <div class="bank-canvas-cell">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <h4>{% trans "Cart Total" %}</h4>
-                    <hr>
-                    <h1>{{ object.cart.total | floatformat:2 }} &euro;</h1>
-                    <br>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <h4>{% trans "Shipping Total" %}</h4>
-                    <hr>
-                    <h1>{{ object.shipping_total | floatformat:2 }} &euro;</h1>
-                    <br>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <h4>{% trans "Order Total" %}</h4>
-                    <hr>
-                    <h1 id="order-total">{{ object.total | floatformat:2 }} &euro;</h1>
-                    <br>
-                </div>
+        <div class="col-12 col-lg-5 mb-4">
+            <div class="panel">
+                <h2 class="panel-title">{% trans "Delivery address" %}</h2>
+                <p class="address-block">{{ object.address_final|linebreaksbr }}</p>
+                <p class="text-muted small mb-0">
+                    {% trans "Order number" %}: <span id="order-id">{{ object.order_id }}</span>
+                </p>
             </div>
         </div>
     </div>
-</div>
-<br>
-<div class="row checkout checkout-title">
-    <div class="col">
-        <h1>{% trans "Add Payment Method" %}</h1>
-    </div>
-</div>
-<div class="row bank-canvas-cell">
-<!--    TODO: PayPal-->
-<!--    <div id="paypal-block" class="col">-->
-<!--        <h2 style="color:blue;">{% trans "PayPal" %}</h2>-->
-<!--        <div id="paypal-button-container"></div>-->
-<!--    </div>-->
-    <div class="col">
-        <h2>{% trans "Bank card binding" %}</h2>
-        <div class="stripe-payment-form" data-token='{{ publish_key }}' data-next-url='{{ request.build_absolute_uri }}' data-btn-title="Add Payment Method"></div>
+
+    <div class="row">
+        {% if stripe_enabled %}
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="panel">
+                    <h2 class="panel-title">{% trans "Pay now by card" %}</h2>
+                    <div class="stripe-payment-form" data-token='{{ publish_key }}' data-next-url='{{ request.build_absolute_uri }}' data-btn-title="Add Payment Method"></div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="col-12 {% if stripe_enabled %}col-lg-6{% endif %} mb-4">
+            <div class="panel reserve-box">
+                <h2 class="panel-title">{% trans "Reserve now, pay after we confirm" %}</h2>
+                <p>{% trans "We check stock and delivery for your address, then message you with the final total. You pay only after that - by MB WAY, Multibanco or bank transfer." %}</p>
+                <form method="POST" action="{% url 'cart:checkout' %}" class="reserve-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="reserve">
+                    <div class="form-group">
+                        <label for="reserve-phone">{% trans "Phone for MB WAY or WhatsApp" %}</label>
+                        <input type="tel" class="form-control" id="reserve-phone" name="phone" required minlength="6" placeholder="+351 912 345 678" autocomplete="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="reserve-note">{% trans "Gift message or delivery notes" %} <span class="text-muted">({% trans "optional" %})</span></label>
+                        <textarea class="form-control" id="reserve-note" name="note" rows="2" maxlength="500"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans "Reserve my order" %}</button>
+                    <p class="text-muted small mt-2 mb-0">{% trans "No payment is taken now." %}</p>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

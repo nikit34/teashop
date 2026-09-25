@@ -1,5 +1,6 @@
 import stripe
 from django.conf import settings
+from django.contrib import messages
 from django.core.mail import send_mail
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
@@ -10,7 +11,7 @@ from django.utils.translation import gettext
 from accounts.forms import LoginForm, GuestForm
 from addresses.forms import AddressCheckoutForm
 from addresses.models import Address
-from billing.models import BillingProfile
+from billing.models import BillingProfile, stripe_enabled
 from orders.models import Order
 from products.models import Product
 from .models import Cart
@@ -27,7 +28,7 @@ def _get_cart_detail(cart_obj):
     products = [{
         'id': item.product.id,
         'url': item.product.get_absolute_url(),
-        'title': item.product.title,
+        'title': item.product.title_primary,
         'price': item.product.price,
         'quantity': item.product.quantity,
         'cartItemQuantity': item.quantity
@@ -115,7 +116,25 @@ def checkout_home(request):
             order_obj.save()
         has_card = billing_profile.has_card
 
-    if request.method == 'POST':
+    if request.method == 'POST' and order_obj is not None and request.POST.get('action') == 'reserve':
+        phone = (request.POST.get('phone') or '').strip()
+        note = (request.POST.get('note') or '').strip()[:500]
+        if len(phone) < 6:
+            messages.error(request, gettext('Please leave a phone number so we can confirm your order.'))
+            return redirect('cart:checkout')
+        if order_obj.mark_reserved(phone, note):
+            request.session['cart_items'] = 0
+            request.session.pop('cart_id', None)
+            request.session['checkout_data'] = {
+                'orderID': order_obj.order_id,
+                'reserved': True,
+                'phone': phone,
+            }
+            _notify_reservation(order_obj)
+            return redirect(reverse('cart:success', kwargs={'orderID': order_obj.order_id}))
+        return redirect('cart:checkout')
+
+    if request.method == 'POST' and order_obj is not None and stripe_enabled():
         is_prepared = order_obj.check_done()
         if is_prepared:
             did_charge, orderID = billing_profile.charge('S', order_obj)
@@ -159,8 +178,38 @@ def checkout_home(request):
         'has_card': has_card,
         'publish_key': STRIPE_PUB_KEY,
         'address_required': address_required,
+        'stripe_enabled': stripe_enabled(),
     }
     return render(request, 'carts/checkout/main.html', context)
+
+
+def _notify_reservation(order_obj):
+    recipient = getattr(settings, 'RESERVATION_NOTIFY_EMAIL', '')
+    if not recipient:
+        return
+    items = '\n'.join(
+        '- {qty} x {title}'.format(qty=item.quantity, title=item.product.title)
+        for item in order_obj.cart.cart_items.all()
+    )
+    body = '\n'.join([
+        'Order: {id}'.format(id=order_obj.order_id),
+        'Email: {email}'.format(email=order_obj.billing_profile.email if order_obj.billing_profile else ''),
+        'Phone: {phone}'.format(phone=order_obj.phone),
+        'Total: {total} EUR'.format(total=order_obj.total),
+        '',
+        items,
+        '',
+        order_obj.address_final or '',
+        '',
+        order_obj.note,
+    ])
+    send_mail(
+        'New reservation {id}'.format(id=order_obj.order_id),
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [recipient],
+        fail_silently=True,
+    )
 
 
 # def paypal_checkout_home(request):

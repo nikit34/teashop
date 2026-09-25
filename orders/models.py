@@ -15,6 +15,7 @@ from products.models import Product
 
 ORDER_STATUS_CHOICES = (
     ('created', 'Created'),
+    ('reserved', 'Reserved'),
     ('paid', 'Paid'),
     ('shipped', 'Shipped'),
     ('refunded', 'Refunded'),
@@ -111,12 +112,14 @@ class Order(models.Model):
     address_final = models.TextField(blank=True, null=True)
     cart = models.ForeignKey(Cart, on_delete=models.DO_NOTHING)
     status = models.CharField(max_length=120, default='created', choices=ORDER_STATUS_CHOICES)
-    shipping_total = models.DecimalField(default=1.50, max_digits=100, decimal_places=2)
+    shipping_total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     active = models.BooleanField(default=True)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True, null=True, max_length=30)
+    phone = models.CharField(max_length=40, blank=True, default='')
+    note = models.TextField(blank=True, default='')
 
     def __str__(self):
         return self.order_id
@@ -134,6 +137,8 @@ class Order(models.Model):
             return "Refunded order"
         elif self.status == 'shipped':
             return "Shipped"
+        elif self.status == 'reserved':
+            return "Awaiting confirmation"
         return "Shipping Soon"
 
     def update_total(self):
@@ -173,6 +178,15 @@ class Order(models.Model):
                 self.save()
                 self.update_purchases()
         return self.status
+
+    def mark_reserved(self, phone, note=''):
+        if not self.check_done():
+            return False
+        self.phone = phone
+        self.note = note
+        self.status = 'reserved'
+        self.save()
+        return True
 
 
 def pre_save_create_order_id(sender, instance, *args, **kwargs):

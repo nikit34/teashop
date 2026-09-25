@@ -76,9 +76,17 @@ class BillingProfile(models.Model):
         return cards_qs.filter(active=True).count()
 
 
+def stripe_enabled():
+    key = getattr(settings, 'STRIPE_SECRET_KEY', '') or ''
+    return key.startswith(('sk_live_', 'sk_test_')) and len(key) > 30
+
+
 def billing_profile_created_receiver(sender, instance, *args, **kwargs):
-    if not instance.customer_id and instance.email:
-        customer = stripe.Customer.create(email=instance.email)
+    if not instance.customer_id and instance.email and stripe_enabled():
+        try:
+            customer = stripe.Customer.create(email=instance.email)
+        except stripe.StripeError:
+            return
         instance.customer_id = customer.id
 
 
