@@ -19,7 +19,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -38,8 +37,6 @@ INSTALLED_APPS = [
     'search',
 ]
 
-SITE_ID = 1
-
 SUPPORT_EMAIL = get_secret_key(BASE_DIR, 'SUPPORT_EMAIL')
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -55,6 +52,9 @@ EMAIL_HOST_USER = SUPPORT_EMAIL
 EMAIL_HOST_PASSWORD = get_secret_key(BASE_DIR, 'EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'logs', 'mail')
+ACCOUNT_EMAIL_VERIFICATION = False
 DEFAULT_FROM_EMAIL = SUPPORT_EMAIL
 MANAGERS = (
     ('Nikita', SUPPORT_EMAIL),
@@ -62,7 +62,7 @@ MANAGERS = (
 ADMINS = MANAGERS
 
 
-BASE_URL = '127.0.0.1:8000'
+BASE_URL = 'https://pantry.carsbuyer.org'
 
 
 MAILCHIMP_API_KEY = get_secret_key(BASE_DIR, 'MAILCHIMP_API_KEY')

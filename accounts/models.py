@@ -182,7 +182,7 @@ pre_save.connect(pre_save_email_activation, sender=EmailActivation)
 
 
 def post_save_user_create_reciever(sender, instance, created, *args, **kwargs):
-    if created:
+    if created and getattr(settings, 'ACCOUNT_EMAIL_VERIFICATION', True):
         obj = EmailActivation.objects.create(user=instance, email=instance.email)
         obj.send_activation()
 

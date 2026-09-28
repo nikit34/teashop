@@ -8,6 +8,7 @@ venv/**
 **/.git/**
 **/settings/__init__.py
 nginx/*.log
+logs/
 
 # utilities
 .coverage

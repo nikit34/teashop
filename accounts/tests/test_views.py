@@ -1,4 +1,5 @@
-from django.test import TestCase
+from django.core import mail
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from accounts.models import User
@@ -267,3 +268,27 @@ class UserDetailUpdateViewTest(TestCase):
         )
         response = self.client.get('/en/account/details/')
         self.assertEqual(str(response.context['user']), 'usermodeltest@gmail.com')
+
+
+class RegisterViewTest(TestCase):
+    form = {
+        'full_name': 'Ana Silva',
+        'email': 'ana@example.pt',
+        'password1': 'pantry-pass-2026',
+        'password2': 'pantry-pass-2026',
+    }
+
+    @override_settings(ACCOUNT_EMAIL_VERIFICATION=False)
+    def test_account_is_usable_without_mail(self):
+        response = self.client.post(reverse('register'), self.form)
+        self.assertRedirects(response, '/login/', fetch_redirect_response=False)
+        self.assertTrue(User.objects.get(email='ana@example.pt').is_active)
+        self.assertEqual(len(mail.outbox), 0)
+        self.assertTrue(self.client.login(email='ana@example.pt', password='pantry-pass-2026'))
+
+    @override_settings(ACCOUNT_EMAIL_VERIFICATION=True, BASE_URL='https://pantry.carsbuyer.org')
+    def test_verification_mail_links_to_the_public_host(self):
+        self.client.post(reverse('register'), self.form)
+        self.assertFalse(User.objects.get(email='ana@example.pt').is_active)
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertIn('https://pantry.carsbuyer.org/', mail.outbox[0].body)

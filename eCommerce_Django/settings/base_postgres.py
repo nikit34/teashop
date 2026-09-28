@@ -17,7 +17,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.humanize',
     'django.contrib.admin',
@@ -38,8 +37,6 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
 ]
-
-SITE_ID = 1
 
 SUPPORT_EMAIL = get_secret_key(BASE_DIR, 'SUPPORT_EMAIL')
 

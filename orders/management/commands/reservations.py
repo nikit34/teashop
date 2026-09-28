@@ -1,10 +1,11 @@
 from django.core.management.base import BaseCommand
 
+from chats.models import ContactMessage
 from orders.models import Order
 
 
 class Command(BaseCommand):
-    help = "List reserved orders: the signal the demand check counts"
+    help = "List reserved orders and contact messages: the signals the demand check counts"
 
     def handle(self, *args, **options):
         orders = Order.objects.filter(status='reserved').select_related('billing_profile', 'cart').order_by('-timestamp')
@@ -21,4 +22,15 @@ class Command(BaseCommand):
                 email=order.billing_profile.email if order.billing_profile else '-',
                 phone=order.phone or '-',
                 items=items,
+            ))
+
+        contact_messages = ContactMessage.objects.all()
+        self.stdout.write("")
+        self.stdout.write("Contact messages: {count}".format(count=contact_messages.count()))
+        for message in contact_messages:
+            self.stdout.write('{ts:%Y-%m-%d %H:%M}  {name}  {email}  |  {content}'.format(
+                ts=message.timestamp,
+                name=message.full_name,
+                email=message.email,
+                content=' '.join(message.content.split()),
             ))

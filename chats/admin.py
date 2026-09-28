@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Comment
+from .models import Comment, ContactMessage
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -14,3 +14,12 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Comment, CommentAdmin)
+
+
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('timestamp', 'full_name', 'email', 'content')
+    search_fields = ('full_name', 'email', 'content')
+    readonly_fields = ('timestamp',)
+
+
+admin.site.register(ContactMessage, ContactMessageAdmin)

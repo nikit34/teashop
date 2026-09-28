@@ -14,11 +14,10 @@ from billing.views import payment_method_view, payment_method_createview
 from marketing.views import MarketingPreferenceUpdateView, MailchimpWebhookView
 from orders.views import CollectionView
 from .sitemaps import global_maps, RobotsTxtView
-from .views import ProductListView, about_page, contact_page, credits_page, update
+from .views import ProductListView, about_page, contact_page, credits_page
 
 
 urlpatterns = [
-    path('update_server/', update, name='update'),
     path('billing/payment-method/create/', payment_method_createview, name='billing-payment-method-endpoint'),
     # path('cart/create-paypal-transaction/', paypal_checkout_home, name='paypal-checkout'), TODO: PayPal
     path('webhooks/mailchimp/', MailchimpWebhookView.as_view(), name='webhooks-mailchimp'),

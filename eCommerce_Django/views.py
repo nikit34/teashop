@@ -1,13 +1,12 @@
-import git
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.utils.translation import gettext
-from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView
 
 from carts.models import Cart
+from chats.models import ContactMessage
 from products.models import Product, Category
 from .forms import ContactForm
 
@@ -85,9 +84,10 @@ def contact_page(request):
         fullname = contact_form.cleaned_data['fullname']
         email = contact_form.cleaned_data['email']
         content = contact_form.cleaned_data['content']
+        ContactMessage.objects.create(full_name=fullname, email=email, content=content)
         msg_content = gettext('Send with contact email: ') + email + '\n\n' + content
         try:
-            send_mail(fullname, msg_content, email, [support_email])
+            send_mail(fullname, msg_content, email, [support_email], fail_silently=True)
         except BadHeaderError:
             return HttpResponse(gettext('Invalid header found.'))
         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
@@ -98,14 +98,3 @@ def contact_page(request):
         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
             return JsonResponse(errors, status=400, content_type='application/json')
     return render(request, "contact/view.html", context)
-
-
-@csrf_exempt
-def update(request):
-    if request.method == 'POST':
-        repo = git.Repo('/home/TeaShop/teashop.pythonanywhere.com/.git/')
-        origin = repo.remotes.origin
-        origin.pull()
-        return HttpResponse(gettext("Update code on server"))
-    else:
-        return HttpResponse(gettext("ERROR: Could`t update the code on server"))
