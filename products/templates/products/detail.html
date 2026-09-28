@@ -7,6 +7,11 @@
 
 {% block extra_head_tags %}
 <meta name="description" content="{{ object.title }}{% if object.category %} - {{ object.category.name }}{% endif %}. {{ object.description|striptags|truncatechars:140 }}">
+<meta property="og:type" content="product">
+<meta property="og:title" content="{{ object.title_primary }} - {{ object.price }} &euro; - {{ STORE_NAME }}">
+<meta property="og:description" content="{{ object.description|striptags|truncatechars:180 }}">
+<meta property="og:url" content="https://{{ request.get_host }}{{ object.get_absolute_url }}">
+{% if object.image %}<meta property="og:image" content="https://{{ request.get_host }}{{ object.image.url }}">{% endif %}
 {% endblock extra_head_tags %}
 
 {% block content %}
@@ -27,6 +32,11 @@
                 {% include 'products/illustration.html' with icon=object.category.icon %}
             {% endif %}
         </div>
+        {% if object.image %}
+            <p class="image-credit">
+                {% trans "Illustrative image" %}{% if object.image_source_url %} &middot; {% trans "photo" %}: <a href="{% url 'credits' %}#{{ object.slug }}">{{ object.image_credit }}</a>{% elif object.image_credit %} &middot; <a href="{% url 'credits' %}">{% trans "photo credits" %}</a>{% endif %}
+            </p>
+        {% endif %}
         {% if slides %}
             <div class="row mt-2">
                 {% for slide in slides %}
@@ -54,6 +64,27 @@
         </p>
 
         {% include 'products/update-cart.html' with product=object in_cart=in_cart %}
+
+        {% if object.is_bundle %}
+            <section class="bundle-contents">
+                <h2 class="panel-title">{% trans "What's inside" %}</h2>
+                <ul class="bundle-lines">
+                    {% for line in object.bundle_items.all %}
+                        <li class="bundle-line">
+                            <a href="{{ line.item.get_absolute_url }}">{% if line.quantity > 1 %}{{ line.quantity }} &times; {% endif %}{{ line.item.title_primary }}</a>
+                            <span class="bundle-line-meta">{{ line.item.grammage }} &middot; {{ line.item.price }} &euro;</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% if object.bundle_saving %}
+                    <p class="bundle-value">
+                        {% trans "Bought separately" %}: <s>{{ object.bundle_value }} &euro;</s> &middot;
+                        {% trans "in the hamper" %} <b>{{ object.price }} &euro;</b> &middot;
+                        <span class="product-saving">{% blocktrans with amount=object.bundle_saving %}you save {{ amount }} &euro;{% endblocktrans %}</span>
+                    </p>
+                {% endif %}
+            </section>
+        {% endif %}
 
         <ul class="info-list">
             <li><i class="fa fa-truck"></i> {% trans "Delivery across Portugal, date confirmed with you" %}</li>

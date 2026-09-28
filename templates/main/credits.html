@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Photo credits" %} - {{ STORE_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-9">
+        <h1 class="page-title">{% trans "Photo credits" %}</h1>
+        <p class="text-muted">{% trans "Product photos are illustrative: they show the kind of product, not the exact item you receive, which is described in each product's text. They come from Openverse and are used under the licenses listed below. Hamper images are collages of these photos." %}</p>
+        <ol class="credits-list">
+            {% for product in products %}
+                <li id="{{ product.slug }}">
+                    <a href="{{ product.get_absolute_url }}">{{ product.title_primary }}</a>:
+                    {{ product.image_credit }}
+                    (<a href="{{ product.image_source_url }}" target="_blank" rel="nofollow noopener">{% trans "source" %}</a>{% if product.image_license_url %}, <a href="{{ product.image_license_url }}" target="_blank" rel="nofollow noopener">{% trans "license" %}</a>{% endif %})
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endblock %}

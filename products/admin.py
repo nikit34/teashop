@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, ProductFile, Category
+from .models import BundleItem, Category, Product, ProductFile
 
 
 class ProductFileInline(admin.TabularInline):
@@ -8,9 +8,18 @@ class ProductFileInline(admin.TabularInline):
     extra = 1
 
 
+class BundleItemInline(admin.TabularInline):
+    model = BundleItem
+    fk_name = 'bundle'
+    extra = 1
+    autocomplete_fields = ['item']
+
+
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['__str__', 'slug', 'delivery']
-    inlines = [ProductFileInline]
+    list_display = ['__str__', 'slug', 'price', 'category', 'active']
+    list_filter = ['category', 'active', 'featured']
+    search_fields = ['title']
+    inlines = [BundleItemInline, ProductFileInline]
 
     class Meta:
         model = Product

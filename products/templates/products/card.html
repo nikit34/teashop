@@ -23,6 +23,7 @@
             <div class="product-price">
                 {{ instance.price }} &euro;
                 {% if instance.grammage %}<span class="product-unit">{{ instance.grammage }}</span>{% endif %}
+                {% if instance.bundle_saving %}<span class="product-saving">{% blocktrans with amount=instance.bundle_saving %}Save {{ amount }} &euro;{% endblocktrans %}</span>{% endif %}
             </div>
             {% include 'products/update-cart.html' with product=instance in_cart=in_cart %}
         </div>

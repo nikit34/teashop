@@ -1,5 +1,6 @@
 import os
 import random
+from decimal import Decimal
 
 from django.db import models
 from django.db.models import Q
@@ -85,6 +86,9 @@ class Product(models.Model):
     views = models.PositiveIntegerField(default=0)
     quantity = models.PositiveIntegerField(default=1)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    image_credit = models.CharField(max_length=300, blank=True, default='')
+    image_source_url = models.URLField(max_length=500, blank=True, default='')
+    image_license_url = models.URLField(max_length=300, blank=True, default='')
 
     objects = ProductManager()
 
@@ -109,6 +113,33 @@ class Product(models.Model):
     def title_secondary(self):
         parts = self.title.split(' - ', 1)
         return parts[1] if len(parts) > 1 else ''
+
+    @property
+    def is_bundle(self):
+        return bool(self.bundle_items.all())
+
+    @property
+    def bundle_value(self):
+        return sum((line.item.price * line.quantity for line in self.bundle_items.all()), Decimal('0'))
+
+    @property
+    def bundle_saving(self):
+        value = self.bundle_value
+        if value > self.price:
+            return value - self.price
+        return Decimal('0')
+
+
+class BundleItem(models.Model):
+    bundle = models.ForeignKey(Product, related_name='bundle_items', on_delete=models.CASCADE)
+    item = models.ForeignKey(Product, related_name='in_bundles', on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    class Meta:
+        ordering = ['id']
+
+    def __str__(self):
+        return '{bundle}: {qty} x {item}'.format(bundle=self.bundle.title_primary, qty=self.quantity, item=self.item.title_primary)
 
 
 def product_pre_save_receiver(sender, instance, *args, **kwargs):

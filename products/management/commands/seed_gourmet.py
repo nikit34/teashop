@@ -1,10 +1,22 @@
+import io
+import json
 from decimal import Decimal
+from pathlib import Path
 
+from PIL import Image
+from django.core.files import File
+from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 from django.db import transaction
+from django.utils.text import slugify
 
-from products.models import Category, Product
+from products.models import BundleItem, Category, Product
 from tags.models import Tag
+
+
+SEED_IMAGES = Path(__file__).resolve().parents[2] / "seed_images"
+LICENSE_NAMES = {"cc0": "CC0", "pdm": "Public Domain Mark", "by": "CC BY"}
+COLLAGE_CREDIT = "Illustrative collage of the items inside"
 
 
 CATEGORIES = [
@@ -35,36 +47,36 @@ def item(title, category, price, grammage, tags, description, featured=False, qu
 
 
 CATALOG = [
-    item("Cabaz Sabores de Portugal - Taste of Portugal Hamper", "Cabazes", "48.00", "5 produtos",
+    item("Cabaz Sabores de Portugal - Taste of Portugal Hamper", "Cabazes", "48.00", "7 produtos",
          ["cabaz", "presente", "gift", "hamper", "azeite", "mel", "chá"],
-         "The whole country in one box: DOP olive oil, lavender honey, Azores tea, flor de sal and a gourmet tin. Packed to travel as a gift.",
+         "The whole country in one box: DOP olive oil, lavender honey, Azores tea, flor de sal, Azores tuna, quince paste and roasted almonds. Packed to travel as a gift.",
          featured=True, quantity=15),
-    item("Cabaz Conservas Gourmet - Tinned Fish Gift Box", "Cabazes", "32.00", "4 latas",
+    item("Cabaz Conservas Gourmet - Tinned Fish Gift Box", "Cabazes", "32.00", "5 latas",
          ["cabaz", "presente", "gift", "conservas", "fish", "sardinha"],
-         "Four premium tins in a gift box: sardines, Azores tuna, mackerel and octopus. The easy present for anyone who loves the sea.",
+         "Five tins in a gift box: sardines, Azores tuna, octopus, mussels in escabeche and sardine paté. The easy present for anyone who loves the sea.",
          featured=True, quantity=15),
     item("Cabaz Café & Chá - Coffee and Tea Discovery Box", "Cabazes", "26.00", "4 produtos",
          ["cabaz", "presente", "gift", "café", "coffee", "chá", "tea"],
          "Specialty coffee, an espresso blend and two Azores teas. For the household split between the kettle and the machine.",
          featured=True, quantity=15),
-    item("Cabaz Petisco Português - Portuguese Snack Box", "Cabazes", "29.00", "5 produtos",
+    item("Cabaz Petisco Português - Portuguese Snack Box", "Cabazes", "29.00", "6 produtos",
          ["cabaz", "presente", "gift", "petisco", "snack", "azeitonas", "conservas"],
-         "Everything for an evening petisco: tinned sardines, olives, roasted Algarve almonds, olive paté and chilli flakes.",
+         "Everything for an evening petisco: tinned sardines, Galega olives, roasted Algarve almonds, olive paté, chilli flakes and lupini beans.",
          quantity=15),
-    item("Cabaz Pequeno-Almoço - Breakfast Hamper", "Cabazes", "34.00", "4 produtos",
+    item("Cabaz Pequeno-Almoço - Breakfast Hamper", "Cabazes", "34.00", "6 produtos",
          ["cabaz", "presente", "gift", "breakfast", "mel", "compota", "café"],
-         "A slow Portuguese breakfast: heather honey, red berry jam, ground bica coffee and Azores black tea.",
+         "A slow Portuguese breakfast: heather honey, red berry and fig jams, ground bica coffee, Azores black tea and butter biscuits.",
          quantity=15),
-    item("Duo Azeite & Flor de Sal - Olive Oil and Sea Salt Duo", "Cabazes", "22.00", "2 produtos",
+    item("Duo Azeite & Flor de Sal - Olive Oil and Sea Salt Duo", "Cabazes", "19.90", "2 produtos",
          ["cabaz", "presente", "gift", "azeite", "flor de sal"],
-         "A DOP extra virgin olive oil paired with hand-harvested Algarve flor de sal. A small gift that gets used every day.",
+         "An early-harvest olive oil paired with hand-harvested Algarve flor de sal. A small gift that gets used every day.",
          quantity=20),
 
-    item("Cabaz de Natal Clássico - Classic Christmas Hamper", "Cabazes de Natal", "59.00", "7 produtos",
+    item("Cabaz de Natal Clássico - Classic Christmas Hamper", "Cabazes de Natal", "59.00", "8 produtos",
          ["natal", "christmas", "cabaz", "presente", "gift"],
-         "Olive oil, honey, quince paste, Azores tea, a gourmet tin, chocolate with flor de sal and roasted almonds, in a festive box.",
+         "Olive oil, lavender honey, quince paste, Azores tea, Azores tuna, dark chocolate with flor de sal, roasted almonds and dried figs, in a festive box.",
          featured=True, quantity=20),
-    item("Cabaz de Natal Premium - Premium Christmas Hamper", "Cabazes de Natal", "89.00", "10 produtos",
+    item("Cabaz de Natal Premium - Premium Christmas Hamper", "Cabazes de Natal", "89.00", "7 produtos",
          ["natal", "christmas", "cabaz", "presente", "gift", "premium"],
          "The generous version: early-harvest olive oil, tuna belly, eels in escabeche, São Jorge coffee, two honeys and a cork board.",
          featured=True, quantity=15),
@@ -72,13 +84,13 @@ CATALOG = [
          ["natal", "christmas", "empresas", "corporate", "cabaz", "b2b"],
          "For teams and clients, from 10 boxes. Six Portuguese pantry favourites per box, a card with your message and delivery to one or many addresses.",
          featured=True, quantity=100),
-    item("Lata Ilustrada de Natal - Illustrated Christmas Tin", "Cabazes de Natal", "18.00", "3 latas",
+    item("Lata Ilustrada de Natal - Illustrated Christmas Tin", "Cabazes de Natal", "16.50", "3 latas",
          ["natal", "christmas", "conservas", "presente", "gift"],
-         "Three tins of sardines and mackerel in a limited Christmas illustrated sleeve. A stocking filler that is actually eaten.",
+         "Sardines in olive oil, sardines with lemon and mackerel in a limited Christmas illustrated sleeve. A stocking filler that is actually eaten.",
          quantity=30),
-    item("Caixa de Chá de Natal - Christmas Tea Box", "Cabazes de Natal", "16.00", "3 x 50g",
+    item("Caixa de Chá de Natal - Christmas Tea Box", "Cabazes de Natal", "16.00", "2 x 100g + 50g",
          ["natal", "christmas", "chá", "tea", "açores", "presente"],
-         "Black, green and lemon verbena teas from the Azores in a gift tin for the winter evenings.",
+         "Black and green tea from the Azores and a lemon verbena infusion in a gift tin for the winter evenings.",
          quantity=30),
 
     item("Sardinhas em Azeite Extra Virgem - Sardines in Extra Virgin Olive Oil", "Conservas", "6.50", "120g",
@@ -375,11 +387,104 @@ CATALOG = [
 ]
 
 
+BUNDLES = {
+    "Cabaz Sabores de Portugal": [
+        ("Azeite Virgem Extra DOP Trás-os-Montes", 1), ("Mel de Rosmaninho DOP", 1),
+        ("Chá Preto Orange Pekoe dos Açores", 1), ("Flor de Sal do Algarve", 1),
+        ("Atum dos Açores em Azeite", 1), ("Marmelada Tradicional", 1), ("Amêndoa Torrada do Algarve", 1),
+    ],
+    "Cabaz Conservas Gourmet": [
+        ("Sardinhas em Azeite Extra Virgem", 1), ("Atum dos Açores em Azeite", 1), ("Polvo em Azeite", 1),
+        ("Mexilhão em Escabeche", 1), ("Paté de Sardinha", 1),
+    ],
+    "Cabaz Café & Chá": [
+        ("Café de Especialidade Microlote", 1), ("Café Moído Lote Bica", 1),
+        ("Chá Preto Orange Pekoe dos Açores", 1), ("Chá Verde Hysson dos Açores", 1),
+    ],
+    "Cabaz Petisco Português": [
+        ("Sardinhas em Azeite Extra Virgem", 1), ("Azeitonas Galega em Salmoura", 1),
+        ("Amêndoa Torrada do Algarve", 1), ("Paté de Azeitona", 1), ("Piri-Piri em Flocos", 1),
+        ("Tremoços em Frasco", 1),
+    ],
+    "Cabaz Pequeno-Almoço": [
+        ("Mel de Urze", 1), ("Compota de Frutos Vermelhos", 1), ("Compota de Figo", 1),
+        ("Café Moído Lote Bica", 1), ("Chá Preto Orange Pekoe dos Açores", 1),
+        ("Bolachas de Manteiga Tradicionais", 1),
+    ],
+    "Duo Azeite & Flor de Sal": [
+        ("Azeite Colheita Precoce", 1), ("Flor de Sal do Algarve", 1),
+    ],
+    "Cabaz de Natal Clássico": [
+        ("Azeite Virgem Extra do Alentejo", 1), ("Mel de Rosmaninho DOP", 1), ("Marmelada Tradicional", 1),
+        ("Chá Preto Orange Pekoe dos Açores", 1), ("Atum dos Açores em Azeite", 1),
+        ("Chocolate Negro com Flor de Sal", 1), ("Amêndoa Torrada do Algarve", 1), ("Figos Secos do Algarve", 1),
+    ],
+    "Cabaz de Natal Premium": [
+        ("Azeite Colheita Precoce", 1), ("Ventresca de Atum", 1), ("Enguias de Escabeche", 1),
+        ("Café de São Jorge Açores", 1), ("Mel dos Açores", 1), ("Mel de Castanheiro", 1),
+        ("Tábua de Queijo em Cortiça", 1),
+    ],
+    "Cabaz de Natal Empresas": [
+        ("Azeite Virgem Extra DOP Trás-os-Montes", 1), ("Mel de Rosmaninho DOP", 1),
+        ("Chá Preto Orange Pekoe dos Açores", 1), ("Sardinhas em Azeite Extra Virgem", 1),
+        ("Chocolate Negro com Flor de Sal", 1), ("Flor de Sal do Algarve", 1),
+    ],
+    "Lata Ilustrada de Natal": [
+        ("Sardinhas em Azeite Extra Virgem", 1), ("Sardinhas com Limão", 1), ("Cavala em Azeite", 1),
+    ],
+    "Caixa de Chá de Natal": [
+        ("Chá Preto Orange Pekoe dos Açores", 1), ("Chá Verde Hysson dos Açores", 1),
+        ("Infusão de Lúcia-Lima", 1),
+    ],
+}
+
+
+def credit_text(credit):
+    license_name = LICENSE_NAMES.get(credit.get("license"), (credit.get("license") or "").upper())
+    if credit.get("license") == "by" and credit.get("license_version"):
+        license_name = "{name} {version}".format(name=license_name, version=credit["license_version"])
+    source = (credit.get("source") or "").replace("_", " ").title()
+    creator = credit.get("creator") or "unknown author"
+    return "{creator} / {source}, {license}".format(creator=creator, source=source, license=license_name)[:300]
+
+
+def fit(img, width, height):
+    ratio = width / height
+    w, h = img.size
+    if w / h > ratio:
+        new_w = int(h * ratio)
+        img = img.crop(((w - new_w) // 2, 0, (w - new_w) // 2 + new_w, h))
+    else:
+        new_h = int(w / ratio)
+        img = img.crop((0, (h - new_h) // 2, w, (h - new_h) // 2 + new_h))
+    return img.resize((width, height), Image.LANCZOS)
+
+
+def collage(paths, size=(800, 600), gap=6, background=(244, 237, 224)):
+    count = len(paths)
+    width, height = size
+    rows = [count] if count <= 3 else [count // 2, count - count // 2]
+    canvas = Image.new("RGB", size, background)
+    row_height = (height - gap * (len(rows) + 1)) // len(rows)
+    index, y = 0, gap
+    for per_row in rows:
+        tile_width = (width - gap * (per_row + 1)) // per_row
+        x = gap
+        for _ in range(per_row):
+            with Image.open(paths[index]) as source:
+                canvas.paste(fit(source.convert("RGB"), tile_width, row_height), (x, y))
+            x += tile_width + gap
+            index += 1
+        y += row_height + gap
+    return canvas
+
+
 class Command(BaseCommand):
     help = "Seed the catalog with Portuguese gourmet products for demand testing"
 
     def add_arguments(self, parser):
         parser.add_argument("--reset", action="store_true", help="Delete existing products, categories and tags first")
+        parser.add_argument("--refresh-images", action="store_true", help="Re-attach photos and rebuild hamper collages")
 
     @transaction.atomic
     def handle(self, *args, **options):
@@ -426,8 +531,64 @@ class Command(BaseCommand):
                 tag, _ = Tag.objects.get_or_create(title=tag_title)
                 tag.products.add(product)
 
+        catalog_titles = {spec["title"] for spec in CATALOG}
+        by_primary = {p.title_primary: p for p in Product.objects.all() if p.title in catalog_titles}
+        self.build_bundles(by_primary)
+        photos = self.attach_photos(by_primary.values(), options["refresh_images"])
+        collages = self.attach_collages(by_primary, options["refresh_images"])
+
         self.stdout.write(self.style.SUCCESS(
-            "Catalog ready: {created} created, {updated} updated, {cats} categories, {tags} tags".format(
-                created=created, updated=updated, cats=Category.objects.count(), tags=Tag.objects.count()
+            "Catalog ready: {created} created, {updated} updated, {cats} categories, {tags} tags, "
+            "{bundles} hampers, {photos} photos attached, {collages} collages built".format(
+                created=created, updated=updated, cats=Category.objects.count(), tags=Tag.objects.count(),
+                bundles=len(BUNDLES), photos=photos, collages=collages,
             )
         ))
+
+    def build_bundles(self, by_primary):
+        for bundle_title, lines in BUNDLES.items():
+            bundle = by_primary[bundle_title]
+            BundleItem.objects.filter(bundle=bundle).delete()
+            for item_title, quantity in lines:
+                BundleItem.objects.create(bundle=bundle, item=by_primary[item_title], quantity=quantity)
+            if bundle.bundle_saving <= 0:
+                self.stderr.write("{title}: items cost {value} EUR, not more than the hamper price {price} EUR".format(
+                    title=bundle_title, value=bundle.bundle_value, price=bundle.price))
+
+    def attach_photos(self, products, refresh):
+        credits_path = SEED_IMAGES / "credits.json"
+        credits = json.loads(credits_path.read_text(encoding="utf-8")) if credits_path.exists() else {}
+        attached = 0
+        for product in products:
+            key = slugify(product.title)
+            path = SEED_IMAGES / (key + ".jpg")
+            if not path.exists() or (product.image and not refresh):
+                continue
+            with path.open("rb") as handle:
+                product.image.save(path.name, File(handle), save=False)
+            credit = credits.get(key, {})
+            product.image_credit = credit_text(credit) if credit else ""
+            product.image_source_url = credit.get("landing_url", "")
+            product.image_license_url = credit.get("license_url", "")
+            product.save()
+            attached += 1
+        return attached
+
+    def attach_collages(self, by_primary, refresh):
+        built = 0
+        for bundle_title in BUNDLES:
+            bundle = by_primary[bundle_title]
+            if bundle.image and not refresh:
+                continue
+            paths = [line.item.image.path for line in bundle.bundle_items.select_related("item") if line.item.image]
+            if not paths:
+                continue
+            buffer = io.BytesIO()
+            collage(paths).save(buffer, "JPEG", quality=82, optimize=True, progressive=True)
+            bundle.image.save(slugify(bundle.title) + ".jpg", ContentFile(buffer.getvalue()), save=False)
+            bundle.image_credit = COLLAGE_CREDIT
+            bundle.image_source_url = ""
+            bundle.image_license_url = ""
+            bundle.save()
+            built += 1
+        return built

@@ -28,12 +28,13 @@ class SearchProductView(ListView):
     def get_queryset(self, *args, **kwargs):
         query = self.request.GET.get('q', None)
         if query is None:
-            return Product.objects.featured()
+            return Product.objects.featured().prefetch_related('bundle_items__item')
         ids = [product.id for product in hybrid_search(query)]
         if not ids:
             return Product.objects.none()
         rank = Case(*[When(pk=pk, then=position) for position, pk in enumerate(ids)], output_field=IntegerField())
-        return Product.objects.filter(pk__in=ids).annotate(search_rank=rank).order_by('search_rank')
+        return (Product.objects.filter(pk__in=ids).annotate(search_rank=rank)
+                .order_by('search_rank').prefetch_related('bundle_items__item'))
 
 
 def rag_ask_view(request):

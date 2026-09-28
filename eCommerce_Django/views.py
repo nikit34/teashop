@@ -39,7 +39,7 @@ class ProductListView(ListView):
         return Category.objects.filter(slug=value).first() or Category.objects.filter(name=value).first()
 
     def get_queryset(self):
-        queryset = Product.objects.all().select_related('category')
+        queryset = Product.objects.all().select_related('category').prefetch_related('bundle_items__item')
 
         category = self._active_category()
         if category is not None:
@@ -57,6 +57,12 @@ class ProductListView(ListView):
         if time_order == "ascend":
             return queryset.order_by('timestamp')
         return queryset.order_by('-featured', 'category__ordering', 'title')
+
+
+def credits_page(request):
+    products = (Product.objects.all().exclude(image_source_url='')
+                .select_related('category').order_by('category__ordering', 'title'))
+    return render(request, 'main/credits.html', {'products': products})
 
 
 def about_page(request):
