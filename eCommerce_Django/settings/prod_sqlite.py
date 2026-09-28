@@ -12,6 +12,8 @@ DJANGO_TEST_PROCESSES = 8
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://pantry.carsbuyer.org']
+
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
