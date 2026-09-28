@@ -101,7 +101,9 @@ class AssistantLanguageTests(TestCase):
         with translation.override('pt'):
             portuguese = rag.ask('mel')
         self.assertIn('pick for "mel"', english['summary'])
+        self.assertIn('at 9.90 EUR', english['summary'])
         self.assertIn('sugestão para "mel"', portuguese['summary'])
+        self.assertIn('por 9,90 EUR', portuguese['summary'])
 
     def test_portuguese_description_is_searchable(self):
         with translation.override('pt'):

@@ -5,6 +5,7 @@ import hashlib
 
 from django.conf import settings
 from django.core.cache import cache
+from django.utils.formats import number_format
 from django.utils.translation import get_language, gettext, ngettext
 
 from products.models import Product
@@ -82,7 +83,7 @@ def _summary(query, products):
         '%(n)d picks for "%(q)s".',
         len(products),
     ) % {"n": len(products), "q": query}
-    detail = " " + gettext("Top choice: %(title)s at %(price)s EUR.") % {"title": top.title_primary, "price": top.price}
+    detail = " " + gettext("Top choice: %(title)s at %(price)s EUR.") % {"title": top.title_primary, "price": number_format(top.price, 2)}
     if categories:
         detail += " " + gettext("From %(categories)s.") % {"categories": ", ".join(categories[:3])}
     return lead + detail
