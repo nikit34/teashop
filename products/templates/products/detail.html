@@ -89,6 +89,7 @@
         <ul class="info-list">
             {% if PRELAUNCH %}
                 <li><i class="fa fa-clock-o"></i> {% trans "Pre-launch: not for sale yet. Add it to your list and leave your email - we will tell you when we open." %}</li>
+            {% elif FAKE_DOOR %}
             {% else %}
                 <li><i class="fa fa-clock-o"></i> {% trans "Made to order: we confirm availability within 24 hours, before any payment" %}</li>
                 <li><i class="fa fa-truck"></i> {% trans "Delivery across Portugal, date confirmed with you" %}</li>

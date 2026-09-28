@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 
 from carts.models import Cart
-from chats.models import ContactMessage, WaitlistSignup
+from chats.models import ContactMessage, DoorHit, WaitlistSignup
 from orders.models import Order
 
 
@@ -28,7 +28,9 @@ class Command(BaseCommand):
         contact_messages = ContactMessage.objects.all()
         carts = Cart.objects.all()
         signups = WaitlistSignup.objects.all()
+        door_hits = DoorHit.objects.all()
         if since:
+            door_hits = door_hits.filter(timestamp__gte=since)
             signups = signups.filter(timestamp__gte=since)
             orders = orders.filter(timestamp__gte=since)
             contact_messages = contact_messages.filter(timestamp__gte=since)
@@ -63,6 +65,12 @@ class Command(BaseCommand):
             ))
 
         self.stdout.write("")
+        self.stdout.write("Checkout clicks (fake door): {count}".format(count=door_hits.count()))
+        for hit in door_hits:
+            self.stdout.write('{ts:%Y-%m-%d %H:%M}  {total} EUR  src={source}  |  {items}'.format(
+                ts=hit.timestamp, total=hit.total, source=hit.source or '-', items=hit.items or '-'))
+
+        self.stdout.write("")
         self.stdout.write("Waitlist signups: {count}".format(count=signups.count()))
         for signup in signups:
             self.stdout.write('{ts:%Y-%m-%d %H:%M}  {email}  {occasion}  {company}{boxes}  {total} EUR  src={source}  |  {items}'.format(
@@ -81,13 +89,15 @@ class Command(BaseCommand):
         reserved = Counter(orders.values_list('source', flat=True))
         messages = Counter(contact_messages.values_list('source', flat=True))
         waitlist = Counter(signups.values_list('source', flat=True))
+        doors = Counter(door_hits.values_list('source', flat=True))
         self.stdout.write("")
-        self.stdout.write("By source: carts / carts with items / signups / reservations / messages")
-        for source in sorted(set(visits) | set(reserved) | set(messages) | set(waitlist), key=lambda s: (-visits[s], s)):
-            self.stdout.write('{source:<28} {visits:>6} {items:>6} {signups:>6} {reserved:>6} {messages:>6}'.format(
+        self.stdout.write("By source: carts / carts with items / checkout clicks / signups / reservations / messages")
+        for source in sorted(set(visits) | set(reserved) | set(messages) | set(waitlist) | set(doors), key=lambda s: (-visits[s], s)):
+            self.stdout.write('{source:<28} {visits:>6} {items:>6} {doors:>6} {signups:>6} {reserved:>6} {messages:>6}'.format(
                 source=source or '-',
                 visits=visits[source],
                 items=with_items[source],
+                doors=doors[source],
                 signups=waitlist[source],
                 reserved=reserved[source],
                 messages=messages[source],

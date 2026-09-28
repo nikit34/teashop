@@ -8,6 +8,8 @@
         {% if PRELAUNCH %}
             <li>{% trans "Pre-launch: pick what you would buy" %}</li>
             <li>{% trans "Christmas hampers for teams" %}</li>
+        {% elif FAKE_DOOR %}
+            <li>{% trans "Christmas hampers for teams" %}</li>
         {% else %}
             <li>{% trans "Delivery across Portugal" %}</li>
             <li>{% trans "Pay after we confirm your order" %}</li>

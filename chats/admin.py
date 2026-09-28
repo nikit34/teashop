@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Comment, ContactMessage, WaitlistSignup
+from .models import Comment, ContactMessage, DoorHit, WaitlistSignup
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -33,3 +33,12 @@ class WaitlistSignupAdmin(admin.ModelAdmin):
 
 
 admin.site.register(WaitlistSignup, WaitlistSignupAdmin)
+
+
+class DoorHitAdmin(admin.ModelAdmin):
+    list_display = ('timestamp', 'items', 'total', 'source')
+    list_filter = ('source',)
+    readonly_fields = ('timestamp',)
+
+
+admin.site.register(DoorHit, DoorHitAdmin)

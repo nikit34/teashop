@@ -57,3 +57,17 @@ class WaitlistSignup(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class DoorHit(models.Model):
+    cart = models.OneToOneField('carts.Cart', on_delete=models.CASCADE, related_name='door_hit')
+    items = models.TextField(blank=True, default='')
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    source = models.CharField(max_length=40, blank=True, default='')
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-timestamp']
+
+    def __str__(self):
+        return '{} {}'.format(self.timestamp, self.items)

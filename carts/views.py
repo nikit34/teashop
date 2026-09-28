@@ -14,6 +14,7 @@ from accounts.forms import LoginForm, GuestForm
 from addresses.forms import AddressCheckoutForm
 from addresses.models import Address
 from billing.models import BillingProfile, stripe_enabled
+from chats.models import DoorHit
 from orders.models import Order
 from products.models import Product
 from .models import Cart
@@ -96,7 +97,8 @@ def checkout_api_view(request):
 
 
 def checkout_home(request):
-    if getattr(settings, 'PRELAUNCH', False):
+    if getattr(settings, 'PRELAUNCH', False) or getattr(settings, 'FAKE_DOOR', False):
+        _record_door_hit(request)
         return redirect('waitlist')
     cart_obj, cart_created = Cart.objects.new_or_get(request)
     if cart_created or cart_obj.cart_items.count() == 0:
@@ -195,6 +197,18 @@ def checkout_home(request):
         'stripe_enabled': stripe_enabled(),
     }
     return render(request, 'carts/checkout/main.html', context)
+
+
+def _record_door_hit(request):
+    cart_obj, cart_created = Cart.objects.new_or_get(request)
+    lines = list(cart_obj.cart_items.select_related('product'))
+    if not lines:
+        return
+    DoorHit.objects.get_or_create(cart=cart_obj, defaults={
+        'items': '; '.join('{qty} x {title}'.format(qty=line.quantity, title=line.product.title_primary) for line in lines),
+        'total': cart_obj.total,
+        'source': cart_obj.source or request.session.get('src', ''),
+    })
 
 
 def normalize_nif(value):

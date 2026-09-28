@@ -56,8 +56,8 @@
                 <a class="btn btn-primary btn-lg" href="{% url 'waitlist' %}">{% trans "Get notified" %}</a>
             </div>
         {% else %}
-            <p class="text-muted small mt-3">{% trans "Delivery cost is confirmed with you before payment." %}</p>
-            <div class="text-right">
+            {% if not FAKE_DOOR %}<p class="text-muted small mt-3">{% trans "Delivery cost is confirmed with you before payment." %}</p>{% endif %}
+            <div class="text-right mt-3">
                 <a class="btn btn-primary btn-lg" href="{% url 'cart:checkout' %}">{% trans "Checkout" %}</a>
             </div>
         {% endif %}

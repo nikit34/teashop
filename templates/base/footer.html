@@ -8,6 +8,7 @@
             <p class="mb-1">{{ STORE_TAGLINE }}</p>
             {% if PRELAUNCH %}
                 <p class="mb-0">{% trans "Pre-launch: we are not selling yet." %}</p>
+            {% elif FAKE_DOOR %}
             {% else %}
                 <p class="mb-0">{% trans "Pay after we confirm your order: MB WAY, Multibanco or bank transfer." %}</p>
             {% endif %}

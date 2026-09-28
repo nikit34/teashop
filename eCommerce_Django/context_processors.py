@@ -8,6 +8,7 @@ def store(request):
         'STORE_TAGLINE': getattr(settings, 'STORE_TAGLINE', ''),
         'STORE_YEAR': timezone.now().year,
         'PRELAUNCH': getattr(settings, 'PRELAUNCH', False),
+        'FAKE_DOOR': getattr(settings, 'FAKE_DOOR', False),
         'SELLER': {
             'name': getattr(settings, 'SELLER_NAME', ''),
             'nif': getattr(settings, 'SELLER_NIF', ''),
