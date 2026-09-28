@@ -20,28 +20,15 @@ $(document).ready(function () {
       dataType: 'json',
       success: function(data) {
         var submitSpan = thisForm.find(".submit-span");
-        var fragment;
-        switch (lang) {
-          case "en":
-            fragment = "In cart</a> <button type='button' class='btn btn-default remove-btn'>Remove?";
-            break;
-          case "ru":
-            fragment = "Корзина</a> <button type='button' class='btn btn-default remove-btn'>Удалить?";
-            break;
-          case "pt":
-            fragment = "No carrinho</a> <button type='button' class='btn btn-default remove-btn'>Remover?";
-            break;
-          default:
-            fragment = "<div class='btn-group'>Undefined langueges in js</div>";
-        }
-        submitSpan.html("<div class='btn-group'> <a class='btn btn-general' href='/" + lang + "/cart/'>" + fragment + "</button></div>");
+        submitSpan.html("<div class='btn-group'> <a class='btn btn-general' href='/" + lang + "/cart/'>" + gettext('In cart') +
+          "</a> <button type='button' class='btn btn-default remove-btn'>" + gettext('Remove') + "?</button></div>");
         var navbarCount = $(".navbar-cart-count");
         navbarCount.text(data.cartItemsCount);
       },
       error: function (errorData) {
         $.alert({
-          title: "Break!",
-          content: "An error occurred",
+          title: gettext("Error"),
+          content: gettext("An error occurred. Please try again."),
           theme: "modern",
         });
       }
@@ -65,28 +52,14 @@ $(document).ready(function () {
       dataType: 'json',
       success: function(data) {
         var submitSpan = thisForm.find(".submit-span");
-        var fragment;
-        switch (lang) {
-          case "en":
-            fragment = 'Add to cart';
-            break;
-          case "ru":
-            fragment = 'Добавить в корзину';
-            break;
-          case "pt":
-            fragment = 'Adicionar ao carrinho';
-            break;
-          default:
-            fragment = "<div class='btn-group'>Undefined langueges in js</div>";
-        }
-        submitSpan.html('<button type="button" class="btn btn-general add-to-cart-btn">' + fragment + "</button>");
+        submitSpan.html('<button type="button" class="btn btn-general add-to-cart-btn">' + gettext('Add to cart') + "</button>");
         var navbarCount = $(".navbar-cart-count");
         navbarCount.text(data.cartItemsCount);
       },
       error: function (errorData) {
         $.alert({
-          title: "Break!",
-          content: "An error occurred",
+          title: gettext("Error"),
+          content: gettext("An error occurred. Please try again."),
           theme: "modern",
         });
       }

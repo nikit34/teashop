@@ -16,22 +16,7 @@ function localization() {
 function displaySubmitting(submitBtn, defaultText, doSubmit) {
   if (doSubmit) {
     submitBtn.addClass("disabled");
-    var fragment;
-    var lang = localization();
-    switch (lang) {
-      case "en":
-        fragment = '<i class="fa fa-spin fa-spinner"></i>Sending...';
-        break;
-      case "ru":
-        fragment = '<i class="fa fa-spin fa-spinner"></i>Отправление...';
-        break;
-      case "pt":
-        fragment = '<i class="fa fa-spin fa-spinner"></i>Enviando...';
-        break;
-      default:
-        fragment = '<i class="fa fa-spin fa-spinner"></i>Undefined langueges in js';
-    }
-    submitBtn.html(fragment);
+    submitBtn.html('<i class="fa fa-spin fa-spinner"></i>' + gettext('Sending...'));
   } else {
     submitBtn.removeClass("disabled");
     submitBtn.html(defaultText);

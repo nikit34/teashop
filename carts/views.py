@@ -146,12 +146,13 @@ def checkout_home(request):
                     billing_profile.set_cards_inactive()
                 context = {
                     'orderID': orderID,
-                    'orderDescription': gettext('To your health!') if order_obj.description is None else order_obj.description,
-                    'time': '2 days'
+                    'orderDescription': order_obj.description or '',
+                    'time': gettext('2 days'),
                 }
                 if request.user.is_authenticated:
-                    txt_ = get_template("registration/emails/verify.txt").render(context)
-                    html_ = get_template("carts/checkout/mail/done.html").render(context)
+                    mail_context = dict(context, store_name=settings.STORE_NAME)
+                    txt_ = get_template("carts/checkout/mail/done.txt").render(mail_context)
+                    html_ = get_template("carts/checkout/mail/done.html").render(mail_context)
                     subject = gettext('We are starting to collect your order')
                     from_email = settings.DEFAULT_FROM_EMAIL
                     recipient_list = [request.user.email]

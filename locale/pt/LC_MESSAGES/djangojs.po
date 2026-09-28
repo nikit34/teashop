@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Portuguese Pantry\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-28 13:11+0000\n"
+"PO-Revision-Date: 2026-09-28 15:00+0100\n"
+"Last-Translator: Portuguese Pantry\n"
+"Language-Team: Portuguese (Portugal)\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: static/js/ecommerce/base.js:19
+msgid "Sending..."
+msgstr "A enviar..."
+
+#: static/js/ecommerce/cart.js:80 static/js/ecommerce/cart.js:101
+#: static/js/ecommerce/contact.js:41 static/js/ecommerce/productCard.js:30
+#: static/js/ecommerce/productCard.js:61
+msgid "Error"
+msgstr "Erro"
+
+#: static/js/ecommerce/cart.js:81 static/js/ecommerce/cart.js:102
+#: static/js/ecommerce/productCard.js:31 static/js/ecommerce/productCard.js:62
+msgid "An error occurred. Please try again."
+msgstr "Ocorreu um erro. Tente novamente."
+
+#: static/js/ecommerce/contact.js:22
+msgid "Thank you!"
+msgstr "Obrigado!"
+
+#: static/js/ecommerce/productCard.js:23
+msgid "In cart"
+msgstr "No carrinho"
+
+#: static/js/ecommerce/productCard.js:24
+msgid "Remove"
+msgstr "Remover"
+
+#: static/js/ecommerce/productCard.js:55
+msgid "Add to cart"
+msgstr "Adicionar ao carrinho"
+
+#: static/js/ecommerce/search.js:21
+msgid "Searching..."
+msgstr "A pesquisar..."

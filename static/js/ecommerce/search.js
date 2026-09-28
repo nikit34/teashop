@@ -17,29 +17,14 @@ $(document).ready(function () {
     clearTimeout(typingTimer);
   });
   function displaySearching() {
-    let lang = localization();
     searchBtn.addClass("disabled");
-    var fragment;
-    switch (lang) {
-      case "en":
-        fragment = '<i class="fa fa-spin fa-spinner"></i>Searching...';
-        break;
-      case "ru":
-        fragment = '<i class="fa fa-spin fa-spinner"></i>Поиск...';
-        break;
-      case "pt":
-        fragment = '<i class="fa fa-spin fa-spinner"></i>Procurando...';
-        break;
-      default:
-        fragment = '<i class="fa fa-spin fa-spinner"></i>Undefined langueges in js';
-    }
-    searchBtn.html(fragment);
+    searchBtn.html('<i class="fa fa-spin fa-spinner"></i>' + gettext('Searching...'));
   }
   function perfomSearch() {
     displaySearching();
     var query = searchInput.val();
     setTimeout(function () {
-      window.location.href = "/search/?q=" + query;
+      window.location.href = "/" + lang + "/search/?q=" + encodeURIComponent(query);
     }, 1000);
   }
 });

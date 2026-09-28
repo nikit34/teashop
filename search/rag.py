@@ -5,6 +5,7 @@ import hashlib
 
 from django.conf import settings
 from django.core.cache import cache
+from django.utils.translation import get_language, gettext, ngettext
 
 from products.models import Product
 
@@ -58,7 +59,7 @@ def _match_reasons(product, query_tokens):
 def _explain(product, query_tokens):
     reasons = _match_reasons(product, query_tokens)
     if reasons:
-        return "Matches: " + ", ".join(reasons)
+        return gettext("Matches: %(words)s") % {"words": ", ".join(reasons)}
     category = product.category.name if product.category_id and product.category else None
     if category:
         return "{category}{grammage}".format(
@@ -70,21 +71,25 @@ def _explain(product, query_tokens):
 
 def _summary(query, products):
     if not products:
-        return "No matching product found. Try another word, or browse the categories."
+        return gettext("No matching product found. Try another word, or browse the categories.")
     top = products[0]
     categories = []
     for product in products:
         if product.category_id and product.category and product.category.name not in categories:
             categories.append(product.category.name)
-    lead = '{n} pick{s} for "{q}".'.format(n=len(products), s="" if len(products) == 1 else "s", q=query)
-    detail = " Top choice: {title} at {price} EUR.".format(title=top.title, price=top.price)
+    lead = ngettext(
+        '%(n)d pick for "%(q)s".',
+        '%(n)d picks for "%(q)s".',
+        len(products),
+    ) % {"n": len(products), "q": query}
+    detail = " " + gettext("Top choice: %(title)s at %(price)s EUR.") % {"title": top.title_primary, "price": top.price}
     if categories:
-        detail += " From " + ", ".join(categories[:3]) + "."
+        detail += " " + gettext("From %(categories)s.") % {"categories": ", ".join(categories[:3])}
     return lead + detail
 
 
 def _cache_key(query):
-    payload = json.dumps({"q": query.strip().lower()}, ensure_ascii=False)
+    payload = json.dumps({"q": query.strip().lower(), "lang": get_language()}, ensure_ascii=False)
     return "rag:" + hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
@@ -94,7 +99,7 @@ def ask(query, k_context=K_CONTEXT):
     if not sanitized["query"]:
         return {
             "query": query,
-            "summary": "What are you looking for? For example a gift, something spicy, or a specific product.",
+            "summary": gettext("What are you looking for? For example a gift, something spicy, or a specific product."),
             "products": [],
             "clarifying_question": None,
             "clarifying_options": [],

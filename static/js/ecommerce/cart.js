@@ -77,8 +77,8 @@ $(document).ready(function () {
       },
       error: function (errorData) {
         $.alert({
-          title: "Break!",
-          content: "An error occurred",
+          title: gettext("Error"),
+          content: gettext("An error occurred. Please try again."),
           theme: "modern",
         });
       }
@@ -98,8 +98,8 @@ $(document).ready(function () {
       },
       error: function (errorData) {
         $.alert({
-          title: "Break!",
-          content: "An error occurred",
+          title: gettext("Error"),
+          content: gettext("An error occurred. Please try again."),
           theme: "modern",
         });
       },

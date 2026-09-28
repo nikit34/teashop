@@ -6,10 +6,10 @@
 {% block title %}{{ object.title_primary }} - {{ STORE_NAME }}{% endblock %}
 
 {% block extra_head_tags %}
-<meta name="description" content="{{ object.title }}{% if object.category %} - {{ object.category.name }}{% endif %}. {{ object.description|striptags|truncatechars:140 }}">
+<meta name="description" content="{{ object.display_title }}{% if object.category %} - {{ object.category.name }}{% endif %}. {{ object.localized_description|striptags|truncatechars:140 }}">
 <meta property="og:type" content="product">
 <meta property="og:title" content="{{ object.title_primary }} - {{ object.price }} &euro; - {{ STORE_NAME }}">
-<meta property="og:description" content="{{ object.description|striptags|truncatechars:180 }}">
+<meta property="og:description" content="{{ object.localized_description|striptags|truncatechars:180 }}">
 <meta property="og:url" content="https://{{ request.get_host }}{{ object.get_absolute_url }}">
 {% if object.image %}<meta property="og:image" content="https://{{ request.get_host }}{{ object.image.url }}">{% endif %}
 {% endblock extra_head_tags %}
@@ -55,8 +55,8 @@
             <p class="product-card-category">{{ object.category.name }}</p>
         {% endif %}
         <h1>{{ object.title_primary }}</h1>
-        {% if object.title_secondary %}
-            <p class="detail-subtitle">{{ object.title_secondary }}</p>
+        {% if object.subtitle %}
+            <p class="detail-subtitle">{{ object.subtitle }}</p>
         {% endif %}
         <p class="detail-price">
             {{ object.price }} &euro;
@@ -93,7 +93,7 @@
         </ul>
 
         <div class="detail-description">
-            {{ object.description|safe|linebreaks }}
+            {{ object.localized_description|safe|linebreaks }}
         </div>
     </div>
 </div>

@@ -1,8 +1,8 @@
-<p>Hello</p>
+{% load i18n %}
+<p>{% trans "Hello," %}</p>
 
-<p>Your order {{ orderID }} is being assembled and will be ready to ship soon, delivery time is {{ time }}</p>
-<p>With the inscription on the packaging: "{{ orderDescription }}"</p>
-<p>Thank you for your order, we want it to bring you warmth and pleasure!</p>
+<p>{% blocktrans %}Thank you for your order {{ orderID }}. We are preparing it and it will ship within {{ time }}.{% endblocktrans %}</p>
+{% if orderDescription %}<p>{% blocktrans %}Gift message on the packaging: "{{ orderDescription }}"{% endblocktrans %}</p>{% endif %}
 
-<p>We wish you good health,</p>
-<p>TeaShop</p>
+<p>{% trans "Thank you," %}</p>
+<p>{{ store_name }}</p>

@@ -1,8 +1,7 @@
-Hello
+{% load i18n %}{% trans "Hello," %}
 
-Your order {{ orderID }} is being assembled and will be ready to ship soon, delivery time is {{ time }}
-With the inscription on the packaging: "{{ orderDescription }}"
-Thank you for your order, we want it to bring you warmth and pleasure!
-
-We wish you good health,
-TeaShop
+{% blocktrans %}Thank you for your order {{ orderID }}. We are preparing it and it will ship within {{ time }}.{% endblocktrans %}
+{% if orderDescription %}{% blocktrans %}Gift message on the packaging: "{{ orderDescription }}"{% endblocktrans %}
+{% endif %}
+{% trans "Thank you," %}
+{{ store_name }}

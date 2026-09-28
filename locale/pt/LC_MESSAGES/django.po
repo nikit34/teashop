@@ -1,136 +1,129 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Portuguese Pantry\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-07 16:18+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2026-09-28 13:20+0000\n"
+"PO-Revision-Date: 2026-09-28 15:00+0100\n"
+"Last-Translator: Portuguese Pantry\n"
+"Language-Team: Portuguese (Portugal)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/forms.py:21
+#: accounts/forms.py:22
 #, python-format
 msgid ""
 "This email does not exists, would you like to <a href=\"%(link)s\">register</"
 "a>?"
-msgstr "Este e-mail não existe, gostaria de <a href=\"%(link)s\">register</a>?"
+msgstr ""
+"Este email não está registado. Quer <a href=\"%(link)s\">criar uma conta</a>?"
 
-#: accounts/forms.py:27 accounts/forms.py:90 accounts/forms.py:127
+#: accounts/forms.py:28 accounts/forms.py:91 accounts/forms.py:128
 #: accounts/templates/accounts/form.html:23
 #: accounts/templates/accounts/login.html:22
 #: accounts/templates/accounts/register.html:33
 msgid "Password"
-msgstr "Senha"
+msgstr "Palavra-passe"
 
-#: accounts/forms.py:28 accounts/forms.py:128
+#: accounts/forms.py:29 accounts/forms.py:129
 #: accounts/templates/accounts/register.html:44
 msgid "Password confirmation"
-msgstr "ConfirmaÇão Da Senha"
+msgstr "Confirmar palavra-passe"
 
-#: accounts/forms.py:38 accounts/forms.py:138
+#: accounts/forms.py:39 accounts/forms.py:139
 msgid "Passwords don't match"
-msgstr "As senhas não coincidem"
+msgstr "As palavras-passe não coincidem"
 
-#: accounts/forms.py:51 addresses/templates/addresses/form.html:19
-#: addresses/templates/addresses/update.html:24
+#: accounts/forms.py:52 addresses/templates/addresses/update.html:24
+#: eCommerce_Django/forms.py:6
 msgid "Name"
 msgstr "Nome"
 
-#: accounts/forms.py:106
+#: accounts/forms.py:107
 #, python-format
 msgid ""
 "Go to <a href=\"%(resend_link)s\">resend\n"
 " confirmation email</a>."
 msgstr ""
-"Vá para <a href=\"%(resend_link)s\">reenviar\n"
-"e-mail de confirmação</a>."
+"Peça para <a href=\"%(resend_link)s\">reenviar\n"
+" o email de confirmação</a>."
 
-#: accounts/forms.py:110
+#: accounts/forms.py:111
 msgid ""
 "Please check your email to confirm\n"
 " your account or "
 msgstr ""
-"Por favor, verifique seu e-mail para confirmar\n"
-" sua conta ou "
+"Consulte o seu email para confirmar\n"
+" a sua conta ou "
 
-#: accounts/forms.py:114
+#: accounts/forms.py:115
 msgid "Email not confirmed."
-msgstr "E-mail não confirmado."
+msgstr "Email não confirmado."
 
-#: accounts/forms.py:117
+#: accounts/forms.py:118
 msgid "This user is inactive."
-msgstr "Este usuário está inativo."
+msgstr "Esta conta está inativa."
 
-#: accounts/forms.py:120
+#: accounts/forms.py:121
 msgid "Invalid credentials"
-msgstr "Credenciais inválidas"
+msgstr "Email ou palavra-passe incorretos"
 
 #: accounts/models.py:22
 msgid "Users must have an email address"
-msgstr "Os usuários devem ter um endereço de e-mail"
+msgstr "É preciso indicar um email"
 
 #: accounts/models.py:24
 msgid "Users must have a password"
-msgstr "Os usuários devem ter uma senha"
+msgstr "É preciso indicar uma palavra-passe"
 
-#: accounts/models.py:160
+#: accounts/models.py:161
 msgid "1-Click Email Verification"
-msgstr "Verificação de e-mail com 1 clique"
+msgstr "Confirme o seu email com um clique"
 
 #: accounts/templates/accounts/detail-update-view.html:20
 msgid "Cannot change email"
-msgstr "Não é possível alterar o e-mail"
+msgstr "Não é possível alterar o email"
 
 #: accounts/templates/accounts/detail-update-view.html:24
 #: marketing/templates/subscribe_form.html:26
 #: templates/registration/password_change_form.html:65
 msgid "Save"
-msgstr "Salvar"
+msgstr "Guardar"
 
 #: accounts/templates/accounts/detail-update-view.html:27
 #: accounts/templates/accounts/home.html:62
 msgid "Change Password"
-msgstr "Alterar a senha"
+msgstr "Alterar palavra-passe"
 
 #: accounts/templates/accounts/form.html:39
-#: addresses/templates/addresses/form.html:81
-#: carts/templates/carts/checkout/final.html:51
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:51
-#: products/templates/products/detail.html:114 templates/contact/view.html:19
+#: carts/templates/carts/checkout/final.html:51 templates/contact/view.html:19
 msgid "Submit"
 msgstr "Enviar"
 
 #: accounts/templates/accounts/home.html:15
 msgid "Billing"
-msgstr "Cobrança"
+msgstr "Faturação"
 
 #: accounts/templates/accounts/home.html:17
 #: orders/templates/orders/order_list.html:7
 msgid "Orders"
-msgstr "Pedidos"
+msgstr "Encomendas"
 
 #: accounts/templates/accounts/home.html:18
 msgid "Payment Methods"
-msgstr "Métodos de Pagamento"
+msgstr "Métodos de pagamento"
 
 #: accounts/templates/accounts/home.html:19
 #: addresses/templates/addresses/list.html:7
+#: carts/templates/carts/checkout/has_billingprofile_shiprequired.html:16
 msgid "Saved addresses"
-msgstr "Endereços salvos"
+msgstr "Moradas guardadas"
 
 #: accounts/templates/accounts/home.html:28
 msgid "History"
-msgstr "História"
+msgstr "Histórico"
 
 #: accounts/templates/accounts/home.html:30
 msgid "Products"
@@ -143,55 +136,54 @@ msgstr "Coleção"
 
 #: accounts/templates/accounts/home.html:33
 msgid "Statistics"
-msgstr "Estatisticas"
+msgstr "Estatísticas"
 
 #: accounts/templates/accounts/home.html:43
 msgid "Support"
-msgstr "Apoiar"
+msgstr "Apoio"
 
-#: accounts/templates/accounts/home.html:46 templates/base/navbar.html:38
+#: accounts/templates/accounts/home.html:46 templates/base/navbar.html:55
 msgid "Admin"
-msgstr "Administrador"
+msgstr "Administração"
 
-#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:56
-#: templates/contact/about.html:5
+#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:69
+#: templates/base/footer.html:12 templates/contact/about.html:5
 msgid "About"
-msgstr "Sobre"
+msgstr "Sobre nós"
 
-#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:66
+#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:79
+#: templates/base/footer.html:13
 msgid "Contact"
-msgstr "Contato"
+msgstr "Contacto"
 
 #: accounts/templates/accounts/home.html:58
 msgid "Account Details"
-msgstr "Detalhes da conta"
+msgstr "Dados da conta"
 
 #: accounts/templates/accounts/home.html:60
 msgid "Email Marketing"
-msgstr "Marketing de email"
+msgstr "Emails de marketing"
 
 #: accounts/templates/accounts/home.html:61
 msgid "Update Details"
-msgstr "Detalhes da atualização"
+msgstr "Atualizar dados"
 
 #: accounts/templates/accounts/home.html:63
 msgid "Logout"
-msgstr "Sair"
+msgstr "Terminar sessão"
 
 #: accounts/templates/accounts/login.html:8
-#: carts/templates/carts/checkout/has_nothing.html:11
-#: templates/base/navbar.html:46
 #: templates/registration/password_reset_complete.html:7
 msgid "Login"
-msgstr "Conecte-se"
+msgstr "Iniciar sessão"
 
 #: accounts/templates/accounts/login.html:37
 msgid "Sign in"
 msgstr "Entrar"
 
-#: accounts/templates/accounts/register.html:8 templates/base/navbar.html:43
+#: accounts/templates/accounts/register.html:8
 msgid "Register"
-msgstr "Registro"
+msgstr "Criar conta"
 
 #: accounts/templates/accounts/register.html:11
 msgid "Full name"
@@ -199,91 +191,89 @@ msgstr "Nome completo"
 
 #: accounts/templates/accounts/register.html:59
 msgid "Sign up"
-msgstr "Inscrever-se"
+msgstr "Registar"
 
 #: accounts/views.py:35
 msgid "Your email has been confirmed. Please login."
-msgstr "Seu email foi confirmado. Por favor entre."
+msgstr "O seu email foi confirmado. Já pode entrar."
 
 #: accounts/views.py:42
-#, python-brace-format
+#, python-format
 msgid ""
-"Your email has already been confirmed. Do you need to <a href='%{link}"
-"s'>reset you password</a>?"
+"Your email has already been confirmed. Do you need to <a "
+"href='%(link)s'>reset your password</a>?"
 msgstr ""
-"Seu e-mail já foi confirmado. Você precisa <a href='%{link}s'>redefinir sua "
-"senha</a>?"
+"O seu email já foi confirmado. Precisa de <a href='%(link)s'>redefinir a "
+"palavra-passe</a>?"
 
 #: accounts/views.py:58
 msgid "Activation link sent, please, check your email."
-msgstr "Link de ativação enviado, por favor verifique seu email."
+msgstr "Enviámos a ligação de ativação. Consulte o seu email."
 
 #: accounts/views.py:110
 msgid "Change Your Account Details"
-msgstr "Altere os detalhes da sua conta"
+msgstr "Alterar os dados da conta"
 
-#: addresses/forms.py:16
+#: addresses/forms.py:9
+msgid "Address nickname"
+msgstr "Nome para esta morada"
+
+#: addresses/forms.py:10
+msgid "Recipient name"
+msgstr "Nome do destinatário"
+
+#: addresses/forms.py:11
+msgid "Street and number"
+msgstr "Rua e número"
+
+#: addresses/forms.py:12
+msgid "Apartment, floor"
+msgstr "Andar, porta"
+
+#: addresses/forms.py:13
+msgid "Postal code"
+msgstr "Código postal"
+
+#: addresses/forms.py:14 addresses/templates/addresses/update.html:63
+msgid "City"
+msgstr "Localidade"
+
+#: addresses/forms.py:33
 msgid "Country code is not valid"
 msgstr "O código do país não é válido"
 
 #: addresses/models.py:11
 msgid "Shipping to? Who is it for?"
-msgstr "Enviando para? para quem é isso?"
+msgstr "Para onde enviamos? Para quem é?"
 
 #: addresses/models.py:12
 msgid "Internal Reference Nickname"
-msgstr "Apelido de referência interna"
+msgstr "Nome de referência interno"
 
 #: addresses/models.py:15
 msgid "Only uppercase letters and length has be 2"
-msgstr "Apenas letras maiúsculas e o comprimento devem ser 2"
+msgstr "Apenas duas letras maiúsculas"
 
-#: addresses/templates/addresses/form.html:12
-#: addresses/templates/addresses/update.html:17
-msgid "Nickname"
-msgstr "Apelido"
+#: addresses/models.py:17
+msgid "For example 1100-148"
+msgstr "Por exemplo, 1100-148"
 
-#: addresses/templates/addresses/form.html:16
-#: addresses/templates/addresses/update.html:21
-msgid "Internal Reference"
-msgstr "Referência interna"
-
-#: addresses/templates/addresses/form.html:23
-#: addresses/templates/addresses/update.html:28
-msgid "Shipping to? Who is it for"
-msgstr "Enviando para? Para quem é isso"
-
-#: addresses/templates/addresses/form.html:36
-msgid "Street"
-msgstr "Rua"
-
-#: addresses/templates/addresses/form.html:42
-msgid "Apartment"
-msgstr "Apartamento"
-
-#: addresses/templates/addresses/form.html:54
-#: addresses/templates/addresses/update.html:63
-msgid "City"
-msgstr "Cidade"
-
-#: addresses/templates/addresses/list.html:7
-msgid "es"
-msgstr "é"
+#: addresses/templates/addresses/form.html:29
+msgid "Continue"
+msgstr "Continuar"
 
 #: addresses/templates/addresses/list.html:7
 msgid "Create New"
-msgstr "Crie um novo"
+msgstr "Adicionar nova"
 
 #: addresses/templates/addresses/list.html:21
 #: addresses/templates/addresses/update.html:41
 #: addresses/templates/addresses/update.html:47
 #: carts/templates/carts/checkout/final.html:34
 #: carts/templates/carts/checkout/has_billingprofile.html:5
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:34
-#: carts/templates/carts/checkout/has_billingprofile_shiprequired.html:5
 #: orders/templates/orders/order_detail.html:25
 msgid "Address"
-msgstr "Endereço"
+msgstr "Morada"
 
 #: addresses/templates/addresses/list.html:23
 msgid "Edit"
@@ -291,23 +281,35 @@ msgstr "Editar"
 
 #: addresses/templates/addresses/list.html:32
 msgid "No saved addresses"
-msgstr "Nenhum endereço salvo"
+msgstr "Sem moradas guardadas"
 
 #: addresses/templates/addresses/prev_addresses.html:20
 msgid "Use Address"
-msgstr "Usar endereço"
+msgstr "Usar esta morada"
 
 #: addresses/templates/addresses/update.html:9
 msgid "Update Address"
-msgstr "Atualizar endereço"
+msgstr "Atualizar morada"
 
 #: addresses/templates/addresses/update.html:11
 msgid "Create Address"
-msgstr "Criar endereço"
+msgstr "Adicionar morada"
+
+#: addresses/templates/addresses/update.html:17
+msgid "Nickname"
+msgstr "Nome"
+
+#: addresses/templates/addresses/update.html:21
+msgid "Internal Reference"
+msgstr "Referência interna"
+
+#: addresses/templates/addresses/update.html:28
+msgid "Shipping to? Who is it for"
+msgstr "Para onde enviamos? Para quem é"
 
 #: addresses/templates/addresses/update.html:90
 msgid "Save Address"
-msgstr "Salvar endereço"
+msgstr "Guardar morada"
 
 #: addresses/templates/addresses/update.html:99
 #: carts/templates/carts/remove-product.html:5
@@ -332,11 +334,10 @@ msgstr "Total recente"
 #: analytics/templates/analytics/sales.html:31
 #: orders/templates/orders/order_detail.html:7
 msgid "Order"
-msgstr "Ordem"
+msgstr "Encomenda"
 
 #: analytics/templates/analytics/sales.html:22
 #: analytics/templates/analytics/sales.html:33
-#: products/templates/products/detail.html:15
 msgid "ago"
 msgstr "atrás"
 
@@ -350,7 +351,7 @@ msgstr "4 semanas anteriores"
 
 #: analytics/templates/analytics/sales.html:51
 msgid "Orders Total"
-msgstr "Total de pedidos"
+msgstr "Total de encomendas"
 
 #: analytics/templates/analytics/sales.html:52
 msgid "Shipped Total"
@@ -358,283 +359,478 @@ msgstr "Total enviado"
 
 #: analytics/templates/analytics/sales.html:53
 msgid "Paid Totals"
-msgstr "Totais pagos"
+msgstr "Total pago"
 
-#: billing/models.py:163
+#: billing/models.py:171
 msgid "No cards available"
-msgstr "Nenhum cartão disponível"
+msgstr "Não há cartões disponíveis"
 
 #: billing/templates/billing/payment-method.html:7
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:90
 msgid "Add Payment Method"
-msgstr "Adicionar forma de pagamento"
+msgstr "Adicionar método de pagamento"
 
 #: billing/templates/billing/payment-method.html:8
 msgid "Add New Card"
-msgstr "Adicionar novo cartão"
+msgstr "Adicionar cartão"
 
 #: billing/views.py:30
 msgid "Cannot find this user"
-msgstr "Não foi possível encontrar este usuário"
+msgstr "Utilizador não encontrado"
 
 #: billing/views.py:34
 msgid "Success! Your card was added."
-msgstr "Sucesso! Seu cartão foi adicionado."
+msgstr "O seu cartão foi adicionado."
 
-#: carts/templates/carts/checkout/done.html:14
-msgid "Thank, you for your order"
-msgstr "Obrigado pela sua submissão"
+#: carts/templates/carts/checkout/done.html:7
+msgid "Thank you - your order is reserved"
+msgstr "Obrigado - a sua encomenda está reservada"
 
-#: carts/templates/carts/checkout/done.html:16
-msgid "Your"
-msgstr "Seu"
+#: carts/templates/carts/checkout/done.html:8
+#: carts/templates/carts/checkout/done.html:13
+#: carts/templates/carts/checkout/final.html:20
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:40
+msgid "Order number"
+msgstr "Número da encomenda"
 
-#: carts/templates/carts/checkout/done.html:16
-msgid "order ID"
-msgstr "ID do pedido"
+#: carts/templates/carts/checkout/done.html:9
+#, python-format
+msgid ""
+"We will contact you at %(phone)s within 24 hours to confirm the delivery "
+"date and cost."
+msgstr ""
+"Entraremos em contacto através do %(phone)s nas próximas 24 horas para "
+"confirmar a data e o custo da entrega."
 
-#: carts/templates/carts/checkout/done.html:20
+#: carts/templates/carts/checkout/done.html:10
+msgid "You pay only after confirmation: MB WAY, Multibanco or bank transfer."
+msgstr ""
+"Só paga depois da confirmação: MB WAY, Multibanco ou transferência bancária."
+
+#: carts/templates/carts/checkout/done.html:12
+msgid "Thank you for your order"
+msgstr "Obrigado pela sua encomenda"
+
+#: carts/templates/carts/checkout/done.html:15
 msgid "Delivery time is"
-msgstr "O prazo de entrega é"
+msgstr "Prazo de entrega:"
 
-#: carts/templates/carts/checkout/done.html:21
-msgid "With the inscription on the packaging"
-msgstr "Com a inscrição na embalagem"
+#: carts/templates/carts/checkout/done.html:18
+msgid "Continue shopping"
+msgstr "Continuar a comprar"
 
 #: carts/templates/carts/checkout/final.html:5
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:5
 msgid "Finalize Checkout"
-msgstr "Finalizar compra"
+msgstr "Finalizar encomenda"
 
 #: carts/templates/carts/checkout/final.html:12
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:12
 msgid "Cart Items"
-msgstr "Itens do carrinho"
-
-#: carts/templates/carts/checkout/final.html:20
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:20
-msgid "Order number"
-msgstr "Número do pedido"
+msgstr "Artigos no carrinho"
 
 #: carts/templates/carts/checkout/final.html:42
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:42
 msgid "Description"
 msgstr "Descrição"
 
 #: carts/templates/carts/checkout/final.html:49
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:49
 msgid "Recipients name"
 msgstr "Nome do destinatário"
 
 #: carts/templates/carts/checkout/final.html:66
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:66
 msgid "Cart Total"
 msgstr "Total do carrinho"
 
 #: carts/templates/carts/checkout/final.html:72
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:72
 #: orders/templates/orders/order_detail.html:43
 msgid "Shipping Total"
-msgstr "Total de envio"
+msgstr "Portes de envio"
 
 #: carts/templates/carts/checkout/final.html:78
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:78
 #: orders/templates/orders/order_detail.html:52
 msgid "Order Total"
-msgstr "Total de pedidos"
+msgstr "Total da encomenda"
 
 #: carts/templates/carts/checkout/final.html:85
 msgid "Default Payment"
-msgstr "Pagamento padrão"
+msgstr "Pagamento predefinido"
 
 #: carts/templates/carts/checkout/final.html:89
 msgid "Payment Method"
-msgstr "Forma de pagamento"
+msgstr "Método de pagamento"
 
 #: carts/templates/carts/checkout/final.html:90
 msgid "Change"
-msgstr "Mudar"
+msgstr "Alterar"
 
 #: carts/templates/carts/checkout/final.html:99
 msgid "Pay"
 msgstr "Pagar"
 
 #: carts/templates/carts/checkout/final.html:106
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:96
 msgid "PayPal"
 msgstr "PayPal"
 
-#: carts/templates/carts/checkout/has_billingprofile_shipping.html:100
-msgid "Bank card binding"
-msgstr "Vinculação de cartão bancário"
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:4
+msgid "Review your order"
+msgstr "Reveja a sua encomenda"
 
-#: carts/templates/carts/checkout/has_nothing.html:5
-msgid "Choose"
-msgstr "Escolher"
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:9
+msgid "Your items"
+msgstr "Os seus artigos"
 
-#: carts/templates/carts/checkout/has_nothing.html:17
-msgid "Continue as Guest"
-msgstr "Continuar como convidado"
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:20
+#: orders/templates/orders/order_detail.html:16
+msgid "Items"
+msgstr "Artigos"
 
-#: carts/templates/carts/home.html:13
-msgid "Product Name"
-msgstr "Nome do Produto"
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:24
+msgid "Delivery"
+msgstr "Entrega"
 
-#: carts/templates/carts/home.html:14
-msgid "Available"
-msgstr "Disponível"
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:25
+msgid "confirmed with you before payment"
+msgstr "confirmada consigo antes do pagamento"
 
-#: carts/templates/carts/home.html:15
-msgid "Quantity"
-msgstr "Quantidade"
-
-#: carts/templates/carts/home.html:16
-#: orders/templates/orders/collection.html:14
-#: templates/main/select_sort.html:12
-msgid "Price"
-msgstr "Preço"
-
-#: carts/templates/carts/home.html:45
-#: orders/templates/orders/order_detail.html:34
-msgid "Subtotal"
-msgstr "Subtotal"
-
-#: carts/templates/carts/home.html:58
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:28
+#: carts/templates/carts/home.html:47
 #: orders/templates/orders/order_list.html:13
 msgid "Total"
 msgstr "Total"
 
-#: carts/templates/carts/home.html:68
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:37
+#: carts/templates/carts/checkout/has_billingprofile_shiprequired.html:4
+msgid "Delivery address"
+msgstr "Morada de entrega"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:50
+msgid "Pay now by card"
+msgstr "Pagar agora com cartão"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:58
+msgid "Reserve now, pay after we confirm"
+msgstr "Reserve já, pague depois da nossa confirmação"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:59
+msgid ""
+"We check stock and delivery for your address, then message you with the "
+"final total. You pay only after that - by MB WAY, Multibanco or bank "
+"transfer."
+msgstr ""
+"Verificamos o stock e a entrega para a sua morada e enviamos-lhe o total "
+"final. Só paga depois disso - por MB WAY, Multibanco ou transferência "
+"bancária."
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:64
+msgid "Phone for MB WAY or WhatsApp"
+msgstr "Telemóvel para MB WAY ou WhatsApp"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:68
+msgid "Gift message or delivery notes"
+msgstr "Mensagem de oferta ou notas para a entrega"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:68
+msgid "optional"
+msgstr "opcional"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:71
+msgid "Reserve my order"
+msgstr "Reservar a minha encomenda"
+
+#: carts/templates/carts/checkout/has_billingprofile_shipping.html:72
+msgid "No payment is taken now."
+msgstr "Não paga nada agora."
+
+#: carts/templates/carts/checkout/has_billingprofile_shiprequired.html:8
+msgid ""
+"We deliver across Portugal. The delivery date and cost are confirmed with "
+"you before payment."
+msgstr ""
+"Entregamos em todo o país. A data e o custo da entrega são confirmados "
+"consigo antes do pagamento."
+
+#: carts/templates/carts/checkout/has_nothing.html:4
+#: carts/templates/carts/home.html:55
 msgid "Checkout"
-msgstr "Confira"
+msgstr "Finalizar compra"
 
-#: carts/views.py:130
-msgid "To your health!"
-msgstr "Para sua saúde!"
+#: carts/templates/carts/checkout/has_nothing.html:8
+msgid "Continue as guest"
+msgstr "Continuar sem conta"
 
-#: carts/views.py:136
+#: carts/templates/carts/checkout/has_nothing.html:9
+msgid ""
+"Just your email - we send the order confirmation there. No account needed."
+msgstr ""
+"Só precisamos do seu email - é para lá que enviamos a confirmação da "
+"encomenda. Não precisa de criar conta."
+
+#: carts/templates/carts/checkout/has_nothing.html:16
+msgid "I have an account"
+msgstr "Já tenho conta"
+
+#: carts/templates/carts/checkout/mail/done.html:2
+#: carts/templates/carts/checkout/mail/done.txt:1
+#: templates/registration/emails/verify.html:2
+#: templates/registration/emails/verify.txt:1
+msgid "Hello,"
+msgstr "Olá,"
+
+#: carts/templates/carts/checkout/mail/done.html:4
+#: carts/templates/carts/checkout/mail/done.txt:3
+#, python-format
+msgid ""
+"Thank you for your order %(orderID)s. We are preparing it and it will ship "
+"within %(time)s."
+msgstr ""
+"Obrigado pela sua encomenda %(orderID)s. Estamos a prepará-la e será enviada "
+"dentro de %(time)s."
+
+#: carts/templates/carts/checkout/mail/done.html:5
+#: carts/templates/carts/checkout/mail/done.txt:4
+#, python-format
+msgid "Gift message on the packaging: \"%(orderDescription)s\""
+msgstr "Mensagem na embalagem: \"%(orderDescription)s\""
+
+#: carts/templates/carts/checkout/mail/done.html:7
+#: carts/templates/carts/checkout/mail/done.txt:6
+#: templates/registration/emails/verify.html:8
+#: templates/registration/emails/verify.txt:9
+msgid "Thank you,"
+msgstr "Obrigado,"
+
+#: carts/templates/carts/home.html:6 templates/base/navbar.html:15
+#: templates/base/navbar.html:45
+msgid "Cart"
+msgstr "Carrinho"
+
+#: carts/templates/carts/home.html:10
+msgid "Your cart"
+msgstr "O seu carrinho"
+
+#: carts/templates/carts/home.html:19
+#: orders/templates/orders/collection.html:14
+msgid "Product"
+msgstr "Produto"
+
+#: carts/templates/carts/home.html:20
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: carts/templates/carts/home.html:21
+#: orders/templates/orders/collection.html:14
+msgid "Price"
+msgstr "Preço"
+
+#: carts/templates/carts/home.html:43
+#: orders/templates/orders/order_detail.html:34
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#: carts/templates/carts/home.html:53
+msgid "Delivery cost is confirmed with you before payment."
+msgstr "O custo da entrega é confirmado consigo antes do pagamento."
+
+#: carts/templates/carts/home.html:64
+msgid "Your cart is empty."
+msgstr "O seu carrinho está vazio."
+
+#: carts/templates/carts/home.html:65
+msgid "Browse gift hampers"
+msgstr "Ver cabazes de oferta"
+
+#: carts/views.py:123
+msgid "Please leave a phone number so we can confirm your order."
+msgstr "Deixe um número de telefone para podermos confirmar a sua encomenda."
+
+#: carts/views.py:150
+msgid "2 days"
+msgstr "2 dias"
+
+#: carts/views.py:156
 msgid "We are starting to collect your order"
-msgstr "Estamos começando a coletar seu pedido"
+msgstr "Estamos a preparar a sua encomenda"
 
 #: eCommerce_Django/forms.py:6
 msgid "Your full name"
-msgstr "Seu nome completo"
+msgstr "O seu nome completo"
+
+#: eCommerce_Django/forms.py:7
+msgid "Email"
+msgstr "Email"
 
 #: eCommerce_Django/forms.py:7
 msgid "Your contact email"
-msgstr "Seu e-mail de contato"
+msgstr "O seu email de contacto"
+
+#: eCommerce_Django/forms.py:8
+msgid "Message"
+msgstr "Mensagem"
 
 #: eCommerce_Django/forms.py:8
 msgid "Your message"
-msgstr "Sua mensagem"
+msgstr "A sua mensagem"
 
-#: eCommerce_Django/views.py:57
+#: eCommerce_Django/settings/base_postgres.py:179
+#: eCommerce_Django/settings/base_sqlite.py:181
+#: eCommerce_Django/settings/prod_sqlite.py:175
+msgid "Curated food and gifts from small Portuguese producers"
+msgstr ""
+"Produtos alimentares e presentes escolhidos a dedo, de pequenos produtores "
+"portugueses"
+
+#: eCommerce_Django/views.py:70
 msgid "Welcome to about page!"
-msgstr "Bem-vindo à página sobre!"
-
-#: eCommerce_Django/views.py:67
-msgid "Here you can leave your feedback."
-msgstr "Aqui você pode deixar seu feedback."
-
-#: eCommerce_Django/views.py:74
-msgid "Send with contact email: "
-msgstr "Enviar com e-mail de contato: "
-
-#: eCommerce_Django/views.py:78
-msgid "Invalid header found."
-msgstr "Cabeçalho inválido encontrado."
+msgstr "Bem-vindo à página Sobre nós!"
 
 #: eCommerce_Django/views.py:80
+msgid "Here you can leave your feedback."
+msgstr "Aqui pode deixar-nos a sua mensagem."
+
+#: eCommerce_Django/views.py:88
+msgid "Send with contact email: "
+msgstr "Enviado com o email de contacto: "
+
+#: eCommerce_Django/views.py:92
+msgid "Invalid header found."
+msgstr "Cabeçalho inválido."
+
+#: eCommerce_Django/views.py:94
 msgid "Thank you for your submission"
-msgstr "Obrigado pela sua submissão"
-
-#: eCommerce_Django/views.py:95
-msgid "Update code on server"
-msgstr "Atualizar código no servidor"
-
-#: eCommerce_Django/views.py:97
-msgid "ERROR: Could`t update the code on server"
-msgstr "ERRO: Não foi possível atualizar o código no servidor"
+msgstr "Obrigado pela sua mensagem"
 
 #: marketing/forms.py:8
 msgid "Receive Marketing Email?"
-msgstr "Receber e-mail de marketing?"
+msgstr "Receber emails de marketing?"
 
 #: marketing/templates/subscribe_form.html:14
 msgid "Receive Marketing Email"
-msgstr "Receber e-mail de marketing"
+msgstr "Receber emails de marketing"
 
 #: marketing/utils.py:16
 msgid "String passed is not a valid email address"
-msgstr "A string passada não é um endereço de e-mail válido"
+msgstr "O texto indicado não é um endereço de email válido"
 
 #: marketing/utils.py:53
 msgid "Not a valid choice for email status"
-msgstr "Não é uma escolha válida para o status do e-mail"
+msgstr "Estado de email inválido"
 
 #: marketing/views.py:22
 msgid "Your email preferences have been updated. Thank you."
-msgstr "Suas preferências de e-mail foram atualizadas. Obrigado."
+msgstr "As suas preferências de email foram atualizadas. Obrigado."
 
 #: marketing/views.py:32
 msgid "Update Email Preferences"
-msgstr "Atualizar preferências de e-mail"
-
-#: orders/templates/orders/collection.html:14
-msgid "Product"
-msgstr "Produtos"
+msgstr "Atualizar preferências de email"
 
 #: orders/templates/orders/collection.html:14
 msgid "Data/Time"
-msgstr "Dados/Hora"
+msgstr "Data/hora"
 
 #: orders/templates/orders/collection.html:24
 #: orders/templates/orders/order_list.html:23
 msgid "No orders yet"
-msgstr "Ainda não há pedidos"
-
-#: orders/templates/orders/order_detail.html:16
-msgid "Items"
-msgstr "Unid"
+msgstr "Ainda não há encomendas"
 
 #: orders/templates/orders/order_detail.html:61
 msgid "Order Status"
-msgstr "Status do pedido"
+msgstr "Estado da encomenda"
 
 #: orders/templates/orders/order_list.html:13
 msgid "Order Id"
-msgstr "ID do pedido"
+msgstr "N.º da encomenda"
 
 #: orders/templates/orders/order_list.html:13
 msgid "Status"
-msgstr "Status"
+msgstr "Estado"
 
-#: products/templates/products/card.html:9
-#: products/templates/products/detail.html:53
-#: products/templates/products/detail.html:65
-msgid "Image not found :("
-msgstr "Imagem não encontrada :("
+#: products/templates/products/card.html:11
+msgid "Favourite"
+msgstr "Favorito"
 
-#: products/templates/products/card.html:24
-#: products/templates/products/card.html:33
-msgid "View"
-msgstr "Visualizar"
+#: products/templates/products/card.html:26
+#, python-format
+msgid "Save %(amount)s &euro;"
+msgstr "Poupe %(amount)s &euro;"
 
-#: products/templates/products/detail.html:85
-msgid "comments"
-msgstr "comentários"
+#: products/templates/products/detail.html:19
+msgid "Breadcrumbs"
+msgstr "Navegação estrutural"
 
-#: products/templates/products/detail.html:93
-msgid "says"
-msgstr "diz"
+#: products/templates/products/detail.html:20 templates/base/navbar.html:27
+msgid "Shop"
+msgstr "Loja"
 
-#: products/templates/products/detail.html:106
+#: products/templates/products/detail.html:37
+msgid "Illustrative image"
+msgstr "Imagem ilustrativa"
+
+#: products/templates/products/detail.html:37
+msgid "photo"
+msgstr "foto"
+
+#: products/templates/products/detail.html:37
+msgid "photo credits"
+msgstr "créditos das fotos"
+
+#: products/templates/products/detail.html:70
+msgid "What's inside"
+msgstr "O que inclui"
+
+#: products/templates/products/detail.html:81
+msgid "Bought separately"
+msgstr "Comprado em separado"
+
+#: products/templates/products/detail.html:82
+msgid "in the hamper"
+msgstr "no cabaz"
+
+#: products/templates/products/detail.html:83
+#, python-format
+msgid "you save %(amount)s &euro;"
+msgstr "poupa %(amount)s &euro;"
+
+#: products/templates/products/detail.html:90
+msgid "Delivery across Portugal, date confirmed with you"
+msgstr "Entrega em todo o país, data combinada consigo"
+
+#: products/templates/products/detail.html:91
+msgid "Pay after confirmation: MB WAY, Multibanco or bank transfer"
+msgstr ""
+"Pagamento após confirmação: MB WAY, Multibanco ou transferência bancária"
+
+#: products/templates/products/detail.html:92
+msgid "Gift message on request"
+msgstr "Mensagem de oferta a pedido"
+
+#: products/templates/products/detail.html:103
+msgid "Questions and reviews"
+msgstr "Perguntas e opiniões"
+
+#: products/templates/products/detail.html:117
 msgid "Your comment is awaiting moderation"
-msgstr "Seu comentário está aguardando moderação"
+msgstr "O seu comentário aguarda moderação"
 
-#: products/templates/products/detail.html:112
-msgid "Leave a comment"
-msgstr "Deixe um comentário"
+#: products/templates/products/detail.html:122
+msgid "Have a question about this product?"
+msgstr "Tem alguma pergunta sobre este produto?"
+
+#: products/templates/products/detail.html:124
+msgid "Send"
+msgstr "Enviar"
+
+#: products/templates/products/detail.html:129
+msgid "Questions about this product?"
+msgstr "Dúvidas sobre este produto?"
+
+#: products/templates/products/detail.html:130
+msgid "Write to us"
+msgstr "Escreva-nos"
+
+#: products/templates/products/detail.html:131
+msgid "or"
+msgstr "ou"
+
+#: products/templates/products/detail.html:132
+msgid "ask our assistant"
+msgstr "pergunte ao nosso assistente"
 
 #: products/templates/products/update-cart.html:9
 msgid "In cart"
@@ -646,7 +842,7 @@ msgstr "Adicionar ao carrinho"
 
 #: products/templates/products/user-history.html:7
 msgid "Product View History"
-msgstr "Histórico de visualização do produto"
+msgstr "Produtos vistos recentemente"
 
 #: products/templates/products/user-history.html:16
 msgid "Viewed"
@@ -654,47 +850,142 @@ msgstr "Visto"
 
 #: products/templates/products/user-history.html:24
 msgid "History missing"
-msgstr "História faltando"
+msgstr "Ainda não viu nenhum produto"
 
+#: search/rag.py:62
+#, python-format
+msgid "Matches: %(words)s"
+msgstr "Corresponde a: %(words)s"
+
+#: search/rag.py:74
+msgid "No matching product found. Try another word, or browse the categories."
+msgstr ""
+"Não encontrámos nenhum produto. Experimente outra palavra ou veja as "
+"categorias."
+
+#: search/rag.py:81
+#, python-format
+msgid "%(n)d pick for \"%(q)s\"."
+msgid_plural "%(n)d picks for \"%(q)s\"."
+msgstr[0] "%(n)d sugestão para \"%(q)s\"."
+msgstr[1] "%(n)d sugestões para \"%(q)s\"."
+
+#: search/rag.py:85
+#, python-format
+msgid "Top choice: %(title)s at %(price)s EUR."
+msgstr "A melhor opção: %(title)s por %(price)s EUR."
+
+#: search/rag.py:87
+#, python-format
+msgid "From %(categories)s."
+msgstr "Categorias: %(categories)s."
+
+#: search/rag.py:102
+msgid ""
+"What are you looking for? For example a gift, something spicy, or a specific "
+"product."
+msgstr ""
+"O que procura? Por exemplo, um presente, algo picante ou um produto "
+"específico."
+
+#: search/templates/search/ask.html:4 search/templates/search/ask.html:10
+#: search/templates/search/view.html:13 templates/base/footer.html:14
+#: templates/main/onboarding.html:14
+msgid "Ask our assistant"
+msgstr "Pergunte ao nosso assistente"
+
+#: search/templates/search/ask.html:11
+msgid ""
+"Describe what you want in your own words - a gift, a taste, a budget - and "
+"we will pick from what is in stock."
+msgstr ""
+"Descreva o que procura por palavras suas - um presente, um sabor, um "
+"orçamento - e escolhemos entre o que temos em stock."
+
+#: search/templates/search/ask.html:15
+msgid "e.g. a gift for someone who loves fish, under 40 euro"
+msgstr "ex.: um presente para quem adora peixe, até 40 euros"
+
+#: search/templates/search/ask.html:17
+msgid "Ask"
+msgstr "Perguntar"
+
+#: search/templates/search/search-form.html:4
 #: search/templates/search/search-form.html:6
+#: search/templates/search/view.html:4
 msgid "Search"
-msgstr "Procurar"
+msgstr "Pesquisar"
 
-#: search/templates/search/view.html:7
+#: search/templates/search/search-form.html:4
+msgid "Search products"
+msgstr "Pesquisar produtos"
+
+#: search/templates/search/view.html:8
 msgid "Results for"
 msgstr "Resultados para"
 
-#: templates/base.html:43
-msgid "Important"
-msgstr "Importante"
+#: search/templates/search/view.html:8
+msgid "Our favourites"
+msgstr "Os nossos favoritos"
 
-#: templates/base/footer.html:6
-msgid "Developed"
-msgstr "Desenvolvido"
+#: search/templates/search/view.html:12
+msgid "Not quite it?"
+msgstr "Não é bem isto?"
 
-#: templates/base/navbar.html:13
-msgid "TeaShop"
-msgstr "TeaShop"
+#: search/templates/search/view.html:24
+msgid "Nothing found."
+msgstr "Não encontrámos nada."
 
-#: templates/base/navbar.html:22
-msgid "Home"
-msgstr "Lar"
+#: search/templates/search/view.html:24
+msgid "Try our assistant"
+msgstr "Experimente o nosso assistente"
 
-#: templates/base/navbar.html:28
-msgid "Cart"
-msgstr "Carrinho"
+#: templates/base/footer.html:9
+msgid "Pay after we confirm your order: MB WAY, Multibanco or bank transfer."
+msgstr ""
+"Pague depois de confirmarmos a encomenda: MB WAY, Multibanco ou "
+"transferência bancária."
 
-#: templates/base/navbar.html:34
+#: templates/base/footer.html:15 templates/main/credits.html:4
+#: templates/main/credits.html:9
+msgid "Photo credits"
+msgstr "Créditos das fotos"
+
+#: templates/base/footer.html:40
+msgid "Developed by"
+msgstr "Desenvolvido por"
+
+#: templates/base/navbar.html:20
+msgid "Toggle navigation"
+msgstr "Abrir menu"
+
+#: templates/base/navbar.html:30
+msgid "Gift hampers"
+msgstr "Cabazes de oferta"
+
+#: templates/base/navbar.html:33
+msgid "Christmas"
+msgstr "Natal"
+
+#: templates/base/navbar.html:36
+msgid "Assistant"
+msgstr "Assistente"
+
+#: templates/base/navbar.html:51
 msgid "Account"
 msgstr "Conta"
 
-#: templates/contact/about.html:18 templates/main/home_page.html:30
+#: templates/base/navbar.html:60
+msgid "Log in"
+msgstr "Entrar"
+
+#: templates/contact/about.html:18 templates/main/home_page.html:36
 msgid "Premium Content"
-msgstr "Conteúdo premium"
+msgstr "Conteúdo exclusivo"
 
 #: templates/error/400.html:8
 msgid "Something went wrong"
-msgstr "Algo deu errado"
+msgstr "Algo correu mal"
 
 #: templates/error/400.html:10 templates/error/403.html:10
 #: templates/error/404.html:10
@@ -703,128 +994,199 @@ msgstr "Erro"
 
 #: templates/error/403.html:8
 msgid "Permission Denied"
-msgstr "Permissão negada"
+msgstr "Acesso negado"
 
 #: templates/error/404.html:8
-msgid "Page not field"
-msgstr "Página, não campo"
+msgid "Page not found"
+msgstr "Página não encontrada"
 
 #: templates/error/500.html:8
-msgid "Ooops, sorry. A server error occured"
-msgstr "Ops, desculpe. Ocorreu um erro no servidor"
+msgid "Sorry, a server error occurred"
+msgstr "Lamentamos, ocorreu um erro no servidor"
 
 #: templates/error/500.html:10
 msgid "Error | We have been notified and are working on a fix"
-msgstr "Erro | Fomos notificados e estamos trabalhando em uma correção"
+msgstr "Erro | Já fomos notificados e estamos a resolver"
 
-#: templates/main/categories.html:12
-msgid "reset"
-msgstr "reiniciar"
+#: templates/main/categories.html:3
+msgid "Categories"
+msgstr "Categorias"
 
-#: templates/main/home_page.html:6
-msgid "Home page"
-msgstr "Pagina inicial"
+#: templates/main/categories.html:4
+msgid "All"
+msgstr "Todos"
 
-#: templates/main/home_page.html:34
+#: templates/main/credits.html:10
+msgid ""
+"Product photos are illustrative: they show the kind of product, not the "
+"exact item you receive, which is described in each product's text. They come "
+"from Openverse and are used under the licenses listed below. Hamper images "
+"are collages of these photos."
+msgstr ""
+"As fotos dos produtos são ilustrativas: mostram o tipo de produto, não o "
+"artigo exato que vai receber, que está descrito no texto de cada produto. "
+"Vêm do Openverse e são usadas ao abrigo das licenças indicadas abaixo. As "
+"imagens dos cabazes são colagens destas fotos."
+
+#: templates/main/credits.html:16
+msgid "source"
+msgstr "fonte"
+
+#: templates/main/credits.html:16
+msgid "license"
+msgstr "licença"
+
+#: templates/main/home_page.html:27
+msgid "Nothing here yet."
+msgstr "Ainda não há nada aqui."
+
+#: templates/main/home_page.html:40
 msgid "Have any requests or questions?"
-msgstr "Tem alguma solicitação ou dúvida?"
+msgstr "Tem algum pedido ou pergunta?"
 
-#: templates/main/home_page.html:37
+#: templates/main/home_page.html:43
 msgid "Write me, please"
-msgstr "Escreva-me por favor"
+msgstr "Escreva-nos"
 
-#: templates/main/onboarding.html:11
-msgid "Take care of your health, live long - drink quality tea"
-msgstr "Cuide da sua saúde, viva por muito tempo - beba chá de qualidade"
+#: templates/main/onboarding.html:4
+msgid "From small Portuguese producers"
+msgstr "De pequenos produtores portugueses"
 
-#: templates/main/onboarding.html:12
-msgid "Delivery throughout Porto and Vila Nova de Gaia"
-msgstr "Entrega em todo o Porto e Vila Nova de Gaia"
+#: templates/main/onboarding.html:5
+msgid "The Portuguese pantry, curated and ready to gift"
+msgstr "A despensa portuguesa, escolhida a dedo e pronta a oferecer"
+
+#: templates/main/onboarding.html:6
+msgid ""
+"Tinned fish, olive oil, Azores tea, honey and gift hampers, chosen for "
+"flavour and packed with care."
+msgstr ""
+"Conservas, azeite, chá dos Açores, mel e cabazes de oferta, escolhidos pelo "
+"sabor e embalados com cuidado."
+
+#: templates/main/onboarding.html:8
+msgid "Delivery across Portugal"
+msgstr "Entrega em todo o país"
+
+#: templates/main/onboarding.html:9
+msgid "Pay after we confirm your order"
+msgstr "Pague depois de confirmarmos a encomenda"
+
+#: templates/main/onboarding.html:10
+msgid "Christmas hampers for teams"
+msgstr "Cabazes de Natal para empresas"
+
+#: templates/main/onboarding.html:13
+msgid "Shop gift hampers"
+msgstr "Ver cabazes de oferta"
+
+#: templates/main/select_sort.html:4
+#, python-format
+msgid "%(counter)s product"
+msgid_plural "%(counter)s products"
+msgstr[0] "%(counter)s produto"
+msgstr[1] "%(counter)s produtos"
+
+#: templates/main/select_sort.html:9
+msgid "Sort by"
+msgstr "Ordenar por"
+
+#: templates/main/select_sort.html:11
+msgid "Recommended"
+msgstr "Recomendados"
+
+#: templates/main/select_sort.html:12
+msgid "Price: low to high"
+msgstr "Preço: do mais baixo ao mais alto"
 
 #: templates/main/select_sort.html:13
-msgid "descending"
-msgstr "descendente"
+msgid "Price: high to low"
+msgstr "Preço: do mais alto ao mais baixo"
 
 #: templates/main/select_sort.html:14
-msgid "ascending"
-msgstr "ascendente"
+msgid "Newest"
+msgstr "Mais recentes"
 
-#: templates/main/select_sort.html:20
-msgid "Time"
-msgstr "Tempo"
-
-#: templates/main/select_sort.html:21
-msgid "update early"
-msgstr "atualizar cedo"
-
-#: templates/main/select_sort.html:22
-msgid "update last"
-msgstr "atualizar por último"
+#: templates/main/select_sort.html:16
+msgid "Apply"
+msgstr "Aplicar"
 
 #: templates/registration/activation-error.html:7
 msgid "Activation Error. Please try again"
-msgstr "Erro de ativação. Por favor, tente novamente"
+msgstr "Erro de ativação. Tente novamente"
 
 #: templates/registration/activation-error.html:9
 msgid "Re-activate your Email"
-msgstr "Reative seu e-mail"
+msgstr "Reativar o seu email"
+
+#: templates/registration/emails/verify.html:4
+#: templates/registration/emails/verify.txt:3
+#, python-format
+msgid "Please activate your account for %(email)s by clicking the link below:"
+msgstr "Ative a sua conta %(email)s clicando na ligação abaixo:"
+
+#: templates/registration/emails/verify.html:7
+#: templates/registration/emails/verify.txt:7
+msgid "Once you activate it, you can log in."
+msgstr "Depois de a ativar, já pode entrar."
 
 #: templates/registration/password_change_done.html:6
 msgid "Password successfully changed"
-msgstr "Senha mudada com sucesso"
+msgstr "Palavra-passe alterada com sucesso"
 
 #: templates/registration/password_change_form.html:6
 msgid "Change your Password"
-msgstr "Mude sua senha"
+msgstr "Alterar a palavra-passe"
 
 #: templates/registration/password_change_form.html:12
 msgid "Old password"
-msgstr "Senha Antiga"
+msgstr "Palavra-passe atual"
 
 #: templates/registration/password_change_form.html:25
 msgid "New password"
-msgstr "Nova Senha"
+msgstr "Nova palavra-passe"
 
 #: templates/registration/password_change_form.html:38
 msgid "Your password can't be too similar to your other personal information"
 msgstr ""
-"Sua senha não pode ser muito semelhante às suas outras informações pessoais"
+"A palavra-passe não pode ser demasiado parecida com os seus outros dados "
+"pessoais"
 
 #: templates/registration/password_change_form.html:39
 msgid "Your password must contain at least 8 characters"
-msgstr "Sua senha deve conter pelo menos 8 caracteres"
+msgstr "A palavra-passe tem de ter pelo menos 8 caracteres"
 
 #: templates/registration/password_change_form.html:40
 msgid "Your password can't be a commonly used password"
-msgstr "Sua senha não pode ser uma senha comumente usada"
+msgstr "A palavra-passe não pode ser uma palavra-passe comum"
 
 #: templates/registration/password_change_form.html:41
 msgid "Your password can't be entirely numeric"
-msgstr "Sua senha não pode ser totalmente numérica"
+msgstr "A palavra-passe não pode ter só números"
 
 #: templates/registration/password_change_form.html:50
 msgid "New password confirmation"
-msgstr "Nova confirmação de senha"
+msgstr "Confirmar a nova palavra-passe"
 
 #: templates/registration/password_reset_complete.html:6
 msgid "Password reset complete"
-msgstr "Redefinição de senha concluída"
+msgstr "Palavra-passe redefinida"
 
 #: templates/registration/password_reset_confirm.html:6
 msgid "Set your Password"
-msgstr "Coloque sua senha"
+msgstr "Definir a palavra-passe"
 
 #: templates/registration/password_reset_confirm.html:10
 msgid "Set new password"
-msgstr "Definir nova senha"
+msgstr "Definir nova palavra-passe"
 
 #: templates/registration/password_reset_done.html:6
-msgid "Rest Instructions Sent"
-msgstr "Instruções de descanso enviadas"
+msgid "Reset instructions sent"
+msgstr "Instruções enviadas"
 
 #: templates/registration/password_reset_done.html:7
 msgid "Please check your email"
-msgstr "Por favor verifique seu email"
+msgstr "Consulte o seu email"
 
 #: templates/registration/password_reset_email.html:2
 #, python-format
@@ -837,12 +1199,12 @@ msgstr ""
 "\n"
 "Olá,\n"
 "\n"
-"Redefina sua senha em %(domain)s para %(user)s:\n"
+"Redefina a palavra-passe de %(user)s em %(domain)s:\n"
 
 #: templates/registration/password_reset_form.html:6
 msgid "Reset your Password"
-msgstr "Redefinir sua senha"
+msgstr "Redefinir a palavra-passe"
 
 #: templates/registration/password_reset_form.html:10
 msgid "Reset Password"
-msgstr "Redefinir senha"
+msgstr "Redefinir palavra-passe"

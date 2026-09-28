@@ -1,9 +1,7 @@
-import { localization, displaySubmitting } from './base.js';
+import { displaySubmitting } from './base.js';
 
 
 $(document).ready(function () {
-  let lang = localization();
-
   var contactForm = $(".contact-form");
   var contactFormMethod = contactForm.attr("method");
   var contactFormEndpoint = contactForm.attr("action");
@@ -14,7 +12,6 @@ $(document).ready(function () {
     var contactFormData = contactForm.serialize();
     var thisForm = $(this);
     displaySubmitting(contactFormSubmitBtn, "", true);
-    let lang = localization();
     $.ajax({
       method: contactFormMethod,
       url: contactFormEndpoint,
@@ -22,7 +19,7 @@ $(document).ready(function () {
       success: function (data) {
         contactForm[0].reset();
         $.alert({
-          title: "Success!",
+          title: gettext("Thank you!"),
           content: data.message,
           theme: "modern",
         });
@@ -41,7 +38,7 @@ $(document).ready(function () {
           msg += key + ": " + value[0].message + "<br/>";
         });
         $.alert({
-          title: "Break!",
+          title: gettext("Error"),
           content: msg,
           theme: "modern",
         });

@@ -7,6 +7,9 @@ from products.models import Product
 
 class StaticViewSitemap(Sitemap):
     changefreq = 'weekly'
+    i18n = True
+    alternates = True
+    x_default = True
 
     def items(self):
         return [
@@ -21,6 +24,9 @@ class StaticViewSitemap(Sitemap):
 
 class ProductSitemap(Sitemap):
     changefreq = 'weekly'
+    i18n = True
+    alternates = True
+    x_default = True
 
     def items(self):
         return Product.objects.all().order_by('id')

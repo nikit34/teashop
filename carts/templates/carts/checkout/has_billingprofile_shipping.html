@@ -10,7 +10,7 @@
                 <ul class="order-lines">
                     {% for cart_item in object.cart.cart_items.all %}
                         <li class="order-line">
-                            <span class="order-line-title">{{ cart_item.quantity }} &times; {{ cart_item.product.title }}</span>
+                            <span class="order-line-title">{{ cart_item.quantity }} &times; {{ cart_item.product.display_title }}</span>
                             <span class="order-line-price">{{ cart_item.product.price }} &euro;</span>
                         </li>
                     {% endfor %}

@@ -154,6 +154,7 @@ class EmailActivation(models.Model):
                 context = {
                     'path': path,
                     'email': self.email,
+                    'store_name': getattr(settings, 'STORE_NAME', ''),
                 }
                 txt_ = get_template("registration/emails/verify.txt").render(context)
                 html_ = get_template("registration/emails/verify.html").render(context)

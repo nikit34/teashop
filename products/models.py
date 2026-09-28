@@ -6,8 +6,13 @@ from django.db import models
 from django.db.models import Q
 from django.db.models.signals import pre_save
 from django.urls import reverse
+from django.utils.translation import get_language
 
 from eCommerce_Django.utils import unique_slug_generator, get_filename
+
+
+def portuguese_active():
+    return (get_language() or '').startswith('pt')
 
 
 def get_filename_ext(filepath):
@@ -76,6 +81,7 @@ class Product(models.Model):
     title = models.CharField(max_length=120)
     slug = models.SlugField(blank=True, unique=True)
     description = models.TextField()
+    description_pt = models.TextField(blank=True, default='')
     price = models.DecimalField(decimal_places=2, max_digits=20, default=39.99)
     grammage = models.CharField(max_length=20, blank=True, null=True)
     image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
@@ -113,6 +119,24 @@ class Product(models.Model):
     def title_secondary(self):
         parts = self.title.split(' - ', 1)
         return parts[1] if len(parts) > 1 else ''
+
+    @property
+    def subtitle(self):
+        if portuguese_active():
+            return ''
+        return self.title_secondary
+
+    @property
+    def display_title(self):
+        if self.subtitle:
+            return '{} - {}'.format(self.title_primary, self.subtitle)
+        return self.title_primary
+
+    @property
+    def localized_description(self):
+        if portuguese_active() and self.description_pt:
+            return self.description_pt
+        return self.description
 
     @property
     def is_bundle(self):

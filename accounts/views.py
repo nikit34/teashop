@@ -40,7 +40,7 @@ class AccountEmailActivateView(FormMixin, View):
                     reset_link = reverse("password_reset")
                     msg = gettext(
                         "Your email has already been confirmed. "
-                        "Do you need to <a href='%{link}s'>reset you password</a>?"
+                        "Do you need to <a href='%(link)s'>reset your password</a>?"
                     ) % {'link': reset_link}
                     messages.success(request, mark_safe(msg))
                     return redirect("login")

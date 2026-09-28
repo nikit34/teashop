@@ -1,7 +1,9 @@
 from django.test import TestCase, RequestFactory
+from django.utils import translation
 
 from accounts.models import User
 from products.models import Product
+from search import rag
 from search.views import SearchProductView
 
 
@@ -86,3 +88,22 @@ class SearchProductViewTestCase(TestCase):
         queryset.in_cart = True
         context = view.get_context_data(object_list=queryset)
         self.assertEqual(len(context['object_list']), 2)
+
+
+class AssistantLanguageTests(TestCase):
+    def setUp(self):
+        Product.objects.create(title='Mel de Urze - Heather Honey', price=9.90, quantity=5,
+                               description='Dark heather honey.', description_pt='Mel de urze escuro.')
+
+    def test_answer_follows_the_page_language_even_when_cached(self):
+        with translation.override('en'):
+            english = rag.ask('mel')
+        with translation.override('pt'):
+            portuguese = rag.ask('mel')
+        self.assertIn('pick for "mel"', english['summary'])
+        self.assertIn('sugestão para "mel"', portuguese['summary'])
+
+    def test_portuguese_description_is_searchable(self):
+        with translation.override('pt'):
+            result = rag.ask('escuro')
+        self.assertEqual([item['product'].title for item in result['products']], ['Mel de Urze - Heather Honey'])

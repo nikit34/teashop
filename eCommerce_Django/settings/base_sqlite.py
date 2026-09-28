@@ -1,5 +1,7 @@
 import os
 
+from django.utils.translation import gettext_lazy
+
 from eCommerce_Django.utils import get_secret_key
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -150,7 +152,7 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale'), ]
 LANGUAGE_CODE = 'en'
 # LANGUAGE_CODE = 'ru'
 
-LANGUAGES = [('en', 'English'), ('ru', 'Russian'), ('pt', 'Portugal'), ]
+LANGUAGES = [('en', 'English'), ('pt', 'Português'), ]
 
 TIME_ZONE = 'UTC'
 
@@ -176,4 +178,4 @@ INTERNAL_IPS = [
 ]
 
 STORE_NAME = 'Portuguese Pantry'
-STORE_TAGLINE = 'Curated food and gifts from small Portuguese producers'
+STORE_TAGLINE = gettext_lazy('Curated food and gifts from small Portuguese producers')

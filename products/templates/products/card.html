@@ -16,8 +16,8 @@
             <p class="product-card-category">{{ instance.category.name }}</p>
         {% endif %}
         <h3 class="product-card-title"><a href="{{ instance.get_absolute_url }}">{{ instance.title_primary }}</a></h3>
-        {% if instance.title_secondary %}
-            <p class="product-card-subtitle">{{ instance.title_secondary }}</p>
+        {% if instance.subtitle %}
+            <p class="product-card-subtitle">{{ instance.subtitle }}</p>
         {% endif %}
         <div class="product-card-footer">
             <div class="product-price">

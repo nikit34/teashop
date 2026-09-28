@@ -27,7 +27,7 @@ def tokenize(text):
 
 
 def product_document(product):
-    parts = [product.title or "", product.description or ""]
+    parts = [product.title or "", product.description or "", product.description_pt or ""]
     if product.category_id and product.category:
         parts.append(product.category.name)
     parts.extend(tag.title for tag in product.tag_set.all())

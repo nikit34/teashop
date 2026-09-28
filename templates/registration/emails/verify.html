@@ -1,8 +1,9 @@
-<p>Hello,</p>
+{% load i18n %}
+<p>{% trans "Hello," %}</p>
 
-<p>Please activate your account for {{ email }} by clicking the link below:</p>
+<p>{% blocktrans %}Please activate your account for {{ email }} by clicking the link below:{% endblocktrans %}</p>
 
 <p><a href='{{ path }}'>{{ path }}</a></p>
-<p>Once you activate, you can login!</p>
-<p>Thank you,</p>
-<p>TeaShop</p>
+<p>{% trans "Once you activate it, you can log in." %}</p>
+<p>{% trans "Thank you," %}</p>
+<p>{{ store_name }}</p>

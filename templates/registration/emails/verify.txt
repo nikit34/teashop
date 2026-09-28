@@ -1,15 +1,10 @@
-Hello,
+{% load i18n %}{% trans "Hello," %}
 
-Please activate your account for {{ email }} by clicking the link below:
-
-
+{% blocktrans %}Please activate your account for {{ email }} by clicking the link below:{% endblocktrans %}
 
 {{ path }}
 
+{% trans "Once you activate it, you can log in." %}
 
-
-Once you activate, you can login!
-
-Thank you,
-
-TeaShop
+{% trans "Thank you," %}
+{{ store_name }}
