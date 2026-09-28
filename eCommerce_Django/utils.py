@@ -87,6 +87,13 @@ def unique_slug_generator(instance, new_slug=None):
     return slug
 
 
+def get_optional_secret(root_path, key, default=''):
+    try:
+        return get_secret_key(root_path, key)
+    except KeyError:
+        return default
+
+
 def get_secret_key(root_path, key):
     value = os.environ.get(key)
     if not value and os.path.isfile(root_path + "/secret"):

@@ -33,7 +33,7 @@ CATEGORIES = [
 ]
 
 
-def item(title, category, price, grammage, tags, description, description_pt, featured=False, quantity=25):
+def item(title, category, price, grammage, tags, description, description_pt, featured=False, quantity=25, min_quantity=1):
     return {
         "title": title,
         "category": category,
@@ -44,8 +44,13 @@ def item(title, category, price, grammage, tags, description, description_pt, fe
         "description_pt": description_pt,
         "featured": featured,
         "quantity": quantity,
+        "min_quantity": min_quantity,
     }
 
+
+RENAMED_TITLES = {
+    "Mel de Rosmaninho DOP - Lavender Honey": "Mel de Rosmaninho - Lavender Honey",
+}
 
 CATALOG = [
     item("Cabaz Sabores de Portugal - Taste of Portugal Hamper", "Cabazes", "48.00", "7 produtos",
@@ -93,7 +98,7 @@ CATALOG = [
          ["natal", "christmas", "empresas", "corporate", "cabaz", "b2b"],
          "For teams and clients, from 10 boxes. Six Portuguese pantry favourites per box, a card with your message and delivery to one or many addresses.",
          "Para equipas e clientes, a partir de 10 caixas. Seis favoritos da despensa portuguesa por caixa, um cartão com a sua mensagem e entrega numa ou em várias moradas.",
-         featured=True, quantity=100),
+         featured=True, quantity=100, min_quantity=10),
     item("Lata Ilustrada de Natal - Illustrated Christmas Tin", "Cabazes de Natal", "16.50", "3 latas",
          ["natal", "christmas", "conservas", "presente", "gift"],
          "Sardines in olive oil, sardines with lemon and mackerel in a limited Christmas illustrated sleeve. A stocking filler that is actually eaten.",
@@ -294,10 +299,10 @@ CATALOG = [
          "Chá Orange Pekoe e chá verde dos Açores numa lata para guardar.",
          ),
 
-    item("Mel de Rosmaninho DOP - Lavender Honey", "Mel & Doçaria", "9.90", "500g",
+    item("Mel de Rosmaninho - Lavender Honey", "Mel & Doçaria", "9.90", "500g",
          ["mel", "dop", "rosmaninho", "honey"],
-         "Protected-origin lavender honey from inland Portugal. Aromatic and slow to crystallise.",
-         "Mel de rosmaninho com Denominação de Origem Protegida, do interior de Portugal. Aromático e de cristalização lenta.",
+         "Lavender honey from inland Portugal. Aromatic and slow to crystallise.",
+         "Mel de rosmaninho do interior de Portugal. Aromático e de cristalização lenta.",
          featured=True),
     item("Mel de Urze - Heather Honey", "Mel & Doçaria", "10.50", "500g",
          ["mel", "urze", "honey"],
@@ -472,7 +477,7 @@ CATALOG = [
 
 BUNDLES = {
     "Cabaz Sabores de Portugal": [
-        ("Azeite Virgem Extra DOP Trás-os-Montes", 1), ("Mel de Rosmaninho DOP", 1),
+        ("Azeite Virgem Extra DOP Trás-os-Montes", 1), ("Mel de Rosmaninho", 1),
         ("Chá Preto Orange Pekoe dos Açores", 1), ("Flor de Sal do Algarve", 1),
         ("Atum dos Açores em Azeite", 1), ("Marmelada Tradicional", 1), ("Amêndoa Torrada do Algarve", 1),
     ],
@@ -498,7 +503,7 @@ BUNDLES = {
         ("Azeite Colheita Precoce", 1), ("Flor de Sal do Algarve", 1),
     ],
     "Cabaz de Natal Clássico": [
-        ("Azeite Virgem Extra do Alentejo", 1), ("Mel de Rosmaninho DOP", 1), ("Marmelada Tradicional", 1),
+        ("Azeite Virgem Extra do Alentejo", 1), ("Mel de Rosmaninho", 1), ("Marmelada Tradicional", 1),
         ("Chá Preto Orange Pekoe dos Açores", 1), ("Atum dos Açores em Azeite", 1),
         ("Chocolate Negro com Flor de Sal", 1), ("Amêndoa Torrada do Algarve", 1), ("Figos Secos do Algarve", 1),
     ],
@@ -508,7 +513,7 @@ BUNDLES = {
         ("Tábua de Queijo em Cortiça", 1),
     ],
     "Cabaz de Natal Empresas": [
-        ("Azeite Virgem Extra DOP Trás-os-Montes", 1), ("Mel de Rosmaninho DOP", 1),
+        ("Azeite Virgem Extra DOP Trás-os-Montes", 1), ("Mel de Rosmaninho", 1),
         ("Chá Preto Orange Pekoe dos Açores", 1), ("Sardinhas em Azeite Extra Virgem", 1),
         ("Chocolate Negro com Flor de Sal", 1), ("Flor de Sal do Algarve", 1),
     ],
@@ -589,6 +594,12 @@ class Command(BaseCommand):
                 obj.save()
             categories[name] = obj
 
+        for old_title, new_title in RENAMED_TITLES.items():
+            for product in Product.objects.filter(title=old_title):
+                product.title = new_title
+                product.slug = ""
+                product.save()
+
         created, updated = 0, 0
         for spec in CATALOG:
             fields = {
@@ -600,6 +611,7 @@ class Command(BaseCommand):
                 "featured": spec["featured"],
                 "active": True,
                 "quantity": spec["quantity"],
+                "min_quantity": spec["min_quantity"],
             }
             product = Product.objects.filter(title=spec["title"]).first()
             if product:

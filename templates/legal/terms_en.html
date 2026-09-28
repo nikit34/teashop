@@ -1,0 +1,37 @@
+<h1 class="page-title">Terms and conditions</h1>
+<p class="text-muted small">Last updated: 28 September 2026</p>
+
+<h2>1. Who sells</h2>
+<p>{{ SELLER.name|default:"-" }}, NIF {{ SELLER.nif|default:"-" }}, {{ SELLER.address|default:"-" }}. Contact: {{ SELLER.email|default:"-" }}{% if SELLER.phone %}, {{ SELLER.phone }}{% endif %}.</p>
+
+<h2>2. How an order works</h2>
+<ul>
+    <li>Products are made to order. A reservation costs nothing and is not yet a purchase.</li>
+    <li>Within 24 hours we contact you by phone, WhatsApp or email to confirm availability, the delivery date, the final total including delivery and the full product information (ingredients, allergens, producer).</li>
+    <li>The contract is concluded when you accept this confirmation. You then pay by MB WAY, Multibanco reference or bank transfer. We send the order confirmation and the invoice by email.</li>
+    <li>For companies we issue an invoice with the company's NIF. Payment after delivery can be agreed in the confirmation.</li>
+</ul>
+
+<h2>3. Prices and taxes</h2>
+<p>Prices are in euros. {% if SELLER.vat_exempt %}VAT is not charged: the seller applies the exemption of article 53 of the Portuguese VAT Code (CIVA).{% else %}Prices include VAT at the applicable rate.{% endif %} The delivery cost is stated in the confirmation, before payment.</p>
+
+<h2>4. Delivery</h2>
+<p>We deliver in mainland Portugal. Delivery to the Azores and Madeira is quoted on request. The delivery date is agreed in the confirmation. If that date cannot be met, we tell you before dispatch and you may cancel at no cost.</p>
+
+<h2>5. Items that are not available</h2>
+<p>If an item is not available, we contact you before dispatch with alternatives. Nothing in your order is replaced without your consent. If you do not accept an alternative, the order or that item is cancelled and any amount paid for it is refunded within 14 days.</p>
+
+<h2>6. Right of withdrawal (consumers)</h2>
+<ul>
+    <li>You may withdraw from the contract within 14 days of delivery without giving a reason. To do so, send us a clear statement by email, for example using the form below.</li>
+    <li>Return the goods unused and in their original packaging within 14 days of your statement. The direct cost of returning them is paid by you.</li>
+    <li>We refund all payments received, including the standard delivery cost, within 14 days of receiving your statement, by the same payment method. We may hold the refund until we receive the goods or proof that they were sent back.</li>
+    <li>The right of withdrawal does not apply to goods that spoil quickly, to sealed goods unsealed after delivery that cannot be returned for health or hygiene reasons, or to goods made to your specifications (Decree-Law 24/2014, article 17). Purchases by companies are not covered by these rules.</li>
+</ul>
+<p><strong>Withdrawal form.</strong> To {{ SELLER.name|default:"-" }}, {{ SELLER.address|default:"-" }}, {{ SELLER.email|default:"-" }}: I hereby give notice that I withdraw from my contract for the sale of the following goods: ... Ordered on ... / received on ... Name of consumer. Address of consumer. Signature (only on paper). Date.</p>
+
+<h2>7. Complaints and disputes</h2>
+<p>You can file a complaint in the electronic complaints book, <a href="https://www.livroreclamacoes.pt/Inicio/" target="_blank" rel="noopener">Livro de Reclamações Eletrónico</a>. Consumer disputes can be taken to CNIACC, Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt/" target="_blank" rel="noopener">www.cniacc.pt</a>). More information at the Portal do Consumidor (<a href="https://www.consumidor.gov.pt/" target="_blank" rel="noopener">www.consumidor.gov.pt</a>).</p>
+
+<h2>8. Applicable law</h2>
+<p>These terms are governed by Portuguese law.</p>

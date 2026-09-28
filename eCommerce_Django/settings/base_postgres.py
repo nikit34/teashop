@@ -2,7 +2,7 @@ import os
 
 from django.utils.translation import gettext_lazy
 
-from eCommerce_Django.utils import get_secret_key
+from eCommerce_Django.utils import get_optional_secret, get_secret_key
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -80,6 +80,7 @@ PAYPAL_CLIENT_SECRET = get_secret_key(BASE_DIR, 'PAYPAL_CLIENT_SECRET')
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'eCommerce_Django.middleware.SourceTagMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -177,3 +178,10 @@ INTERNAL_IPS = [
 
 STORE_NAME = 'Portuguese Pantry'
 STORE_TAGLINE = gettext_lazy('Curated food and gifts from small Portuguese producers')
+
+SELLER_NAME = get_optional_secret(BASE_DIR, 'SELLER_NAME')
+SELLER_NIF = get_optional_secret(BASE_DIR, 'SELLER_NIF')
+SELLER_ADDRESS = get_optional_secret(BASE_DIR, 'SELLER_ADDRESS')
+SELLER_EMAIL = get_optional_secret(BASE_DIR, 'SELLER_EMAIL')
+SELLER_PHONE = get_optional_secret(BASE_DIR, 'SELLER_PHONE')
+SELLER_VAT_EXEMPT = get_optional_secret(BASE_DIR, 'SELLER_VAT_EXEMPT') == 'yes'

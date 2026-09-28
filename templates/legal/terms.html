@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Terms and conditions" %} - {{ STORE_NAME }}{% endblock %}
+
+{% block content %}
+<article class="legal-page">
+    {% if portuguese %}
+        {% include "legal/terms_pt.html" %}
+    {% else %}
+        {% include "legal/terms_en.html" %}
+    {% endif %}
+</article>
+{% endblock %}

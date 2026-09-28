@@ -22,6 +22,7 @@ class ContactMessage(models.Model):
     full_name = models.CharField(max_length=255)
     email = models.EmailField()
     content = models.TextField()
+    source = models.CharField(max_length=40, blank=True, default='')
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:

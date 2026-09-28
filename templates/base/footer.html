@@ -40,5 +40,18 @@
             <p class="small mt-3 mb-0">&copy; {{ STORE_YEAR }} {{ STORE_NAME }}{% if dev_source %} &middot; {% trans "Developed by" %} <a href="{{ dev_source }}">Nikita Permiakov</a>{% endif %}</p>
         </div>
     </div>
+    <div class="row legal-block">
+        <div class="col-12">
+            {% if SELLER.name %}
+                <p class="small mb-1">{% trans "Seller" %}: {{ SELLER.name }}{% if SELLER.nif %}, NIF {{ SELLER.nif }}{% endif %}{% if SELLER.address %}, {{ SELLER.address }}{% endif %}{% if SELLER.email %}, <a href="mailto:{{ SELLER.email }}">{{ SELLER.email }}</a>{% endif %}{% if SELLER.phone %}, {{ SELLER.phone }}{% endif %}</p>
+            {% endif %}
+            <p class="small mb-1">
+                <a class="complaints-book" href="https://www.livroreclamacoes.pt/Inicio/" target="_blank" rel="noopener">Livro de Reclamações</a>
+                &middot; <a href="{% url 'terms' %}">{% trans "Terms and conditions" %}</a>
+                &middot; <a href="{% url 'privacy' %}">{% trans "Privacy policy" %}</a>
+            </p>
+            <p class="small mb-0">{% trans "Consumer disputes can be taken to an alternative dispute resolution body: CNIACC, www.cniacc.pt. More information at the Portal do Consumidor, www.consumidor.gov.pt." %}</p>
+        </div>
+    </div>
   </div>
 </footer>

@@ -57,6 +57,24 @@ class ReservationCheckoutTests(TestCase):
         )
         self.assertNotIn('cart_id', self.client.session)
 
+    def test_reserve_keeps_invoice_details_and_link_source(self):
+        self.cart.source = 'email-b2b'
+        self.cart.save()
+        self.client.post(reverse('cart:checkout'), {
+            'action': 'reserve',
+            'phone': '+351 910 000 000',
+            'company': 'Atelier Teste Lda',
+            'nif': 'PT 123 456 789',
+        })
+        self.order.refresh_from_db()
+        self.assertEqual(self.order.status, 'reserved')
+        self.assertEqual((self.order.company, self.order.nif, self.order.source), ('Atelier Teste Lda', '123456789', 'email-b2b'))
+
+    def test_reserve_with_invalid_nif_keeps_order_open(self):
+        self.client.post(reverse('cart:checkout'), {'action': 'reserve', 'phone': '+351 910 000 000', 'nif': '123456780'})
+        self.order.refresh_from_db()
+        self.assertEqual(self.order.status, 'created')
+
     def test_reserve_without_phone_keeps_order_open(self):
         self.client.post(reverse('cart:checkout'), {'action': 'reserve', 'phone': '12'})
         self.order.refresh_from_db()

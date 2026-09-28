@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Privacy policy" %} - {{ STORE_NAME }}{% endblock %}
+
+{% block content %}
+<article class="legal-page">
+    {% if portuguese %}
+        {% include "legal/privacy_pt.html" %}
+    {% else %}
+        {% include "legal/privacy_en.html" %}
+    {% endif %}
+</article>
+{% endblock %}

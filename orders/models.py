@@ -120,6 +120,9 @@ class Order(models.Model):
     description = models.TextField(blank=True, null=True, max_length=30)
     phone = models.CharField(max_length=40, blank=True, default='')
     note = models.TextField(blank=True, default='')
+    company = models.CharField(max_length=120, blank=True, default='')
+    nif = models.CharField(max_length=20, blank=True, default='')
+    source = models.CharField(max_length=40, blank=True, default='')
 
     def __str__(self):
         return self.order_id
@@ -179,11 +182,14 @@ class Order(models.Model):
                 self.update_purchases()
         return self.status
 
-    def mark_reserved(self, phone, note=''):
+    def mark_reserved(self, phone, note='', company='', nif='', source=''):
         if not self.check_done():
             return False
         self.phone = phone
         self.note = note
+        self.company = company
+        self.nif = nif
+        self.source = source
         self.status = 'reserved'
         self.save()
         return True

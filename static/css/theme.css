@@ -777,3 +777,27 @@ a:hover {
         padding: 18px;
     }
 }
+
+.site-footer .legal-block {
+    border-top: 1px solid var(--line);
+    margin-top: 12px;
+    padding-top: 12px;
+}
+
+.site-footer .complaints-book {
+    display: inline-block;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-weight: 600;
+}
+
+.legal-page {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.legal-page h2 {
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+}

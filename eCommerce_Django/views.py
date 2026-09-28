@@ -2,7 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from django.utils.translation import gettext
+from django.utils.translation import get_language, gettext
 from django.views.generic import ListView
 
 from carts.models import Cart
@@ -64,6 +64,14 @@ def credits_page(request):
     return render(request, 'main/credits.html', {'products': products})
 
 
+def terms_page(request):
+    return render(request, 'legal/terms.html', {'portuguese': get_language().startswith('pt')})
+
+
+def privacy_page(request):
+    return render(request, 'legal/privacy.html', {'portuguese': get_language().startswith('pt')})
+
+
 def about_page(request):
     context = {
         "title": gettext("About"),
@@ -84,7 +92,7 @@ def contact_page(request):
         fullname = contact_form.cleaned_data['fullname']
         email = contact_form.cleaned_data['email']
         content = contact_form.cleaned_data['content']
-        ContactMessage.objects.create(full_name=fullname, email=email, content=content)
+        ContactMessage.objects.create(full_name=fullname, email=email, content=content, source=request.session.get('src', ''))
         msg_content = gettext('Send with contact email: ') + email + '\n\n' + content
         try:
             send_mail(fullname, msg_content, email, [support_email], fail_silently=True)

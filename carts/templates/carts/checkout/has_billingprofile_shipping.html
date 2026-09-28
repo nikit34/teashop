@@ -57,6 +57,7 @@
             <div class="panel reserve-box">
                 <h2 class="panel-title">{% trans "Reserve now, pay after we confirm" %}</h2>
                 <p>{% trans "We check stock and delivery for your address, then message you with the final total. You pay only after that - by MB WAY, Multibanco or bank transfer." %}</p>
+                <p class="small text-muted">{% trans "Made to order: we confirm availability within 24 hours, before any payment." %}</p>
                 <form method="POST" action="{% url 'cart:checkout' %}" class="reserve-form">
                     {% csrf_token %}
                     <input type="hidden" name="action" value="reserve">
@@ -67,6 +68,16 @@
                     <div class="form-group">
                         <label for="reserve-note">{% trans "Gift message or delivery notes" %} <span class="text-muted">({% trans "optional" %})</span></label>
                         <textarea class="form-control" id="reserve-note" name="note" rows="2" maxlength="500"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-7">
+                            <label for="reserve-company">{% trans "Company name for the invoice" %} <span class="text-muted">({% trans "optional" %})</span></label>
+                            <input type="text" class="form-control" id="reserve-company" name="company" maxlength="120" autocomplete="organization">
+                        </div>
+                        <div class="form-group col-sm-5">
+                            <label for="reserve-nif">{% trans "NIF for the invoice" %} <span class="text-muted">({% trans "optional" %})</span></label>
+                            <input type="text" class="form-control" id="reserve-nif" name="nif" maxlength="20" inputmode="numeric" placeholder="123456789">
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans "Reserve my order" %}</button>
                     <p class="text-muted small mt-2 mb-0">{% trans "No payment is taken now." %}</p>

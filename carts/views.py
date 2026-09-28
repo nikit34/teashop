@@ -1,3 +1,5 @@
+import re
+
 import stripe
 from django.conf import settings
 from django.contrib import messages
@@ -63,11 +65,14 @@ def cart_update(request):
 
         cart_obj, new_obj = Cart.objects.new_or_get(request)
 
-        if 0 < int(new_quantity) <= product_obj.quantity:
+        requested = int(new_quantity)
+        if requested > 0:
+            requested = max(requested, product_obj.min_quantity)
+        if 0 < requested <= product_obj.quantity:
             cart_item, created = cart_obj.cart_items.get_or_create(product=product_obj)
-            cart_item.quantity = int(new_quantity)
+            cart_item.quantity = requested
             cart_item.save()
-        elif int(new_quantity) <= 0:
+        elif requested <= 0:
             cart_obj.cart_items.filter(product=product_obj).delete()
             cart_obj.save()
         request.session['cart_items'] = cart_obj.cart_items.count()
@@ -119,10 +124,16 @@ def checkout_home(request):
     if request.method == 'POST' and order_obj is not None and request.POST.get('action') == 'reserve':
         phone = (request.POST.get('phone') or '').strip()
         note = (request.POST.get('note') or '').strip()[:500]
+        company = (request.POST.get('company') or '').strip()[:120]
+        nif = normalize_nif(request.POST.get('nif') or '')
         if len(phone) < 6:
             messages.error(request, gettext('Please leave a phone number so we can confirm your order.'))
             return redirect('cart:checkout')
-        if order_obj.mark_reserved(phone, note):
+        if nif and not valid_nif(nif):
+            messages.error(request, gettext('This NIF is not valid. Check the 9 digits or leave the field empty.'))
+            return redirect('cart:checkout')
+        source = cart_obj.source or request.session.get('src', '')
+        if order_obj.mark_reserved(phone, note, company=company, nif=nif, source=source):
             request.session['cart_items'] = 0
             request.session.pop('cart_id', None)
             request.session['checkout_data'] = {
@@ -184,6 +195,23 @@ def checkout_home(request):
     return render(request, 'carts/checkout/main.html', context)
 
 
+def normalize_nif(value):
+    nif = re.sub(r'\s+', '', value).upper()
+    if nif.startswith('PT'):
+        nif = nif[2:]
+    return nif[:20]
+
+
+def valid_nif(nif):
+    if not re.fullmatch(r'\d{9}', nif):
+        return False
+    total = sum(int(digit) * weight for digit, weight in zip(nif[:8], range(9, 1, -1)))
+    check = 11 - total % 11
+    if check >= 10:
+        check = 0
+    return check == int(nif[8])
+
+
 def _notify_reservation(order_obj):
     recipient = getattr(settings, 'RESERVATION_NOTIFY_EMAIL', '')
     if not recipient:
@@ -196,6 +224,8 @@ def _notify_reservation(order_obj):
         'Order: {id}'.format(id=order_obj.order_id),
         'Email: {email}'.format(email=order_obj.billing_profile.email if order_obj.billing_profile else ''),
         'Phone: {phone}'.format(phone=order_obj.phone),
+        'Company: {company} NIF: {nif}'.format(company=order_obj.company or '-', nif=order_obj.nif or '-'),
+        'Source: {source}'.format(source=order_obj.source or '-'),
         'Total: {total} EUR'.format(total=order_obj.total),
         '',
         items,

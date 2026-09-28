@@ -15,7 +15,7 @@ from billing.views import payment_method_view, payment_method_createview
 from marketing.views import MarketingPreferenceUpdateView, MailchimpWebhookView
 from orders.views import CollectionView
 from .sitemaps import global_maps, RobotsTxtView
-from .views import ProductListView, about_page, contact_page, credits_page
+from .views import ProductListView, about_page, contact_page, credits_page, privacy_page, terms_page
 
 
 urlpatterns = [
@@ -38,6 +38,8 @@ urlpatterns = [
     path('about/', about_page, name='about'),
     path('contact/', contact_page, name='contact'),
     path('credits/', credits_page, name='credits'),
+    path('terms/', terms_page, name='terms'),
+    path('privacy/', privacy_page, name='privacy'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('register/', RegisterView.as_view(), name='register'),

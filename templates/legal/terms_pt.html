@@ -1,0 +1,37 @@
+<h1 class="page-title">Termos e condições</h1>
+<p class="text-muted small">Última atualização: 28 de setembro de 2026</p>
+
+<h2>1. Quem vende</h2>
+<p>{{ SELLER.name|default:"-" }}, NIF {{ SELLER.nif|default:"-" }}, {{ SELLER.address|default:"-" }}. Contacto: {{ SELLER.email|default:"-" }}{% if SELLER.phone %}, {{ SELLER.phone }}{% endif %}.</p>
+
+<h2>2. Como funciona uma encomenda</h2>
+<ul>
+    <li>Os produtos são vendidos sob encomenda. A reserva não tem custo e ainda não é uma compra.</li>
+    <li>Nas 24 horas seguintes contactamo-lo por telefone, WhatsApp ou email para confirmar a disponibilidade, a data de entrega, o total final com entrega e a informação completa dos produtos (ingredientes, alergénios, produtor).</li>
+    <li>O contrato fica celebrado quando aceita esta confirmação. Paga depois por MB WAY, referência Multibanco ou transferência bancária. Enviamos a confirmação da encomenda e a fatura por email.</li>
+    <li>Para empresas emitimos fatura com o NIF da empresa. O pagamento após a entrega pode ser combinado na confirmação.</li>
+</ul>
+
+<h2>3. Preços e impostos</h2>
+<p>Os preços estão em euros. {% if SELLER.vat_exempt %}Não é cobrado IVA: o vendedor aplica o regime de isenção do artigo 53.º do Código do IVA.{% else %}Os preços incluem IVA à taxa legal.{% endif %} O custo da entrega é indicado na confirmação, antes do pagamento.</p>
+
+<h2>4. Entrega</h2>
+<p>Entregamos em Portugal continental. A entrega nos Açores e na Madeira é orçamentada a pedido. A data de entrega é combinada na confirmação. Se não for possível cumpri-la, avisamos antes do envio e pode cancelar sem custos.</p>
+
+<h2>5. Produtos indisponíveis</h2>
+<p>Se um produto não estiver disponível, contactamo-lo antes do envio com alternativas. Nada na sua encomenda é substituído sem o seu acordo. Se não aceitar a alternativa, a encomenda ou esse produto é cancelado e o valor pago é devolvido em 14 dias.</p>
+
+<h2>6. Direito de livre resolução (consumidores)</h2>
+<ul>
+    <li>Pode resolver o contrato no prazo de 14 dias a contar da entrega, sem indicar motivo. Para isso, envie-nos uma declaração inequívoca por email, por exemplo com o formulário abaixo.</li>
+    <li>Devolva os bens sem uso e na embalagem original no prazo de 14 dias após a declaração. O custo direto da devolução é suportado por si.</li>
+    <li>Reembolsamos todos os pagamentos recebidos, incluindo o custo da entrega normal, no prazo de 14 dias após recebermos a declaração, pelo mesmo meio de pagamento. Podemos reter o reembolso até recebermos os bens ou a prova do seu envio.</li>
+    <li>O direito de livre resolução não se aplica a bens suscetíveis de se deteriorarem rapidamente, a bens selados abertos após a entrega que não possam ser devolvidos por razões de saúde ou higiene, nem a bens feitos segundo as suas especificações (Decreto-Lei 24/2014, artigo 17.º). As compras de empresas não estão abrangidas por estas regras.</li>
+</ul>
+<p><strong>Formulário de livre resolução.</strong> Para {{ SELLER.name|default:"-" }}, {{ SELLER.address|default:"-" }}, {{ SELLER.email|default:"-" }}: Pela presente comunico que resolvo o meu contrato de compra e venda dos seguintes bens: ... Encomendado em ... / recebido em ... Nome do consumidor. Morada do consumidor. Assinatura (só em papel). Data.</p>
+
+<h2>7. Reclamações e litígios</h2>
+<p>Pode apresentar reclamação no <a href="https://www.livroreclamacoes.pt/Inicio/" target="_blank" rel="noopener">Livro de Reclamações Eletrónico</a>. Em caso de litígio de consumo pode recorrer ao CNIACC, Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt/" target="_blank" rel="noopener">www.cniacc.pt</a>). Mais informação no Portal do Consumidor (<a href="https://www.consumidor.gov.pt/" target="_blank" rel="noopener">www.consumidor.gov.pt</a>).</p>
+
+<h2>8. Lei aplicável</h2>
+<p>Estes termos regem-se pela lei portuguesa.</p>

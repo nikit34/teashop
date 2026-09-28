@@ -30,6 +30,11 @@ class CartManager(models.Manager):
             new_obj = True
             request.session['cart_id'] = cart_obj.id
 
+        source = request.session.get('src', '')
+        if source and not cart_obj.source:
+            cart_obj.source = source
+            cart_obj.save(update_fields=['source'])
+
         return cart_obj, new_obj
 
     def new(self, user=None):
@@ -55,6 +60,7 @@ class Cart(models.Model):
     total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+    source = models.CharField(max_length=40, blank=True, default='')
 
     objects = CartManager()
 

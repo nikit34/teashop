@@ -91,6 +91,7 @@ class Product(models.Model):
     delivery = models.BooleanField(default=True)
     views = models.PositiveIntegerField(default=0)
     quantity = models.PositiveIntegerField(default=1)
+    min_quantity = models.PositiveIntegerField(default=1)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     image_credit = models.CharField(max_length=300, blank=True, default='')
     image_source_url = models.URLField(max_length=500, blank=True, default='')
