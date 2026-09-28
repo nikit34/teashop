@@ -1,5 +1,10 @@
 <h1 class="page-title">Terms and conditions</h1>
 <p class="text-muted small">Last updated: 28 September 2026</p>
+{% if PRELAUNCH %}
+<div class="panel mb-3">
+    <p class="mb-0"><strong>Pre-launch.</strong> The shop does not sell or deliver yet. Prices on the site are planned prices. No order or contract is formed on this site until the shop opens; the terms below will apply from then. Until then we only collect, with your consent, the email of people who want to be told when we open.</p>
+</div>
+{% endif %}
 
 <h2>1. Who sells</h2>
 <p>{{ SELLER.name|default:"-" }}, NIF {{ SELLER.nif|default:"-" }}, {{ SELLER.address|default:"-" }}. Contact: {{ SELLER.email|default:"-" }}{% if SELLER.phone %}, {{ SELLER.phone }}{% endif %}.</p>

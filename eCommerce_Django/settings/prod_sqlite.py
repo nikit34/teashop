@@ -180,4 +180,6 @@ SELLER_NIF = get_optional_secret(BASE_DIR, 'SELLER_NIF')
 SELLER_ADDRESS = get_optional_secret(BASE_DIR, 'SELLER_ADDRESS')
 SELLER_EMAIL = get_optional_secret(BASE_DIR, 'SELLER_EMAIL')
 SELLER_PHONE = get_optional_secret(BASE_DIR, 'SELLER_PHONE')
+PRELAUNCH = True
+
 SELLER_VAT_EXEMPT = get_optional_secret(BASE_DIR, 'SELLER_VAT_EXEMPT') == 'yes'

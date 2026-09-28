@@ -7,6 +7,7 @@ def store(request):
         'STORE_NAME': getattr(settings, 'STORE_NAME', 'Portuguese Pantry'),
         'STORE_TAGLINE': getattr(settings, 'STORE_TAGLINE', ''),
         'STORE_YEAR': timezone.now().year,
+        'PRELAUNCH': getattr(settings, 'PRELAUNCH', False),
         'SELLER': {
             'name': getattr(settings, 'SELLER_NAME', ''),
             'nif': getattr(settings, 'SELLER_NIF', ''),

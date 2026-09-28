@@ -801,3 +801,28 @@ a:hover {
     font-size: 1.15rem;
     margin-top: 1.5rem;
 }
+
+.prelaunch-banner {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.9rem;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.prelaunch-banner a {
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+.waitlist-page {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.waitlist-lines {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px;
+}

@@ -1,11 +1,12 @@
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.utils.translation import get_language, gettext
 from django.views.generic import ListView
 
 from carts.models import Cart
+from chats.forms import WaitlistForm
 from chats.models import ContactMessage
 from products.models import Product, Category
 from .forms import ContactForm
@@ -62,6 +63,25 @@ def credits_page(request):
     products = (Product.objects.all().exclude(image_source_url='')
                 .select_related('category').order_by('category__ordering', 'title'))
     return render(request, 'main/credits.html', {'products': products})
+
+
+def waitlist_page(request):
+    cart_obj, new_obj = Cart.objects.new_or_get(request)
+    lines = list(cart_obj.cart_items.select_related('product'))
+    form = WaitlistForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        signup = form.save(commit=False)
+        signup.items = '; '.join('{qty} x {title}'.format(qty=line.quantity, title=line.product.title_primary) for line in lines)
+        signup.total = cart_obj.total
+        signup.source = cart_obj.source or request.session.get('src', '')
+        signup.language = get_language()
+        signup.save()
+        return redirect('waitlist-thanks')
+    return render(request, 'main/waitlist.html', {'form': form, 'lines': lines, 'cart': cart_obj})
+
+
+def waitlist_thanks(request):
+    return render(request, 'main/waitlist_thanks.html')
 
 
 def terms_page(request):

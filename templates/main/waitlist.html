@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Get notified" %} - {{ STORE_NAME }}{% endblock %}
+
+{% block content %}
+<div class="waitlist-page">
+    <h1 class="page-title">{% trans "We are not selling yet" %}</h1>
+    <p>{% trans "The shop is in pre-launch: we are checking what people would like to buy before we start. Nothing is ordered, charged or shipped here." %}</p>
+
+    {% if lines %}
+        <div class="panel mb-3">
+            <h2 class="panel-title">{% trans "What you picked" %}</h2>
+            <ul class="waitlist-lines">
+                {% for line in lines %}
+                    <li>{{ line.quantity }} &times; {{ line.product.title_primary }} <span class="text-muted">{{ line.product.price }} &euro;</span></li>
+                {% endfor %}
+            </ul>
+            <p class="mb-0"><strong>{% trans "Total" %}: {{ cart.total|floatformat:2 }} &euro;</strong></p>
+        </div>
+    {% endif %}
+
+    <div class="panel">
+        <h2 class="panel-title">{% trans "Leave your email and we will tell you when we open" %}</h2>
+        <form method="POST" action="{% url 'waitlist' %}">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}{% if not field.field.required %} <span class="text-muted">({% trans "optional" %})</span>{% endif %}</label>
+                    {{ field }}
+                    {% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans "Notify me" %}</button>
+            <p class="text-muted small mt-2 mb-0">{% trans "We use your email only to tell you when we open and, at most, to ask you one question about what you would buy. No newsletter and no sharing. You can ask us to delete it at any time." %} <a href="{% url 'privacy' %}">{% trans "Privacy policy" %}</a></p>
+        </form>
+    </div>
+</div>
+{% endblock %}

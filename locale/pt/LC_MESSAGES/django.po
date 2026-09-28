@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Portuguese Pantry\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-28 22:26+0000\n"
+"POT-Creation-Date: 2026-09-28 22:51+0000\n"
 "PO-Revision-Date: 2026-09-28 15:00+0100\n"
 "Last-Translator: Portuguese Pantry\n"
 "Language-Team: Portuguese (Portugal)\n"
@@ -37,7 +37,7 @@ msgid "Passwords don't match"
 msgstr "As palavras-passe não coincidem"
 
 #: accounts/forms.py:52 addresses/templates/addresses/update.html:24
-#: eCommerce_Django/forms.py:6
+#: chats/forms.py:19 eCommerce_Django/forms.py:6
 msgid "Name"
 msgstr "Nome"
 
@@ -146,13 +146,13 @@ msgstr "Apoio"
 msgid "Admin"
 msgstr "Administração"
 
-#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:77
-#: templates/base/footer.html:12 templates/contact/about.html:5
+#: accounts/templates/accounts/home.html:48 eCommerce_Django/views.py:97
+#: templates/base/footer.html:16 templates/contact/about.html:5
 msgid "About"
 msgstr "Sobre nós"
 
-#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:87
-#: templates/base/footer.html:13
+#: accounts/templates/accounts/home.html:49 eCommerce_Django/views.py:107
+#: templates/base/footer.html:17
 msgid "Contact"
 msgstr "Contacto"
 
@@ -491,7 +491,7 @@ msgstr "confirmada consigo antes do pagamento"
 
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:28
 #: carts/templates/carts/home.html:47
-#: orders/templates/orders/order_list.html:13
+#: orders/templates/orders/order_list.html:13 templates/main/waitlist.html:19
 msgid "Total"
 msgstr "Total"
 
@@ -536,6 +536,7 @@ msgstr "Mensagem de oferta ou notas para a entrega"
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:69
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:74
 #: carts/templates/carts/checkout/has_billingprofile_shipping.html:78
+#: templates/main/waitlist.html:29
 msgid "optional"
 msgstr "opcional"
 
@@ -564,7 +565,7 @@ msgstr ""
 "consigo antes do pagamento."
 
 #: carts/templates/carts/checkout/has_nothing.html:4
-#: carts/templates/carts/home.html:55
+#: carts/templates/carts/home.html:61
 msgid "Checkout"
 msgstr "Finalizar compra"
 
@@ -641,41 +642,82 @@ msgstr "Preço"
 msgid "Subtotal"
 msgstr "Subtotal"
 
-#: carts/templates/carts/home.html:53
+#: carts/templates/carts/home.html:54
+msgid ""
+"Pre-launch: nothing is charged or shipped. Leave your email and we will tell "
+"you when these products are available."
+msgstr ""
+"Pré-lançamento: nada é cobrado nem enviado. Deixe o seu email e avisamos "
+"quando estes produtos estiverem disponíveis."
+
+#: carts/templates/carts/home.html:56 templates/base.html:24
+#: templates/main/waitlist.html:4
+msgid "Get notified"
+msgstr "Quero ser avisado"
+
+#: carts/templates/carts/home.html:59
 msgid "Delivery cost is confirmed with you before payment."
 msgstr "O custo da entrega é confirmado consigo antes do pagamento."
 
-#: carts/templates/carts/home.html:64
+#: carts/templates/carts/home.html:71
 msgid "Your cart is empty."
 msgstr "O seu carrinho está vazio."
 
-#: carts/templates/carts/home.html:65
+#: carts/templates/carts/home.html:72
 msgid "Browse gift hampers"
 msgstr "Ver cabazes de oferta"
 
-#: carts/views.py:130
+#: carts/views.py:132
 msgid "Please leave a phone number so we can confirm your order."
 msgstr "Deixe um número de telefone para podermos confirmar a sua encomenda."
 
-#: carts/views.py:133
+#: carts/views.py:135
 msgid "This NIF is not valid. Check the 9 digits or leave the field empty."
 msgstr "Este NIF não é válido. Verifique os 9 dígitos ou deixe o campo vazio."
 
-#: carts/views.py:161
+#: carts/views.py:163
 msgid "2 days"
 msgstr "2 dias"
 
-#: carts/views.py:167
+#: carts/views.py:169
 msgid "We are starting to collect your order"
 msgstr "Estamos a preparar a sua encomenda"
+
+#: chats/forms.py:18 eCommerce_Django/forms.py:7
+msgid "Email"
+msgstr "Email"
+
+#: chats/forms.py:20
+msgid "Who is it for?"
+msgstr "Para quem é?"
+
+#: chats/forms.py:21
+msgid "Company, if it is for your company"
+msgstr "Empresa, se for para a sua empresa"
+
+#: chats/forms.py:22
+msgid "How many boxes would you need?"
+msgstr "Quantas caixas precisaria?"
+
+#: chats/models.py:38
+msgid "Family or friends"
+msgstr "Família ou amigos"
+
+#: chats/models.py:39
+msgid "My company: team or clients"
+msgstr "A minha empresa: equipa ou clientes"
+
+#: chats/models.py:40
+msgid "For myself"
+msgstr "Para mim"
+
+#: chats/models.py:41
+msgid "Something else"
+msgstr "Outra coisa"
 
 #: eCommerce_Django/forms.py:6
 msgid "Your full name"
 msgstr "O seu nome completo"
-
-#: eCommerce_Django/forms.py:7
-msgid "Email"
-msgstr "Email"
 
 #: eCommerce_Django/forms.py:7
 msgid "Your contact email"
@@ -697,23 +739,23 @@ msgstr ""
 "Produtos alimentares e presentes escolhidos a dedo, de pequenos produtores "
 "portugueses"
 
-#: eCommerce_Django/views.py:78
+#: eCommerce_Django/views.py:98
 msgid "Welcome to about page!"
 msgstr "Bem-vindo à página Sobre nós!"
 
-#: eCommerce_Django/views.py:88
+#: eCommerce_Django/views.py:108
 msgid "Here you can leave your feedback."
 msgstr "Aqui pode deixar-nos a sua mensagem."
 
-#: eCommerce_Django/views.py:96
+#: eCommerce_Django/views.py:116
 msgid "Send with contact email: "
 msgstr "Enviado com o email de contacto: "
 
-#: eCommerce_Django/views.py:100
+#: eCommerce_Django/views.py:120
 msgid "Invalid header found."
 msgstr "Cabeçalho inválido."
 
-#: eCommerce_Django/views.py:102
+#: eCommerce_Django/views.py:122
 msgid "Thank you for your submission"
 msgstr "Obrigado pela sua mensagem"
 
@@ -808,55 +850,63 @@ msgstr "no cabaz"
 msgid "you save %(amount)s &euro;"
 msgstr "poupa %(amount)s &euro;"
 
-#: products/templates/products/detail.html:90
+#: products/templates/products/detail.html:91
+msgid ""
+"Pre-launch: not for sale yet. Add it to your list and leave your email - we "
+"will tell you when we open."
+msgstr ""
+"Pré-lançamento: ainda não está à venda. Junte-o à sua lista e deixe o seu "
+"email - avisamos quando abrirmos."
+
+#: products/templates/products/detail.html:93
 msgid ""
 "Made to order: we confirm availability within 24 hours, before any payment"
 msgstr ""
 "Sob encomenda: confirmamos a disponibilidade em 24 horas, antes de qualquer "
 "pagamento"
 
-#: products/templates/products/detail.html:91
+#: products/templates/products/detail.html:94
 msgid "Delivery across Portugal, date confirmed with you"
 msgstr "Entrega em todo o país, data combinada consigo"
 
-#: products/templates/products/detail.html:92
+#: products/templates/products/detail.html:95
 msgid "Pay after confirmation: MB WAY, Multibanco or bank transfer"
 msgstr ""
 "Pagamento após confirmação: MB WAY, Multibanco ou transferência bancária"
 
-#: products/templates/products/detail.html:93
+#: products/templates/products/detail.html:96
 msgid "Gift message on request"
 msgstr "Mensagem de oferta a pedido"
 
-#: products/templates/products/detail.html:104
+#: products/templates/products/detail.html:108
 msgid "Questions and reviews"
 msgstr "Perguntas e opiniões"
 
-#: products/templates/products/detail.html:118
+#: products/templates/products/detail.html:122
 msgid "Your comment is awaiting moderation"
 msgstr "O seu comentário aguarda moderação"
 
-#: products/templates/products/detail.html:123
+#: products/templates/products/detail.html:127
 msgid "Have a question about this product?"
 msgstr "Tem alguma pergunta sobre este produto?"
 
-#: products/templates/products/detail.html:125
+#: products/templates/products/detail.html:129
 msgid "Send"
 msgstr "Enviar"
 
-#: products/templates/products/detail.html:130
+#: products/templates/products/detail.html:134
 msgid "Questions about this product?"
 msgstr "Dúvidas sobre este produto?"
 
-#: products/templates/products/detail.html:131
+#: products/templates/products/detail.html:135
 msgid "Write to us"
 msgstr "Escreva-nos"
 
-#: products/templates/products/detail.html:132
+#: products/templates/products/detail.html:136
 msgid "or"
 msgstr "ou"
 
-#: products/templates/products/detail.html:133
+#: products/templates/products/detail.html:137
 msgid "ask our assistant"
 msgstr "pergunte ao nosso assistente"
 
@@ -917,8 +967,8 @@ msgstr ""
 "específico."
 
 #: search/templates/search/ask.html:4 search/templates/search/ask.html:10
-#: search/templates/search/view.html:13 templates/base/footer.html:14
-#: templates/main/onboarding.html:14
+#: search/templates/search/view.html:13 templates/base/footer.html:18
+#: templates/main/onboarding.html:19
 msgid "Ask our assistant"
 msgstr "Pergunte ao nosso assistente"
 
@@ -968,34 +1018,47 @@ msgstr "Não encontrámos nada."
 msgid "Try our assistant"
 msgstr "Experimente o nosso assistente"
 
-#: templates/base/footer.html:9
+#: templates/base.html:23
+msgid ""
+"Pre-launch: we are not selling yet. Pick what you would buy and leave your "
+"email - we will tell you when we open."
+msgstr ""
+"Pré-lançamento: ainda não vendemos. Escolha o que compraria e deixe o seu "
+"email - avisamos quando abrirmos."
+
+#: templates/base/footer.html:10
+msgid "Pre-launch: we are not selling yet."
+msgstr "Pré-lançamento: ainda não vendemos."
+
+#: templates/base/footer.html:12
 msgid "Pay after we confirm your order: MB WAY, Multibanco or bank transfer."
 msgstr ""
 "Pague depois de confirmarmos a encomenda: MB WAY, Multibanco ou "
 "transferência bancária."
 
-#: templates/base/footer.html:15 templates/main/credits.html:4
+#: templates/base/footer.html:19 templates/main/credits.html:4
 #: templates/main/credits.html:9
 msgid "Photo credits"
 msgstr "Créditos das fotos"
 
-#: templates/base/footer.html:40
+#: templates/base/footer.html:44
 msgid "Developed by"
 msgstr "Desenvolvido por"
 
-#: templates/base/footer.html:46
+#: templates/base/footer.html:50
 msgid "Seller"
 msgstr "Vendedor"
 
-#: templates/base/footer.html:50 templates/legal/terms.html:4
+#: templates/base/footer.html:54 templates/legal/terms.html:4
 msgid "Terms and conditions"
 msgstr "Termos e condições"
 
-#: templates/base/footer.html:51 templates/legal/privacy.html:4
+#: templates/base/footer.html:55 templates/legal/privacy.html:4
+#: templates/main/waitlist.html:35
 msgid "Privacy policy"
 msgstr "Política de privacidade"
 
-#: templates/base/footer.html:53
+#: templates/base/footer.html:57
 msgid ""
 "Consumer disputes can be taken to an alternative dispute resolution body: "
 "CNIACC, www.cniacc.pt. More information at the Portal do Consumidor, "
@@ -1114,19 +1177,23 @@ msgstr ""
 "Conservas, azeite, chá dos Açores, mel e cabazes de oferta, escolhidos pelo "
 "sabor e embalados com cuidado."
 
-#: templates/main/onboarding.html:8
-msgid "Delivery across Portugal"
-msgstr "Entrega em todo o país"
-
 #: templates/main/onboarding.html:9
-msgid "Pay after we confirm your order"
-msgstr "Pague depois de confirmarmos a encomenda"
+msgid "Pre-launch: pick what you would buy"
+msgstr "Pré-lançamento: escolha o que compraria"
 
-#: templates/main/onboarding.html:10
+#: templates/main/onboarding.html:10 templates/main/onboarding.html:14
 msgid "Christmas hampers for teams"
 msgstr "Cabazes de Natal para empresas"
 
+#: templates/main/onboarding.html:12
+msgid "Delivery across Portugal"
+msgstr "Entrega em todo o país"
+
 #: templates/main/onboarding.html:13
+msgid "Pay after we confirm your order"
+msgstr "Pague depois de confirmarmos a encomenda"
+
+#: templates/main/onboarding.html:18
 msgid "Shop gift hampers"
 msgstr "Ver cabazes de oferta"
 
@@ -1160,6 +1227,56 @@ msgstr "Mais recentes"
 #: templates/main/select_sort.html:16
 msgid "Apply"
 msgstr "Aplicar"
+
+#: templates/main/waitlist.html:8
+msgid "We are not selling yet"
+msgstr "Ainda não vendemos"
+
+#: templates/main/waitlist.html:9
+msgid ""
+"The shop is in pre-launch: we are checking what people would like to buy "
+"before we start. Nothing is ordered, charged or shipped here."
+msgstr ""
+"A loja está em pré-lançamento: estamos a perceber o que as pessoas gostariam "
+"de comprar antes de começar. Aqui nada é encomendado, cobrado ou enviado."
+
+#: templates/main/waitlist.html:13
+msgid "What you picked"
+msgstr "O que escolheu"
+
+#: templates/main/waitlist.html:24
+msgid "Leave your email and we will tell you when we open"
+msgstr "Deixe o seu email e avisamos quando abrirmos"
+
+#: templates/main/waitlist.html:34
+msgid "Notify me"
+msgstr "Avisem-me"
+
+#: templates/main/waitlist.html:35
+msgid ""
+"We use your email only to tell you when we open and, at most, to ask you one "
+"question about what you would buy. No newsletter and no sharing. You can ask "
+"us to delete it at any time."
+msgstr ""
+"Usamos o seu email só para o avisar da abertura e, no máximo, para lhe fazer "
+"uma pergunta sobre o que compraria. Sem newsletter e sem partilha. Pode "
+"pedir que o apaguemos a qualquer momento."
+
+#: templates/main/waitlist_thanks.html:4 templates/main/waitlist_thanks.html:8
+msgid "Thank you"
+msgstr "Obrigado"
+
+#: templates/main/waitlist_thanks.html:9
+msgid ""
+"You are on the list. Nothing was ordered or charged: we will write to you "
+"when the shop opens."
+msgstr ""
+"Está na lista. Nada foi encomendado nem cobrado: escrevemos-lhe quando a "
+"loja abrir."
+
+#: templates/main/waitlist_thanks.html:10
+msgid "Back to the shop"
+msgstr "Voltar à loja"
 
 #: templates/registration/activation-error.html:7
 msgid "Activation Error. Please try again"

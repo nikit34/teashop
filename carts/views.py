@@ -96,6 +96,8 @@ def checkout_api_view(request):
 
 
 def checkout_home(request):
+    if getattr(settings, 'PRELAUNCH', False):
+        return redirect('waitlist')
     cart_obj, cart_created = Cart.objects.new_or_get(request)
     if cart_created or cart_obj.cart_items.count() == 0:
         return redirect('cart:home')

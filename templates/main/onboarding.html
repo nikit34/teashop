@@ -5,9 +5,14 @@
     <h1>{% trans "The Portuguese pantry, curated and ready to gift" %}</h1>
     <p class="hero-lead">{% trans "Tinned fish, olive oil, Azores tea, honey and gift hampers, chosen for flavour and packed with care." %}</p>
     <ul class="hero-points">
-        <li>{% trans "Delivery across Portugal" %}</li>
-        <li>{% trans "Pay after we confirm your order" %}</li>
-        <li>{% trans "Christmas hampers for teams" %}</li>
+        {% if PRELAUNCH %}
+            <li>{% trans "Pre-launch: pick what you would buy" %}</li>
+            <li>{% trans "Christmas hampers for teams" %}</li>
+        {% else %}
+            <li>{% trans "Delivery across Portugal" %}</li>
+            <li>{% trans "Pay after we confirm your order" %}</li>
+            <li>{% trans "Christmas hampers for teams" %}</li>
+        {% endif %}
     </ul>
     <div class="hero-actions">
         <a class="btn btn-primary btn-lg" href="{% url 'home' %}?category=cabazes">{% trans "Shop gift hampers" %}</a>

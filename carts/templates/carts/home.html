@@ -50,10 +50,17 @@
                 </tbody>
             </table>
         </div>
-        <p class="text-muted small mt-3">{% trans "Delivery cost is confirmed with you before payment." %}</p>
-        <div class="text-right">
-            <a class="btn btn-primary btn-lg" href="{% url 'cart:checkout' %}">{% trans "Checkout" %}</a>
-        </div>
+        {% if PRELAUNCH %}
+            <p class="text-muted small mt-3">{% trans "Pre-launch: nothing is charged or shipped. Leave your email and we will tell you when these products are available." %}</p>
+            <div class="text-right">
+                <a class="btn btn-primary btn-lg" href="{% url 'waitlist' %}">{% trans "Get notified" %}</a>
+            </div>
+        {% else %}
+            <p class="text-muted small mt-3">{% trans "Delivery cost is confirmed with you before payment." %}</p>
+            <div class="text-right">
+                <a class="btn btn-primary btn-lg" href="{% url 'cart:checkout' %}">{% trans "Checkout" %}</a>
+            </div>
+        {% endif %}
     </div>
     <div class="cart-item-remove-form" style="display: none">
         {% include 'carts/remove-product.html' %}

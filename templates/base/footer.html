@@ -6,7 +6,11 @@
         <div class="col-12 col-md-5 mb-3">
             <h4>{{ STORE_NAME }}</h4>
             <p class="mb-1">{{ STORE_TAGLINE }}</p>
-            <p class="mb-0">{% trans "Pay after we confirm your order: MB WAY, Multibanco or bank transfer." %}</p>
+            {% if PRELAUNCH %}
+                <p class="mb-0">{% trans "Pre-launch: we are not selling yet." %}</p>
+            {% else %}
+                <p class="mb-0">{% trans "Pay after we confirm your order: MB WAY, Multibanco or bank transfer." %}</p>
+            {% endif %}
         </div>
         <div class="col-6 col-md-3 mb-3">
             <a href="{% url 'about' %}">{% trans "About" %}</a><br>

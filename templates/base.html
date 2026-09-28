@@ -17,6 +17,14 @@
     </head>
     <body>
         {% include 'base/navbar.html' %}
+        {% if PRELAUNCH %}
+            <div class="prelaunch-banner" role="status">
+                <div class="container">
+                    {% trans "Pre-launch: we are not selling yet. Pick what you would buy and leave your email - we will tell you when we open." %}
+                    <a href="{% url 'waitlist' %}">{% trans "Get notified" %}</a>
+                </div>
+            </div>
+        {% endif %}
 
         <main class="site-main">
             <div class="container">

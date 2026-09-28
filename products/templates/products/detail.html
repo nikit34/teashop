@@ -87,10 +87,14 @@
         {% endif %}
 
         <ul class="info-list">
-            <li><i class="fa fa-clock-o"></i> {% trans "Made to order: we confirm availability within 24 hours, before any payment" %}</li>
-            <li><i class="fa fa-truck"></i> {% trans "Delivery across Portugal, date confirmed with you" %}</li>
-            <li><i class="fa fa-credit-card"></i> {% trans "Pay after confirmation: MB WAY, Multibanco or bank transfer" %}</li>
-            <li><i class="fa fa-gift"></i> {% trans "Gift message on request" %}</li>
+            {% if PRELAUNCH %}
+                <li><i class="fa fa-clock-o"></i> {% trans "Pre-launch: not for sale yet. Add it to your list and leave your email - we will tell you when we open." %}</li>
+            {% else %}
+                <li><i class="fa fa-clock-o"></i> {% trans "Made to order: we confirm availability within 24 hours, before any payment" %}</li>
+                <li><i class="fa fa-truck"></i> {% trans "Delivery across Portugal, date confirmed with you" %}</li>
+                <li><i class="fa fa-credit-card"></i> {% trans "Pay after confirmation: MB WAY, Multibanco or bank transfer" %}</li>
+                <li><i class="fa fa-gift"></i> {% trans "Gift message on request" %}</li>
+            {% endif %}
         </ul>
 
         <div class="detail-description">
