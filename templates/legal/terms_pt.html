@@ -7,7 +7,7 @@
 {% endif %}
 
 <h2>1. Quem vende</h2>
-<p>{{ SELLER.name|default:"-" }}, NIF {{ SELLER.nif|default:"-" }}, {{ SELLER.address|default:"-" }}. Contacto: {{ SELLER.email|default:"-" }}{% if SELLER.phone %}, {{ SELLER.phone }}{% endif %}.</p>
+<p>{% include "legal/seller_line.html" %}.</p>
 
 <h2>2. Como funciona uma encomenda</h2>
 <ul>
@@ -33,7 +33,7 @@
     <li>Reembolsamos todos os pagamentos recebidos, incluindo o custo da entrega normal, no prazo de 14 dias após recebermos a declaração, pelo mesmo meio de pagamento. Podemos reter o reembolso até recebermos os bens ou a prova do seu envio.</li>
     <li>O direito de livre resolução não se aplica a bens suscetíveis de se deteriorarem rapidamente, a bens selados abertos após a entrega que não possam ser devolvidos por razões de saúde ou higiene, nem a bens feitos segundo as suas especificações (Decreto-Lei 24/2014, artigo 17.º). As compras de empresas não estão abrangidas por estas regras.</li>
 </ul>
-<p><strong>Formulário de livre resolução.</strong> Para {{ SELLER.name|default:"-" }}, {{ SELLER.address|default:"-" }}, {{ SELLER.email|default:"-" }}: Pela presente comunico que resolvo o meu contrato de compra e venda dos seguintes bens: ... Encomendado em ... / recebido em ... Nome do consumidor. Morada do consumidor. Assinatura (só em papel). Data.</p>
+<p><strong>Formulário de livre resolução.</strong> Para {% include "legal/seller_line.html" %}: Pela presente comunico que resolvo o meu contrato de compra e venda dos seguintes bens: ... Encomendado em ... / recebido em ... Nome do consumidor. Morada do consumidor. Assinatura (só em papel). Data.</p>
 
 <h2>7. Reclamações e litígios</h2>
 <p>Pode apresentar reclamação no <a href="https://www.livroreclamacoes.pt/Inicio/" target="_blank" rel="noopener">Livro de Reclamações Eletrónico</a>. Em caso de litígio de consumo pode recorrer ao CNIACC, Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt/" target="_blank" rel="noopener">www.cniacc.pt</a>). Mais informação no Portal do Consumidor (<a href="https://www.consumidor.gov.pt/" target="_blank" rel="noopener">www.consumidor.gov.pt</a>).</p>
